@@ -1,52 +1,33 @@
 'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
 import { Link } from '../../../navigation';
+import { Switcher} from './LanguageSwitcherStyles'
 
 export default function LanguageSwitcher({ url }) {
    const pathname = usePathname();
-   const locales = ['en', 'pt', 'zh', 'es', 'hi', 'fr', 'ar', 'bn', 'ru', 'id'];
+   const locales = [
+      { name: 'English', code: 'en' },
+      { name: 'Portuguese', code: 'pt' },
+      { name: 'Chinese', code: 'zh' },
+      { name: 'Spanish', code: 'es' },
+      { name: 'Hindi', code: 'hi' },
+      { name: 'French', code: 'fr' },
+      { name: 'Arabic', code: 'ar' },
+      { name: 'Bengali', code: 'bn' },
+      { name: 'Russian', code: 'ru' },
+      { name: 'Indonesian', code: 'id' },
+   ];
 
    return (
       <>
-         <div>
+         <Switcher>
             {locales.map((loc) => (
-               <Link key={loc} href={`${url || ''}`} locale={loc}>
-                  <div
-                     style={{
-                        marginRight: 10,
-                        color: pathname?.includes(loc) ? 'red' : 'blue',
-                     }}
-                  >
-                     {loc === 'en'
-                        ? 'English - US'
-                        : loc === 'pt'
-                        ? 'Portuguese - BR'
-                        : loc === 'zh'
-                        ? 'Chinese (Mandarin)'
-                        : loc === 'es'
-                        ? 'Spanish (Spain)'
-                        : loc === 'hi'
-                        ? 'Hindi (India)'
-                        : loc === 'fr'
-                        ? 'French (France)'
-                        : loc === 'ar'
-                        ? 'Arabic (Arab Countries)'
-                        : loc === 'bn'
-                        ? 'Bengali (Bangladesh)'
-                        : loc === 'ru'
-                        ? 'Russian (Russia)'
-                        : loc === 'id'
-                        ? 'Indonesian (Indonesia)'
-                        : 'Unknown Language'}
-                  </div>
+               <Link key={loc.code} href={`${url || loc.code}`} locale={loc.code} className='language'>
+                  {loc.name}
                </Link>
             ))}
-         </div>
-         <Link href={`/login`}>login</Link>
-         <br />
-         <Link href='/'>home</Link>
+         </Switcher>
       </>
    );
 }

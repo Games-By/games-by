@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/Languages/LanguageSwitcher';
+import Header from '@/components/Header/Header';
+import GlobalStyle from '@/Styles/globals';
 
 export const metadata = {
    title: "Games By | Home",
@@ -11,8 +13,9 @@ export default function Index() {
 
    return (
       <div>
-         <LanguageSwitcher />
-         <h1>{t('title')}</h1>
+         <GlobalStyle />
+         <Header />
+         {/* <LanguageSwitcher /> */}
       </div>
    );
 }

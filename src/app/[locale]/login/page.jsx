@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from '@/components/Languages/LanguageSwitcher';
 import React from 'react';
+import Header from '@/components/Header/Header';
 
 export const metadata = {
    title: "Games By | Login",
@@ -11,8 +12,7 @@ export default function LoginPage() {
    const t = useTranslations('Index');
    return (
       <>
-         <LanguageSwitcher url={'/login'} />
-         <h1>{t('title')}</h1>
+         <h1>Login</h1>
       </>
    );
 }
