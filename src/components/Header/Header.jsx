@@ -135,7 +135,10 @@ const Header = () => {
                className='profile-icon'
             />
          </Profile>
-         <Language>
+         <Language
+            onMouseEnter={() => setTranslateActive(true)}
+            onMouseLeave={() => setTranslateActive(false)}
+         >
             <Image
                src={'/assets/icons/translate.svg'}
                alt='translate icon'
@@ -143,7 +146,6 @@ const Header = () => {
                height={25}
                quality={100}
                className='translate-icon'
-               onClick={() => setTranslateActive(!translateActive)}
             />
             {translateActive && <LanguageSwitcher />}
          </Language>
