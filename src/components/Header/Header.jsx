@@ -11,8 +11,11 @@ import {
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useRef, useState } from 'react';
 import SearchedItem from '../SearchedItem/SearchedItem';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+   const pathname = usePathname()
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
@@ -125,16 +128,18 @@ const Header = () => {
                </SearchBox>
             ) : null}
          </SearchBar>
-         <Profile>
-            <Image
-               src={'/assets/icons/profile.svg'}
-               alt='profile'
-               width={25}
-               height={25}
-               quality={100}
-               className='profile-icon'
-            />
-         </Profile>
+         <Link href={`${pathname}/login`}>
+            <Profile>
+               <Image
+                  src={'/assets/icons/profile.svg'}
+                  alt='profile'
+                  width={25}
+                  height={25}
+                  quality={100}
+                  className='profile-icon'
+               />
+            </Profile>
+         </Link>
          <Language
             onMouseEnter={() => setTranslateActive(true)}
             onMouseLeave={() => setTranslateActive(false)}
