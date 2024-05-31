@@ -1,13 +1,83 @@
 'use client';
 
 import Image from 'next/image';
-import logo from '@/../../public/assets/logo.png';
-import { HeaderStyle, SearchBar, Profile, Language } from './HeaderStyles';
+import {
+   HeaderStyle,
+   SearchBar,
+   Profile,
+   Language,
+   SearchBox,
+} from './HeaderStyles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import SearchedItem from '../SearchedItem/SearchedItem';
 
 const Header = () => {
    const [translateActive, setTranslateActive] = useState(false);
+   const [isSearched, setIsSearched] = useState(false);
+   const [searched, setSearched] = useState('');
+   const [findGames, setFindGames] = useState([]);
+   const searchInputRef = useRef(null);
+
+   const games = [
+      {
+         name: 'Cyberpunk 2077',
+         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/6bAF2VVEamgKclalI0oBnoAe.jpg',
+         date: 2020,
+      },
+      {
+         name: 'Cyber',
+         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/6bAF2VVEamgKclalI0oBnoAe.jpg',
+         date: 2020,
+      },
+   ];
+
+   const handleSearch = (event) => {
+      const searchValue = event.target.value;
+      setSearched(searchValue);
+      setIsSearched(true);
+
+      if (searchValue.length > 1) {
+         const filteredGames = games.filter((game) =>
+            game.name.toLowerCase().includes(searchValue.toLowerCase())
+         );
+         const sortedGames = filteredGames.sort((a, b) => {
+            if (
+               a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
+               !b.name.toLowerCase().startsWith(searchValue.toLowerCase())
+            ) {
+               return -1;
+            }
+            if (
+               !a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
+               b.name.toLowerCase().startsWith(searchValue.toLowerCase())
+            ) {
+               return 1;
+            }
+            return a.name.localeCompare(b.name);
+         });
+         setFindGames(sortedGames);
+      } else {
+         setFindGames([]);
+      }
+   };
+
+   const handleClickOutside = (event) => {
+      if (
+         searchInputRef.current &&
+         !searchInputRef.current.contains(event.target)
+      ) {
+         setIsSearched(false);
+      }
+   };
+
+   useEffect(() => {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+         document.removeEventListener('mousedown', handleClickOutside);
+      };
+   }, []);
+
    return (
       <HeaderStyle>
          <Image
@@ -20,9 +90,13 @@ const Header = () => {
          />
          <SearchBar>
             <input
+               ref={searchInputRef}
                className='search'
                type='text'
                placeholder='What do you want to play today?'
+               onChange={handleSearch}
+               onKeyUp={handleSearch}
+               value={searched}
             />
             <div className='glass'>
                <Image
@@ -30,9 +104,26 @@ const Header = () => {
                   quality={100}
                   width={20}
                   height={20}
-                  alt='games By Logo'
+                  alt='magnifying glass icon'
                />
             </div>
+            {searched.length > 1 && isSearched ? (
+               <SearchBox>
+                  {findGames.length > 0 ? (
+                     findGames.map((game, index) => (
+                        <SearchedItem
+                           key={index + 1}
+                           name={game.name}
+                           image={game.image}
+                           release={game.date}
+                           url={'/'}
+                        />
+                     ))
+                  ) : (
+                     <div className='searched-item'>not found</div>
+                  )}
+               </SearchBox>
+            ) : null}
          </SearchBar>
          <Profile>
             <Image

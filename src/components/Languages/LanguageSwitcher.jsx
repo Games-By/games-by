@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Link } from '../../../navigation';
 import { Switcher} from './LanguageSwitcherStyles'
 
