@@ -15,7 +15,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const Header = () => {
-   const pathname = usePathname()
+   const pathname = usePathname();
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');

@@ -103,4 +103,9 @@ export const Language = styled.div`
    cursor: pointer;
    margin: 0 3rem 0 1.5rem;
    position: relative;
+   height: 5rem;
+   width: 5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 `;

@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import { Link } from '../../../navigation';
-import { Switcher} from './LanguageSwitcherStyles'
+import { Switcher } from './LanguageSwitcherStyles';
 
 export default function LanguageSwitcher({ url }) {
    const pathname = usePathname();
@@ -23,7 +23,13 @@ export default function LanguageSwitcher({ url }) {
       <>
          <Switcher>
             {locales.map((loc) => (
-               <Link key={loc.code} href={`${url || loc.code}`} locale={loc.code} className='language'>
+               <Link
+                  key={loc.code}
+                  href={`${url || loc.code}`}
+                  locale={loc.code}
+                  className={`language ${pathname.includes(loc.code) && 'active'
+                  }`}
+               >
                   {loc.name}
                </Link>
             ))}
