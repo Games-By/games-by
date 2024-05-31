@@ -41,16 +41,6 @@ export const SearchedItemStyles = styled.li`
       color: var(--purple-1);
    }
 
-   &::after {
-      content: '';
-      width: 100%;
-      bottom: -1rem;
-      height: 1px;
-      background-color: var(--dark);
-      position: absolute;
-
-   }
-
    &:hover {
       border: 1px solid var(--purple-1);
    }
