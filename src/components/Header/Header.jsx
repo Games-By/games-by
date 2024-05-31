@@ -120,7 +120,7 @@ const Header = () => {
                         />
                      ))
                   ) : (
-                     <div className='searched-item'>not found</div>
+                     <div className='searched-item'>No games found</div>
                   )}
                </SearchBox>
             ) : null}

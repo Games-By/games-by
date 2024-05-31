@@ -76,6 +76,9 @@ export const SearchBox = styled.ul`
       width: 95%;
       margin: 0 auto;
       padding: 1rem 0.5rem;
+      font-size: 1.9rem;
+      font-weight: 300;
+      text-decoration: underline;
    }
 `;
 
