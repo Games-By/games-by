@@ -13,6 +13,7 @@ import { useEffect, useRef, useState } from 'react';
 import SearchedItem from '../SearchedItem/SearchedItem';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
+import { locales } from '../Languages/LanguageSwitcher';
 
 const Header = () => {
    const router = useRouter();
@@ -22,6 +23,9 @@ const Header = () => {
    const [searched, setSearched] = useState('');
    const [findGames, setFindGames] = useState([]);
    const searchInputRef = useRef(null);
+
+   // Simplificação para encontrar o locale no pathname
+   const locale = locales.find(locale => pathname.includes(locale.code))?.code || 'en';
 
    const games = [
       {
@@ -42,20 +46,14 @@ const Header = () => {
       setIsSearched(true);
 
       if (searchValue.length > 1) {
-         const filteredGames = games.filter((game) =>
+         const filteredGames = games.filter(game =>
             game.name.toLowerCase().includes(searchValue.toLowerCase())
          );
          const sortedGames = filteredGames.sort((a, b) => {
-            if (
-               a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
-               !b.name.toLowerCase().startsWith(searchValue.toLowerCase())
-            ) {
+            if (a.name.toLowerCase().startsWith(searchValue.toLowerCase()) && !b.name.toLowerCase().startsWith(searchValue.toLowerCase())) {
                return -1;
             }
-            if (
-               !a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
-               b.name.toLowerCase().startsWith(searchValue.toLowerCase())
-            ) {
+            if (!a.name.toLowerCase().startsWith(searchValue.toLowerCase()) && b.name.toLowerCase().startsWith(searchValue.toLowerCase())) {
                return 1;
             }
             return a.name.localeCompare(b.name);
@@ -67,10 +65,7 @@ const Header = () => {
    };
 
    const handleClickOutside = (event) => {
-      if (
-         searchInputRef.current &&
-         !searchInputRef.current.contains(event.target)
-      ) {
+      if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
          setIsSearched(false);
       }
    };
@@ -84,8 +79,7 @@ const Header = () => {
 
    const navigateToCatalog = () => {
       if (searched) {
-         const newPath = pathname.includes('/catalog') ? '' : '/catalog';
-         router.push(`${pathname}/${newPath}?searched=${encodeURIComponent(searched)}`);
+         router.replace(`/${locale}/catalog?searched=${encodeURIComponent(searched)}`);
       }
    };
 
@@ -125,25 +119,25 @@ const Header = () => {
                   alt='magnifying glass icon'
                />
             </div>
-            {searched.length > 1 && isSearched ? (
-               <SearchBox>
+            {searched.length > 1 && isSearched && (
+               <SearchBox ref={searchInputRef}>
                   {findGames.length > 0 ? (
-                     findGames.map((game, index) => (
+                     findGames.map(({ name, image, date }, index) => (
                         <SearchedItem
                            key={index + 1}
-                           name={game.name}
-                           image={game.image}
-                           release={game.date}
-                           url={'/'}
+                           name={name}
+                           image={image}
+                           release={date}
+                           url={`/${locale}/games/${encodeURIComponent(name.toLowerCase())}`}
                         />
                      ))
                   ) : (
                      <div className='searched-item'>No games found</div>
                   )}
                </SearchBox>
-            ) : null}
+            )}
          </SearchBar>
-         <Link href={`${pathname}/login`}>
+         <Link href={`/${locale}/login`}>
             <Profile>
                <Image
                   src={'/assets/icons/profile.svg'}
