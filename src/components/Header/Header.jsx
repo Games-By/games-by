@@ -24,7 +24,6 @@ const Header = () => {
    const [findGames, setFindGames] = useState([]);
    const searchInputRef = useRef(null);
 
-   // Simplificação para encontrar o locale no pathname
    const locale = locales.find(locale => pathname.includes(locale.code))?.code || 'en';
 
    const games = [

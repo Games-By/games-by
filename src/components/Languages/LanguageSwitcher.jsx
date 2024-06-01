@@ -40,7 +40,7 @@ export default function LanguageSwitcher() {
                href={getNewPathname(loc.code)}
                locale={loc.code}
                className={`language ${
-                  currentLocale === loc.code ? 'active' : ''
+                  pathname.includes(loc.code) ? 'active' : ''
                }`}
             >
                {loc.name}
