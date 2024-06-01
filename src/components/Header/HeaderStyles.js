@@ -71,6 +71,7 @@ export const SearchBox = styled.ul`
    display: flex;
    justify-content: center;
    flex-direction: column;
+   color: var(--dark);
 
    .searched-item {
       width: 95%;

@@ -12,9 +12,10 @@ import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useRef, useState } from 'react';
 import SearchedItem from '../SearchedItem/SearchedItem';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 const Header = () => {
+   const router = useRouter();
    const pathname = usePathname();
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearched, setIsSearched] = useState(false);
@@ -74,6 +75,20 @@ const Header = () => {
       }
    };
 
+   const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+         event.preventDefault();
+         navigateToCatalog();
+      }
+   };
+
+   const navigateToCatalog = () => {
+      if (searched) {
+         const newPath = pathname.includes('/catalog') ? '' : '/catalog';
+         router.push(`${pathname}/${newPath}?searched=${encodeURIComponent(searched)}`);
+      }
+   };
+
    useEffect(() => {
       document.addEventListener('mousedown', handleClickOutside);
       return () => {
@@ -98,10 +113,10 @@ const Header = () => {
                type='text'
                placeholder='What do you want to play today?'
                onChange={handleSearch}
-               onKeyUp={handleSearch}
+               onKeyDown={handleKeyDown}
                value={searched}
             />
-            <div className='glass'>
+            <div className='glass' onClick={navigateToCatalog}>
                <Image
                   src={'/assets/icons/magnifying-glass.svg'}
                   quality={100}

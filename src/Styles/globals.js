@@ -38,6 +38,7 @@ const GlobalStyle = createGlobalStyle`
          overflow-x: hidden;
 
          font-family: var(--reddit-sans), sans-serif;
+         color: var(--light);
 
          li {
             list-style-type: none;
