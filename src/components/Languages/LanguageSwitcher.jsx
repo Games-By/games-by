@@ -19,8 +19,6 @@ export const locales = [
 
 export default function LanguageSwitcher() {
    const pathname = usePathname();
-   const router = useRouter();
-   const currentLocale = router.locale;
 
    const getNewPathname = (locale) => {
       const pathSegments = pathname.split('/').filter(Boolean);
@@ -40,7 +38,7 @@ export default function LanguageSwitcher() {
                href={getNewPathname(loc.code)}
                locale={loc.code}
                className={`language ${
-                  pathname.includes(loc.code) ? 'active' : ''
+                  pathname.includes(getNewPathname(loc.code)) ? 'active' : ''
                }`}
             >
                {loc.name}
