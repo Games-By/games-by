@@ -91,14 +91,16 @@ const Header = () => {
 
    return (
       <HeaderStyle>
-         <Image
-            src={'/assets/logo.png'}
-            quality={100}
-            width={160}
-            height={50}
-            alt='games By Logo'
-            className='logo'
-         />
+         <Link href={`/${locale}/`}>
+            <Image
+               src={'/assets/logo.png'}
+               quality={100}
+               width={160}
+               height={50}
+               alt='games By Logo'
+               className='logo'
+            />
+         </Link>
          <SearchBar>
             <input
                ref={searchInputRef}
