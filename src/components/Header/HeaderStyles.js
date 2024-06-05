@@ -27,6 +27,7 @@ export const SearchBar = styled.div`
    justify-content: space-between;
    padding: 0 1rem 0 2rem;
    align-items: center;
+   position: relative;
    .search {
       font-family: var(--reddit-sans), sans-serif;
       background-color: transparent;
@@ -58,6 +59,30 @@ export const SearchBar = styled.div`
    }
 `;
 
+export const SearchBox = styled.ul`
+   width: 85%;
+   position: absolute;
+   right: 0;
+   left: 2rem;
+   top: 90%;
+   padding: 1rem 0.5rem 0;
+   border-radius: 1rem;
+   background-color: var(--light);
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   color: var(--dark);
+
+   .searched-item {
+      width: 95%;
+      margin: 0 auto;
+      padding: 1rem 0.5rem;
+      font-size: 1.9rem;
+      font-weight: 300;
+      text-decoration: underline;
+   }
+`;
+
 export const Profile = styled.div`
    cursor: pointer;
    height: 5rem;
@@ -79,4 +104,9 @@ export const Language = styled.div`
    cursor: pointer;
    margin: 0 3rem 0 1.5rem;
    position: relative;
+   height: 5rem;
+   width: 5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 `;
