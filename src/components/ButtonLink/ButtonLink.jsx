@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ButtonLinkStyles } from './ButtonLinkStyles';
+import { locales } from '../Languages/LanguageSwitcher';
 
 export default function ButtonLink({
    title,
@@ -13,6 +14,7 @@ export default function ButtonLink({
    className
 }) {
    const pathname = usePathname();
+   const locale = locales.find(locale => pathname.includes(locale.code))?.code || 'en';
    return (
       <>
          <ButtonLinkStyles
@@ -20,7 +22,7 @@ export default function ButtonLink({
             color={currentColor}
             className={className}
          >
-            <Link href={url} locale={pathname}>
+            <Link href={locale + url} locale={pathname}>
                {icon && icon}
                {title}
             </Link>
