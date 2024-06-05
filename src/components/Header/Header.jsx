@@ -99,6 +99,7 @@ const Header = () => {
                height={50}
                alt='games By Logo'
                className='logo'
+               priority
             />
          </Link>
          <SearchBar>
