@@ -23,7 +23,7 @@ export default function ButtonLink({
             color={currentColor}
             className={className}
          >
-            <Link href={locale + url} locale={pathname}
+            <Link href={!url.includes('https' || 'www') ? locale + url :  url} locale={pathname}
             target={Aboutblank ? '_blank' : ''}>
                {icon && icon}
                {title}
