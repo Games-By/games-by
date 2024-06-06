@@ -11,7 +11,8 @@ export default function ButtonLink({
    icon,
    currentColor,
    textTransform,
-   className
+   className,
+   Aboutblank
 }) {
    const pathname = usePathname();
    const locale = locales.find(locale => pathname.includes(locale.code))?.code || 'en';
@@ -22,7 +23,8 @@ export default function ButtonLink({
             color={currentColor}
             className={className}
          >
-            <Link href={locale + url} locale={pathname}>
+            <Link href={locale + url} locale={pathname}
+            target={Aboutblank ? '_blank' : ''}>
                {icon && icon}
                {title}
             </Link>
