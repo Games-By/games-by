@@ -1,16 +1,12 @@
 'user client';
 import Image from 'next/image';
 import { SearchedItemStyles } from './SearchedItemStyles';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { Link } from '../../../navigation';
 
 const SearchedItem = ({ name, image, url, release }) => {
-   const pathname = usePathname();
-   const router = useRouter();
-
    return (
       <>
-         <Link href={`${url}`} locale={pathname}>
+         <Link href={url}>
             <SearchedItemStyles>
                <h3 className='title'>{name}</h3>
                <Image
