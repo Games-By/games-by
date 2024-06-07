@@ -11,11 +11,12 @@ import {
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useRef, useState } from 'react';
 import SearchedItem from '../SearchedItem/SearchedItem';
-import Link from 'next/link';
+import { Link } from '../../../navigation';
 import { useRouter, usePathname } from 'next/navigation';
 import { locales } from '../Languages/LanguageSwitcher';
 
 const Header = () => {
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
    const router = useRouter();
    const pathname = usePathname();
    const [translateActive, setTranslateActive] = useState(false);
@@ -24,7 +25,8 @@ const Header = () => {
    const [findGames, setFindGames] = useState([]);
    const searchInputRef = useRef(null);
 
-   const locale = locales.find(locale => pathname.includes(locale.code))?.code || 'en';
+   const locale =
+      locales.find((locale) => pathname.includes(locale.code))?.code || 'en';
 
    const games = [
       {
@@ -45,14 +47,20 @@ const Header = () => {
       setIsSearched(true);
 
       if (searchValue.length > 1) {
-         const filteredGames = games.filter(game =>
+         const filteredGames = games.filter((game) =>
             game.name.toLowerCase().includes(searchValue.toLowerCase())
          );
          const sortedGames = filteredGames.sort((a, b) => {
-            if (a.name.toLowerCase().startsWith(searchValue.toLowerCase()) && !b.name.toLowerCase().startsWith(searchValue.toLowerCase())) {
+            if (
+               a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
+               !b.name.toLowerCase().startsWith(searchValue.toLowerCase())
+            ) {
                return -1;
             }
-            if (!a.name.toLowerCase().startsWith(searchValue.toLowerCase()) && b.name.toLowerCase().startsWith(searchValue.toLowerCase())) {
+            if (
+               !a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
+               b.name.toLowerCase().startsWith(searchValue.toLowerCase())
+            ) {
                return 1;
             }
             return a.name.localeCompare(b.name);
@@ -64,7 +72,10 @@ const Header = () => {
    };
 
    const handleClickOutside = (event) => {
-      if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
+      if (
+         searchInputRef.current &&
+         !searchInputRef.current.contains(event.target)
+      ) {
          setIsSearched(false);
       }
    };
@@ -78,7 +89,9 @@ const Header = () => {
 
    const navigateToCatalog = () => {
       if (searched) {
-         router.replace(`/${locale}/catalog?searched=${encodeURIComponent(searched)}`);
+         router.replace(
+            `/${locale}/catalog?searched=${encodeURIComponent(searched)}`
+         );
       }
    };
 
@@ -89,9 +102,16 @@ const Header = () => {
       };
    }, []);
 
+   useEffect(() => {
+      const authToken = localStorage.getItem('authToken');
+      if (authToken) {
+         setIsLoggedIn(true);
+      }
+   }, []);
+
    return (
       <HeaderStyle>
-         <Link href={`/${locale}/`}>
+         <Link href={`/`} locale={locale}>
             <Image
                src={'/assets/logo.png'}
                quality={100}
@@ -130,7 +150,9 @@ const Header = () => {
                            name={name}
                            image={image}
                            release={date}
-                           url={`/${locale}/games/${encodeURIComponent(name.toLowerCase())}`}
+                           url={`/${locale}/games/${encodeURIComponent(
+                              name.toLowerCase()
+                           )}`}
                         />
                      ))
                   ) : (
@@ -139,7 +161,7 @@ const Header = () => {
                </SearchBox>
             )}
          </SearchBar>
-         <Link href={`/${locale}/login`}>
+         <Link href={isLoggedIn ? `/profile` : `/login`} locale={locale}>
             <Profile>
                <Image
                   src={'/assets/icons/profile.svg'}
