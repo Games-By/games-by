@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import {
-   Profile,
+   ProfileThumbStyles,
 } from './ProfileThumbStyles';
 import { Link } from '../../../../navigation';
 
@@ -8,7 +8,7 @@ const ProfileThumb = ({isLoggedIn}) => {
    return (
       <>
          <Link href={isLoggedIn ? `/profile` : `/login`}>
-            <Profile>
+            <ProfileThumbStyles>
                <Image
                   src={'/assets/icons/profile.svg'}
                   alt='profile'
@@ -17,7 +17,7 @@ const ProfileThumb = ({isLoggedIn}) => {
                   quality={100}
                   className='profile-icon'
                />
-            </Profile>
+            </ProfileThumbStyles>
          </Link>
       </>
    );

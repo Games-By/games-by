@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Profile = styled.div`
+export const ProfileThumbStyles = styled.div`
    cursor: pointer;
    height: 5rem;
    width: 5rem;
