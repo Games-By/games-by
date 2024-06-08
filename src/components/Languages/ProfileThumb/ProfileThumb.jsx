@@ -7,24 +7,7 @@ import { useEffect, useState } from 'react';
 
 const ProfileThumb = ({ isLoggedIn }) => {
    const [profileImage, setProfileImage] = useState(null);
-
-   const getUser = async (isLoggedIn) => {
-      const authToken = localStorage.getItem('authToken');
-      const userEmail = localStorage.getItem('userEmail');
-      if (!authToken || !isLoggedIn) {
-         return;
-      }
-      try {
-         const response = await axios.get('http://localhost:3001/user', {
-            params: { email: userEmail },
-         });
-         if (response.status === 200) {
-            await handleImageUser(response.data.user.image);
-         }
-      } catch (error) {
-         console.error('Erro ao obter perfil:', error);
-      }
-   };
+   const [tokenValid, setTokenValid] = useState(false);
 
    const handleImageUser = async (imageName) => {
       try {
@@ -42,11 +25,20 @@ const ProfileThumb = ({ isLoggedIn }) => {
       }
    };
    useEffect(() => {
-      getUser(isLoggedIn);
+      const authToken = localStorage.getItem('authToken');
+      if (authToken) {
+         isLoggedIn = true;
+         setTokenValid(true);
+      }
+      if (isLoggedIn) {
+         const userString = localStorage.getItem('user');
+         const user = JSON.parse(userString);
+         handleImageUser(user.image);
+      }
    }, [isLoggedIn]);
 
    return (
-      <Link href={isLoggedIn ? `/profile` : `/login`}>
+      <Link href={isLoggedIn || tokenValid ? `/profile` : `/login`}>
          {profileImage ? (
             <ProfileThumbStyles>
                <Image

@@ -4,25 +4,11 @@ import { HeaderStyle, Language } from './HeaderStyles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from '../../../navigation';
-import { usePathname } from 'next/navigation';
-import { locales } from '../Languages/LanguageSwitcher';
 import ProfileThumb from '../Languages/ProfileThumb/ProfileThumb';
 import SearchBar from '../SearchBar/SearchBar';
 
-const Header = () => {
-   const [isLoggedIn, setIsLoggedIn] = useState(false);
-   const pathname = usePathname();
+const Header = ({isLoggedIn}) => {
    const [translateActive, setTranslateActive] = useState(false);
-
-   const locale =
-      locales.find((locale) => pathname.includes(locale.code))?.code || 'en';
-
-   useEffect(() => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken) {
-         setIsLoggedIn(true);
-      }
-   }, []);
 
    return (
       <HeaderStyle>

@@ -11,22 +11,38 @@ import { useRouter } from '../../../navigation';
 // };
 
 export default function Index() {
-   const t = useTranslations('Index');
-   const router = useRouter();
-
    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+   const getUser = async (isLoggedIn) => {
+      const authToken = localStorage.getItem('authToken');
+      const userEmail = localStorage.getItem('userEmail');
+      if (!authToken || !isLoggedIn) {
+         return;
+      }
+      try {
+         const response = await axios.get('http://localhost:3001/user', {
+            params: { email: userEmail },
+         });
+         if (response.status === 200) {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+         }
+      } catch (error) {
+         console.error('Error getting profile:', error);
+      }
+   };
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
       if (authToken) {
          setIsLoggedIn(true);
       }
+      getUser(isLoggedIn);
    }, []);
 
    return (
       <div>
          <GlobalStyle />
-         <Header />
+         <Header isLoggedIn={isLoggedIn} />
          {isLoggedIn ? (
             <div>
                <p>Usuário logado!</p>

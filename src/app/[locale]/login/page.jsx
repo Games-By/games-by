@@ -35,11 +35,10 @@ export default function LoginPage() {
          );
          localStorage.setItem('authToken', response.data.token);
          localStorage.setItem('userEmail', loginData.email);
-         localStorage.setItem('user', loginData);
          router.replace('/');
       } catch (error) {
          setLoading(false);
-         setError(error.response.data.message || 'Error when logging in');
+         setError(error.response.message || 'Error when logging in');
       }
    };
    return (
