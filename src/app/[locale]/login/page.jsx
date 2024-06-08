@@ -34,10 +34,12 @@ export default function LoginPage() {
             loginData,
          );
          localStorage.setItem('authToken', response.data.token);
+         localStorage.setItem('userEmail', loginData.email);
+         localStorage.setItem('user', loginData);
          router.replace('/');
       } catch (error) {
          setLoading(false);
-         setError(error.response.data.message || 'Erro ao fazer login');
+         setError(error.response.data.message || 'Error when logging in');
       }
    };
    return (

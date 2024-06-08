@@ -10,6 +10,13 @@ export const ProfileThumbStyles = styled.div`
    justify-content: center;
    border-radius: 50%;
 
+   .profile-image {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
+
    .profile-icon {
       fill: var(--dark);
       stroke: var(--dark);
