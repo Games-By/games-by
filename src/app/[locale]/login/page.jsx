@@ -27,6 +27,18 @@ export default function LoginPage() {
          [e.target.name]: e.target.value,
       });
    };
+   const getUser = async (email) => {
+      try {
+         const response = await axios.get('http://localhost:3001/user', {
+            params: { email: email },
+         });
+         if (response.status === 200) {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+         }
+      } catch (error) {
+         console.error('Error getting profile:', error);
+      }
+   };
    const handleLogin = async () => {
       try {
          setLoading(true);
@@ -35,6 +47,7 @@ export default function LoginPage() {
          );
          localStorage.setItem('authToken', response.data.token);
          localStorage.setItem('userEmail', loginData.email);
+         await getUser(loginData.email)
          router.replace('/');
       } catch (error) {
          setLoading(false);

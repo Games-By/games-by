@@ -13,7 +13,7 @@ import { useRouter } from '../../../navigation';
 export default function Index() {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-   const getUser = async (isLoggedIn) => {
+   const getUser = async () => {
       const authToken = localStorage.getItem('authToken');
       const userEmail = localStorage.getItem('userEmail');
       if (!authToken || !isLoggedIn) {
@@ -33,10 +33,13 @@ export default function Index() {
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
+      const user = localStorage.getItem('user');
       if (authToken) {
          setIsLoggedIn(true);
       }
-      getUser(isLoggedIn);
+      if (!user) {
+         getUser();
+      }
    }, []);
 
    return (
