@@ -4,6 +4,7 @@ import Header from '@/components/Header/Header';
 import GlobalStyle from '@/Styles/globals';
 import { useEffect, useState } from 'react';
 import { useRouter } from '../../../navigation';
+require('dotenv').config()
 
 // export const metadata = {
 //    title: "Games By | Home",
@@ -20,7 +21,7 @@ export default function Index() {
          return;
       }
       try {
-         const response = await axios.get('http://localhost:3001/user', {
+         const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
             params: { email: userEmail },
          });
          if (response.status === 200) {

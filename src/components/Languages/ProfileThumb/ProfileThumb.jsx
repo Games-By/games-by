@@ -4,6 +4,7 @@ import { ProfileThumbStyles } from './ProfileThumbStyles';
 import { Link } from '../../../../navigation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+require('dotenv').config()
 
 const ProfileThumb = ({ isLoggedIn }) => {
    const [profileImage, setProfileImage] = useState(null);
@@ -12,7 +13,7 @@ const ProfileThumb = ({ isLoggedIn }) => {
    const handleImageUser = async (imageName) => {
       try {
          const response = await axios.get(
-            'http://localhost:3001/download/image',
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
             {
                params: {
                   imageName: imageName,

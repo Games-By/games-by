@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { Link, useRouter } from '../../../../navigation';
 import { useState } from 'react';
 import axios from 'axios';
+require('dotenv').config()
 
 export default function LoginPage() {
    const router = useRouter()
@@ -29,7 +30,7 @@ export default function LoginPage() {
    };
    const getUser = async (email) => {
       try {
-         const response = await axios.get('http://localhost:3001/user', {
+         const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
             params: { email: email },
          });
          if (response.status === 200) {
@@ -42,7 +43,7 @@ export default function LoginPage() {
    const handleLogin = async () => {
       try {
          setLoading(true);
-         const response = await axios.post('http://localhost:3001/auth/login',
+         const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/login`,
             loginData,
          );
          localStorage.setItem('authToken', response.data.token);
@@ -51,12 +52,12 @@ export default function LoginPage() {
          router.replace('/');
       } catch (error) {
          setLoading(false);
-         setError(error.response.message || 'Error when logging in');
+         setError(error.message || 'Error when logging in');
       }
    };
    return (
       <>
-         <h1>Login</h1>
+         <h2>Login</h2>
          <div>
             <input
                type='text'

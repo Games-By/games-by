@@ -1,13 +1,12 @@
 'use client';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import LanguageSwitcher from '@/components/Languages/LanguageSwitcher';
 import React, { useRef } from 'react';
-import Header from '@/components/Header/Header';
 import GlobalStyle from '@/Styles/globals';
+require('dotenv').config();
 
-export default function LoginPage() {
+export default function Register() {
    const t = useTranslations('Index');
    const [userData, setUserData] = useState(null);
    const [formData, setFormData] = useState({
@@ -34,10 +33,9 @@ export default function LoginPage() {
    };
    const handleRegister = async (e) => {
       e.preventDefault();
-      await handleImageRegister();
       try {
          const response = await axios.post(
-            'http://localhost:3001/auth/register/user',
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/register/user`,
             formData,
             {
                headers: {
@@ -45,8 +43,8 @@ export default function LoginPage() {
                },
             }
          );
+         await handleImageRegister();
 
-         console.log('usuario registrado ', response);
          setUserData(response.data);
       } catch (error) {
          if (
@@ -69,13 +67,13 @@ export default function LoginPage() {
       }
    };
    const handleImageRegister = async () => {
+      if (!imageData) return;
       try {
-         const image = new FormData();
-         image.append('image', imageData);
-
+         const formData = new FormData();
+         formData.append('image', imageData);
          const response = await axios.post(
-            'http://localhost:3001/upload/image',
-            image,
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/upload/image`,
+            formData,
             {
                headers: {
                   'Content-Type': 'multipart/form-data',
@@ -83,13 +81,12 @@ export default function LoginPage() {
             }
          );
 
-         console.log('foto de usuario registrado ', response);
       } catch (error) {
          console.error('Erro ao cadastrar imagem:', error);
       }
    };
    return (
-      <div>
+      <>
          <h2>Register User</h2>
          <form onSubmit={handleRegister}>
             <input
@@ -157,6 +154,6 @@ export default function LoginPage() {
                <p>{userData.message}</p>
             </div>
          )}
-      </div>
+      </>
    );
 }
