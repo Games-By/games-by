@@ -4,7 +4,7 @@ import { HeaderStyle, Language } from './HeaderStyles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from '../../../navigation';
-import ProfileThumb from '../Languages/ProfileThumb/ProfileThumb';
+import ProfileThumb from '../ProfileThumb/ProfileThumb';
 import SearchBar from '../SearchBar/SearchBar';
 
 const Header = ({isLoggedIn}) => {

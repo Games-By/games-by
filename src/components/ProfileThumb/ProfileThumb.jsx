@@ -1,7 +1,7 @@
 'use-client';
 import Image from 'next/image';
 import { ProfileThumbStyles } from './ProfileThumbStyles';
-import { Link } from '../../../../navigation';
+import { Link } from '../../../navigation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 require('dotenv').config()
