@@ -4,7 +4,7 @@ import Header from '@/components/Header/Header';
 import GlobalStyle from '@/Styles/globals';
 import { useEffect, useState } from 'react';
 import { useRouter } from '../../../navigation';
-require('dotenv').config()
+require('dotenv').config();
 
 // export const metadata = {
 //    title: "Games By | Home",
@@ -21,9 +21,12 @@ export default function Index() {
          return;
       }
       try {
-         const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
-            params: { email: userEmail },
-         });
+         const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_SERVER_URL}/user`,
+            {
+               params: { email: userEmail },
+            }
+         );
          if (response.status === 200) {
             localStorage.setItem('user', JSON.stringify(response.data.user));
          }
@@ -44,7 +47,7 @@ export default function Index() {
    }, []);
 
    return (
-      <div>
+      <>
          <GlobalStyle />
          <Header isLoggedIn={isLoggedIn} />
          {isLoggedIn ? (
@@ -56,6 +59,6 @@ export default function Index() {
                <p>Você precisa estar logado para acessar esta página.</p>
             </div>
          )}
-      </div>
+      </>
    );
 }
