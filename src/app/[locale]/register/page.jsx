@@ -13,9 +13,12 @@ export default function Register() {
       name: '',
       birth: '',
       email: '',
+      confirmEmail: '',
+      userID: '',
       password: '',
       confirmPassword: '',
       customer_since: '',
+      geolocation: '',
       gender: '',
       wish_list: [],
       buyed_games: [],
@@ -104,11 +107,18 @@ export default function Register() {
                placeholder='Birth'
             />
             <input
-               type='email'
+               type='text'
                name='email'
                value={formData.email}
                onChange={handleChange}
                placeholder='Email'
+            />
+            <input
+               type='text'
+               name='confirmEmail'
+               value={formData.confirmEmail}
+               onChange={handleChange}
+               placeholder='Confirm E-mail'
             />
             <input
                type='password'
@@ -126,10 +136,10 @@ export default function Register() {
             />
             <input
                type='text'
-               name='customer_since'
-               value={formData.customer_since}
+               name='userID'
+               value={formData.userID}
                onChange={handleChange}
-               placeholder='Customer Since'
+               placeholder='cpf or passport'
             />
             <select
                name='gender'
