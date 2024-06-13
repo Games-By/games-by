@@ -1,52 +1,49 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { Link } from '../../../navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link'; // Corrigido a importação de Link
+import { Switcher } from './LanguageSwitcherStyles';
 
-export default function LanguageSwitcher({ url }) {
+export const locales = [
+   { name: 'English', code: 'en' },
+   { name: 'Portuguese', code: 'pt' },
+   { name: 'Chinese', code: 'zh' },
+   { name: 'Spanish', code: 'es' },
+   { name: 'Hindi', code: 'hi' },
+   { name: 'French', code: 'fr' },
+   { name: 'Arabic', code: 'ar' },
+   { name: 'Bengali', code: 'bn' },
+   { name: 'Russian', code: 'ru' },
+   { name: 'Indonesian', code: 'id' },
+];
+
+export default function LanguageSwitcher() {
    const pathname = usePathname();
-   const locales = ['en', 'pt', 'zh', 'es', 'hi', 'fr', 'ar', 'bn', 'ru', 'id'];
+
+   const getNewPathname = (locale) => {
+      const pathSegments = pathname.split('/').filter(Boolean);
+      if (locales.some((loc) => loc.code === pathSegments[0])) {
+         pathSegments[0] = locale;
+      } else {
+         pathSegments.unshift(locale);
+      }
+      return `/${pathSegments.join('/')}`;
+   };
 
    return (
-      <>
-         <div>
-            {locales.map((loc) => (
-               <Link key={loc} href={`${url || ''}`} locale={loc}>
-                  <div
-                     style={{
-                        marginRight: 10,
-                        color: pathname?.includes(loc) ? 'red' : 'blue',
-                     }}
-                  >
-                     {loc === 'en'
-                        ? 'English - US'
-                        : loc === 'pt'
-                        ? 'Portuguese - BR'
-                        : loc === 'zh'
-                        ? 'Chinese (Mandarin)'
-                        : loc === 'es'
-                        ? 'Spanish (Spain)'
-                        : loc === 'hi'
-                        ? 'Hindi (India)'
-                        : loc === 'fr'
-                        ? 'French (France)'
-                        : loc === 'ar'
-                        ? 'Arabic (Arab Countries)'
-                        : loc === 'bn'
-                        ? 'Bengali (Bangladesh)'
-                        : loc === 'ru'
-                        ? 'Russian (Russia)'
-                        : loc === 'id'
-                        ? 'Indonesian (Indonesia)'
-                        : 'Unknown Language'}
-                  </div>
-               </Link>
-            ))}
-         </div>
-         <Link href={`/login`}>login</Link>
-         <br />
-         <Link href='/'>home</Link>
-      </>
+      <Switcher>
+         {locales.map((loc) => (
+            <Link
+               key={loc.code}
+               href={getNewPathname(loc.code)}
+               locale={loc.code}
+               className={`language ${
+                  pathname.includes(getNewPathname(loc.code)) ? 'active' : ''
+               }`}
+            >
+               {loc.name}
+            </Link>
+         ))}
+      </Switcher>
    );
 }
