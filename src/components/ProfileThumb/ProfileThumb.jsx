@@ -1,42 +1,50 @@
-'use-client';
+'use client';
 import Image from 'next/image';
 import { ProfileThumbStyles } from './ProfileThumbStyles';
 import { Link } from '../../../navigation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-require('dotenv').config()
+require('dotenv').config();
 
 const ProfileThumb = ({ isLoggedIn }) => {
    const [profileImage, setProfileImage] = useState(null);
+   const [loading, setLoading] = useState(false);
    const [tokenValid, setTokenValid] = useState(false);
 
+   useEffect(() => {
+      const authToken = localStorage.getItem('authToken');
+      if (authToken) {
+         setTokenValid(true);
+         isLoggedIn = true;
+      }
+
+      if (isLoggedIn && !profileImage && !loading) {
+         const userString = localStorage.getItem('user');
+         if (userString) {
+            const user = JSON.parse(userString);
+            if (user.image) {
+               handleImageUser(user.image);
+            }
+         }
+      }
+   }, [isLoggedIn, profileImage, loading]);
+
    const handleImageUser = async (imageName) => {
+      setLoading(true);
       try {
          const response = await axios.get(
             `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
             {
-               params: {
-                  imageName: imageName,
-               },
+               params: { imageName },
             }
          );
          setProfileImage(response.data.image);
       } catch (error) {
-         console.error('Erro ao obter foto de perfil:', error);
+         console.error('Error getting profile photo:', error);
+      } finally {
+         setLoading(false);
       }
    };
-   useEffect(() => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken) {
-         isLoggedIn = true;
-         setTokenValid(true);
-      }
-      if (isLoggedIn) {
-         const userString = localStorage.getItem('user');
-         const user = JSON.parse(userString);
-         handleImageUser(user.image);
-      }
-   }, [isLoggedIn]);
 
    return (
       <Link href={isLoggedIn || tokenValid ? `/profile` : `/login`}>
