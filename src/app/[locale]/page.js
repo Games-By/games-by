@@ -27,6 +27,7 @@ export default function Index() {
       <>
          <GlobalStyle />
          <Header isLoggedIn={isLoggedIn} />
+         <p>Enviorinment: {process.env.NEXT_PUBLIC_SERVER_URL}</p>
          {isLoggedIn ? (
             <div>
                <p>Usuário logado!</p>
