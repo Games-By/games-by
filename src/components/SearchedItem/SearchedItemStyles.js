@@ -9,10 +9,11 @@ export const SearchedItemStyles = styled.li`
    grid-template-areas:
       'cover title'
       'cover date';
-   grid-template-rows: 23% auto;
-   align-items: center;
+   grid-template-rows: auto 80%;
+   grid-template-columns: 8rem auto;
    justify-content: flex-start;
-   border: 1px solid var(--light);
+   align-items: center;
+   border: 1px solid rgba(var(--light));
    border-radius: 1rem;
    transition: 200ms;
    position: relative;
@@ -21,16 +22,15 @@ export const SearchedItemStyles = styled.li`
    .title {
       grid-area: title;
       margin: 0;
-      font-size: 2.3rem;
-      font-weight: 300;
+      font-size: 2rem;
+      font-weight: 500;
       align-self: flex-start;
    }
    .cover {
       grid-area: cover;
-      object-fit: contain;
-      width: auto;
-      margin-right: 2rem;
-      border-radius: 1rem;
+      object-fit: cover;
+      border-radius: 0.8rem;
+      max-width: 7rem;
    }
    .date {
       grid-area: date;
@@ -38,10 +38,19 @@ export const SearchedItemStyles = styled.li`
       font-weight: 600;
       margin: 0;
       align-self: flex-start;
-      color: var(--purple-1);
+      color: rgba(var(--purple-1));
    }
 
    &:hover {
-      border: 1px solid var(--purple-1);
+      transition: 0.5s;
+      background-color: rgba(var(--dark),.1);
+      color: rgba(var(--dark));
    }
+`;
+
+export const Separator = styled.div`
+   height: 2px;
+   width: 95%;
+   background-color: rgba(var(--purple-1));
+   margin: 5px auto;
 `;

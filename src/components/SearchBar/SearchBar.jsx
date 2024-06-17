@@ -12,6 +12,7 @@ const SearchBar = ({ isLoggedIn }) => {
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
    const [findGames, setFindGames] = useState([]);
+   const [isLoading, setIsLoading] = useState(false);
    const searchInputRef = useRef(null);
 
    const handleSearch = async (searchValue) => {
@@ -19,8 +20,9 @@ const SearchBar = ({ isLoggedIn }) => {
          setFindGames([]);
          return;
       }
+      setIsLoading(true);
       const games = await getGamesByName(searchValue);
-      console.log('retornou:? ', games);
+      setIsLoading(false);
       setFindGames(games);
    };
 
@@ -86,10 +88,12 @@ const SearchBar = ({ isLoggedIn }) => {
             </div>
             {searched.length > 0 && isSearched && (
                <SearchBox ref={searchInputRef}>
-                  {findGames.length > 0 ? (
-                     findGames.map((game,index) => (
+                  {isLoading ? (
+                     <SearchedItemSkeleton />
+                  ) : findGames.length > 0 ? (
+                     findGames.map((game, index) => (
                         <SearchedItem
-                           key={index + game._id}
+                           key={game._id}
                            name={game.name}
                            image={game.images.coverImage}
                            release={game.releaseYear}
