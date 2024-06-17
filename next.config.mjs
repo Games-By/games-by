@@ -18,8 +18,11 @@ const nextConfig = {
          'static-00.iconduck.com',
          'raw.githubusercontent.com',
          'w7.pngwing.com',
-         'image.api.playstation.com'
+         'image.api.playstation.com',
       ],
+   },
+   compiler: {
+      styledComponents: true,
    },
 };
 export default withNextIntl(nextConfig);
