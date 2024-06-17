@@ -12,8 +12,8 @@ export const ButtonLinkStyles = styled.div`
    text-decoration: none;
    margin: 0 auto;
 
-   color: ${(props) => props.color || 'var(--light)'};
-   border: 1px solid ${(props) => props.color || 'var(--light)'};
+   color: ${(props) => props.color || 'rgba(var(--light))'};
+   border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
 
    a {
       display: flex;
@@ -23,8 +23,8 @@ export const ButtonLinkStyles = styled.div`
       height: 100%;
    }
    svg {
-      fill: ${(props) => props.color || 'var(--light)'};
-      stroke: ${(props) => props.color || 'var(--light)'};
+      fill: ${(props) => props.color || 'rgba(var(--light))'};
+      stroke: ${(props) => props.color || 'rgba(var(--light))'};
       object-fit: contain;
       height: 50%;
       width: 2.3rem;
