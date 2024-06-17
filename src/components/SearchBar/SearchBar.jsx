@@ -1,57 +1,36 @@
 import { SearchBarStyles, SearchBox } from './SearchBarStyles';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import SearchedItem from '../SearchedItem/SearchedItem';
 import { useRouter } from '../../../navigation';
+import { getGamesByName } from '@/Services/games-service/getGames';
+import { debounce } from '@/utils/debounce';
+import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
 
-const SearchBar = ({isLoggedIn }) => {
+const SearchBar = ({ isLoggedIn }) => {
    const router = useRouter();
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
    const [findGames, setFindGames] = useState([]);
    const searchInputRef = useRef(null);
 
-   const games = [
-      {
-         name: 'Cyberpunk 2077',
-         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/6bAF2VVEamgKclalI0oBnoAe.jpg',
-         date: 2020,
-      },
-      {
-         name: 'Cyber',
-         image: 'https://image.api.playstation.com/vulcan/ap/rnd/202111/3013/6bAF2VVEamgKclalI0oBnoAe.jpg',
-         date: 2020,
-      },
-   ];
+   const handleSearch = async (searchValue) => {
+      if (!searchValue) {
+         setFindGames([]);
+         return;
+      }
+      const games = await getGamesByName(searchValue);
+      console.log('retornou:? ', games);
+      setFindGames(games);
+   };
 
-   const handleSearch = (event) => {
+   const debouncedHandleSearch = useCallback(debounce(handleSearch, 300), []);
+
+   const handleChange = (event) => {
       const searchValue = event.target.value;
       setSearched(searchValue);
       setIsSearched(true);
-
-      if (searchValue.length > 1) {
-         const filteredGames = games.filter((game) =>
-            game.name.toLowerCase().includes(searchValue.toLowerCase())
-         );
-         const sortedGames = filteredGames.sort((a, b) => {
-            if (
-               a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
-               !b.name.toLowerCase().startsWith(searchValue.toLowerCase())
-            ) {
-               return -1;
-            }
-            if (
-               !a.name.toLowerCase().startsWith(searchValue.toLowerCase()) &&
-               b.name.toLowerCase().startsWith(searchValue.toLowerCase())
-            ) {
-               return 1;
-            }
-            return a.name.localeCompare(b.name);
-         });
-         setFindGames(sortedGames);
-      } else {
-         setFindGames([]);
-      }
+      debouncedHandleSearch(searchValue);
    };
 
    const handleClickOutside = (event) => {
@@ -72,9 +51,7 @@ const SearchBar = ({isLoggedIn }) => {
 
    const navigateToCatalog = () => {
       if (searched) {
-         router.push(
-            `/catalog?searched=${encodeURIComponent(searched)}`
-         );
+         router.push(`/catalog?searched=${encodeURIComponent(searched)}`);
       }
    };
 
@@ -93,7 +70,8 @@ const SearchBar = ({isLoggedIn }) => {
                className='search'
                type='text'
                placeholder='What do you want to play today?'
-               onChange={handleSearch}
+               onChange={handleChange}
+               onKeyUp={handleChange}
                onKeyDown={handleKeyDown}
                value={searched}
             />
@@ -106,18 +84,19 @@ const SearchBar = ({isLoggedIn }) => {
                   alt='magnifying glass icon'
                />
             </div>
-            {searched.length > 1 && isSearched && (
+            {searched.length > 0 && isSearched && (
                <SearchBox ref={searchInputRef}>
                   {findGames.length > 0 ? (
-                     findGames.map(({ name, image, date }, index) => (
+                     findGames.map((game,index) => (
                         <SearchedItem
-                           key={index + 1}
-                           name={name}
-                           image={image}
-                           release={date}
+                           key={index + game._id}
+                           name={game.name}
+                           image={game.images.coverImage}
+                           release={game.releaseYear}
                            url={`/games/${encodeURIComponent(
-                              name.toLowerCase()
+                              game.name.toLowerCase()
                            )}`}
+                           isLast={index === findGames.length - 1}
                         />
                      ))
                   ) : (

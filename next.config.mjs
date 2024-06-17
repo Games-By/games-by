@@ -9,7 +9,14 @@ const nextConfig = {
       ignoreDuringBuilds: true,
    },
    images: {
+      remotePatterns: [
+         {
+            protocol: 'https',
+            hostname: '**',
+         },
+      ],
       domains: [
+         '*',
          'media.licdn.com',
          'www.google.com',
          'github.com',

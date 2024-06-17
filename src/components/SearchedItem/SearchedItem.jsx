@@ -1,9 +1,8 @@
-'user client';
 import Image from 'next/image';
-import { SearchedItemStyles } from './SearchedItemStyles';
+import { SearchedItemStyles, Separator } from './SearchedItemStyles';
 import { Link } from '../../../navigation';
 
-const SearchedItem = ({ name, image, url, release }) => {
+const SearchedItem = ({ name, image, url, release, isLast }) => {
    return (
       <>
          <Link href={url}>
@@ -19,8 +18,8 @@ const SearchedItem = ({ name, image, url, release }) => {
                />
                <p className='date'>{release}</p>
             </SearchedItemStyles>
+         {!isLast && <Separator />}
          </Link>
-         ;
       </>
    );
 };
