@@ -1,7 +1,6 @@
 'use client';
 import { useTranslations, useLocale } from 'next-intl';
 import Header from '@/components/Header/Header';
-import GlobalStyle from '@/Styles/globals';
 import { useEffect, useState } from 'react';
 import { useRouter } from '../../../navigation';
 require('dotenv').config();
@@ -25,7 +24,6 @@ export default function Index() {
 
    return (
       <>
-         <GlobalStyle />
          <Header isLoggedIn={isLoggedIn} />
          <p>Enviorinment: {process.env.NEXT_PUBLIC_SERVER_URL}</p>
          {isLoggedIn ? (
