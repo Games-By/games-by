@@ -94,6 +94,7 @@ const SearchBar = ({ isLoggedIn }) => {
                      findGames.map((game, index) => (
                         <SearchedItem
                            key={game._id}
+                           id={game._id}
                            name={game.name}
                            image={game.images.coverImage}
                            release={game.releaseYear}

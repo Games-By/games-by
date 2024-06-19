@@ -2,10 +2,14 @@ import Image from 'next/image';
 import { SearchedItemStyles, Separator } from './SearchedItemStyles';
 import { Link } from '../../../navigation';
 
-const SearchedItem = ({ name, image, url, release, isLast }) => {
+const SearchedItem = ({ name, image, url, release, isLast, id }) => {
    return (
       <>
-         <div>
+         <div
+            onClick={() => {
+               localStorage.setItem('GameId', id);
+            }}
+         >
             <Link href={url}>
                <SearchedItemStyles>
                   <h3 className='title'>{name}</h3>
