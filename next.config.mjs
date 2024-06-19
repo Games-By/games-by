@@ -9,7 +9,14 @@ const nextConfig = {
       ignoreDuringBuilds: true,
    },
    images: {
+      remotePatterns: [
+         {
+            protocol: 'https',
+            hostname: '**',
+         },
+      ],
       domains: [
+         '*',
          'media.licdn.com',
          'www.google.com',
          'github.com',
@@ -18,8 +25,11 @@ const nextConfig = {
          'static-00.iconduck.com',
          'raw.githubusercontent.com',
          'w7.pngwing.com',
-         'image.api.playstation.com'
+         'image.api.playstation.com',
       ],
+   },
+   compiler: {
+      styledComponents: true,
    },
 };
 export default withNextIntl(nextConfig);

@@ -4,7 +4,7 @@ export const ProfileThumbStyles = styled.div`
    cursor: pointer;
    height: 5rem;
    width: 5rem;
-   background-color: var(--cyan);
+   background-color: rgba(var(--cyan));
    display: flex;
    align-items: center;
    justify-content: center;
@@ -18,8 +18,8 @@ export const ProfileThumbStyles = styled.div`
    }
 
    .profile-icon {
-      fill: var(--dark);
-      stroke: var(--dark);
-      color: var(--dark);
+      fill: rgba(var(--dark));
+      stroke: rgba(var(--dark));
+      color: rgba(var(--dark));
    }
 `;
