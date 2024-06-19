@@ -1,23 +1,43 @@
-'use client';
+'use client'
+import React, { useEffect, useState } from 'react';
 import GlobalStyle from '@/Styles/globals';
-import { useTranslations } from 'next-intl';
-import React from 'react';
 import Header from '@/components/Header/Header';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { getGameById } from '@/Services/games-service/getGames';
+import { debounce } from '@/utils/debounce';
 
 const GamePage = () => {
    const t = useTranslations('Index');
-   const pathname = usePathname();
+   const [game, setGame] = useState({})
+   const [  isLoading, setIsLoading] = useState(false)
 
-   const segments = pathname.split('/');
-   const game = segments[segments.length - 1];
+   const getGame = async () => {
+      const id = localStorage.getItem('GameId');
+      if (id) {
+         try {
+            setIsLoading(true);
+            const gameData = await getGameById(id);
+            setGame(gameData)
+            setIsLoading(false);
+         } catch (error) {
+            console.error('Error fetching game:', error);
+            setIsLoading(false);
+         }
+      }
+   };
+
+   const debouncedGetGame = debounce(getGame, 300);
+
+   useEffect(() => {
+      debouncedGetGame();
+   }, []);
 
    return (
       <>
          <GlobalStyle />
          <Header />
          <h1>GamePage</h1>
-         {game && <h2>{decodeURIComponent(game)}</h2>}
+         {game && !isLoading ? <h2>{game.name}</h2> : <p>loading...</p>}
       </>
    );
 };

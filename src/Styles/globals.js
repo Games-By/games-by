@@ -4,11 +4,11 @@ import { createGlobalStyle } from 'styled-components';
 
 const redditSans = 'Reddit Sans'
 const outfit = 'outfit';
-const light = '#D9D9D9';
-const dark = '#212121';
-const purple1 = '#A55BFE';
-const purple2 = '#FB04FE';
-const cyan = '#1DE3FF';
+const light = '217, 217, 217';
+const dark = '33, 33, 33';
+const purple1 = '165, 91, 254';
+const purple2 = '251, 4, 254';
+const cyan = '29, 227, 255';
 
 const GlobalStyle = createGlobalStyle`
    :root {
@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
          overflow-x: hidden;
 
          font-family: var(--reddit-sans), sans-serif;
-         color: var(--light);
+         color: rgba(var(--light));
 
          li {
             list-style-type: none;

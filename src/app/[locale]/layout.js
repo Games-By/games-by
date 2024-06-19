@@ -1,6 +1,8 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import StyledComponentsRegistry from '@/lib/registry';
 import React from 'react';
+import GlobalStyle from '@/Styles/globals';
 
 export default async function LocaleLayout({ children, params: { locale } }) {
    const messages = await getMessages();
@@ -12,7 +14,7 @@ export default async function LocaleLayout({ children, params: { locale } }) {
             <link
                rel='preconnect'
                href='https://fonts.gstatic.com'
-               crossorigin
+               crossOrigin='true'
             />
             <link
                href='https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap'
@@ -21,7 +23,10 @@ export default async function LocaleLayout({ children, params: { locale } }) {
          </head>
          <body>
             <NextIntlClientProvider messages={messages}>
-               {children}
+               <StyledComponentsRegistry>
+                  <GlobalStyle />
+                  {children}
+               </StyledComponentsRegistry>
             </NextIntlClientProvider>
          </body>
       </html>
