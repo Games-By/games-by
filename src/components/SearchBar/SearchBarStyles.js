@@ -35,11 +35,12 @@ export const SearchBarStyles = styled.div`
    }
    .glass {
       width: 8%;
-      height: 100%;
+      height: 80%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-left: 1px solid rgba(var(--purple-2));
    }
 `;
 
