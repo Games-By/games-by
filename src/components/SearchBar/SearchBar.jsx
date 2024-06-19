@@ -1,10 +1,10 @@
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { SearchBarStyles, SearchBox } from './SearchBarStyles';
 import Image from 'next/image';
-import { useEffect, useRef, useState, useCallback } from 'react';
-import SearchedItem from '../SearchedItem/SearchedItem';
 import { useRouter } from '../../../navigation';
 import { getGamesByName } from '@/Services/games-service/getGames';
 import { debounce } from '@/utils/debounce';
+import SearchedItem from '../SearchedItem/SearchedItem';
 import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
 
 const SearchBar = ({ isLoggedIn }) => {
@@ -21,9 +21,19 @@ const SearchBar = ({ isLoggedIn }) => {
          return;
       }
       setIsLoading(true);
-      const games = await getGamesByName(searchValue);
-      setIsLoading(false);
-      setFindGames(games);
+      try {
+         const games = await getGamesByName(searchValue);
+         const filteredGames = games.filter(
+            (game) =>
+               !findGames.find((existingGame) => existingGame._id === game._id)
+         );
+
+         setFindGames([...filteredGames]);
+      } catch (error) {
+         console.error('Error fetching games:', error);
+      } finally {
+         setIsLoading(false);
+      }
    };
 
    const debouncedHandleSearch = useCallback(debounce(handleSearch, 300), []);
@@ -66,7 +76,7 @@ const SearchBar = ({ isLoggedIn }) => {
 
    return (
       <>
-         <SearchBarStyles>
+         <SearchBarStyles whileTap={{ scale: 0.995 }}>
             <input
                ref={searchInputRef}
                className='search'
@@ -87,10 +97,20 @@ const SearchBar = ({ isLoggedIn }) => {
                />
             </div>
             {searched.length > 0 && isSearched && (
-               <SearchBox ref={searchInputRef}>
+               <SearchBox
+                  ref={searchInputRef}
+                  initial={{ opacity: 0, maxHeight: 0 }}
+                  animate={{ opacity: 1, maxHeight: '500px' }}
+                  exit={{ opacity: 0, maxHeight: 0 }}
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
+               >
                   {isLoading ? (
-                     <SearchedItemSkeleton />
-                  ) : findGames.length > 0 ? (
+                     findGames.length < 1 ? (
+                        <SearchedItemSkeleton />
+                     ) : (
+                        findGames.map(() => <SearchedItemSkeleton />)
+                     )
+                  ) : findGames.length > 0  && !isLoading ? (
                      findGames.map((game, index) => (
                         <SearchedItem
                            key={game._id}

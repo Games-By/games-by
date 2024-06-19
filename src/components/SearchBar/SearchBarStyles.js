@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const SearchBarStyles = styled.div`
+export const SearchBarStyles = styled(motion.div)`
    width: 30%;
    min-width: 40rem;
    height: 50%;
@@ -44,7 +45,7 @@ export const SearchBarStyles = styled.div`
    }
 `;
 
-export const SearchBox = styled.ul`
+export const SearchBox = styled(motion.ul)`
    width: 85%;
    position: absolute;
    right: 0;
@@ -58,6 +59,7 @@ export const SearchBox = styled.ul`
    flex-direction: column;
    color: rgba(var(--dark));
    max-height: 50rem;
+   transition: max-height 0.3s ease;
    overflow-y: auto;
 
    .searched-item {
