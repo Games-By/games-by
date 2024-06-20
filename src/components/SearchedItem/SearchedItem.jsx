@@ -20,6 +20,7 @@ const SearchedItem = ({ name, image, url, release, isLast, id }) => {
                      height={100}
                      quality={100}
                      className='cover'
+                     style={{ width: 'auto', height: 'auto' }}
                   />
                   <p className='date'>{release}</p>
                </SearchedItemStyles>

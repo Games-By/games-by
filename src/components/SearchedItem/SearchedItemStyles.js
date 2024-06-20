@@ -31,6 +31,7 @@ export const SearchedItemStyles = styled.li`
       object-fit: cover;
       border-radius: 0.8rem;
       max-width: 7rem;
+      min-height: 10.5rem;
    }
    .date {
       grid-area: date;
