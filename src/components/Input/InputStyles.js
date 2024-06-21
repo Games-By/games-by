@@ -15,7 +15,7 @@ export const InputContainer = styled.div`
    }
    .input-error {
       color: rgba(var(--red));
-      border: 1px solid rgba(var(--red));
+      border: 2px solid rgba(var(--red));
       &::placeholder {
          color: rgba(var(--red), 0.5);
       }

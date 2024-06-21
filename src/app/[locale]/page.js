@@ -12,12 +12,27 @@ require('dotenv').config();
 
 export default function Index() {
    const locale = useLocale();
-   console.log(locale)
    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+   const checkTokenExpiration = () => {
+      const tokenExpiration = localStorage.getItem('tokenExpiration');
+      if (!tokenExpiration) {
+         return false;
+      }
+      const expirationDate = new Date(tokenExpiration);
+      if (new Date() > expirationDate) {
+         localStorage.removeItem('authToken');
+         localStorage.removeItem('tokenExpiration');
+         localStorage.removeItem('userEmail');
+         return false;
+      }
+      return true;
+   };
+
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
-      if (authToken) {
+      if (authToken && checkTokenExpiration()) {
          setIsLoggedIn(true);
       }
    }, []);

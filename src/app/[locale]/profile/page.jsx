@@ -16,6 +16,9 @@ const Profile = () => {
 
    const handleLogout = () => {
       localStorage.removeItem('authToken');
+      localStorage.removeItem('tokenExpiration');
+      localStorage.removeItem('userEmail');
+      localStorage.removeItem('user');
 
       router.replace('/login');
    };

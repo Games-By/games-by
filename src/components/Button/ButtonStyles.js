@@ -11,7 +11,7 @@ export const ButtonStyles = styled.button`
    border-radius: 20px;
    cursor: pointer;
    text-decoration: none;
-   margin: 1rem auto;
+   margin: 0.5rem auto;
    padding: 0.8rem 3.5rem;
 
    color: ${(props) => props.color || 'rgba(var(--light))'};
