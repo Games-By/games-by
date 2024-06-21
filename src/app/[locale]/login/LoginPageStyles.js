@@ -7,7 +7,7 @@ export const LoginPageStyles = styled.div`
    overflow-y: hidden;
    display: flex;
    align-items: center;
-   justify-content: center;
+   justify-content: space-evenly;
    position: relative;
 
    &::before {

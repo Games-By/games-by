@@ -8,6 +8,7 @@ import { Access, LoginBox, LoginPageStyles } from './LoginPageStyles';
 import Image from 'next/image';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
+import AdvertisingSpace from '@/components/AdvertisingSpace/AdvertisingSpace';
 require('dotenv').config();
 
 const LoginPage = () => {
@@ -102,6 +103,7 @@ const LoginPage = () => {
    return (
       <>
          <LoginPageStyles>
+            <AdvertisingSpace />
             <LoginBox>
                <Image
                   src={`/assets/logo.png`}
