@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link'; // Corrigido a importação de Link
+import Link from 'next/link';
 import { Switcher } from './LanguageSwitcherStyles';
 
 export const locales = [
@@ -17,7 +17,7 @@ export const locales = [
    { name: 'Indonesian', code: 'id' },
 ];
 
-export default function LanguageSwitcher() {
+const LanguageSwitcher = () => {
    const pathname = usePathname();
 
    const getNewPathname = (locale) => {
@@ -47,3 +47,5 @@ export default function LanguageSwitcher() {
       </Switcher>
    );
 }
+
+export default LanguageSwitcher;

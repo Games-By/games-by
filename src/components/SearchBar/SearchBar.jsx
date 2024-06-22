@@ -18,6 +18,7 @@ const SearchBar = ({ isLoggedIn }) => {
    const handleSearch = async (searchValue) => {
       if (!searchValue) {
          setFindGames([]);
+         setIsSearched(false);
          return;
       }
       setIsLoading(true);
@@ -29,6 +30,7 @@ const SearchBar = ({ isLoggedIn }) => {
          );
 
          setFindGames([...filteredGames]);
+         setIsSearched(true)
       } catch (error) {
          console.error('Error fetching games:', error);
       } finally {
@@ -108,7 +110,7 @@ const SearchBar = ({ isLoggedIn }) => {
                      findGames.length < 1 ? (
                         <SearchedItemSkeleton />
                      ) : (
-                        findGames.map(() => <SearchedItemSkeleton />)
+                        findGames.map((_, index) => <SearchedItemSkeleton key={`skeleton-${index}`} />)
                      )
                   ) : findGames.length > 0  && !isLoading ? (
                      findGames.map((game, index) => (
