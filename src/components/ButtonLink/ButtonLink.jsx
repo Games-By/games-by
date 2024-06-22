@@ -5,17 +5,18 @@ import { usePathname } from 'next/navigation';
 import { ButtonLinkStyles } from './ButtonLinkStyles';
 import { locales } from '../Languages/LanguageSwitcher';
 
-export default function ButtonLink({
+const ButtonLink = ({
    title,
    url,
    icon,
    currentColor,
    textTransform,
    className,
-   Aboutblank
-}) {
+   Aboutblank,
+}) => {
    const pathname = usePathname();
-   const locale = locales.find(locale => pathname.includes(locale.code))?.code || 'en';
+   const locale =
+      locales.find((locale) => pathname.includes(locale.code))?.code || 'en';
    return (
       <>
          <ButtonLinkStyles
@@ -23,12 +24,17 @@ export default function ButtonLink({
             color={currentColor}
             className={className}
          >
-            <Link href={!url.includes('https' || 'www') ? locale + url :  url} locale={pathname}
-            target={Aboutblank ? '_blank' : ''}>
+            <Link
+               href={!url.includes('https' || 'www') ? locale + url : url}
+               locale={pathname}
+               target={Aboutblank ? '_blank' : ''}
+            >
                {icon && icon}
                {title}
             </Link>
          </ButtonLinkStyles>
       </>
    );
-}
+};
+
+export default ButtonLink;

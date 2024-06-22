@@ -10,7 +10,7 @@ export const Switcher = styled.div`
    background-color: rgba(var(--dark));
    position: absolute;
    right: 1rem;
-   top: 5rem;
+   top: 7rem;
    z-index: 1;
    width: 20rem;
    border-radius: 2rem 0 2rem 2rem;
@@ -32,5 +32,13 @@ export const Switcher = styled.div`
    .active {
       color: rgba(var(--purple-1));
       text-decoration: underline;
+   }
+   &::before {
+      content: '';
+      height: 3rem;
+      width: 20rem;
+      background-color: transparent;
+      position: fixed;
+      top: 6rem;
    }
 `;

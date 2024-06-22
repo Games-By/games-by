@@ -6,7 +6,7 @@ import React, { useRef } from 'react';
 import GlobalStyle from '@/Styles/globals';
 require('dotenv').config();
 
-export default function Register() {
+const Register = () => {
    const t = useTranslations('Index');
    const [userData, setUserData] = useState(null);
    const [formData, setFormData] = useState({
@@ -83,7 +83,6 @@ export default function Register() {
                },
             }
          );
-
       } catch (error) {
          console.error('Erro ao cadastrar imagem:', error);
       }
@@ -166,4 +165,6 @@ export default function Register() {
          )}
       </>
    );
-}
+};
+
+export default Register;
