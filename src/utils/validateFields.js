@@ -1,4 +1,4 @@
-export const validateFields = (formData, setError) => {
+export const validateFields = (formData, setError, locale) => {
    const newErrorState = {};
 
    if (!formData.name) {
@@ -52,11 +52,14 @@ export const validateFields = (formData, setError) => {
       newErrorState.confirmEmail = 'The E-mail addresses are different';
    }
 
-   if (!formData.userID) {
+   if (!formData.userID && locale === 'pt') {
       newErrorState.userID = 'The field "CPF" is required';
    } else {
       const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-      if (!cpfRegex.test(formData.userID) || !validateCPF(formData.userID)) {
+      if (
+         (!cpfRegex.test(formData.userID) && locale === 'pt') ||
+         (!validateCPF(formData.userID) && locale === 'pt')
+      ) {
          newErrorState.userID = 'User ID must be a valid CPF';
       }
    }

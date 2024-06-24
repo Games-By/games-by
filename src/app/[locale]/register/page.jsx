@@ -1,14 +1,20 @@
 'use client';
-import axios from 'axios';
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
-import React, { useRef } from 'react';
-import GlobalStyle from '@/Styles/globals';
+import { useLocale, useTranslations } from 'next-intl';
+import { RegisterStyles, RegisterForm } from './RegisterStyles';
+import RegisterPersonalData from '@/components/Register/RegisterPersonalData';
+import RegisterAccountData from '@/components/Register/RegisterAccountData';
+import { formatBirth } from '@/utils/formatBirth';
+import { userRegister } from '@/Services/client-data/userRegister';
+import { formatUserID } from '@/utils/formatUserId';
+import Button from '@/components/Button/Button';
+import { useRouter } from '../../../../navigation';
 require('dotenv').config();
 
 const Register = () => {
    const t = useTranslations('Index');
-   const [userData, setUserData] = useState(null);
+   const router = useRouter();
+   const locale = useLocale();
    const [formData, setFormData] = useState({
       name: '',
       birth: '',
@@ -26,143 +32,92 @@ const Register = () => {
       image: '',
    });
    const [imageData, setImageData] = useState(null);
+   const [error, setError] = useState({
+      name: '',
+      birth: '',
+      email: '',
+      confirmEmail: '',
+      userID: '',
+      password: '',
+      confirmPassword: '',
+      gender: '',
+   });
+   const [loading, setLoading] = useState(false);
 
-   const imageInputRef = useRef(null);
    const handleChange = (e) => {
-      setFormData({
-         ...formData,
-         [e.target.name]: e.target.value,
-      });
-   };
-   const handleRegister = async (e) => {
-      e.preventDefault();
-      try {
-         const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/register/user`,
-            formData,
-            {
-               headers: {
-                  'Content-Type': 'application/json',
-               },
-            }
-         );
-         await handleImageRegister();
+      const { name, value } = e.target;
+      setError((prevError) => ({ ...prevError, [name]: '' }));
 
-         setUserData(response.data);
-      } catch (error) {
-         if (
-            error.response &&
-            error.response.data &&
-            error.response.data.message
-         ) {
-            console.error(error.response.data.message);
-         }
+      if (name === 'name') {
+         const lettersRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]*$/;
+         if (!lettersRegex.test(value)) return;
+      }
+      if (name === 'birth') {
+         const formattedBirth = formatBirth({ ...formData, [name]: value });
+         setFormData((prevData) => ({
+            ...prevData,
+            [name]: formattedBirth,
+         }));
+      } else if (name === 'userID') {
+         const formattedUserID = formatUserID({ ...formData, [name]: value });
+         setFormData((prevData) => ({
+            ...prevData,
+            [name]: formattedUserID,
+         }));
+      } else {
+         setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+         }));
       }
    };
-   const handleImageChange = (e) => {
+
+   function handleImageChange(e) {
       const file = e.target.files[0];
       setImageData(file);
       if (file) {
-         setFormData({
-            ...formData,
-            image: file.name,
-         });
+         setFormData((prevData) => ({ ...prevData, image: file.name }));
       }
-   };
-   const handleImageRegister = async () => {
-      if (!imageData) return;
+   }
+
+   const register = async (e) => {
+      e.preventDefault();
       try {
-         const formData = new FormData();
-         formData.append('image', imageData);
-         const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/upload/image`,
-            formData,
-            {
-               headers: {
-                  'Content-Type': 'multipart/form-data',
-               },
-            }
-         );
+         setLoading(true);
+         await userRegister(e, formData, imageData, setError, locale);
+         // router.push('/login');
       } catch (error) {
-         console.error('Erro ao cadastrar imagem:', error);
+         console.error(error);
+      } finally {
+         setLoading(false);
       }
    };
+
    return (
       <>
-         <h2>Register User</h2>
-         <form onSubmit={handleRegister}>
-            <input
-               type='text'
-               name='name'
-               value={formData.name}
-               onChange={handleChange}
-               placeholder='Name'
-            />
-            <input
-               type='text'
-               name='birth'
-               value={formData.birth}
-               onChange={handleChange}
-               placeholder='Birth'
-            />
-            <input
-               type='text'
-               name='email'
-               value={formData.email}
-               onChange={handleChange}
-               placeholder='Email'
-            />
-            <input
-               type='text'
-               name='confirmEmail'
-               value={formData.confirmEmail}
-               onChange={handleChange}
-               placeholder='Confirm E-mail'
-            />
-            <input
-               type='password'
-               name='password'
-               value={formData.password}
-               onChange={handleChange}
-               placeholder='Password'
-            />
-            <input
-               type='password'
-               name='confirmPassword'
-               value={formData.confirmPassword}
-               onChange={handleChange}
-               placeholder='Confirm Password'
-            />
-            <input
-               type='text'
-               name='userID'
-               value={formData.userID}
-               onChange={handleChange}
-               placeholder='cpf or passport'
-            />
-            <select
-               name='gender'
-               value={formData.gender}
-               onChange={handleChange}
-               placeholder='genero'
-            >
-               <option value='male'>Male</option>
-               <option value='female'>Female</option>
-               <option value='other'>Other</option>
-            </select>
-            <input
-               type='file'
-               accept='image/*'
-               ref={imageInputRef}
-               onChange={handleImageChange}
-            />
-            <button type='submit'>Register</button>
-         </form>
-         {userData && (
-            <div>
-               <p>{userData.message}</p>
-            </div>
-         )}
+         <RegisterStyles>
+            <RegisterForm onSubmit={register}>
+               <RegisterPersonalData
+                  data={formData}
+                  error={error}
+                  onChange={handleChange}
+               />
+               <RegisterAccountData
+                  data={formData}
+                  error={error}
+                  onChange={handleChange}
+                  imageChange={handleImageChange}
+               />
+               <br />
+               <Button
+                  onClick={register}
+                  currentColor={'rgba(var(--purple-1))'}
+                  title={'Register'}
+                  hoverColor={'rgba(var(--cyan))'}
+                  loading={loading}
+               />
+            </RegisterForm>
+         </RegisterStyles>
       </>
    );
 };
