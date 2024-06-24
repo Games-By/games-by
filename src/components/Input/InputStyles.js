@@ -7,7 +7,7 @@ export const InputContainer = styled.div`
    flex-direction: column;
    justify-content: center;
    align-items: flex-start;
-   padding-bottom: 1.5rem;
+   padding-bottom: 1.9rem;
    position: relative;
 
    .error {
@@ -56,6 +56,7 @@ export const Error = styled.p`
    color: rgba(var(--red));
    font-weight: 600;
    letter-spacing: 1px;
-   bottom: 0;
    left: 1.5rem;
+   bottom: 0;
+   top: 80%;
 `;
