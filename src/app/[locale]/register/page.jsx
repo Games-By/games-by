@@ -84,8 +84,8 @@ const Register = () => {
       e.preventDefault();
       try {
          setLoading(true);
-         await userRegister(e, formData, imageData, setError, locale);
-         // router.push('/login');
+         const response = await userRegister(e, formData, imageData, setError, locale);
+         if(response.status === 201) router.push('/login');
       } catch (error) {
          console.error(error);
       } finally {

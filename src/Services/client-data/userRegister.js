@@ -14,6 +14,7 @@ export const userRegister = async (e, formData, imageData, error, locale) => {
       if (imageData) {
          await ImageRegister(imageData);
       }
+      return response;
    } catch (error) {
       if (
          error.response &&
