@@ -9,11 +9,12 @@ const Input = ({
    onClick,
    label,
    error,
-   required
+   required,
+   className
 }) => {
    return (
       <>
-         <InputContainer>
+         <InputContainer className={className}>
             {label && (
                <Label className={error && 'error'} htmlFor={name}>
                   {label} {required && '*'}
