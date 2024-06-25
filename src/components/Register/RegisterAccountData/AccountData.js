@@ -13,17 +13,33 @@ export const AccountData = styled.div`
       align-self: flex-start;
       justify-self: flex-start;
       margin: 0;
+      @media screen {
+         @media (max-width: 500px) {
+            width: 100%;
+         }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 768px) {
+      }
    }
 `;
 
 export const PhotoSelector = styled.div`
-      width: calc(50% - 1.5rem);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
+   width: 46%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: center;
+   padding: 0 1rem;
+
+   label {
+      margin-left: 0.5rem;
+   }
 
    .file-selector {
+      width: 100%;
       height: 4rem;
       display: flex;
       border: 1px solid rgba(var(--purple-1));
@@ -37,6 +53,12 @@ export const PhotoSelector = styled.div`
          border: 0;
          height: 100%;
          cursor: pointer;
+      }
+
+   }
+   @media screen {
+      @media (max-width: 500px) {
+         width: 100%;
       }
    }
 `;

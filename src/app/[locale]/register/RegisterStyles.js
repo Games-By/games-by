@@ -29,6 +29,11 @@ export const RegisterStyles = styled.div`
       left: 0;
       z-index: -1;
    }
+   @media screen {
+      @media (max-height: 1000px) {
+         min-height: 95rem;
+      }
+   }
 `;
 export const RegisterForm = styled.form`
    z-index: 1;
@@ -43,6 +48,18 @@ export const RegisterForm = styled.form`
    display: flex;
    flex-direction: column;
    gap: 3rem;
+
+   @media screen {
+      @media (max-width: 768px) {
+         width: 90%;
+         padding: 3rem 1rem;
+         min-width: 29rem;
+      }
+      @media (max-width: 500px) {
+         width: 85%;
+         margin: 3rem auto;
+      }
+   }
 `;
 
 export const Title = styled.h2`

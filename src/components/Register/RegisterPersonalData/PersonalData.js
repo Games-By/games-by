@@ -5,7 +5,7 @@ export const PersonalData = styled.div`
    display: flex;
    gap: 3rem;
    flex-wrap: wrap;
-   justify-content: flex-start;
+   justify-content: space-between;
    align-items: flex-start;
 
    .input {
@@ -13,16 +13,30 @@ export const PersonalData = styled.div`
       align-self: flex-start;
       justify-self: flex-start;
       margin: 0;
+
+      @media screen {
+         @media (max-width: 500px) {
+            width: 100%;
+         }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 768px) {
+         width: 95%;
+         gap: 3rem 1rem;
+      }
    }
 `;
 
 export const Gender = styled.div`
    position: relative;
-   width: 47%;
+   width: 46%;
    height: 6rem;
    display: flex;
    justify-content: flex-start;
    flex-direction: column;
+   padding: 0 0.5rem;
 
    .selector {
       height: 70%;
@@ -42,6 +56,10 @@ export const Gender = styled.div`
       }
    }
 
+   label {
+      margin-left: 0.5rem;
+   }
+
    .other {
       width: 80%;
       position: absolute;
@@ -50,6 +68,12 @@ export const Gender = styled.div`
       padding: 0;
       input {
          border: transparent !important;
+      }
+   }
+
+   @media screen {
+      @media (max-width: 500px) {
+         width: 100%;
       }
    }
 `;
