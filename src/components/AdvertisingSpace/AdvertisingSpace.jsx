@@ -5,9 +5,9 @@ const AdvertisingSpace = () => {
    return (
       <>
          <AdvertisingSpaceStyles>
-            <AdCard />
-            <AdCard />
-            <AdCard />
+            <AdCard className={'ad'} />
+            <AdCard className={'ad'} />
+            <AdCard className={'ad'} />
          </AdvertisingSpaceStyles>
       </>
    );
