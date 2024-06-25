@@ -49,6 +49,19 @@ export const RegisterForm = styled.form`
    flex-direction: column;
    gap: 3rem;
 
+   .terms {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 0;
+
+      a {
+         color: rgba(var(--cyan));
+         font-weight: bold;
+         letter-spacing: 1px;
+         text-decoration: underline;
+      }
+   }
+
    @media screen {
       @media (max-width: 768px) {
          width: 90%;

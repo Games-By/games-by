@@ -8,7 +8,7 @@ import { formatBirth } from '@/utils/formatBirth';
 import { userRegister } from '@/Services/client-data/userRegister';
 import { formatUserID } from '@/utils/formatUserId';
 import Button from '@/components/Button/Button';
-import { useRouter } from '../../../../navigation';
+import { Link, useRouter } from '../../../../navigation';
 require('dotenv').config();
 
 const Register = () => {
@@ -108,7 +108,7 @@ const Register = () => {
                   onChange={handleChange}
                   imageChange={handleImageChange}
                />
-               <br />
+               <p className='terms'>By registering, you agree to our <Link href="/terms">Terms and Conditions</Link>.</p>
                <Button
                   onClick={register}
                   currentColor={'rgba(var(--purple-1))'}
