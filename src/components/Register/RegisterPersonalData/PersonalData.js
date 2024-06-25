@@ -71,6 +71,11 @@ export const Gender = styled.div`
       }
    }
 
+   .error {
+      color: rgba(var(--red));;
+      border: 2px solid rgba(var(--red));
+   }
+
    @media screen {
       @media (max-width: 500px) {
          width: 100%;

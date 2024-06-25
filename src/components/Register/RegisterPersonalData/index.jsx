@@ -2,10 +2,11 @@ import { useLocale } from 'next-intl';
 import Input from '../../Input/Input';
 import { Gender, PersonalData } from './PersonalData';
 import { Title } from '@/app/[locale]/register/RegisterStyles';
-import { Label } from '@/components/Input/InputStyles';
+import { Error, Label } from '@/components/Input/InputStyles';
 
 const RegisterPersonalData = ({ data, onChange, error }) => {
    const locale = useLocale();
+   console.log('err', error);
    return (
       <>
          <PersonalData>
@@ -46,19 +47,24 @@ const RegisterPersonalData = ({ data, onChange, error }) => {
                />
             )}
             <Gender>
-               <Label>Gender *</Label>
+               <Label style={{color: error.gender && 'rgba(var(--red))' }}>
+                  Gender *
+               </Label>
                <select
                   name='gender'
                   value={data.gender}
                   onChange={onChange}
                   placeholder='Gender'
-                  className='selector'
+                  className={`selector ${error.gender && 'error'}`}
                >
                   <option value=''>Select Gender</option>
                   <option value='male'>Male</option>
                   <option value='female'>Female</option>
                   <option value='other'>Other</option>
                </select>
+               {error.gender && (
+                  <Error style={{ marginTop: '1.5rem' }}>{error.gender}</Error>
+               )}
                {/* {data.gender !== 'male' && data.gender !== 'female' && data.gender !== '' && (
                   <Input
                      name={'gender'}
