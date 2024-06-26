@@ -4,9 +4,10 @@ export const AdvertisingSpaceStyles = styled.div`
    z-index: 1;
    background-color: rgba(var(--dark), 0.3);
    border-radius: 1rem;
-   width: 50%;
    height: 50%;
-   min-width: 35rem;
+   min-width: 70rem;
+   min-height: 37.5rem;
+   max-height: 46rem;
    position: relative;
    display: flex;
    align-items: center;
@@ -21,5 +22,21 @@ export const AdvertisingSpaceStyles = styled.div`
       background-color: rgba(var(--purple-2));
       position: absolute;
       bottom: 0;
+   }
+
+   .ad {
+      width: 30%;
+   }
+
+   @media screen {
+      @media (max-width: 1200px) and (max-height: 970px) {
+         display: none;
+      }
+      @media (max-width: 1200px) {
+         width: 80%;
+         height: 35%;
+         min-width: 0;
+         min-height: 40.1rem;
+      }
    }
 `;
