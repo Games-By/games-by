@@ -7,7 +7,7 @@ export const LoginPageStyles = styled.div`
    overflow-y: hidden;
    display: flex;
    align-items: center;
-   justify-content: space-evenly;
+   justify-content: space-around;
    position: relative;
 
    &::before {
@@ -28,6 +28,16 @@ export const LoginPageStyles = styled.div`
       height: 100%;
       position: absolute;
    }
+
+   @media screen {
+      @media (max-width: 1200px) and (min-height: 970px) {
+         flex-direction: column-reverse;
+      }
+      @media (max-width: 450px) {
+         padding: 0 1rem;
+         min-height: 43rem;
+      }
+   }
 `;
 
 export const LoginBox = styled.div`
@@ -35,8 +45,7 @@ export const LoginBox = styled.div`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   height: 45rem;
-   width: 40rem;
+   height: 40rem;
    min-width: 35rem;
    padding: 2rem;
    border: 1px solid rgba(var(--purple-1));
@@ -45,6 +54,13 @@ export const LoginBox = styled.div`
 
    .logo {
       margin: 0 auto;
+      width: auto;
+
+      @media screen {
+         @media (max-width: 450px) {
+            height: 4.5rem;
+         }
+      }
    }
    .input-container {
       display: flex;
@@ -63,6 +79,16 @@ export const LoginBox = styled.div`
          position: absolute;
          bottom: 0;
          left: 1rem;
+      }
+   }
+
+   @media screen {
+      @media (max-width: 450px) {
+         width: 85%;
+         min-width: 29rem;
+         height: 75%;
+         max-height: 41rem;
+         min-height: 35rem;
       }
    }
 `;

@@ -1,9 +1,9 @@
 import { AdCardStyles } from './AdCardStyles';
 
-const AdCard = ({ ad }) => {
+const AdCard = ({ ad, className }) => {
    return (
       <>
-         <AdCardStyles>{ad ? <p>{ad}</p> : <div></div>}</AdCardStyles>
+         <AdCardStyles className={className}>{ad ? <p>{ad}</p> : <div></div>}</AdCardStyles>
       </>
    );
 };
