@@ -15,6 +15,7 @@ export const ButtonStyles = styled.button`
    padding: 0.8rem 3.5rem;
    display: flex;
    align-items: center;
+   justify-content: center;
    transition: 0.5s;
    color: ${(props) => props.color || 'rgba(var(--light))'};
    border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
