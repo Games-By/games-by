@@ -1,26 +1,20 @@
 import styled from 'styled-components';
 
 export const ButtonLinkStyles = styled.div`
-   font-family: var(--redditSans);
-   font-weight: 300;
-   font-size: 1.6rem;
-   text-transform: uppercase;
-   max-width: 20.6rem;
-   background-color: rgba(56, 56, 56, 0.7);
-   border-radius: 20px;
-   cursor: pointer;
-   text-decoration: none;
-   margin: 0 auto;
-
-   color: ${(props) => props.color || 'rgba(var(--light))'};
-   border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
-
    a {
+      font-weight: 300;
+      font-size: 1.6rem;
+      border-radius: 20px;
+      cursor: pointer;
+      text-decoration: none;
+      margin: 0 auto;
+      background-color: ${(props) => props.bgColor || 'transparent'};
+      color: ${(props) => props.color || 'rgba(var(--light))'};
+      border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem 2rem;
-      height: 100%;
+      padding: 1rem;
    }
    svg {
       fill: ${(props) => props.color || 'rgba(var(--light))'};
@@ -28,6 +22,5 @@ export const ButtonLinkStyles = styled.div`
       object-fit: contain;
       height: 50%;
       width: 2.3rem;
-      margin-right: 0.5rem;
    }
 `;

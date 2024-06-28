@@ -10,6 +10,7 @@ const ButtonLink = ({
    url,
    icon,
    currentColor,
+   bgColor,
    textTransform,
    className,
    Aboutblank,
@@ -19,12 +20,12 @@ const ButtonLink = ({
       locales.find((locale) => pathname.includes(locale.code))?.code || 'en';
    return (
       <>
-         <ButtonLinkStyles
-            style={{ textTransform: textTransform }}
-            color={currentColor}
-            className={className}
-         >
+         <ButtonLinkStyles>
             <Link
+               style={{ textTransform: textTransform }}
+               color={currentColor}
+               className={className}
+               bgColor={bgColor}
                href={!url.includes('https' || 'www') ? locale + url : url}
                locale={pathname}
                target={Aboutblank ? '_blank' : ''}
