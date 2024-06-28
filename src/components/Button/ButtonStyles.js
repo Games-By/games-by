@@ -15,7 +15,7 @@ export const ButtonStyles = styled.button`
    padding: 0.8rem 3.5rem;
    display: flex;
    align-items: center;
-
+   transition: 0.5s;
    color: ${(props) => props.color || 'rgba(var(--light))'};
    border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
 
@@ -28,8 +28,7 @@ export const ButtonStyles = styled.button`
    }
 
    &:hover {
-      transition: 0.2s;
-      transform: scale(1.01);
+      transform: scale(1.03);
       color: ${(props) => props.hoverColor || 'rgba(var(--light))'};
       border: 1px solid ${(props) => props.hoverColor || 'rgba(var(--light))'};
       svg {
