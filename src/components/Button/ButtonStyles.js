@@ -13,6 +13,8 @@ export const ButtonStyles = styled.button`
    text-decoration: none;
    margin: 0.5rem auto;
    padding: 0.8rem 3.5rem;
+   display: flex;
+   align-items: center;
 
    color: ${(props) => props.color || 'rgba(var(--light))'};
    border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
@@ -23,7 +25,6 @@ export const ButtonStyles = styled.button`
       object-fit: contain;
       height: 50%;
       width: 2.3rem;
-      margin-right: 0.5rem;
    }
 
    &:hover {
