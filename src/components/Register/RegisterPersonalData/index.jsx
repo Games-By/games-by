@@ -6,7 +6,6 @@ import { Error, Label } from '@/components/Input/InputStyles';
 
 const RegisterPersonalData = ({ data, onChange, error }) => {
    const locale = useLocale();
-   console.log('err', error);
    return (
       <>
          <PersonalData>
