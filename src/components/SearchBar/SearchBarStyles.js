@@ -61,6 +61,7 @@ export const SearchBox = styled(motion.ul)`
    max-height: 50rem;
    transition: max-height 0.3s ease;
    overflow-y: auto;
+   z-index: 2;
 
    .searched-item {
       width: 95%;

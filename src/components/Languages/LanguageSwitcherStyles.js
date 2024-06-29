@@ -17,6 +17,7 @@ export const Switcher = styled.div`
    border: 1px solid rgba(var(--purple-1));
    color: rgba(var(--light));
    transition: 0.5s;
+   z-index: 2;
 
    .language {
       text-align: center;
