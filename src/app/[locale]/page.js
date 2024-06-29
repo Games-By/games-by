@@ -3,6 +3,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import Header from '@/components/Header/Header';
 import { useEffect, useState } from 'react';
 import { useRouter } from '../../../navigation';
+import Banners from '@/components/Banner';
 require('dotenv').config();
 
 const Index = () => {
@@ -35,6 +36,7 @@ const Index = () => {
    return (
       <>
          <Header isLoggedIn={isLoggedIn} />
+         <Banners isLoggedIn={isLoggedIn}/>
          {isLoggedIn ? (
             <div>
                <p>Usuário logado!</p>
