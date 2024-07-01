@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { BannerContainerStyles, BannerStyle, BannerInfo } from './BannerStyles';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper';
@@ -23,6 +23,7 @@ const Banners = ({ isLoggedIn }) => {
    const [wishlist, setWishlist] = useState([]);
    const [localWishlist, setLocalWishlist] = useState([]);
    const [gameUpdated, setGameUpdated] = useState('');
+   const [isClicking, setIsClicking] = useState(false);
 
    const getBanners = async () => {
       const response = await getAllBanners();
@@ -54,35 +55,50 @@ const Banners = ({ isLoggedIn }) => {
    const debouncedGetBanners = debounce(getBanners, 500);
    const debouncedFetchWishlist = debounce(fetchWishlist, 500);
 
-   const handleWishlistClick = (gameTitle) => async () => {
-      if (isLoggedIn) {
-         try {
-            if (!localWishlist.includes(gameTitle)) {
-               setLocalWishlist([...localWishlist, gameTitle]);
-               await addGameToWishlist(gameTitle);
-            } else {
-               setLocalWishlist(
-                  localWishlist.filter((title) => title !== gameTitle)
+   const handleWishlistClick = useCallback(
+      debounce(async (gameTitle) => {
+         if (isLoggedIn) {
+            try {
+               if (!localWishlist.includes(gameTitle)) {
+                  setLocalWishlist((prev) => [...prev, gameTitle]);
+                  await addGameToWishlist(gameTitle);
+               } else {
+                  setLocalWishlist((prev) =>
+                     prev.filter((title) => title !== gameTitle)
+                  );
+                  await removeGameFromWishlist(gameTitle);
+               }
+               setGameUpdated(gameTitle);
+               debouncedFetchWishlist();
+            } catch (error) {
+               console.error(
+                  'Error adding or removing game to wishlist:',
+                  error
                );
-               await removeGameFromWishlist(gameTitle);
+            } finally {
+               setIsClicking(false);
             }
-            setGameUpdated(gameTitle);
-            debouncedFetchWishlist();
-         } catch (error) {
-            console.error('Error adding or removing game to wishlist:', error);
+         } else {
+            toast('You need to log in to add games to your wishlist!', {
+               position: 'top-right',
+               autoClose: 4000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: false,
+               draggable: true,
+               progress: undefined,
+               theme: 'dark',
+               transition: Slide,
+            });
          }
-      } else {
-         toast('You need to log in to add games to your wishlist!', {
-            position: 'top-right',
-            autoClose: 4000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: 'dark',
-            transition: Slide,
-         });
+      }, 500),
+      [isLoggedIn, localWishlist, debouncedFetchWishlist]
+   );
+
+   const onWishlistClick = (gameTitle) => {
+      if (!isClicking) {
+         setIsClicking(true);
+         handleWishlistClick(gameTitle);
       }
    };
 
@@ -132,9 +148,9 @@ const Banners = ({ isLoggedIn }) => {
                               )}
                               <div className='buttons'>
                                  <Button
-                                    onClick={handleWishlistClick(
-                                       banner.gameTitle
-                                    )}
+                                    onClick={() =>
+                                       onWishlistClick(banner.gameTitle)
+                                    }
                                     icon={
                                        localWishlist.includes(
                                           banner.gameTitle
