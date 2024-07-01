@@ -21,6 +21,7 @@ import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWis
 const Banners = ({ isLoggedIn }) => {
    const [banners, setBanners] = useState([]);
    const [wishlist, setWishlist] = useState([]);
+   const [localWishlist, setLocalWishlist] = useState([]);
    const [gameUpdated, setGameUpdated] = useState('');
 
    const getBanners = async () => {
@@ -43,6 +44,7 @@ const Banners = ({ isLoggedIn }) => {
          try {
             const wishList = await getWishlist();
             setWishlist(wishList);
+            setLocalWishlist(wishList.map((item) => item.name));
          } catch (error) {
             console.error('Error fetching wishlist:', error);
          }
@@ -55,16 +57,17 @@ const Banners = ({ isLoggedIn }) => {
    const handleWishlistClick = (gameTitle) => async () => {
       if (isLoggedIn) {
          try {
-            if (!wishlist.some((item) => item.name === gameTitle)) {
+            if (!localWishlist.includes(gameTitle)) {
+               setLocalWishlist([...localWishlist, gameTitle]);
                await addGameToWishlist(gameTitle);
-               setGameUpdated(gameTitle);
-               debouncedFetchWishlist();
+            } else {
+               setLocalWishlist(
+                  localWishlist.filter((title) => title !== gameTitle)
+               );
+               await removeGameFromWishlist(gameTitle);
             }
-            if (wishlist.some((item) => item.name === gameTitle)) {
-               await removeGameFromWishlist();
-               setGameUpdated(gameTitle);
-               debouncedFetchWishlist();
-            }
+            setGameUpdated(gameTitle);
+            debouncedFetchWishlist();
          } catch (error) {
             console.error('Error adding or removing game to wishlist:', error);
          }
@@ -133,9 +136,8 @@ const Banners = ({ isLoggedIn }) => {
                                        banner.gameTitle
                                     )}
                                     icon={
-                                       wishlist.some(
-                                          (item) =>
-                                             item.name === banner.gameTitle
+                                       localWishlist.includes(
+                                          banner.gameTitle
                                        ) ? (
                                           <FaCheck className='icon' />
                                        ) : (
@@ -143,11 +145,8 @@ const Banners = ({ isLoggedIn }) => {
                                        )
                                     }
                                     title={
-                                       wishlist.some(
-                                          (item) =>
-                                             item.name === banner.gameTitle
-                                       )
-                                          ? 'remove to WishList'
+                                       localWishlist.includes(banner.gameTitle)
+                                          ? 'Remove from WishList'
                                           : 'Add to WishList'
                                     }
                                     className={'button-wishlist'}

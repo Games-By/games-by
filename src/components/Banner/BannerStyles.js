@@ -165,8 +165,8 @@ export const BannerInfo = styled.div`
          gap: 0.3rem;
 
          .icon {
-            width: 1.5rem;
-            height: 2.5rem;
+            width: 2.5rem;
+            height: 2.3rem;
             margin-right: 0.5rem;
          }
       }
