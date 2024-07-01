@@ -1,5 +1,10 @@
 {
-   "Index": {
-      "title": "Hello world!"
+   "Banner": {
+      "buy": "Buy Now",
+      "pre": "Pre Order",
+      "add": "Add to WishList",
+      "remove": "Remove from WishList",
+      "coming": "Coming Soon",
+      "avaiable": "Now available"
    }
 }
