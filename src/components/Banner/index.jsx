@@ -99,6 +99,7 @@ const Banners = ({ isLoggedIn }) => {
       if (!isClicking) {
          setIsClicking(true);
          handleWishlistClick(gameTitle);
+         setIsClicking(false)
       }
    };
 
