@@ -91,7 +91,7 @@ export const BannerStyle = styled.div`
    align-items: center;
    justify-content: center;
    background-image: url(${(props) => props.image});
-   background-position: top -5rem center;
+   background-position:  center;
    background-repeat: no-repeat;
    background-size: cover;
    position: relative;
@@ -116,7 +116,7 @@ export const BannerInfo = styled.div`
    .description {
       margin: 0 0 0 1.7rem;
       font-size: 1.2rem;
-      max-width: 80rem;
+      max-width: 65rem;
    }
 
    .avaiable {
@@ -154,7 +154,8 @@ export const BannerInfo = styled.div`
       align-items: center;
       justify-content: flex-end;
       gap: 1.5rem;
-      right: 3rem;
+      right: 2rem;
+      bottom: 1rem;
       .button-wishlist {
          padding: 0.5rem 1.5rem;
          min-height: 2.5rem;
@@ -162,6 +163,8 @@ export const BannerInfo = styled.div`
          letter-spacing: 1px;
          white-space: nowrap;
          max-width: none;
+         min-height: 3.5rem;
+         margin: 0;
          gap: 0.3rem;
 
          .icon {

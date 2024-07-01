@@ -17,10 +17,12 @@ import { getWishlist } from '@/Services/client-data/getWishlist';
 import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
 import { debounce } from '@/utils/debounce';
 import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
+import { useLocale, useTranslations } from 'next-intl';
 
 const Banners = ({ isLoggedIn }) => {
+   const locale = useLocale();
+   const t = useTranslations();
    const [banners, setBanners] = useState([]);
-   const [wishlist, setWishlist] = useState([]);
    const [localWishlist, setLocalWishlist] = useState([]);
    const [gameUpdated, setGameUpdated] = useState('');
    const [isClicking, setIsClicking] = useState(false);
@@ -44,7 +46,6 @@ const Banners = ({ isLoggedIn }) => {
       if (isLoggedIn) {
          try {
             const wishList = await getWishlist();
-            setWishlist(wishList);
             setLocalWishlist(wishList.map((item) => item.name));
          } catch (error) {
             console.error('Error fetching wishlist:', error);
@@ -56,17 +57,41 @@ const Banners = ({ isLoggedIn }) => {
    const debouncedFetchWishlist = debounce(fetchWishlist, 500);
 
    const handleWishlistClick = useCallback(
-      debounce(async (gameTitle) => {
+      async (gameTitle) => {
          if (isLoggedIn) {
             try {
-               if (!localWishlist.includes(gameTitle)) {
+               if (!localWishlist.includes(gameTitle) && !isClicking) {
+                  setIsClicking(true)
                   setLocalWishlist((prev) => [...prev, gameTitle]);
                   await addGameToWishlist(gameTitle);
-               } else {
+                  toast('Game added to wish list.', {
+                     position: 'top-right',
+                     autoClose: 3000,
+                     hideProgressBar: false,
+                     closeOnClick: true,
+                     pauseOnHover: false,
+                     draggable: true,
+                     progress: undefined,
+                     theme: 'dark',
+                     transition: Slide,
+                  });
+               } else if (localWishlist.includes(gameTitle) && !isClicking) {
+                  setIsClicking(true)
                   setLocalWishlist((prev) =>
                      prev.filter((title) => title !== gameTitle)
                   );
                   await removeGameFromWishlist(gameTitle);
+                  toast('Game removed from wish list.', {
+                     position: 'top-right',
+                     autoClose: 3000,
+                     hideProgressBar: false,
+                     closeOnClick: true,
+                     pauseOnHover: false,
+                     draggable: true,
+                     progress: undefined,
+                     theme: 'dark',
+                     transition: Slide,
+                  });
                }
                setGameUpdated(gameTitle);
                debouncedFetchWishlist();
@@ -81,7 +106,7 @@ const Banners = ({ isLoggedIn }) => {
          } else {
             toast('You need to log in to add games to your wishlist!', {
                position: 'top-right',
-               autoClose: 4000,
+               autoClose: 3000,
                hideProgressBar: false,
                closeOnClick: true,
                pauseOnHover: false,
@@ -91,15 +116,13 @@ const Banners = ({ isLoggedIn }) => {
                transition: Slide,
             });
          }
-      }, 500),
+      },
       [isLoggedIn, localWishlist, debouncedFetchWishlist]
    );
 
    const onWishlistClick = (gameTitle) => {
       if (!isClicking) {
-         setIsClicking(true);
          handleWishlistClick(gameTitle);
-         setIsClicking(false)
       }
    };
 
@@ -132,14 +155,21 @@ const Banners = ({ isLoggedIn }) => {
                      <SwiperSlide key={banner._id}>
                         <BannerStyle image={banner.imageUrl}>
                            <BannerInfo>
-                              <h2 className='title'>{banner.title}</h2>
+                              <h2 className='title'>
+                                 {banner.title[locale] || banner.title.en}
+                              </h2>
                               <p className='description'>
-                                 {banner.description}
+                                 {banner.description[locale] ||
+                                    banner.description.en}
                               </p>
                               {futureRelease(banner.releaseDate) ? (
-                                 <p className='avaiable'>Coming Soon</p>
+                                 <p className='avaiable'>
+                                    {t('Banner.coming')}
+                                 </p>
                               ) : (
-                                 <p className='avaiable'>Now available</p>
+                                 <p className='avaiable'>
+                                    {t('Banner.avaiable')}
+                                 </p>
                               )}
                               {banner.type === 'discount' && banner.rating && (
                                  <div className='star-icons'>
@@ -163,8 +193,8 @@ const Banners = ({ isLoggedIn }) => {
                                     }
                                     title={
                                        localWishlist.includes(banner.gameTitle)
-                                          ? 'Remove from WishList'
-                                          : 'Add to WishList'
+                                          ? t('Banner.remove')
+                                          : t('Banner.add')
                                     }
                                     className={'button-wishlist'}
                                     currentColor={'rgba(var(--purple-1))'}
@@ -176,8 +206,8 @@ const Banners = ({ isLoggedIn }) => {
                                     url={isLoggedIn ? '/' : '/login'}
                                     title={
                                        futureRelease(banner.releaseDate)
-                                          ? 'Pre Order'
-                                          : 'Buy Now'
+                                          ? t('Banner.pre')
+                                          : t('Banner.buy')
                                     }
                                     className={'button'}
                                     currentColor={'rgba(var(--cyan))'}
@@ -192,7 +222,7 @@ const Banners = ({ isLoggedIn }) => {
                </Swiper>
             )}
          </BannerContainerStyles>
-         {!isLoggedIn && <ToastContainer />}
+         <ToastContainer />
       </>
    );
 };
