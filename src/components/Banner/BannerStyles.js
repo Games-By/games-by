@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BannerContainerStyles = styled.div`
-   height: 38rem;
+   height: 45rem;
    max-width: 200rem;
 
    .swiper {
@@ -23,6 +23,7 @@ export const BannerContainerStyles = styled.div`
 
       .swiper-pagination {
          bottom: 0rem;
+         left: 0;
          padding: 1rem 0;
          background-color: rgba(0, 0, 0);
 
@@ -80,6 +81,45 @@ export const BannerContainerStyles = styled.div`
             left: 0;
          }
       }
+
+      @media screen {
+         @media (max-width: 1024px) {
+            width: 90%;
+         }
+         @media (max-width: 825px) {
+            width: 95%;
+         }
+         @media (max-width: 780px) {
+            width: 100%;
+         }
+         @media (max-width: 720px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+               height: 51.5%;
+            }
+         }
+         @media (max-width: 550px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+               height: 54.1%;
+            }
+         }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 1125px) {
+         height: 48rem;
+      }
+      @media (max-width: 550px) {
+         height: 55rem;
+      }
+      @media (min-height: 1000px) {
+         height: 56rem;
+      }
+      @media (max-height: 700px) {
+         height: 60rem;
+      }
    }
 `;
 
@@ -91,7 +131,7 @@ export const BannerStyle = styled.div`
    align-items: center;
    justify-content: center;
    background-image: url(${(props) => props.image});
-   background-position: top -5rem center;
+   background-position: center;
    background-repeat: no-repeat;
    background-size: cover;
    position: relative;
@@ -102,7 +142,7 @@ export const BannerInfo = styled.div`
    width: 100%;
    height: 25%;
    position: absolute;
-   bottom: 4.5rem;
+   bottom: 4.4rem;
    padding-bottom: 1rem;
    cursor: auto;
 
@@ -111,12 +151,61 @@ export const BannerInfo = styled.div`
       font-size: 2.5rem;
       font-weight: 400;
       text-transform: uppercase;
+      @media screen {
+         @media (max-width: 720px) {
+            font-size: 2.8rem;
+         }
+         @media (max-width: 670px) {
+            font-size: 2.3rem;
+         }
+         @media (max-width: 550px) {
+            text-align: center;
+            margin: 3rem 0 0;
+         }
+      }
    }
 
    .description {
       margin: 0 0 0 1.7rem;
       font-size: 1.2rem;
-      max-width: 80rem;
+      max-width: 65rem;
+
+      @media screen {
+         @media (max-width: 1200px) {
+            max-width: 60rem;
+         }
+         @media (max-width: 1130px) {
+            max-width: 55rem;
+         }
+         @media (max-width: 1080px) {
+            max-width: 50rem;
+         }
+         @media (max-width: 900px) {
+            max-width: 45rem;
+         }
+         @media (max-width: 780px) {
+            max-width: 42rem;
+            font-size: 1.15rem;
+         }
+         @media (max-width: 720px) {
+            max-width: 40rem;
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+            margin-top: 0.5rem;
+         }
+         @media (max-width: 600px) {
+            width: 70%;
+            max-width: 35rem;
+         }
+         @media (max-width: 550px) {
+            width: 90%;
+            max-width: none;
+            min-width: 29rem;
+            text-align: center;
+            margin: 0 auto;
+            line-height: 1.6rem;
+         }
+      }
    }
 
    .avaiable {
@@ -130,6 +219,21 @@ export const BannerInfo = styled.div`
       letter-spacing: 2px;
       background-color: rgba(var(--cyan), 0.1);
       padding: 0.5rem;
+
+      @media screen {
+         @media (max-width: 600px) {
+            font-size: 1.5rem;
+         }
+         @media (max-width: 550px) {
+            left: calc(50% - 14rem);
+            margin: 0;
+            width: 28rem;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+         }
+      }
    }
 
    .star-icons {
@@ -146,6 +250,15 @@ export const BannerInfo = styled.div`
          height: 2rem;
          width: 1rem;
       }
+
+      @media screen {
+         @media (max-width: 550px) {
+            bottom: 9.5rem;
+            width: 20rem;
+            left: calc(50% - 10rem);
+            justify-content: center;
+         }
+      }
    }
 
    .buttons {
@@ -154,18 +267,24 @@ export const BannerInfo = styled.div`
       align-items: center;
       justify-content: flex-end;
       gap: 1.5rem;
-      right: 3rem;
+      right: 2rem;
+      bottom: 1rem;
       .button-wishlist {
-         padding: 0.5rem 1.5rem;
+         padding: 0.5rem 2rem;
          min-height: 2.5rem;
          font-size: 1rem;
          letter-spacing: 1px;
          white-space: nowrap;
          max-width: none;
-         gap: 0.3rem;
+         min-height: 3.5rem;
+         margin: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
 
          .icon {
             width: 2.5rem;
+            min-width: 2rem;
             height: 2.3rem;
             margin-right: 0.5rem;
          }
@@ -181,6 +300,35 @@ export const BannerInfo = styled.div`
          &:hover {
             transform: scale(1.05);
          }
+      }
+
+      @media screen {
+         @media (max-width: 720px) {
+            width: auto;
+            right: 1rem;
+            align-items: flex-end;
+
+            .button-wishlist,
+            .button {
+               width: 100%;
+            }
+         }
+         @media (max-width: 550px) {
+            flex-direction: column;
+            align-items: center;
+            width: 25rem;
+            left: calc(50% - 12.5rem);
+            gap: 0.8rem;
+         }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 720px) {
+         height: 30%;
+      }
+      @media (max-width: 550px) {
+         height: 40%;
       }
    }
 `;

@@ -1,5 +1,10 @@
 {
-   "Index": {
-      "title": "Halo Dunia!"
+   "Banner": {
+      "buy": "Beli Sekarang",
+      "pre": "Pre Order",
+      "add": "Tambahkan ke Daftar Keinginan",
+      "remove": "Hapus dari Daftar Keinginan",
+      "coming": "Segera Hadir",
+      "avaiable": "Sekarang tersedia"
    }
 }

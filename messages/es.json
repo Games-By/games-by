@@ -1,5 +1,10 @@
 {
-   "Index": {
-      "title": "¡Hola Mundo!"
+   "Banner": {
+      "buy": "Comprar Ahora",
+      "pre": "Pre Orden",
+      "add": "Agregar a la Lista de Deseos",
+      "remove": "Eliminar de la Lista de Deseos",
+      "coming": "Próximamente",
+      "avaiable": "Ahora disponible"
    }
 }
