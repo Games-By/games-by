@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BannerContainerStyles = styled.div`
-   height: 38rem;
+   height: 45rem;
    max-width: 200rem;
 
    .swiper {
@@ -108,6 +108,9 @@ export const BannerContainerStyles = styled.div`
    }
 
    @media screen {
+      @media (max-width: 1125px) {
+         height: 48rem;
+      }
       @media (max-width: 550px) {
          height: 55rem;
       }
@@ -266,7 +269,7 @@ export const BannerInfo = styled.div`
       right: 2rem;
       bottom: 1rem;
       .button-wishlist {
-         padding: 0.5rem 2.5rem;
+         padding: 0.5rem 2rem;
          min-height: 2.5rem;
          font-size: 1rem;
          letter-spacing: 1px;
@@ -300,7 +303,6 @@ export const BannerInfo = styled.div`
 
       @media screen {
          @media (max-width: 720px) {
-            flex-direction: column;
             width: auto;
             right: 1rem;
             align-items: flex-end;
@@ -322,6 +324,9 @@ export const BannerInfo = styled.div`
 
    @media screen {
       @media (max-width: 720px) {
+         height: 30%;
+      }
+      @media (max-width: 550px) {
          height: 40%;
       }
    }
