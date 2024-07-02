@@ -6,6 +6,7 @@ import { getGamesByName } from '@/Services/games-service/getGames';
 import { debounce } from '@/utils/debounce';
 import SearchedItem from '../SearchedItem/SearchedItem';
 import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
+import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 
 const SearchBar = ({ isLoggedIn }) => {
    const router = useRouter();
@@ -90,13 +91,7 @@ const SearchBar = ({ isLoggedIn }) => {
                value={searched}
             />
             <div className='glass' onClick={navigateToCatalog}>
-               <Image
-                  src={'/assets/icons/magnifying-glass.svg'}
-                  quality={100}
-                  width={20}
-                  height={20}
-                  alt='magnifying glass icon'
-               />
+               <MagnifyingGlassIcon color={'rgba(var(--purple-2))'} />
             </div>
             {searched.length > 0 && isSearched && (
                <SearchBox
