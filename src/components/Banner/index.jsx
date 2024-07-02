@@ -188,7 +188,7 @@ const Banners = ({ isLoggedIn }) => {
                                        ) ? (
                                           <FaCheck className='icon' />
                                        ) : (
-                                          <IoIosAdd />
+                                          <IoIosAdd className='icon'/>
                                        )
                                     }
                                     title={
