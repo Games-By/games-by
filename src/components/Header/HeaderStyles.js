@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const HeaderStyle = styled.header`
    width: 100vw;
-   min-width: 100.24rem;
    height: 8rem;
    background-color: rgba(var(--dark));
    display: flex;
@@ -13,6 +12,27 @@ export const HeaderStyle = styled.header`
       object-fit: contain;
       width: 16rem;
       margin-left: 2rem;
+
+      @media screen {
+         @media (max-width: 850px) {
+            margin-left: 0;
+         }
+      }
+   }
+   .icon-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 50%;
+      background-color: rgba(var(--light));
+      fill: rgba(var(--dark));
+   }
+
+   @media screen {
+      @media (max-width: 660px) {
+         justify-content: flex-start;
+      }
    }
 `;
 

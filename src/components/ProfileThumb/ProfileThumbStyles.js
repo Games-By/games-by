@@ -6,6 +6,17 @@ export const ProfileContainer = styled.div`
    justify-content: center;
    align-items: center;
    width: 9rem;
+   @media screen {
+      @media (max-width: 850px) {
+         width: 14rem;
+         justify-content: flex-end;
+         padding-right: 2rem;
+      }
+      @media (max-width: 660px) {
+         position: absolute;
+         right: 0;
+      }
+   }
 `;
 
 export const ProfileThumbLink = styled(Link)`

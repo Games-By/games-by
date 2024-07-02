@@ -8,7 +8,7 @@ import SearchedItem from '../SearchedItem/SearchedItem';
 import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
 import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 
-const SearchBar = ({ isLoggedIn }) => {
+const SearchBar = ({ isLoggedIn, autoFocus }) => {
    const router = useRouter();
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
@@ -89,6 +89,7 @@ const SearchBar = ({ isLoggedIn }) => {
                onKeyUp={handleChange}
                onKeyDown={handleKeyDown}
                value={searched}
+               autoFocus={autoFocus ? autoFocus : false}
             />
             <div className='glass' onClick={navigateToCatalog}>
                <MagnifyingGlassIcon color={'rgba(var(--purple-2))'} />

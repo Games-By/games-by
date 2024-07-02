@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const BannerContainerStyles = styled.div`
    height: 45rem;
    max-width: 200rem;
+   z-index: 1;
 
    .swiper {
       display: flex;
