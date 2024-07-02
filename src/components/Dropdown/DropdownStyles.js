@@ -10,7 +10,7 @@ export const DropdownStyles = styled.div`
    background-color: rgba(var(--dark));
    position: absolute;
    top: 8.5rem;
-   right: 4rem;
+   right: 6rem;
    z-index: 1;
    width: 15rem;
    border-radius: 0 0 2rem 2rem;

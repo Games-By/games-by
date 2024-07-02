@@ -1,6 +1,14 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
-export const ProfileThumbStyles = styled.div`
+export const ProfileContainer = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 9rem;
+`;
+
+export const ProfileThumbLink = styled(Link)`
    cursor: pointer;
    height: 5rem;
    width: 5rem;
