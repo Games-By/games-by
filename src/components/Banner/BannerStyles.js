@@ -225,9 +225,10 @@ export const BannerInfo = styled.div`
             font-size: 1.5rem;
          }
          @media (max-width: 550px) {
-            left: calc(50% - 10rem);
+            left: calc(50% - 14rem);
             margin: 0;
-            width: 20rem;
+            width: 28rem;
+            white-space: nowrap;
             display: flex;
             justify-content: center;
             align-items: center;
