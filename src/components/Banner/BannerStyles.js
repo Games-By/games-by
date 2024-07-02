@@ -51,7 +51,7 @@ export const BannerContainerStyles = styled.div`
          position: absolute;
          background-color: rgba(var(--dark), 0.4);
          width: 8rem;
-         height: 66.5%;
+         height: 67.9%;
          top: 0;
          right: -2rem;
          color: rgba(var(--light));
@@ -68,7 +68,7 @@ export const BannerContainerStyles = styled.div`
          position: absolute;
          background-color: rgba(var(--dark), 0.4);
          width: 8rem;
-         height: 66.5%;
+         height: 67.9%;
          top: 0;
          left: -2rem;
          color: rgba(var(--light));
@@ -92,10 +92,16 @@ export const BannerContainerStyles = styled.div`
          @media (max-width: 780px) {
             width: 100%;
          }
+         @media (max-width: 1125px) {
+            .swiper-button-next,
+            .swiper-button-prev {
+               height: 68.4%;
+            }
+         }
          @media (max-width: 720px) {
             .swiper-button-next,
             .swiper-button-prev {
-               height: 51.5%;
+               height: 63.4%;
             }
          }
          @media (max-width: 550px) {
