@@ -50,4 +50,14 @@ export const DropdownStyles = styled.div`
          }
       }
    }
+
+   @media screen {
+      @media (max-width: 850px) {
+         width: 70vw;
+         max-width: 40rem;
+         border-radius: 0 0 0 2rem;
+         right: -100%;
+         top: 8rem;
+      }
+   }
 `;

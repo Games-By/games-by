@@ -5,16 +5,16 @@ export const ProfileContainer = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 9rem;
+   width: 5rem;
    @media screen {
       @media (max-width: 850px) {
          width: 14rem;
          justify-content: flex-end;
-         padding-right: 2rem;
+         margin-right: 0rem;
       }
       @media (max-width: 660px) {
          position: absolute;
-         right: 0;
+         right: 6rem;
       }
    }
 `;
