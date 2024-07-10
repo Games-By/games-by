@@ -10,13 +10,14 @@ export const DropdownStyles = styled.div`
    background-color: rgba(var(--dark));
    position: absolute;
    top: 8.5rem;
-   right: 4rem;
+   right: 6rem;
    z-index: 1;
    width: 15rem;
    border-radius: 0 0 2rem 2rem;
    border: 1px solid rgba(var(--purple-1));
    color: rgba(var(--light));
    transition: 0.5s;
+   z-index: 2;
 
    &::before {
       content: '';
@@ -47,6 +48,16 @@ export const DropdownStyles = styled.div`
          svg {
             fill: rgba(var(--purple-2));
          }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 850px) {
+         width: 70vw;
+         max-width: 40rem;
+         border-radius: 0 0 0 2rem;
+         right: -100%;
+         top: 8rem;
       }
    }
 `;

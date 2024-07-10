@@ -1,33 +1,32 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
-export const ButtonLinkStyles = styled.div`
-   font-family: var(--redditSans);
+export const ButtonLinkContainer = styled.div`
+   display: flex;
+   justify-content: center;
+   align-items: center;
+`;
+
+export const StyledLink = styled(Link)`
    font-weight: 300;
    font-size: 1.6rem;
-   text-transform: uppercase;
-   max-width: 20.6rem;
-   background-color: rgba(56, 56, 56, 0.7);
    border-radius: 20px;
    cursor: pointer;
    text-decoration: none;
    margin: 0 auto;
+   color: ${(props) => props.currentcolor || 'rgba(var(--light))'};
+   background-color: ${(props) => props.bgcolor || 'transparent'};
+   border: 1px solid ${(props) => props.currentcolor || 'rgba(var(--light))'};
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 1rem;
 
-   color: ${(props) => props.color || 'rgba(var(--light))'};
-   border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
-
-   a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 2rem;
-      height: 100%;
-   }
    svg {
-      fill: ${(props) => props.color || 'rgba(var(--light))'};
-      stroke: ${(props) => props.color || 'rgba(var(--light))'};
+      fill: ${(props) => props.currentcolor || 'rgba(var(--light))'};
+      stroke: ${(props) => props.currentcolor || 'rgba(var(--light))'};
       object-fit: contain;
       height: 50%;
       width: 2.3rem;
-      margin-right: 0.5rem;
    }
 `;

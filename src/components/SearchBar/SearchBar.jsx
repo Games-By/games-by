@@ -6,8 +6,9 @@ import { getGamesByName } from '@/Services/games-service/getGames';
 import { debounce } from '@/utils/debounce';
 import SearchedItem from '../SearchedItem/SearchedItem';
 import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
+import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 
-const SearchBar = ({ isLoggedIn }) => {
+const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
    const router = useRouter();
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
@@ -78,7 +79,7 @@ const SearchBar = ({ isLoggedIn }) => {
 
    return (
       <>
-         <SearchBarStyles whileTap={{ scale: 0.995 }}>
+         <SearchBarStyles whileTap={{ scale: 0.995 }} onClick={onclick}>
             <input
                ref={searchInputRef}
                className='search'
@@ -88,15 +89,10 @@ const SearchBar = ({ isLoggedIn }) => {
                onKeyUp={handleChange}
                onKeyDown={handleKeyDown}
                value={searched}
+               autoFocus={autoFocus ? autoFocus : false}
             />
             <div className='glass' onClick={navigateToCatalog}>
-               <Image
-                  src={'/assets/icons/magnifying-glass.svg'}
-                  quality={100}
-                  width={20}
-                  height={20}
-                  alt='magnifying glass icon'
-               />
+               <MagnifyingGlassIcon color={'rgba(var(--purple-2))'} />
             </div>
             {searched.length > 0 && isSearched && (
                <SearchBox

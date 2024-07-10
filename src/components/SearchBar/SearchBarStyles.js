@@ -2,9 +2,11 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const SearchBarStyles = styled(motion.div)`
-   width: 30%;
-   min-width: 40rem;
+   width: 20%;
+   min-width: 30rem;
+   max-width: 50rem;
    height: 50%;
+   max-height: 5rem;
    border-radius: 3rem;
    background-color: rgba(var(--light));
    margin: 0 auto;
@@ -13,6 +15,7 @@ export const SearchBarStyles = styled(motion.div)`
    padding: 0 1rem 0 2rem;
    align-items: center;
    position: relative;
+   z-index: 10;
    .search {
       font-family: var(--reddit-sans), sans-serif;
       background-color: transparent;
@@ -36,6 +39,7 @@ export const SearchBarStyles = styled(motion.div)`
    }
    .glass {
       width: 8%;
+      min-width: 3.5rem;
       height: 80%;
       cursor: pointer;
       display: flex;
@@ -43,10 +47,17 @@ export const SearchBarStyles = styled(motion.div)`
       justify-content: center;
       border-left: 1px solid rgba(var(--purple-2));
    }
+   @media screen {
+      @media (max-width: 660px) {
+         width: 85%;
+         margin-top: 8rem;
+      }
+   }
 `;
 
 export const SearchBox = styled(motion.ul)`
    width: 85%;
+   min-width: 40rem;
    position: absolute;
    right: 0;
    left: 2rem;
@@ -84,5 +95,11 @@ export const SearchBox = styled(motion.ul)`
    &::-webkit-scrollbar-thumb:vertical {
       background-color: rgba(var(--dark));
       -webkit-border-radius: 10px;
+   }
+
+   @media screen {
+      @media (max-width: 500px) {
+         min-width: 30rem;
+      }
    }
 `;
