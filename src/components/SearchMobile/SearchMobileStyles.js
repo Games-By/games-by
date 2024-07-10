@@ -8,18 +8,4 @@ export const SearchMobileContainer = styled.div`
    left: 0;
    bottom: 0;
    z-index: 5;
-   .close {
-      position: absolute;
-      background-color: rgba(var(--light));
-      fill: rgba(var(--dark));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.8rem;
-      border-radius: 50%;
-      z-index: 10;
-      font-size: 3.5rem;
-      left: calc(50% - 2rem);
-      top: 1rem;
-   }
 `;

@@ -8,8 +8,8 @@ import Dropdown from '../Dropdown/Dropdown';
 import { useLocale } from 'next-intl';
 require('dotenv').config();
 
-const ProfileThumb = ({ isLoggedIn }) => {
-   const locale = useLocale()
+const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
+   const locale = useLocale();
    const [profileImage, setProfileImage] = useState(null);
    const [loading, setLoading] = useState(false);
    const [tokenValid, setTokenValid] = useState(false);
@@ -70,8 +70,12 @@ const ProfileThumb = ({ isLoggedIn }) => {
          <ProfileContainer>
             {profileImage ? (
                <ProfileThumbLink
-                  onMouseEnter={() => setIsDropdown(true)}
-                  onMouseLeave={() => setIsDropdown(false)}
+                  onMouseEnter={() => {
+                     windowWidth > 850 && setIsDropdown(true);
+                  }}
+                  onMouseLeave={() => {
+                     windowWidth > 850 && setIsDropdown(false);
+                  }}
                   href={isLoggedIn || tokenValid ? `${locale}/profile` : '/'}
                >
                   <Image
@@ -84,9 +88,7 @@ const ProfileThumb = ({ isLoggedIn }) => {
                   />
                </ProfileThumbLink>
             ) : (
-               <ProfileThumbLink
-                  href={`${locale}/login`}
-               >
+               <ProfileThumbLink href={`${locale}/login`}>
                   <Image
                      src={'/assets/icons/profile.svg'}
                      alt='profile'
@@ -98,8 +100,10 @@ const ProfileThumb = ({ isLoggedIn }) => {
                </ProfileThumbLink>
             )}
          </ProfileContainer>
-         {isDropdown && (
+         {(isDropdown || windowWidth < 850) && (
             <Dropdown
+               windowWidth={windowWidth}
+               isVisible={sideBarVisible}
                list={dropdownOptions}
                onMouseEnter={() => setIsDropdown(true)}
                onMouseLeave={() => setIsDropdown(false)}

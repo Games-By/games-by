@@ -16,6 +16,7 @@ export const HeaderStyle = styled.header`
       @media screen {
          @media (max-width: 850px) {
             margin-left: 0;
+            width: 10rem;
          }
       }
    }
@@ -24,9 +25,19 @@ export const HeaderStyle = styled.header`
       justify-content: center;
       align-items: center;
       padding: 0.5rem;
-      border-radius: 50%;
-      background-color: rgba(var(--light));
-      fill: rgba(var(--dark));
+      transform: scale(0.85);
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+
+      &::after {
+         content: '';
+         position: absolute;
+         background-color: rgba(var(--light));
+         height: 100%;
+         width: 100%;
+         border-radius: 50%;
+      }
    }
 
    @media screen {
@@ -45,4 +56,23 @@ export const Language = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+
+   @media screen {
+      @media (max-width: 850px) {
+         margin: 0 5rem 0 0 ;
+         width: 4rem;
+         height: 4rem;
+      }
+   }
+`;
+
+export const MenuBar = styled.div`
+   position: absolute;
+   right: 1rem;
+   font-size: 3.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+   z-index: 2;
 `;

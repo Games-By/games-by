@@ -8,7 +8,7 @@ import SearchedItem from '../SearchedItem/SearchedItem';
 import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
 import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 
-const SearchBar = ({ isLoggedIn, autoFocus }) => {
+const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
    const router = useRouter();
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
@@ -79,7 +79,7 @@ const SearchBar = ({ isLoggedIn, autoFocus }) => {
 
    return (
       <>
-         <SearchBarStyles whileTap={{ scale: 0.995 }}>
+         <SearchBarStyles whileTap={{ scale: 0.995 }} onClick={onclick}>
             <input
                ref={searchInputRef}
                className='search'

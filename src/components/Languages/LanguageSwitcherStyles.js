@@ -42,4 +42,11 @@ export const Switcher = styled.div`
       position: fixed;
       top: 6rem;
    }
+
+   @media screen {
+      @media (max-width: 850px) {
+         right: -6rem;
+         border-radius: 2rem;
+      }
+   }
 `;
