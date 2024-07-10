@@ -96,7 +96,7 @@ export const BannerContainerStyles = styled.div`
          @media (max-width: 1125px) {
             .swiper-button-next,
             .swiper-button-prev {
-               height: 68.4%;
+               height: 69.3%;
             }
          }
          @media (max-width: 720px) {
