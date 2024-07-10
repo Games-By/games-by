@@ -1,9 +1,15 @@
 import { Link } from '../../../navigation';
 import { DropdownStyles } from './DropdownStyles';
 import { useRouter, usePathname } from '../../../navigation';
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt } from 'react-icons/fa';
 
-const Dropdown = ({ list, onMouseEnter, onMouseLeave }) => {
+const Dropdown = ({
+   list,
+   onMouseEnter,
+   onMouseLeave,
+   isVisible,
+   windowWidth,
+}) => {
    const router = useRouter();
    const pathname = usePathname();
    const handleLogout = () => {
@@ -22,19 +28,42 @@ const Dropdown = ({ list, onMouseEnter, onMouseLeave }) => {
    };
 
    return (
-      <DropdownStyles onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-         {list.map((item, index) => (
-            <Link
-               key={index}
-               href={item.url}
-               onClick={item.title === 'Sign Out' ? handleLogout : null}
-               className='option'
+      <>
+         {windowWidth > 850 ? (
+            <DropdownStyles
+               onMouseEnter={onMouseEnter}
+               onMouseLeave={onMouseLeave}
             >
-               {item.title}
-               {item.title ==='Sign Out' && <FaSignOutAlt />}
-            </Link>
-         ))}
-      </DropdownStyles>
+               {list.map((item, index) => (
+                  <Link
+                     key={index}
+                     href={item.url}
+                     onClick={item.title === 'Sign Out' ? handleLogout : null}
+                     className='option'
+                  >
+                     {item.title}
+                     {item.title === 'Sign Out' && <FaSignOutAlt />}
+                  </Link>
+               ))}
+            </DropdownStyles>
+         ) : (
+            <DropdownStyles
+               style={{ right: isVisible && 0, transition: '0.5s' }}
+            >
+               {list.map((item, index) => (
+                  <Link
+                     key={index}
+                     href={item.url}
+                     onClick={item.title === 'Sign Out' ? handleLogout : null}
+                     className='option'
+                  >
+                     {item.title}
+                     {item.title === 'Sign Out' && <FaSignOutAlt />}
+                  </Link>
+               ))}
+            </DropdownStyles>
+         )}
+      </>
    );
 };
 

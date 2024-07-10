@@ -1,8 +1,7 @@
 'use client';
 import React from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ButtonLinkStyles } from './ButtonLinkStyles';
+import { ButtonLinkContainer, StyledLink } from './ButtonLinkStyles';
 import { locales } from '../Languages/LanguageSwitcher';
 
 const ButtonLink = ({
@@ -10,6 +9,7 @@ const ButtonLink = ({
    url,
    icon,
    currentColor,
+   bgColor,
    textTransform,
    className,
    Aboutblank,
@@ -18,22 +18,20 @@ const ButtonLink = ({
    const locale =
       locales.find((locale) => pathname.includes(locale.code))?.code || 'en';
    return (
-      <>
-         <ButtonLinkStyles
+      <ButtonLinkContainer>
+         <StyledLink
             style={{ textTransform: textTransform }}
-            color={currentColor}
+            currentcolor={currentColor}
             className={className}
+            bgcolor={bgColor}
+            href={!url.includes('https' || 'www') ? `${locale}${url}` : url}
+            locale={pathname}
+            target={Aboutblank ? '_blank' : ''}
          >
-            <Link
-               href={!url.includes('https' || 'www') ? locale + url : url}
-               locale={pathname}
-               target={Aboutblank ? '_blank' : ''}
-            >
-               {icon && icon}
-               {title}
-            </Link>
-         </ButtonLinkStyles>
-      </>
+            {icon && icon}
+            {title}
+         </StyledLink>
+      </ButtonLinkContainer>
    );
 };
 

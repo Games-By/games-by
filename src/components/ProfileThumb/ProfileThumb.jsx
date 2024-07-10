@@ -1,13 +1,15 @@
 'use client';
 import Image from 'next/image';
-import { ProfileThumbStyles } from './ProfileThumbStyles';
+import { ProfileThumbLink, ProfileContainer } from './ProfileThumbStyles';
 import { Link } from '../../../navigation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Dropdown from '../Dropdown/Dropdown';
+import { useLocale } from 'next-intl';
 require('dotenv').config();
 
-const ProfileThumb = ({ isLoggedIn }) => {
+const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
+   const locale = useLocale();
    const [profileImage, setProfileImage] = useState(null);
    const [loading, setLoading] = useState(false);
    const [tokenValid, setTokenValid] = useState(false);
@@ -65,11 +67,16 @@ const ProfileThumb = ({ isLoggedIn }) => {
 
    return (
       <>
-         <Link href={isLoggedIn || tokenValid ? `/profile` : `/login`}>
+         <ProfileContainer>
             {profileImage ? (
-               <ProfileThumbStyles
-                  onMouseEnter={() => setIsDropdown(true)}
-                  onMouseLeave={() => setIsDropdown(false)}
+               <ProfileThumbLink
+                  onMouseEnter={() => {
+                     windowWidth > 850 && setIsDropdown(true);
+                  }}
+                  onMouseLeave={() => {
+                     windowWidth > 850 && setIsDropdown(false);
+                  }}
+                  href={isLoggedIn || tokenValid ? `${locale}/profile` : '/'}
                >
                   <Image
                      src={`data:image/jpeg;base64,${profileImage}`}
@@ -79,9 +86,9 @@ const ProfileThumb = ({ isLoggedIn }) => {
                      quality={100}
                      className='profile-image'
                   />
-               </ProfileThumbStyles>
+               </ProfileThumbLink>
             ) : (
-               <ProfileThumbStyles>
+               <ProfileThumbLink href={`${locale}/login`}>
                   <Image
                      src={'/assets/icons/profile.svg'}
                      alt='profile'
@@ -90,11 +97,13 @@ const ProfileThumb = ({ isLoggedIn }) => {
                      quality={100}
                      className='profile-icon'
                   />
-               </ProfileThumbStyles>
+               </ProfileThumbLink>
             )}
-         </Link>
-         {isDropdown && (
+         </ProfileContainer>
+         {(isDropdown || windowWidth < 850) && (
             <Dropdown
+               windowWidth={windowWidth}
+               isVisible={sideBarVisible}
                list={dropdownOptions}
                onMouseEnter={() => setIsDropdown(true)}
                onMouseLeave={() => setIsDropdown(false)}

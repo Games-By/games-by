@@ -1,5 +1,10 @@
 {
-   "Index": {
-      "title": "Bonjour le monde!"
+   "Banner": {
+      "buy": "Acheter Maintenant",
+      "pre": "Précommande",
+      "add": "Ajouter à la Liste de Souhaits",
+      "remove": "Retirer de la Liste de Souhaits",
+      "coming": "Bientôt Disponible",
+      "avaiable": "Maintenant Disponible"
    }
 }
