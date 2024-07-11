@@ -12,6 +12,7 @@ const Dropdown = ({
 }) => {
    const router = useRouter();
    const pathname = usePathname();
+
    const handleLogout = () => {
       localStorage.removeItem('authToken');
       localStorage.removeItem('tokenExpiration');
@@ -22,48 +23,32 @@ const Dropdown = ({
          router.replace('/').then(() => {
             window.location.reload();
          });
-         return;
+      } else {
+         window.location.reload();
       }
-      window.location.reload();
    };
 
    return (
-      <>
-         {windowWidth > 660 ? (
-            <DropdownStyles
-               onMouseEnter={onMouseEnter}
-               onMouseLeave={onMouseLeave}
+      <DropdownStyles
+         onMouseEnter={onMouseEnter}
+         onMouseLeave={onMouseLeave}
+         style={{
+            right: isVisible && windowWidth < 660 && '-0.1rem',
+            transition: '0.5s',
+         }}
+      >
+         {list.map((item, index) => (
+            <Link
+               key={index}
+               href={item.url}
+               onClick={item.title === 'Sign Out' ? handleLogout : null}
+               className='option'
             >
-               {list.map((item, index) => (
-                  <Link
-                     key={index}
-                     href={item.url}
-                     onClick={item.title === 'Sign Out' ? handleLogout : null}
-                     className='option'
-                  >
-                     {item.title}
-                     {item.title === 'Sign Out' && <FaSignOutAlt />}
-                  </Link>
-               ))}
-            </DropdownStyles>
-         ) : (
-            <DropdownStyles
-               style={{ right: isVisible && '-0.1rem', transition: '0.5s' }}
-            >
-               {list.map((item, index) => (
-                  <Link
-                     key={index}
-                     href={item.url}
-                     onClick={item.title === 'Sign Out' ? handleLogout : null}
-                     className='option'
-                  >
-                     {item.title}
-                     {item.title === 'Sign Out' && <FaSignOutAlt />}
-                  </Link>
-               ))}
-            </DropdownStyles>
-         )}
-      </>
+               {item.title}
+               {item.title === 'Sign Out' && <FaSignOutAlt />}
+            </Link>
+         ))}
+      </DropdownStyles>
    );
 };
 
