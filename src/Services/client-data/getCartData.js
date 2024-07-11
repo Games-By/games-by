@@ -10,6 +10,6 @@ export const getCart = async () => {
       );
       return response.data.cart;
    } else {
-      return 0;
+      return [];
    }
 };

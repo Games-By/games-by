@@ -104,6 +104,7 @@ export const MenuBar = styled.div`
 export const Cart = styled.div`
    margin: 0 1rem;
    position: relative;
+   cursor: pointer;
    .number {
       position: absolute;
       color: rgba(var(--dark));
@@ -129,7 +130,6 @@ export const Cart = styled.div`
    }
    .cart {
       font-size: 3rem;
-      cursor: pointer;
       stroke: rgba(var(--purple-2));
 
       @media screen {
