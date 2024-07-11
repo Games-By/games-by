@@ -1,0 +1,16 @@
+{
+   "dropdownOptions": [
+      {
+         "title": "WishList",
+         "url": "/profile/wishlist"
+      },
+      {
+         "title": "Coupons",
+         "url": "/coupons"
+      },
+      {
+         "title": "Sign Out",
+         "url": "/"
+      }
+   ]
+}

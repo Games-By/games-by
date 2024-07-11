@@ -11,12 +11,15 @@ import SearchMobile from '../SearchMobile';
 import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
 import { IoCartOutline } from 'react-icons/io5';
 import { VscGlobe } from 'react-icons/vsc';
+import Dropdown from '../Dropdown/Dropdown';
+import data from '@/data/menu.json';
+const { dropdownOptions } = data
 
 const Header = ({ isLoggedIn }) => {
    const [translateActive, setTranslateActive] = useState(false);
    const [windowWidth, setWindowWidth] = useState(0);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
-   const [sideBarVisible, setSideBarVisible] = useState(
+   const [menuVisible, setMenuVisible] = useState(
       windowWidth > 660 ? true : false
    );
 
@@ -60,17 +63,20 @@ const Header = ({ isLoggedIn }) => {
                <MagnifyingGlassIcon className={'icon-box'} />
             </div>
          )}
-         <ProfileThumb
-            isLoggedIn={isLoggedIn}
-            sideBarVisible={sideBarVisible}
-            windowWidth={windowWidth}
-         />
+         {windowWidth > 660 && (
+            <ProfileThumb isLoggedIn={isLoggedIn} windowWidth={windowWidth} handle={setMenuVisible}/>
+         )}
          <Cart style={{ right: isLoggedIn && windowWidth <= 660 && '6.5rem' }}>
+            <span className='number'>
+               {localStorage.getItem('cart')
+                  ? localStorage.getItem('cart')
+                  : 0}
+            </span>
             <IoCartOutline className='cart' />
          </Cart>
          {windowWidth < 660 && isLoggedIn && (
-            <MenuBar onClick={() => setSideBarVisible(!sideBarVisible)}>
-               {!sideBarVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
+            <MenuBar onClick={() => setMenuVisible(!menuVisible)}>
+               {!menuVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
             </MenuBar>
          )}
          <Language
@@ -84,6 +90,15 @@ const Header = ({ isLoggedIn }) => {
             <VscGlobe className='globe' />
             {translateActive && <LanguageSwitcher />}
          </Language>
+         {(menuVisible || windowWidth < 660) && (
+            <Dropdown
+               windowWidth={windowWidth}
+               isVisible={menuVisible}
+               list={dropdownOptions}
+               onMouseEnter={() => setMenuVisible(true)}
+               onMouseLeave={() => setMenuVisible(false)}
+            />
+         )}
       </HeaderStyle>
    );
 };

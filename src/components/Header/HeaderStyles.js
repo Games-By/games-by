@@ -24,7 +24,7 @@ export const HeaderStyle = styled.header`
             margin-left: 0;
             width: 6rem;
             height: 4rem;
-            margin: 0 .5rem 0 1rem;
+            margin: 0 0.5rem 0 1rem;
          }
       }
    }
@@ -103,10 +103,35 @@ export const MenuBar = styled.div`
 
 export const Cart = styled.div`
    margin: 0 1rem;
+   position: relative;
+   .number {
+      position: absolute;
+      color: rgba(var(--dark));
+      background-color: rgba(var(--cyan), 0.7);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.3rem;
+      border-radius: 50%;
+      right: -0.5rem;
+      top: -0.5rem;
+      min-width: 1.3rem;
+      min-height: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media screen {
+         @media (max-width: 660px) {
+            font-size: 0.8rem;
+            min-width: 1.1rem;
+            min-height: 1.1rem;
+         }
+      }
+   }
    .cart {
       font-size: 3rem;
       cursor: pointer;
       stroke: rgba(var(--purple-2));
+
       @media screen {
          @media (max-width: 660px) {
             font-size: 2.5rem;
