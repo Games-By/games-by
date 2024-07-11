@@ -9,12 +9,13 @@ export const DropdownStyles = styled.div`
    padding: 1rem 0;
    background-color: rgba(var(--dark));
    position: absolute;
-   top: 8.5rem;
-   right: 6rem;
+   top: 8rem;
+   right: 5rem;
    z-index: 1;
    width: 15rem;
    border-radius: 0 0 2rem 2rem;
    border: 1px solid rgba(var(--purple-1));
+   border-top: none;
    color: rgba(var(--light));
    transition: 0.5s;
    z-index: 2;
@@ -52,12 +53,12 @@ export const DropdownStyles = styled.div`
    }
 
    @media screen {
-      @media (max-width: 850px) {
+      @media (max-width: 660px) {
          width: 70vw;
          max-width: 40rem;
          border-radius: 0 0 0 2rem;
          right: -100%;
-         top: 8rem;
+         top: 6rem;
       }
    }
 `;

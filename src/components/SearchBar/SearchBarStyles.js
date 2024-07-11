@@ -50,7 +50,7 @@ export const SearchBarStyles = styled(motion.div)`
    @media screen {
       @media (max-width: 660px) {
          width: 85%;
-         margin-top: 8rem;
+         margin-top: 6rem;
       }
    }
 `;

@@ -39,7 +39,6 @@ const GlobalStyle = createGlobalStyle`
          padding: 0;
          box-sizing: border-box;
          overflow-x: hidden;
-         overflow-x: hidden;
 
          font-family: var(--reddit-sans), sans-serif;
          color: rgba(var(--light));

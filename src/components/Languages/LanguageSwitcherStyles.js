@@ -9,8 +9,8 @@ export const Switcher = styled.div`
    padding: 1rem 0;
    background-color: rgba(var(--dark));
    position: absolute;
-   right: 1rem;
-   top: 7rem;
+   right: 0;
+   top: 6rem;
    z-index: 1;
    width: 20rem;
    border-radius: 2rem 0 2rem 2rem;
@@ -36,17 +36,20 @@ export const Switcher = styled.div`
    }
    &::before {
       content: '';
-      height: 3rem;
+      height: 4rem;
       width: 20rem;
       background-color: transparent;
       position: fixed;
-      top: 6rem;
+      top: 5rem;
    }
 
    @media screen {
-      @media (max-width: 850px) {
-         right: -6rem;
-         border-radius: 2rem;
+      @media (max-width: 660px) {
+         top: 3.8rem;
+
+         &::before {
+            top: 2rem;
+         }
       }
    }
 `;

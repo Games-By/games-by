@@ -8,12 +8,11 @@ import Dropdown from '../Dropdown/Dropdown';
 import { useLocale } from 'next-intl';
 require('dotenv').config();
 
-const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
+const ProfileThumb = ({ isLoggedIn, windowWidth, handle }) => {
    const locale = useLocale();
    const [profileImage, setProfileImage] = useState(null);
    const [loading, setLoading] = useState(false);
    const [tokenValid, setTokenValid] = useState(false);
-   const [isDropdown, setIsDropdown] = useState(false);
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
@@ -50,31 +49,16 @@ const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
       }
    };
 
-   const dropdownOptions = [
-      {
-         title: 'WishList',
-         url: '/profile/wishlist',
-      },
-      {
-         title: 'Coupons',
-         url: '/coupons',
-      },
-      {
-         title: 'Sign Out',
-         url: '/',
-      },
-   ];
-
    return (
       <>
-         <ProfileContainer>
+         <ProfileContainer style={{ right: (isLoggedIn && windowWidth <= 660) && '11rem'}}>
             {profileImage ? (
                <ProfileThumbLink
                   onMouseEnter={() => {
-                     windowWidth > 850 && setIsDropdown(true);
+                     windowWidth > 660 && handle(true);
                   }}
                   onMouseLeave={() => {
-                     windowWidth > 850 && setIsDropdown(false);
+                     windowWidth > 660 && handle(false);
                   }}
                   href={isLoggedIn || tokenValid ? `${locale}/profile` : '/'}
                >
@@ -100,15 +84,6 @@ const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
                </ProfileThumbLink>
             )}
          </ProfileContainer>
-         {(isDropdown || windowWidth < 850) && (
-            <Dropdown
-               windowWidth={windowWidth}
-               isVisible={sideBarVisible}
-               list={dropdownOptions}
-               onMouseEnter={() => setIsDropdown(true)}
-               onMouseLeave={() => setIsDropdown(false)}
-            />
-         )}
       </>
    );
 };
