@@ -16,7 +16,15 @@ export const HeaderStyle = styled.header`
       @media screen {
          @media (max-width: 850px) {
             margin-left: 0;
-            width: 10rem;
+            width: 6rem;
+            height: 4rem;
+            margin: 0 2rem;
+         }
+         @media (max-width: 660px) {
+            margin-left: 0;
+            width: 6rem;
+            height: 4rem;
+            margin: 0 0.5rem 0 1rem;
          }
       }
    }
@@ -43,25 +51,35 @@ export const HeaderStyle = styled.header`
    @media screen {
       @media (max-width: 660px) {
          justify-content: flex-start;
+         height: 6rem;
       }
    }
 `;
 
 export const Language = styled.div`
-   cursor: pointer;
-   margin: 0 3rem 0 1.5rem;
+   margin-right: 2rem;
    position: relative;
-   height: 5rem;
-   width: 5rem;
    display: flex;
    align-items: center;
    justify-content: center;
 
+   .globe {
+      font-size: 3rem;
+      cursor: pointer;
+      fill: rgba(var(--purple-2));
+      object-fit: contain;
+      @media screen {
+         @media (max-width: 660px) {
+            font-size: 2.3rem;
+         }
+      }
+   }
+
    @media screen {
-      @media (max-width: 850px) {
-         margin: 0 5rem 0 0 ;
-         width: 4rem;
-         height: 4rem;
+      @media (max-width: 660px) {
+         position: absolute;
+         right: 1rem;
+         margin: 0;
       }
    }
 `;
@@ -75,4 +93,56 @@ export const MenuBar = styled.div`
    justify-content: center;
    cursor: pointer;
    z-index: 2;
+
+   @media screen {
+      @media (max-width: 660px) {
+         font-size: 2.5rem;
+      }
+   }
+`;
+
+export const Cart = styled.div`
+   margin: 0 1rem;
+   position: relative;
+   cursor: pointer;
+   .number {
+      position: absolute;
+      color: rgba(var(--dark));
+      background-color: rgba(var(--cyan), 0.7);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.3rem;
+      border-radius: 50%;
+      right: -0.5rem;
+      top: -0.5rem;
+      min-width: 1.3rem;
+      min-height: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media screen {
+         @media (max-width: 660px) {
+            font-size: 0.8rem;
+            min-width: 1.1rem;
+            min-height: 1.1rem;
+         }
+      }
+   }
+   .cart {
+      font-size: 3rem;
+      stroke: rgba(var(--purple-2));
+
+      @media screen {
+         @media (max-width: 660px) {
+            font-size: 2.5rem;
+            margin: 0;
+         }
+      }
+   }
+   @media screen {
+      @media (max-width: 660px) {
+         position: absolute;
+         right: 4rem;
+      }
+   }
 `;

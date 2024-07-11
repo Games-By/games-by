@@ -1,22 +1,28 @@
-'use client';
 import Image from 'next/image';
-import { HeaderStyle, Language, MenuBar } from './HeaderStyles';
+import { Cart, HeaderStyle, Language, MenuBar } from './HeaderStyles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useState } from 'react';
-import { Link } from '../../../navigation';
+import { Link, useRouter } from '../../../navigation';
 import ProfileThumb from '../ProfileThumb/ProfileThumb';
 import SearchBar from '../SearchBar/SearchBar';
 import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 import SearchMobile from '../SearchMobile';
 import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
+import { IoCartOutline } from 'react-icons/io5';
+import { VscGlobe } from 'react-icons/vsc';
+import Dropdown from '../Dropdown/Dropdown';
+import data from '@/data/menu.json';
+import { useCartContext } from '../../contexts/CartContext';
+
+const { dropdownOptions } = data;
 
 const Header = ({ isLoggedIn }) => {
+   const route = useRouter();
    const [translateActive, setTranslateActive] = useState(false);
    const [windowWidth, setWindowWidth] = useState(0);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
-   const [sideBarVisible, setSideBarVisible] = useState(
-      windowWidth > 850 ? true : false
-   );
+   const [menuVisible, setMenuVisible] = useState(windowWidth > 660);
+   const { cartCount, fetchCart } = useCartContext();
 
    useEffect(() => {
       const handleResize = () => {
@@ -24,13 +30,18 @@ const Header = ({ isLoggedIn }) => {
       };
 
       setWindowWidth(window.innerWidth);
-
       window.addEventListener('resize', handleResize);
 
       return () => {
          window.removeEventListener('resize', handleResize);
       };
    }, []);
+
+   useEffect(() => {
+      if (isLoggedIn) {
+         fetchCart();
+      }
+   }, [isLoggedIn, fetchCart]);
 
    return (
       <HeaderStyle>
@@ -51,40 +62,54 @@ const Header = ({ isLoggedIn }) => {
          </Link>
          {windowWidth > 660 && <SearchBar isLoggedIn={isLoggedIn} />}
          {isSearchOpen && windowWidth < 660 && (
-            <SearchMobile onclick={() => setIsSearchOpen(false)} />
+            <SearchMobile onClick={() => setIsSearchOpen(false)} />
          )}
          {windowWidth < 660 && (
             <div className='icon-box' onClick={() => setIsSearchOpen(true)}>
                <MagnifyingGlassIcon className={'icon-box'} />
             </div>
          )}
-         <ProfileThumb
-            isLoggedIn={isLoggedIn}
-            sideBarVisible={sideBarVisible}
-            windowWidth={windowWidth}
-         />
-         {windowWidth < 850 && (
-            <MenuBar onClick={() => setSideBarVisible(!sideBarVisible)}>
-               {!sideBarVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
+         {windowWidth > 660 || !isLoggedIn ? (
+            <ProfileThumb
+               isLoggedIn={isLoggedIn}
+               windowWidth={windowWidth}
+               handle={setMenuVisible}
+            />
+         ) : null}
+         <Cart
+            style={{ right: isLoggedIn && windowWidth <= 660 && '6.5rem' }}
+            onClick={() => {
+               route.push('/cart');
+            }}
+         >
+            <span className='number'>{cartCount || 0}</span>
+            <IoCartOutline className='cart' />
+         </Cart>
+         {windowWidth < 660 && isLoggedIn && (
+            <MenuBar onClick={() => setMenuVisible(!menuVisible)}>
+               {!menuVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
             </MenuBar>
          )}
          <Language
             onMouseEnter={() => setTranslateActive(true)}
             onMouseLeave={() => setTranslateActive(false)}
             onClick={() => {
-               windowWidth > 850 && setTranslateActive(!translateActive);
+               windowWidth > 660 && setTranslateActive(!translateActive);
             }}
+            style={{ right: isLoggedIn && windowWidth <= 660 && '4.5rem' }}
          >
-            <Image
-               src={'/assets/icons/translate.svg'}
-               alt='translate icon'
-               width={25}
-               height={25}
-               quality={100}
-               className='translate-icon'
-            />
+            <VscGlobe className='globe' />
             {translateActive && <LanguageSwitcher />}
          </Language>
+         {(menuVisible || windowWidth < 660) && (
+            <Dropdown
+               windowWidth={windowWidth}
+               isVisible={menuVisible}
+               list={dropdownOptions}
+               onMouseEnter={() => setMenuVisible(true)}
+               onMouseLeave={() => setMenuVisible(false)}
+            />
+         )}
       </HeaderStyle>
    );
 };

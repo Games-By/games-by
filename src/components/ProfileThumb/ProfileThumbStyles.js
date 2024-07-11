@@ -7,14 +7,10 @@ export const ProfileContainer = styled.div`
    align-items: center;
    width: 5rem;
    @media screen {
-      @media (max-width: 850px) {
-         width: 14rem;
-         justify-content: flex-end;
-         margin-right: 0rem;
-      }
       @media (max-width: 660px) {
+         justify-content: flex-end;
          position: absolute;
-         right: 6rem;
+         right: 9rem;
       }
    }
 `;
@@ -40,5 +36,12 @@ export const ProfileThumbLink = styled(Link)`
       fill: rgba(var(--dark));
       stroke: rgba(var(--dark));
       color: rgba(var(--dark));
+   }
+
+   @media screen {
+      @media (max-width: 660px) {
+         width: 4rem;
+         height: 4rem;
+      }
    }
 `;

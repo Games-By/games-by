@@ -1,13 +1,11 @@
 'use client';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Header from '@/components/Header/Header';
 import { useEffect, useState } from 'react';
-import { useRouter } from '../../../navigation';
 import Banners from '@/components/Banner';
 require('dotenv').config();
 
 const Index = () => {
-   const locale = useLocale();
    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
    const checkTokenExpiration = () => {
@@ -25,18 +23,20 @@ const Index = () => {
       return true;
    };
 
-
    useEffect(() => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken && checkTokenExpiration()) {
-         setIsLoggedIn(true);
-      }
+      const initialize = async () => {
+         const authToken = localStorage.getItem('authToken');
+         if (authToken && checkTokenExpiration()) {
+            setIsLoggedIn(true);
+         }
+      };
+      initialize();
    }, []);
 
    return (
       <>
          <Header isLoggedIn={isLoggedIn} />
-         <Banners isLoggedIn={isLoggedIn}/>
+         <Banners isLoggedIn={isLoggedIn} />
          {isLoggedIn ? (
             <div>
                <p>Usuário logado!</p>
@@ -48,6 +48,6 @@ const Index = () => {
          )}
       </>
    );
-}
+};
 
 export default Index;

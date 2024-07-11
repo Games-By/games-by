@@ -1,7 +1,6 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import StyledComponentsRegistry from '@/lib/registry';
 import React from 'react';
+import { getMessages } from 'next-intl/server';
+import AppProviders from './providers';
 import GlobalStyle from '@/Styles/globals';
 
 export default async function LocaleLayout({ children, params: { locale } }) {
@@ -22,12 +21,10 @@ export default async function LocaleLayout({ children, params: { locale } }) {
             />
          </head>
          <body>
-            <NextIntlClientProvider messages={messages}>
-               <StyledComponentsRegistry>
-                  <GlobalStyle />
-                  {children}
-               </StyledComponentsRegistry>
-            </NextIntlClientProvider>
+            <AppProviders messages={messages}>
+               <GlobalStyle />
+               {children}
+            </AppProviders>
          </body>
       </html>
    );
