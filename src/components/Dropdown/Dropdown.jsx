@@ -29,7 +29,7 @@ const Dropdown = ({
 
    return (
       <>
-         {windowWidth > 850 ? (
+         {windowWidth > 660 ? (
             <DropdownStyles
                onMouseEnter={onMouseEnter}
                onMouseLeave={onMouseLeave}
@@ -48,7 +48,7 @@ const Dropdown = ({
             </DropdownStyles>
          ) : (
             <DropdownStyles
-               style={{ right: isVisible && 0, transition: '0.5s' }}
+               style={{ right: isVisible && '-0.1rem', transition: '0.5s' }}
             >
                {list.map((item, index) => (
                   <Link

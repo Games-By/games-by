@@ -67,14 +67,14 @@ const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
 
    return (
       <>
-         <ProfileContainer>
+         <ProfileContainer style={{ right: (isLoggedIn && windowWidth <= 660) && '11rem'}}>
             {profileImage ? (
                <ProfileThumbLink
                   onMouseEnter={() => {
-                     windowWidth > 850 && setIsDropdown(true);
+                     windowWidth > 660 && setIsDropdown(true);
                   }}
                   onMouseLeave={() => {
-                     windowWidth > 850 && setIsDropdown(false);
+                     windowWidth > 660 && setIsDropdown(false);
                   }}
                   href={isLoggedIn || tokenValid ? `${locale}/profile` : '/'}
                >
@@ -100,7 +100,7 @@ const ProfileThumb = ({ isLoggedIn, sideBarVisible, windowWidth }) => {
                </ProfileThumbLink>
             )}
          </ProfileContainer>
-         {(isDropdown || windowWidth < 850) && (
+         {(isDropdown || windowWidth < 660) && (
             <Dropdown
                windowWidth={windowWidth}
                isVisible={sideBarVisible}

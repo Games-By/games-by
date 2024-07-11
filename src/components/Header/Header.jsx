@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { HeaderStyle, Language, MenuBar } from './HeaderStyles';
+import { Cart, HeaderStyle, Language, MenuBar } from './HeaderStyles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useState } from 'react';
 import { Link } from '../../../navigation';
@@ -9,13 +9,15 @@ import SearchBar from '../SearchBar/SearchBar';
 import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 import SearchMobile from '../SearchMobile';
 import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
+import { IoCartOutline } from 'react-icons/io5';
+import { VscGlobe } from 'react-icons/vsc';
 
 const Header = ({ isLoggedIn }) => {
    const [translateActive, setTranslateActive] = useState(false);
    const [windowWidth, setWindowWidth] = useState(0);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
    const [sideBarVisible, setSideBarVisible] = useState(
-      windowWidth > 850 ? true : false
+      windowWidth > 660 ? true : false
    );
 
    useEffect(() => {
@@ -63,7 +65,10 @@ const Header = ({ isLoggedIn }) => {
             sideBarVisible={sideBarVisible}
             windowWidth={windowWidth}
          />
-         {windowWidth < 850 && (
+         <Cart style={{ right: isLoggedIn && windowWidth <= 660 && '6.5rem' }}>
+            <IoCartOutline className='cart' />
+         </Cart>
+         {windowWidth < 660 && isLoggedIn && (
             <MenuBar onClick={() => setSideBarVisible(!sideBarVisible)}>
                {!sideBarVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
             </MenuBar>
@@ -72,17 +77,11 @@ const Header = ({ isLoggedIn }) => {
             onMouseEnter={() => setTranslateActive(true)}
             onMouseLeave={() => setTranslateActive(false)}
             onClick={() => {
-               windowWidth > 850 && setTranslateActive(!translateActive);
+               windowWidth > 660 && setTranslateActive(!translateActive);
             }}
+            style={{ right: isLoggedIn && windowWidth <= 660 && '4.5rem' }}
          >
-            <Image
-               src={'/assets/icons/translate.svg'}
-               alt='translate icon'
-               width={25}
-               height={25}
-               quality={100}
-               className='translate-icon'
-            />
+            <VscGlobe className='globe' />
             {translateActive && <LanguageSwitcher />}
          </Language>
       </HeaderStyle>
