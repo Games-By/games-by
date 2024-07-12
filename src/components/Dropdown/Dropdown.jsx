@@ -33,7 +33,7 @@ const Dropdown = ({
          onMouseEnter={onMouseEnter}
          onMouseLeave={onMouseLeave}
          style={{
-            right: isVisible && windowWidth < 660 && '-0.1rem',
+            width: isVisible && windowWidth < 660 && '70%',
             transition: '0.5s',
          }}
       >

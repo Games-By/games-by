@@ -57,8 +57,15 @@ export const DropdownStyles = styled.div`
          width: 70vw;
          max-width: 40rem;
          border-radius: 0 0 0 2rem;
-         right: -100%;
-         top: 6rem;
+         right: 0;
+         border-right: none;
+         top: 5.9rem;
+         width: 0;
+
+         &::before {
+            display: none;
+            background-color: red;
+         }
       }
    }
 `;
