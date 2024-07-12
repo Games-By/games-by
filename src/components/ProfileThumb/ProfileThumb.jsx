@@ -51,37 +51,43 @@ const ProfileThumb = ({ isLoggedIn, windowWidth, handle }) => {
 
    return (
       <>
-         <ProfileContainer style={{ right: (isLoggedIn && windowWidth <= 660) && '11rem'}}>
+         <ProfileContainer
+            style={{ right: isLoggedIn && windowWidth <= 660 && '11rem' }}
+         >
             {profileImage ? (
-               <ProfileThumbLink
+               <Link
                   onMouseEnter={() => {
                      windowWidth > 660 && handle(true);
                   }}
                   onMouseLeave={() => {
                      windowWidth > 660 && handle(false);
                   }}
-                  href={isLoggedIn || tokenValid ? `${locale}/profile` : '/'}
+                  href={isLoggedIn || tokenValid ? `/profile` : '/'}
                >
-                  <Image
-                     src={`data:image/jpeg;base64,${profileImage}`}
-                     alt='profile'
-                     width={50}
-                     height={50}
-                     quality={100}
-                     className='profile-image'
-                  />
-               </ProfileThumbLink>
+                  <ProfileThumbLink>
+                     <Image
+                        src={`data:image/jpeg;base64,${profileImage}`}
+                        alt='profile'
+                        width={50}
+                        height={50}
+                        quality={100}
+                        className='profile-image'
+                     />
+                  </ProfileThumbLink>
+               </Link>
             ) : (
-               <ProfileThumbLink href={`${locale}/login`}>
-                  <Image
-                     src={'/assets/icons/profile.svg'}
-                     alt='profile'
-                     width={25}
-                     height={25}
-                     quality={100}
-                     className='profile-icon'
-                  />
-               </ProfileThumbLink>
+               <Link href={`/login`}>
+                  <ProfileThumbLink>
+                     <Image
+                        src={'/assets/icons/profile.svg'}
+                        alt='profile'
+                        width={25}
+                        height={25}
+                        quality={100}
+                        className='profile-icon'
+                     />
+                  </ProfileThumbLink>
+               </Link>
             )}
          </ProfileContainer>
       </>
