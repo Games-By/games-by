@@ -91,7 +91,7 @@ const LoginPage = () => {
                setPasswordError('The password is incorrect!');
             }
          } else {
-            console.error('Error when logging in');
+            console.error('Error when logging in', error);
          }
       } finally {
          setLoading(false);
