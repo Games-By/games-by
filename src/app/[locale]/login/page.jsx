@@ -53,11 +53,14 @@ const LoginPage = () => {
       }
    };
    const handleLogin = async () => {
+      const lowercaseEmail = loginData.email.toLowerCase();
+      const password = loginData.password;
+      const dataToSend = { email: lowercaseEmail, password: password };
       try {
          setLoading(true);
          const response = await axios.post(
             `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/login`,
-            loginData
+            dataToSend
          );
          const expirationTime = keepLoggedIn
             ? 30 * 24 * 60 * 60 * 1000
@@ -65,7 +68,7 @@ const LoginPage = () => {
          const expirationDate = new Date(new Date().getTime() + expirationTime);
          localStorage.setItem('tokenExpiration', expirationDate);
          localStorage.setItem('authToken', response.data.token);
-         localStorage.setItem('userEmail', loginData.email);
+         localStorage.setItem('userEmail', lowercaseEmail);
          await getUser(loginData.email);
          router.replace('/');
       } catch (error) {
