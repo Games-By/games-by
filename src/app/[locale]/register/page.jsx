@@ -95,6 +95,7 @@ const Register = () => {
 
    return (
       <>
+         <title>Register | Games By</title>
          <RegisterStyles>
             <RegisterForm onSubmit={register}>
                <RegisterPersonalData

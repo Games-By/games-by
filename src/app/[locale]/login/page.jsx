@@ -102,6 +102,7 @@ const LoginPage = () => {
    };
    return (
       <>
+         <title>Login | Games By</title>
          <LoginPageStyles>
             <AdvertisingSpace />
             <LoginBox>

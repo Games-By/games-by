@@ -1,40 +1,36 @@
 'use client';
-import GlobalStyle from '@/Styles/globals';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header/Header';
-import { useRouter } from '../../../../navigation.ts';
+import Profile from '@/components/Profile';
 
-const Profile = () => {
-   const router = useRouter();
-
-   const VerifyLogin = async () => {
-      const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-         router.replace('/');
-      }
-   };
-
-   const handleLogout = () => {
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('tokenExpiration');
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('user');
-
-      router.replace('/login');
-   };
+const ProfilePage = () => {
+   const [user, setUser] = useState({});
 
    useEffect(() => {
-      VerifyLogin()
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      if (storedUser) {
+         setUser(storedUser);
+      }
    }, []);
 
    return (
       <>
-         <GlobalStyle />
+         <title>
+            {user
+               ? `Profile | ${user.name ? user.name : 'Loading...'}`
+               : 'Profile | Games By'}
+         </title>
          <Header />
-         <h1>Profile</h1>
-         <button onClick={handleLogout}>Logout</button>
+         <Profile />
+         <div>
+            {user ? (
+               <p>User data: {JSON.stringify(user)}</p>
+            ) : (
+               <p>Loading user data...</p>
+            )}
+         </div>
       </>
    );
 };
 
-export default Profile;
+export default ProfilePage;

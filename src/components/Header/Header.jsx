@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image';
 import { Cart, HeaderStyle, Language, MenuBar } from './HeaderStyles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';

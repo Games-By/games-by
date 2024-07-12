@@ -1,15 +1,13 @@
-'use client'
+'use client';
 import React, { useEffect, useState } from 'react';
-import GlobalStyle from '@/Styles/globals';
 import Header from '@/components/Header/Header';
-import { useTranslations } from 'next-intl';
-import { getGameById } from '@/Services/games-service/getGames';
+import Game from '@/components/Game';
 import { debounce } from '@/utils/debounce';
+import { getGameById } from '@/Services/games-service/getGames';
 
 const GamePage = () => {
-   const t = useTranslations('Index');
-   const [game, setGame] = useState({})
-   const [  isLoading, setIsLoading] = useState(false)
+   const [game, setGame] = useState({});
+   const [isLoading, setIsLoading] = useState(false);
 
    const getGame = async () => {
       const id = localStorage.getItem('GameId');
@@ -17,7 +15,7 @@ const GamePage = () => {
          try {
             setIsLoading(true);
             const gameData = await getGameById(id);
-            setGame(gameData)
+            setGame(gameData);
             setIsLoading(false);
          } catch (error) {
             console.error('Error fetching game:', error);
@@ -30,14 +28,20 @@ const GamePage = () => {
 
    useEffect(() => {
       debouncedGetGame();
-   }, []);
-
+      const storedGame = JSON.parse(localStorage.getItem('Game'));
+      if (storedGame) {
+         setGame(storedGame);
+      }
+   }, [setGame]);
    return (
       <>
-         <GlobalStyle />
+         <title>
+            {game
+               ? `Game | ${game.name ? game.name : 'Loading...'}`
+               : 'Game | Games By'}
+         </title>
          <Header />
-         <h1>GamePage</h1>
-         {game && !isLoading ? <h2>{game.name}</h2> : <p>loading...</p>}
+         <Game game={game} isLoading={isLoading} />
       </>
    );
 };
