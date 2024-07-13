@@ -35,6 +35,7 @@ const Index = () => {
 
    return (
       <>
+         <title>Home | Games By</title>
          <Header isLoggedIn={isLoggedIn} />
          <Banners isLoggedIn={isLoggedIn} />
          {isLoggedIn ? (

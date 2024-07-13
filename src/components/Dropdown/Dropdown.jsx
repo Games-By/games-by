@@ -2,6 +2,7 @@ import { Link } from '../../../navigation';
 import { DropdownStyles } from './DropdownStyles';
 import { useRouter, usePathname } from '../../../navigation';
 import { FaSignOutAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Dropdown = ({
    list,
@@ -28,17 +29,36 @@ const Dropdown = ({
       }
    };
 
+   const dropdownVariants = {
+      initial:
+         windowWidth < 660 && isVisible
+            ? { opacity: 0, width: 0 }
+            : { opacity: 0, height: 0 },
+      animate:
+         windowWidth < 660 && isVisible
+            ? { opacity: 1, width: '50%' }
+            : { opacity: 1, height: 'auto' },
+      exit:
+         windowWidth < 660 && isVisible
+            ? { opacity: 0, width: 0 }
+            : { opacity: 0, height: 0 },
+   };
+   const MotionLink = motion(Link);
    return (
       <DropdownStyles
+         initial={dropdownVariants.initial}
+         animate={dropdownVariants.animate}
+         exit={dropdownVariants.exit}
+         transition={{ duration: 0.3 }}
          onMouseEnter={onMouseEnter}
          onMouseLeave={onMouseLeave}
-         style={{
-            right: isVisible && windowWidth < 660 && '-0.1rem',
-            transition: '0.5s',
-         }}
       >
          {list.map((item, index) => (
-            <Link
+            <MotionLink
+               initial={{ y: 0, opacity: 0 }}
+               animate={{ y: 0, opacity: 1 }}
+               exit={{ y: 0, opacity: 0 }}
+               transition={{ duration: 0.1, delay: 0.2 }}
                key={index}
                href={item.url}
                onClick={item.title === 'Sign Out' ? handleLogout : null}
@@ -46,7 +66,7 @@ const Dropdown = ({
             >
                {item.title}
                {item.title === 'Sign Out' && <FaSignOutAlt />}
-            </Link>
+            </MotionLink>
          ))}
       </DropdownStyles>
    );
