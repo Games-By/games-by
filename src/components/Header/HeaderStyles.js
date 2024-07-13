@@ -69,7 +69,7 @@ export const Language = styled.div`
       cursor: pointer;
       fill: rgba(var(--purple-2));
       object-fit: contain;
-      z-index: 3;
+      z-index: 5;
       @media screen {
          @media (max-width: 660px) {
             font-size: 2.3rem;
@@ -94,7 +94,7 @@ export const MenuBar = styled.div`
    align-items: center;
    justify-content: center;
    cursor: pointer;
-   z-index: 3;
+   z-index: 5;
 
    @media screen {
       @media (max-width: 660px) {
@@ -106,6 +106,7 @@ export const MenuBar = styled.div`
 export const Cart = styled.div`
    margin: 0 1rem;
    position: relative;
+   z-index: 5;
    cursor: pointer;
    .number {
       position: absolute;
