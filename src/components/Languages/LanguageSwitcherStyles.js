@@ -79,8 +79,9 @@ export const Switcher = styled(motion.div)`
          right: -3rem;
 
          &::before {
-            top: 2rem;
-            width: 15rem;
+            top: -4rem;
+            height: 4.5rem;
+            right: 1rem;
          }
       }
    }
