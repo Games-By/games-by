@@ -2,13 +2,13 @@ import { IoIosClose } from 'react-icons/io';
 import SearchBar from '../SearchBar/SearchBar';
 import { SearchMobileContainer } from './SearchMobileStyles';
 
-const SearchMobile = ({ onclick }) => {
+const SearchMobile = ({ onClick }) => {
    const handleSearchBarClick = (e) => {
       e.stopPropagation();
    };
    return (
       <>
-         <SearchMobileContainer onClick={onclick}>
+         <SearchMobileContainer onClick={onClick}>
             <SearchBar onclick={handleSearchBarClick} autoFocus={true} />
          </SearchMobileContainer>
       </>
