@@ -1,54 +1,87 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Switcher = styled.div`
+export const Switcher = styled(motion.div)`
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   gap: 1.5rem;
-   padding: 1rem 0;
-   background-color: rgba(var(--dark));
+   gap: 0.5rem;
+   padding: 1rem 0 2rem;
+   background-color: rgba(var(--dark), 0.9);
+   backdrop-filter: blur(10px);
    position: absolute;
-   right: 0;
-   top: 6rem;
+   right: -1rem;
+   top: 5.5rem;
    z-index: 1;
    width: 20rem;
-   border-radius: 2rem 0 2rem 2rem;
-   border: 1px solid rgba(var(--purple-1));
+   border-radius: 0 0 2rem 2rem;
+   border: 1px solid rgba(var(--cyan));
+   border-top: none;
    color: rgba(var(--light));
-   transition: 0.5s;
    z-index: 2;
 
    .language {
       text-align: center;
-      width: 10rem;
+      width: 100%;
       margin: 0 auto;
       color: rgba(var(--light));
       font-size: 1.5rem;
+      font-weight: 300;
+      white-space: nowrap;
+      position: relative;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0.6rem;
+      letter-spacing: 1px;
 
       &:hover {
-         color: rgba(var(--purple-2));
+         color: rgba(var(--cyan), 0.8);
+      }
+
+      &::after {
+         content: '';
+         height: 1px;
+         width: 80%;
+         background-color: rgba(var(--light));
+         margin: 0 auto;
+         position: absolute;
+         bottom: 0;
+      }
+
+      &:nth-last-child(1) {
+         padding-bottom: 0;
+         &::after {
+            display: none;
+         }
       }
    }
    .active {
-      color: rgba(var(--purple-1));
+      color: rgba(var(--cyan));
       text-decoration: underline;
+      font-weight: 500;
    }
    &::before {
       content: '';
-      height: 4rem;
-      width: 20rem;
-      background-color: transparent;
-      position: fixed;
-      top: 5rem;
+      height: 7rem;
+      width: 6rem;
+      position: absolute;
+      top: -6.5rem;
+      right: -0.5px;
+      z-index: 2;
    }
 
    @media screen {
       @media (max-width: 660px) {
-         top: 3.8rem;
+         top: 4.1rem;
+         right: -3rem;
 
          &::before {
-            top: 2rem;
+            top: -4rem;
+            height: 4.5rem;
+            right: 1rem;
          }
       }
    }

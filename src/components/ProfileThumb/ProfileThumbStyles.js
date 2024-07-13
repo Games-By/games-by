@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
 export const ProfileContainer = styled.div`
@@ -15,7 +14,7 @@ export const ProfileContainer = styled.div`
    }
 `;
 
-export const ProfileThumbLink = styled(Link)`
+export const ProfileThumbLink = styled.div`
    cursor: pointer;
    height: 5rem;
    width: 5rem;
