@@ -57,10 +57,10 @@ export const SearchBarStyles = styled(motion.div)`
 
 export const SearchBox = styled(motion.ul)`
    width: 85%;
-   min-width: 40rem;
+   min-width: 35rem;
    position: absolute;
    right: 0;
-   left: 2rem;
+   left: 1rem;
    top: 90%;
    padding: 1rem 0.5rem;
    border-radius: 1rem;
