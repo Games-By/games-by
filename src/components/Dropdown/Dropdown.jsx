@@ -46,31 +46,33 @@ const Dropdown = ({
    };
    const MotionLink = motion(Link);
    return (
-      <DropdownStyles
-         initial={dropdownVariants.initial}
-         animate={dropdownVariants.animate}
-         exit={dropdownVariants.exit}
-         transition={{ duration: 0.3 }}
-         onMouseEnter={windowWidth > 660 && onMouseEnter}
-         onMouseLeave={windowWidth > 660 && onMouseLeave}
-         onClick={windowWidth <= 660 && onClick}
-      >
-         {list.map((item, index) => (
-            <MotionLink
-               initial={{ y: 0, opacity: 0}}
-               animate={{ y: 0, opacity: 1}}
-               exit={{ y: 0, opacity: 0 }}
-               transition={{ duration: 0.1, delay: 0.2 }}
-               key={index}
-               href={item.url}
-               onClick={item.title === 'Sign Out' ? handleLogout : null}
-               className='option'
-            >
-               {item.title}
-               {item.title === 'Sign Out' && <FaSignOutAlt />}
-            </MotionLink>
-         ))}
-      </DropdownStyles>
+      isVisible && (
+         <DropdownStyles
+            initial={dropdownVariants.initial}
+            animate={dropdownVariants.animate}
+            exit={dropdownVariants.exit}
+            transition={{ duration: 0.3 }}
+            onMouseEnter={windowWidth > 660 && onMouseEnter}
+            onMouseLeave={windowWidth > 660 && onMouseLeave}
+            onClick={windowWidth <= 660 && onClick}
+         >
+            {list.map((item, index) => (
+               <MotionLink
+                  initial={{ y: 0, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 0, opacity: 0 }}
+                  transition={{ duration: 0.1, delay: 0.2 }}
+                  key={index}
+                  href={item.url}
+                  onClick={item.title === 'Sign Out' ? handleLogout : null}
+                  className='option'
+               >
+                  {item.title}
+                  {item.title === 'Sign Out' && <FaSignOutAlt />}
+               </MotionLink>
+            ))}
+         </DropdownStyles>
+      )
    );
 };
 
