@@ -7,6 +7,7 @@ export const HeaderStyle = styled.header`
    display: flex;
    align-items: center;
    justify-content: space-between;
+   overflow: hidden;
 
    .logo {
       object-fit: contain;
@@ -68,6 +69,7 @@ export const Language = styled.div`
       cursor: pointer;
       fill: rgba(var(--purple-2));
       object-fit: contain;
+      z-index: 3;
       @media screen {
          @media (max-width: 660px) {
             font-size: 2.3rem;
@@ -92,7 +94,7 @@ export const MenuBar = styled.div`
    align-items: center;
    justify-content: center;
    cursor: pointer;
-   z-index: 2;
+   z-index: 3;
 
    @media screen {
       @media (max-width: 660px) {
