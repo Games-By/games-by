@@ -109,6 +109,7 @@ const Header = ({ isLoggedIn }) => {
                list={dropdownOptions}
                onMouseEnter={() => setMenuVisible(true)}
                onMouseLeave={() => setMenuVisible(false)}
+               onClick={() => setMenuVisible(!menuVisible)}
             />
          )}
       </HeaderStyle>
