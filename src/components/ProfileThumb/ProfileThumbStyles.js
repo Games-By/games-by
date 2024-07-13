@@ -5,6 +5,7 @@ export const ProfileContainer = styled.div`
    justify-content: center;
    align-items: center;
    width: 5rem;
+   z-index: 5;
    @media screen {
       @media (max-width: 660px) {
          justify-content: flex-end;
