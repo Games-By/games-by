@@ -8,7 +8,8 @@ export const DropdownStyles = styled(motion.div)`
    align-items: center;
    gap: 1.5rem;
    padding: 1rem 0 2rem;
-   background-color: rgba(var(--dark), .9);
+   background-color: rgba(var(--dark), 0.9);
+   backdrop-filter: blur(10px);
    position: absolute;
    top: 8rem;
    right: 5rem;
@@ -24,10 +25,21 @@ export const DropdownStyles = styled(motion.div)`
    &::before {
       content: '';
       height: 4rem;
-      width: 20rem;
+      width: 90%;
+      left: 0;
       background-color: transparent;
       position: fixed;
-      top: 5rem;
+      top: -4rem;
+
+      @media screen {
+         @media (max-width: 660px) {
+            left: auto;
+            right: 0;
+            top: -5rem;
+            height: 5rem;
+            width: 5rem;
+         }
+      }
    }
 
    .option {
@@ -45,8 +57,8 @@ export const DropdownStyles = styled(motion.div)`
 
       svg {
          fill: rgba(var(--light));
-         margin-left: .5rem;
-         padding-left: .5rem;
+         margin-left: 0.5rem;
+         padding-left: 0.5rem;
          width: 1.8rem;
          border-left: 1px solid rgba(var(--light));
       }
@@ -61,6 +73,7 @@ export const DropdownStyles = styled(motion.div)`
 
    @media screen {
       @media (max-width: 660px) {
+         min-width: 0;
          width: 0;
          max-width: 40rem;
          border-radius: 0 0 0 2rem;
@@ -68,9 +81,8 @@ export const DropdownStyles = styled(motion.div)`
          border-right: none;
          top: 6rem;
 
-         &::before {
-            display: none;
-            background-color: red;
+         .option {
+            width: auto;
          }
       }
    }

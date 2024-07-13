@@ -9,6 +9,7 @@ export const Switcher = styled(motion.div)`
    gap: 0.5rem;
    padding: 1rem 0 2rem;
    background-color: rgba(var(--dark), 0.9);
+   backdrop-filter: blur(10px);
    position: absolute;
    right: -1rem;
    top: 5.5rem;
@@ -64,11 +65,12 @@ export const Switcher = styled(motion.div)`
    }
    &::before {
       content: '';
-      height: 4rem;
-      width: 20rem;
-      background-color: transparent;
-      position: fixed;
-      top: 5rem;
+      height: 7rem;
+      width: 6rem;
+      position: absolute;
+      top: -6.5rem;
+      right: -0.5px;
+      z-index: 2;
    }
 
    @media screen {
