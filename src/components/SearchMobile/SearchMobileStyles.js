@@ -7,6 +7,6 @@ export const SearchMobileContainer = styled.div`
    background-color: rgba(var(--dark), 0.9);
    left: 0;
    bottom: 0;
-   z-index: 5;
+   z-index: 10;
    overflow: hidden;
 `;
