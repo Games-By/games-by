@@ -7,7 +7,6 @@ export const getGames = async () => {
          `${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/games`
       );
       const games = response.data;
-      console.log(games)
       return games;
    } catch (error) {
       console.error('Error fetching the game:', error);

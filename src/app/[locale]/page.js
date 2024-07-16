@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import Header from '@/components/Header/Header';
 import { useEffect, useState } from 'react';
 import Banners from '@/components/Banner';
+import Releases from '@/components/Releases';
 require('dotenv').config();
 
 const Index = () => {
@@ -47,6 +48,7 @@ const Index = () => {
                <p>Você precisa estar logado para acessar esta página.</p>
             </div>
          )}
+         <Releases />
       </>
    );
 };
