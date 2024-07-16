@@ -5,8 +5,16 @@ import ButtonLink from '../ButtonLink/ButtonLink';
 import Button from '../Button/Button';
 import { FaPlus } from 'react-icons/fa';
 
-const VerticalCard = ({discount, code, price, publisher, year, name, gender}) => {
-
+const VerticalCard = ({
+   discount,
+   code,
+   price,
+   publisher,
+   year,
+   name,
+   gender,
+   cover,
+}) => {
    return (
       <>
          <VarticalCardStyles>
@@ -16,7 +24,9 @@ const VerticalCard = ({discount, code, price, publisher, year, name, gender}) =>
                style={{ objectFit: 'cover' }}
                alt='teste'
                src={
-                  'https://i.pinimg.com/originals/ec/f4/04/ecf404c4cded91e164f3133c64d74e77.jpg'
+                  cover
+                     ? cover
+                     : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
                }
                quality={100}
                className='cover'
@@ -24,7 +34,9 @@ const VerticalCard = ({discount, code, price, publisher, year, name, gender}) =>
             <div className='infos'>
                <h3 className='name'>{name ? name : null}</h3>
                <span className='gender'>{gender ? gender : null}</span>
-               <div className="publisher-year">{publisher ? publisher : null}, {year ? year : null}</div>
+               <div className='publisher-year'>
+                  {publisher ? publisher : null}, {year ? year : null}
+               </div>
                <div className='price'>
                   {discount ? (
                      <DiscountPrice
