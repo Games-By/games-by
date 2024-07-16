@@ -1,6 +1,20 @@
 import axios from 'axios';
 require('dotenv').config();
 
+export const getGames = async () => {
+   try {
+      const response = await axios.get(
+         `${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/games`
+      );
+      const games = response.data;
+      console.log(games)
+      return games;
+   } catch (error) {
+      console.error('Error fetching the game:', error);
+      return [];
+   }
+};
+
 export const getGamesByName = async (name) => {
    if (name) {
       try {
@@ -39,7 +53,7 @@ export const getGameById = async (id) => {
       try {
          const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/game/id/${id}`);
          const game = response.data;
-         return game
+         return game;
       } catch (error) {
          console.error('Error fetching the game:', error);
          return [];
