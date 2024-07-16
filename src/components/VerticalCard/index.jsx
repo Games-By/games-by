@@ -12,7 +12,7 @@ const VerticalCard = ({
    publisher,
    year,
    name,
-   gender,
+   genre,
    cover,
 }) => {
    return (
@@ -33,7 +33,7 @@ const VerticalCard = ({
             />
             <div className='infos'>
                <h3 className='name'>{name ? name : null}</h3>
-               <span className='gender'>{gender ? gender : null}</span>
+               <span className='genre'>{genre ? genre : null}</span>
                <div className='publisher-year'>
                   {publisher ? publisher : null}, {year ? year : null}
                </div>

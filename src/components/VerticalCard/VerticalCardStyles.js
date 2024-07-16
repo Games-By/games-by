@@ -32,7 +32,7 @@ export const VarticalCardStyles = styled.div`
          color: rgba(var(--purple-2), 0.8);
          margin-left: 0.3rem;
       }
-      .gender {
+      .genre {
          font-size: 1.5rem;
          letter-spacing: 2px;
          color: rgba(var(--cyan), 0.5);
