@@ -3,7 +3,7 @@ import { VarticalCardStyles } from './VerticalCardStyles';
 import DiscountPrice from '../DiscountPrice';
 import ButtonLink from '../ButtonLink/ButtonLink';
 import Button from '../Button/Button';
-import { FaPlus } from 'react-icons/fa';
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 
 const VerticalCard = ({
    discount,
@@ -40,26 +40,27 @@ const VerticalCard = ({
                <div className='price'>
                   {discount ? (
                      <DiscountPrice
-                        currencyCode={'R$'}
-                        price={discount}
+                        currencyCode={code}
+                        price={((price / 100) * discount).toFixed(2)}
                         classname={'discount'}
                      />
                   ) : (
-                     <div style={{ height: '18px' }}></div>
+                     <div style={{ height: '22px' }}></div>
                   )}
-                  <span className='code'>{code ? code : 'R$'}</span>
-                  <span className='value'>{price ? price : null}</span>
+                  <div className='amount'>
+                     <span className='code'>{code ? code : 'R$'}</span>
+                     <span className='value'>{price ? price : null}</span>
+                  </div>
                </div>
 
                <div className='buttons'>
                   <Button
-                     icon={<FaPlus style={{ width: '1.4rem' }} />}
-                     title='Lista de desejos'
+                     icon={<MdFavoriteBorder style={{ width: '2.1rem' }} />}
                      url={'/'}
                      className={'wish-button'}
                      Aboutblank={false}
                      currentColor={'rgba(var(--purple-2))'}
-                     textTransform={'uppercase'}
+                     hoverColor={'rgba(var(--cyan))'}
                   />
                   <ButtonLink
                      title='Comprar agora'

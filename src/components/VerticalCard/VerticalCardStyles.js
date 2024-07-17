@@ -41,33 +41,40 @@ export const VarticalCardStyles = styled.div`
       .price {
          color: rgba(var(--cyan));
          margin: 1rem 0;
-         text-align: center;
-         font-size: 2.3rem;
+         text-align: right;
+         font-size: 3.5rem;
          font-weight: 600;
-         height: 4.8rem;
-
+         min-height: 4.8rem;
+         display: flex;
+         flex-direction: column;
+         align-items: flex-end;
          .discount {
-            margin: 0 auto;
-         }
-         .code {
-            margin-right: 0.5rem;
-            font-size: 1.6rem;
-         }
-         .value {
+            font-size: 1.5rem;
+            margin: 0;
             letter-spacing: 1px;
+         }
+
+         .amount {
+            .code {
+               margin-right: 0.5rem;
+               font-size: 1.6rem;
+            }
+            .value {
+               letter-spacing: 1px;
+            }
          }
       }
    }
 
    .buttons {
       display: flex;
-      align-items: center;
-      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
       gap: 1rem;
       .wish-button {
-         font-size: 1rem;
          font-weight: 500;
-         padding: 0.5rem 1rem;
+         padding: 0.7rem;
+         border-radius: 50%;
          margin: 0;
          white-space: nowrap;
          justify-content: space-between;

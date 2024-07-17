@@ -21,7 +21,7 @@ const Releases = () => {
       <>
          <ReleaseStyles>
             {releases.length > 0 &&
-               releases.slice(0, 4).map((release, index) => (
+               releases.slice(0, 4).map((release) => (
                   <VerticalCard
                      name={release.name}
                      cover={release.images.coverImage}
