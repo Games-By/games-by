@@ -7,16 +7,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { getAllBanners } from '@/Services/games-service/getBanners';
 import ButtonLink from '../ButtonLink/ButtonLink';
-import { IoIosAdd } from 'react-icons/io';
-import { FaCheck } from 'react-icons/fa';
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import Button from '../Button/Button';
 import { getStarIcons } from '@/utils/formatRating';
-import { Slide, ToastContainer, toast } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getWishlist } from '@/Services/client-data/getWishlist';
 import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
-import { debounce } from '@/utils/debounce';
 import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
+import { debounce } from '@/utils/debounce';
 import { useLocale, useTranslations } from 'next-intl';
 
 const Banners = ({ isLoggedIn }) => {
@@ -25,16 +24,15 @@ const Banners = ({ isLoggedIn }) => {
    const [banners, setBanners] = useState([]);
    const [localWishlist, setLocalWishlist] = useState([]);
    const [gameUpdated, setGameUpdated] = useState('');
-   const [isClicking, setIsClicking] = useState(false);
 
-   const getBanners = async () => {
+   const getBanners = useCallback(async () => {
       const response = await getAllBanners();
       const mixedBanners = [
          ...response.discountBanners,
          ...response.launchBanners,
       ];
       setBanners(mixedBanners);
-   };
+   }, []);
 
    const futureRelease = (date) => {
       const releaseDate = new Date(date);
@@ -42,68 +40,18 @@ const Banners = ({ isLoggedIn }) => {
       return releaseDate > currentDate;
    };
 
-   const fetchWishlist = async () => {
-      if (isLoggedIn) {
-         try {
-            const wishList = await getWishlist();
-            setLocalWishlist(wishList.map((item) => item.name));
-         } catch (error) {
-            console.error('Error fetching wishlist:', error);
-         }
+   const fetchWishlist = useCallback(() => {
+      try {
+         const wishList = JSON.parse(localStorage.getItem('wishlist')) || [];
+         setLocalWishlist(wishList.map((item) => item.name));
+      } catch (error) {
+         console.error('Error fetching wishlist:', error);
       }
-   };
-
-   const debouncedGetBanners = debounce(getBanners, 500);
-   const debouncedFetchWishlist = debounce(fetchWishlist, 500);
+   }, []);
 
    const handleWishlistClick = useCallback(
       async (gameTitle) => {
-         if (isLoggedIn) {
-            try {
-               if (!localWishlist.includes(gameTitle) && !isClicking) {
-                  setIsClicking(true)
-                  setLocalWishlist((prev) => [...prev, gameTitle]);
-                  await addGameToWishlist(gameTitle);
-                  toast('Game added to wish list.', {
-                     position: 'top-right',
-                     autoClose: 3000,
-                     hideProgressBar: false,
-                     closeOnClick: true,
-                     pauseOnHover: false,
-                     draggable: true,
-                     progress: undefined,
-                     theme: 'dark',
-                     transition: Slide,
-                  });
-               } else if (localWishlist.includes(gameTitle) && !isClicking) {
-                  setIsClicking(true)
-                  setLocalWishlist((prev) =>
-                     prev.filter((title) => title !== gameTitle)
-                  );
-                  await removeGameFromWishlist(gameTitle);
-                  toast('Game removed from wish list.', {
-                     position: 'top-right',
-                     autoClose: 3000,
-                     hideProgressBar: false,
-                     closeOnClick: true,
-                     pauseOnHover: false,
-                     draggable: true,
-                     progress: undefined,
-                     theme: 'dark',
-                     transition: Slide,
-                  });
-               }
-               setGameUpdated(gameTitle);
-               debouncedFetchWishlist();
-            } catch (error) {
-               console.error(
-                  'Error adding or removing game to wishlist:',
-                  error
-               );
-            } finally {
-               setIsClicking(false);
-            }
-         } else {
+         if (!isLoggedIn) {
             toast('You need to log in to add games to your wishlist!', {
                position: 'top-right',
                autoClose: 3000,
@@ -115,23 +63,62 @@ const Banners = ({ isLoggedIn }) => {
                theme: 'dark',
                transition: Slide,
             });
+            return;
+         }
+
+         try {
+            if (!localWishlist.includes(gameTitle)) {
+               setLocalWishlist((prev) => [...prev, gameTitle]);
+               await addGameToWishlist(gameTitle);
+               toast(`${gameTitle} Added to wish list.`, {
+                  position: 'top-right',
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                  theme: 'dark',
+                  transition: Slide,
+               });
+            } else {
+               setLocalWishlist((prev) =>
+                  prev.filter((title) => title !== gameTitle)
+               );
+               await removeGameFromWishlist(gameTitle);
+               toast(`${gameTitle} removed from your wish list.`, {
+                  position: 'top-right',
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                  theme: 'dark',
+                  transition: Slide,
+               });
+            }
+            const wishList = await getWishlist();
+            localStorage.setItem('wishlist', JSON.stringify(wishList));
+         } catch (error) {
+            console.error('Error adding or removing game to wishlist:', error);
+         } finally {
+            setGameUpdated(gameTitle);
          }
       },
-      [isLoggedIn, localWishlist, debouncedFetchWishlist]
+      [isLoggedIn, localWishlist]
    );
 
-   const onWishlistClick = (gameTitle) => {
-      if (!isClicking) {
-         handleWishlistClick(gameTitle);
-      }
-   };
+   const debouncedGetBanners = useCallback(debounce(getBanners, 500), [
+      getBanners,
+   ]);
 
    useEffect(() => {
       if (banners.length < 1) {
          debouncedGetBanners();
       }
-      debouncedFetchWishlist();
-   }, [isLoggedIn, banners.length, gameUpdated]);
+      fetchWishlist();
+   }, [fetchWishlist, gameUpdated]);
 
    return (
       <>
@@ -180,15 +167,15 @@ const Banners = ({ isLoggedIn }) => {
                               <div className='buttons'>
                                  <Button
                                     onClick={() =>
-                                       onWishlistClick(banner.gameTitle)
+                                       handleWishlistClick(banner.gameTitle)
                                     }
                                     icon={
                                        localWishlist.includes(
                                           banner.gameTitle
                                        ) ? (
-                                          <FaCheck className='icon' />
+                                          <MdFavorite className='icon' />
                                        ) : (
-                                          <IoIosAdd className='icon'/>
+                                          <MdFavoriteBorder className='icon' />
                                        )
                                     }
                                     title={
@@ -196,11 +183,11 @@ const Banners = ({ isLoggedIn }) => {
                                           ? t('Banner.remove')
                                           : t('Banner.add')
                                     }
-                                    className={'button-wishlist'}
-                                    currentColor={'rgba(var(--purple-1))'}
-                                    bgColor={'rgba(var(--dark))'}
-                                    textTransform={'uppercase'}
-                                    hoverColor={'rgba(var(--purple-1))'}
+                                    className='button-wishlist'
+                                    currentColor='rgba(var(--secondary))'
+                                    bgColor='rgba(var(--dark))'
+                                    textTransform='uppercase'
+                                    hoverColor='rgba(var(--secondary))'
                                  />
                                  <ButtonLink
                                     url={isLoggedIn ? '/' : '/login'}
@@ -209,10 +196,10 @@ const Banners = ({ isLoggedIn }) => {
                                           ? t('Banner.pre')
                                           : t('Banner.buy')
                                     }
-                                    className={'button'}
-                                    currentColor={'rgba(var(--cyan))'}
-                                    bgColor={'rgba(var(--dark))'}
-                                    textTransform={'uppercase'}
+                                    className='button'
+                                    currentColor='rgba(var(--primary))'
+                                    bgColor='rgba(var(--dark))'
+                                    textTransform='uppercase'
                                  />
                               </div>
                            </BannerInfo>
@@ -222,7 +209,6 @@ const Banners = ({ isLoggedIn }) => {
                </Swiper>
             )}
          </BannerContainerStyles>
-         <ToastContainer />
       </>
    );
 };

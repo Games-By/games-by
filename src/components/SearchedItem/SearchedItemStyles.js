@@ -39,7 +39,7 @@ export const SearchedItemStyles = styled.li`
       font-weight: 600;
       margin: 0;
       align-self: flex-start;
-      color: rgba(var(--purple-1));
+      color: rgba(var(--secondary));
    }
 
    &:hover {
@@ -52,6 +52,6 @@ export const SearchedItemStyles = styled.li`
 export const Separator = styled.div`
    height: 2px;
    width: 95%;
-   background-color: rgba(var(--purple-1));
+   background-color: rgba(var(--secondary));
    margin: 5px auto;
 `;

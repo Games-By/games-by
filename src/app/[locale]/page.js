@@ -2,7 +2,11 @@
 import { useTranslations } from 'next-intl';
 import Header from '@/components/Header/Header';
 import { useEffect, useState } from 'react';
+import { getWishlist } from '@/Services/client-data/getWishlist';
 import Banners from '@/components/Banner';
+import Releases from '@/components/Releases';
+import { debounce } from '@/utils/debounce';
+import { ToastContainer } from 'react-toastify';
 require('dotenv').config();
 
 const Index = () => {
@@ -22,31 +26,44 @@ const Index = () => {
       }
       return true;
    };
+   const fetchWishlist = async () => {
+      try {
+         const wishList = await getWishlist();
+         localStorage.setItem('wishlist', JSON.stringify(wishList));
+      } catch (error) {
+         console.error('Error fetching wishlist:', error);
+      }
+   };
 
+   const debouncedFetchWishlist = debounce(fetchWishlist, 800);
+
+   const initialize = async () => {
+      const authToken = localStorage.getItem('authToken');
+      if (authToken && checkTokenExpiration()) {
+         setIsLoggedIn(true);
+         debouncedFetchWishlist();
+      }
+   };
    useEffect(() => {
-      const initialize = async () => {
-         const authToken = localStorage.getItem('authToken');
-         if (authToken && checkTokenExpiration()) {
-            setIsLoggedIn(true);
-         }
-      };
       initialize();
    }, []);
 
    return (
       <>
-         <title>Home | Games By</title>
-         <Header isLoggedIn={isLoggedIn} />
-         <Banners isLoggedIn={isLoggedIn} />
          {isLoggedIn ? (
             <div>
                <p>Usuário logado!</p>
             </div>
          ) : (
             <div>
-               <p>Você precisa estar logado para acessar esta página.</p>
+               <p>Usuário não logado!</p>
             </div>
          )}
+         <title>Home | Games By</title>
+         <Header isLoggedIn={isLoggedIn} />
+         <Banners isLoggedIn={isLoggedIn} />
+         <Releases />
+         <ToastContainer />
       </>
    );
 };

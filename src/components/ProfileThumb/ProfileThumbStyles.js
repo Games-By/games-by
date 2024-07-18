@@ -19,7 +19,7 @@ export const ProfileThumbLink = styled.div`
    cursor: pointer;
    height: 5rem;
    width: 5rem;
-   background-color: rgba(var(--cyan));
+   background-color: rgba(var(--primary));
    display: flex;
    align-items: center;
    justify-content: center;

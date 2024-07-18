@@ -18,7 +18,7 @@ const ButtonLink = ({
    const locale =
       locales.find((locale) => pathname.includes(locale.code))?.code || 'en';
    return (
-      <ButtonLinkContainer>
+      <ButtonLinkContainer className='button'>
          <StyledLink
             style={{ textTransform: textTransform }}
             currentcolor={currentColor}

@@ -153,8 +153,8 @@ const LoginPage = () => {
                   <span className='forgot-passaword'>Forgot the password?</span>
                   <Button
                      title={'Login'}
-                     currentColor={`rgba(var(--purple-2))`}
-                     hoverColor={`rgba(var(--cyan))`}
+                     currentColor={`rgba(var(--secondary))`}
+                     hoverColor={`rgba(var(--primary))`}
                      textTransform={`capitalize`}
                      onClick={handleLogin}
                      loading={loading}
