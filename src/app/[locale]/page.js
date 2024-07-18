@@ -36,18 +36,18 @@ const Index = () => {
 
    return (
       <>
-         <title>Home | Games By</title>
-         <Header isLoggedIn={isLoggedIn} />
-         <Banners isLoggedIn={isLoggedIn} />
          {isLoggedIn ? (
             <div>
                <p>Usuário logado!</p>
             </div>
          ) : (
             <div>
-               <p>Você precisa estar logado para acessar esta página.</p>
+               <p>Usuário não logado!</p>
             </div>
          )}
+         <title>Home | Games By</title>
+         <Header isLoggedIn={isLoggedIn} />
+         <Banners isLoggedIn={isLoggedIn} />
          <Releases />
       </>
    );
