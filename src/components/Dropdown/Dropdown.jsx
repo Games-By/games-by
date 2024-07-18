@@ -52,9 +52,9 @@ const Dropdown = ({
             animate={dropdownVariants.animate}
             exit={dropdownVariants.exit}
             transition={{ duration: 0.3 }}
-            onMouseEnter={windowWidth > 660 && onMouseEnter}
-            onMouseLeave={windowWidth > 660 && onMouseLeave}
-            onClick={windowWidth <= 660 && onClick}
+            onMouseEnter={windowWidth > 660 ? onMouseEnter : null}
+            onMouseLeave={windowWidth > 660 ? onMouseLeave : null}
+            onClick={windowWidth <= 660 ? onClick : null}
          >
             {list.map((item, index) => (
                <MotionLink
