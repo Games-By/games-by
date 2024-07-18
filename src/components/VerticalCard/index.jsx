@@ -40,9 +40,6 @@ const VerticalCard = ({
             <div className='infos'>
                <h3 className='name'>{name ? name : null}</h3>
                <span className='genre'>{genre ? genre : null}</span>
-               <div className='publisher-year'>
-                  {publisher ? publisher : null}, {year ? year : null}
-               </div>
                {discount ? (
                   <DiscountPrice
                      currencyCode={code}
