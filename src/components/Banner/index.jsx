@@ -7,16 +7,15 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { getAllBanners } from '@/Services/games-service/getBanners';
 import ButtonLink from '../ButtonLink/ButtonLink';
-import { IoIosAdd } from 'react-icons/io';
-import { FaCheck } from 'react-icons/fa';
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import Button from '../Button/Button';
 import { getStarIcons } from '@/utils/formatRating';
 import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getWishlist } from '@/Services/client-data/getWishlist';
 import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
-import { debounce } from '@/utils/debounce';
 import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
+import { debounce } from '@/utils/debounce';
 import { useLocale, useTranslations } from 'next-intl';
 
 const Banners = ({ isLoggedIn }) => {
@@ -25,7 +24,6 @@ const Banners = ({ isLoggedIn }) => {
    const [banners, setBanners] = useState([]);
    const [localWishlist, setLocalWishlist] = useState([]);
    const [gameUpdated, setGameUpdated] = useState('');
-   const [isClicking, setIsClicking] = useState(false);
 
    const getBanners = async () => {
       const response = await getAllBanners();
@@ -42,96 +40,79 @@ const Banners = ({ isLoggedIn }) => {
       return releaseDate > currentDate;
    };
 
-   const fetchWishlist = async () => {
+   const fetchWishlist = () => {
+      try {
+         const wishList = JSON.parse(localStorage.getItem('wishlist')) || [];
+         setLocalWishlist(wishList.map((item) => item.name));
+      } catch (error) {
+         console.error('Error fetching wishlist:', error);
+      }
+   };
+
+   const handleWishlistClick = async (gameTitle) => {
       if (isLoggedIn) {
          try {
+            if (!localWishlist.includes(gameTitle)) {
+               setLocalWishlist((prev) => [...prev, gameTitle]);
+               await addGameToWishlist(gameTitle);
+               toast(`${gameTitle} Added to wish list.`, {
+                  position: 'top-right',
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                  theme: 'dark',
+                  transition: Slide,
+               });
+            } else {
+               setLocalWishlist((prev) =>
+                  prev.filter((title) => title !== gameTitle)
+               );
+               await removeGameFromWishlist(gameTitle);
+               toast(`${gameTitle} removed from your wish list.`, {
+                  position: 'top-right',
+                  autoClose: 2000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                  theme: 'dark',
+                  transition: Slide,
+               });
+            }
             const wishList = await getWishlist();
-            setLocalWishlist(wishList.map((item) => item.name));
+            localStorage.setItem('wishlist', JSON.stringify(wishList));
          } catch (error) {
-            console.error('Error fetching wishlist:', error);
+            console.error('Error adding or removing game to wishlist:', error);
+         } finally {
+            setGameUpdated(gameTitle);
          }
+      } else {
+         toast('You need to log in to add games to your wishlist!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+            transition: Slide,
+         });
       }
    };
 
    const debouncedGetBanners = debounce(getBanners, 500);
-   const debouncedFetchWishlist = debounce(fetchWishlist, 500);
-
-   const handleWishlistClick = useCallback(
-      async (gameTitle) => {
-         if (isLoggedIn) {
-            try {
-               if (!localWishlist.includes(gameTitle) && !isClicking) {
-                  setIsClicking(true)
-                  setLocalWishlist((prev) => [...prev, gameTitle]);
-                  await addGameToWishlist(gameTitle);
-                  toast('Game added to wish list.', {
-                     position: 'top-right',
-                     autoClose: 3000,
-                     hideProgressBar: false,
-                     closeOnClick: true,
-                     pauseOnHover: false,
-                     draggable: true,
-                     progress: undefined,
-                     theme: 'dark',
-                     transition: Slide,
-                  });
-               } else if (localWishlist.includes(gameTitle) && !isClicking) {
-                  setIsClicking(true)
-                  setLocalWishlist((prev) =>
-                     prev.filter((title) => title !== gameTitle)
-                  );
-                  await removeGameFromWishlist(gameTitle);
-                  toast('Game removed from wish list.', {
-                     position: 'top-right',
-                     autoClose: 3000,
-                     hideProgressBar: false,
-                     closeOnClick: true,
-                     pauseOnHover: false,
-                     draggable: true,
-                     progress: undefined,
-                     theme: 'dark',
-                     transition: Slide,
-                  });
-               }
-               setGameUpdated(gameTitle);
-               debouncedFetchWishlist();
-            } catch (error) {
-               console.error(
-                  'Error adding or removing game to wishlist:',
-                  error
-               );
-            } finally {
-               setIsClicking(false);
-            }
-         } else {
-            toast('You need to log in to add games to your wishlist!', {
-               position: 'top-right',
-               autoClose: 3000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: false,
-               draggable: true,
-               progress: undefined,
-               theme: 'dark',
-               transition: Slide,
-            });
-         }
-      },
-      [isLoggedIn, localWishlist, debouncedFetchWishlist]
-   );
-
-   const onWishlistClick = (gameTitle) => {
-      if (!isClicking) {
-         handleWishlistClick(gameTitle);
-      }
-   };
 
    useEffect(() => {
       if (banners.length < 1) {
          debouncedGetBanners();
       }
-      debouncedFetchWishlist();
-   }, [isLoggedIn, banners.length, gameUpdated]);
+      fetchWishlist();
+   }, [gameUpdated]);
 
    return (
       <>
@@ -180,15 +161,15 @@ const Banners = ({ isLoggedIn }) => {
                               <div className='buttons'>
                                  <Button
                                     onClick={() =>
-                                       onWishlistClick(banner.gameTitle)
+                                       handleWishlistClick(banner.gameTitle)
                                     }
                                     icon={
                                        localWishlist.includes(
                                           banner.gameTitle
                                        ) ? (
-                                          <FaCheck className='icon' />
+                                          <MdFavorite className='icon' />
                                        ) : (
-                                          <IoIosAdd className='icon'/>
+                                          <MdFavoriteBorder className='icon' />
                                        )
                                     }
                                     title={
