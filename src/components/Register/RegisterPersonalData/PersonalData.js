@@ -42,7 +42,7 @@ export const Gender = styled.div`
       height: 70%;
       width: 100%;
       background-color: rgba(var(--light));
-      border: 1px solid rgba(var(--purple-1), 0.6);
+      border: 1px solid rgba(var(--secondary), 0.6);
       border-radius: 0.6rem;
       padding-left: 1rem;
       cursor: pointer;

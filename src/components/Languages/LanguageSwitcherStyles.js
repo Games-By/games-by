@@ -12,11 +12,11 @@ export const Switcher = styled(motion.div)`
    backdrop-filter: blur(10px);
    position: fixed;
    right: 1rem;
-   top: 8rem;
+   top: 11.3rem;
    z-index: 1;
    width: 20rem;
    border-radius: 0 0 2rem 2rem;
-   border: 1px solid rgba(var(--cyan));
+   border: 1px solid rgba(var(--primary));
    border-top: none;
    color: rgba(var(--light));
    z-index: 2;
@@ -38,7 +38,7 @@ export const Switcher = styled(motion.div)`
       letter-spacing: 1px;
 
       &:hover {
-         color: rgba(var(--cyan), 0.8);
+         color: rgba(var(--primary), 0.8);
       }
 
       &::after {
@@ -59,7 +59,7 @@ export const Switcher = styled(motion.div)`
       }
    }
    .active {
-      color: rgba(var(--cyan));
+      color: rgba(var(--primary));
       text-decoration: underline;
       font-weight: 500;
    }
@@ -75,7 +75,7 @@ export const Switcher = styled(motion.div)`
 
    @media screen {
       @media (max-width: 660px) {
-         top: 6rem;
+         top: 9.3rem;
          right: 3rem;
 
          &::before {

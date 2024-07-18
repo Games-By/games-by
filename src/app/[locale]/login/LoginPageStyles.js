@@ -48,7 +48,7 @@ export const LoginBox = styled.div`
    height: 40rem;
    min-width: 35rem;
    padding: 2rem;
-   border: 1px solid rgba(var(--purple-1));
+   border: 1px solid rgba(var(--secondary));
    background-color: rgba(var(--dark));
    border-radius: 1.1rem;
 
@@ -101,11 +101,11 @@ export const Access = styled.div`
 
    .forgot-passaword {
       font-size: 1.2rem;
-      color: rgba(var(--purple-1), 0.7);
+      color: rgba(var(--secondary), 0.7);
       cursor: pointer;
 
       &:hover {
-         color: rgba(var(--purple-1));
+         color: rgba(var(--secondary));
       }
    }
    .or {
@@ -130,13 +130,13 @@ export const Access = styled.div`
    }
    .register {
       padding: 0.5rem;
-      color: rgba(var(--purple-1));
+      color: rgba(var(--secondary));
       text-decoration: underline;
       font-size: 1.6rem;
       letter-spacing: 1px;
 
       &:hover {
-         color: rgba(var(--cyan), 0.9);
+         color: rgba(var(--primary), 0.9);
       }
    }
 `;

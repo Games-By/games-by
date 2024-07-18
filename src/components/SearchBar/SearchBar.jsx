@@ -92,7 +92,7 @@ const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
                autoFocus={autoFocus ? autoFocus : false}
             />
             <div className='glass' onClick={navigateToCatalog}>
-               <MagnifyingGlassIcon color={'rgba(var(--purple-2))'} />
+               <MagnifyingGlassIcon color={'rgba(var(--secondary))'} />
             </div>
             {searched.length > 0 && isSearched && (
                <SearchBox

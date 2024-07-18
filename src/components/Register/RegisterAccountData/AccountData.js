@@ -42,7 +42,7 @@ export const PhotoSelector = styled.div`
       width: 100%;
       height: 4rem;
       display: flex;
-      border: 1px solid rgba(var(--purple-1));
+      border: 1px solid rgba(var(--secondary));
       font-size: 1.8rem;
       border-radius: 0.6rem;
       margin: 0 auto;

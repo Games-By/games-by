@@ -11,13 +11,13 @@ export const DropdownStyles = styled(motion.div)`
    background-color: rgba(var(--dark), 0.9);
    backdrop-filter: blur(10px);
    position: absolute;
-   top: 8rem;
+   top: 11.3rem;
    right: 5rem;
    z-index: 1;
    min-width: 25rem;
    width: 25%;
    border-radius: 0 0 2rem 2rem;
-   border: 1px solid rgba(var(--cyan));
+   border: 1px solid rgba(var(--primary));
    border-top: none;
    color: rgba(var(--light));
    z-index: 2;
@@ -64,9 +64,9 @@ export const DropdownStyles = styled(motion.div)`
       }
 
       &:hover {
-         color: rgba(var(--cyan), 0.8);
+         color: rgba(var(--primary), 0.8);
          svg {
-            fill: rgba(var(--cyan));
+            fill: rgba(var(--primary));
          }
       }
    }
@@ -79,7 +79,7 @@ export const DropdownStyles = styled(motion.div)`
          border-radius: 0 0 0 2rem;
          right: 0;
          border-right: none;
-         top: 6rem;
+         top: 9.3rem;
 
          .option {
             width: auto;

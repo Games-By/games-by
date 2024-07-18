@@ -4,36 +4,14 @@ import { ProfileThumbLink, ProfileContainer } from './ProfileThumbStyles';
 import { Link } from '../../../navigation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Dropdown from '../Dropdown/Dropdown';
-import { useLocale } from 'next-intl';
+import { debounce } from '@/utils/debounce';
 require('dotenv').config();
 
-const ProfileThumb = ({ isLoggedIn, windowWidth, handle }) => {
-   const locale = useLocale();
+const ProfileThumb = ({ windowWidth, handle }) => {
    const [profileImage, setProfileImage] = useState(null);
-   const [loading, setLoading] = useState(false);
    const [tokenValid, setTokenValid] = useState(false);
 
-   useEffect(() => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken) {
-         setTokenValid(true);
-         isLoggedIn = true;
-      }
-
-      if (isLoggedIn && !profileImage && !loading) {
-         const userString = localStorage.getItem('user');
-         if (userString) {
-            const user = JSON.parse(userString);
-            if (user.image) {
-               handleImageUser(user.image);
-            }
-         }
-      }
-   }, [isLoggedIn, profileImage, loading]);
-
    const handleImageUser = async (imageName) => {
-      setLoading(true);
       try {
          const response = await axios.get(
             `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
@@ -45,15 +23,28 @@ const ProfileThumb = ({ isLoggedIn, windowWidth, handle }) => {
       } catch (error) {
          console.error('Error getting profile photo:', error);
       } finally {
-         setLoading(false);
       }
    };
 
+   const debouncedhandleImageUser = debounce(handleImageUser, 5000);
+
+   useEffect(() => {
+      const authToken = localStorage.getItem('authToken');
+      if (authToken) {
+         setTokenValid(true);
+      }
+
+      if (!profileImage) {
+         const user = JSON.parse(localStorage.getItem('user'));
+         if (user && user.image) {
+            debouncedhandleImageUser(user.image);
+         }
+      }
+   }, []);
+
    return (
       <>
-         <ProfileContainer
-            style={{ right: isLoggedIn && windowWidth <= 660 && '11rem' }}
-         >
+         <ProfileContainer style={{ right: windowWidth <= 660 && '11rem' }}>
             {profileImage ? (
                <Link
                   onMouseEnter={() => {
@@ -62,7 +53,7 @@ const ProfileThumb = ({ isLoggedIn, windowWidth, handle }) => {
                   onMouseLeave={() => {
                      windowWidth > 660 && handle(false);
                   }}
-                  href={isLoggedIn || tokenValid ? `/profile` : '/'}
+                  href={tokenValid ? `/profile` : '/'}
                >
                   <ProfileThumbLink>
                      <Image
