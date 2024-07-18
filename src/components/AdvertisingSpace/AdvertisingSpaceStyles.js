@@ -19,7 +19,7 @@ export const AdvertisingSpaceStyles = styled.div`
       width: 60rem;
       border-radius: 1px;
       left: calc(50% - 30rem);
-      background-color: rgba(var(--purple-2));
+      background-color: rgba(var(--secondary));
       position: absolute;
       bottom: 0;
    }

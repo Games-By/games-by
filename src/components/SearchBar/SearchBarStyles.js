@@ -22,7 +22,7 @@ export const SearchBarStyles = styled(motion.div)`
       border: 0;
       width: 92%;
       height: 70%;
-      border-right: 1px solid var(--purple-2);
+      border-right: 1px solid var(--secondary);
       font-weight: 600;
       letter-spacing: 1px;
       font-size: 1.4rem;
@@ -34,7 +34,7 @@ export const SearchBarStyles = styled(motion.div)`
 
       &:focus {
          outline: none;
-         caret-color: rgba(var(--purple-2));
+         caret-color: rgba(var(--secondary));
       }
    }
    .glass {
@@ -45,7 +45,7 @@ export const SearchBarStyles = styled(motion.div)`
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 1px solid rgba(var(--purple-2));
+      border-left: 1px solid rgba(var(--secondary));
    }
    @media screen {
       @media (max-width: 660px) {

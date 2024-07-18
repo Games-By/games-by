@@ -5,7 +5,7 @@ export const TitleStyle = styled.h2`
    color: rgba(var(--light));
    font-weight: 300;
    letter-spacing: 2px;
-   border-bottom: 1px solid rgba(var(--purple-2));
+   border-bottom: 1px solid rgba(var(--secondary));
    width: 90%;
    padding-bottom: 0.4rem;
    margin: 0 auto 2rem;

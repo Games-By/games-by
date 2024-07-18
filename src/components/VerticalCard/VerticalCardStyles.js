@@ -39,9 +39,9 @@ export const VarticalCardStyles = styled.div`
       background: linear-gradient(
             30deg,
             transparent 25%,
-            rgba(var(--cyan), 0.1) 100%
+            rgba(var(--primary), 0.1) 100%
          ),
-         linear-gradient(200deg, transparent 25%, rgba(var(--cyan), 0.1) 100%);
+         linear-gradient(200deg, transparent 25%, rgba(var(--primary), 0.1) 100%);
       display: grid;
       grid-template-columns: 20% 80%;
       grid-template-rows: auto auto auto auto 20%;
@@ -90,7 +90,7 @@ export const VarticalCardStyles = styled.div`
          font-size: 1.7rem;
          font-weight: 300;
          letter-spacing: 2px;
-         color: rgba(var(--cyan), 0.5);
+         color: rgba(var(--secondary), 0.5);
 
          @media screen {
             @media (max-width: 1024px) {
@@ -143,7 +143,7 @@ export const VarticalCardStyles = styled.div`
          grid-area: amount;
          color: rgba(var(--light));
          .code {
-            color: rgba(var(--purple-2));
+            color: rgba(var(--secondary));
             margin-right: 0.5rem;
             font-size: 1.6rem;
             font-weight: 300;

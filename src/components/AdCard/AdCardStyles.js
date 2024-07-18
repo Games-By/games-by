@@ -10,7 +10,7 @@ export const AdCardStyles = styled.div`
       cursor: pointer;
 
       &:hover {
-         border: 1px solid rgba(var(--purple-2));
+         border: 1px solid rgba(var(--secondary));
       }
    }
 `;

@@ -66,7 +66,7 @@ export const Language = styled.div`
    .globe {
       font-size: 3rem;
       cursor: pointer;
-      fill: rgba(var(--purple-2));
+      fill: rgba(var(--secondary));
       object-fit: contain;
       z-index: 5;
       @media screen {
@@ -110,7 +110,7 @@ export const Cart = styled.div`
    .number {
       position: absolute;
       color: rgba(var(--dark));
-      background-color: rgba(var(--cyan), 0.7);
+      background-color: rgba(var(--primary), 0.7);
       font-weight: 700;
       font-size: 1rem;
       padding: 0.3rem;
@@ -132,7 +132,7 @@ export const Cart = styled.div`
    }
    .cart {
       font-size: 3rem;
-      stroke: rgba(var(--purple-2));
+      stroke: rgba(var(--secondary));
 
       @media screen {
          @media (max-width: 660px) {

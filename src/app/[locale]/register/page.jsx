@@ -112,9 +112,9 @@ const Register = () => {
                <p className='terms'>By registering, you agree to our <Link href="/terms">Terms and Conditions</Link>.</p>
                <Button
                   onClick={register}
-                  currentColor={'rgba(var(--purple-1))'}
+                  currentColor={'rgba(var(--secondary))'}
                   title={'Register'}
-                  hoverColor={'rgba(var(--cyan))'}
+                  hoverColor={'rgba(var(--primary))'}
                   loading={loading}
                />
             </RegisterForm>

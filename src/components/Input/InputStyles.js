@@ -28,7 +28,7 @@ export const InputStyles = styled.input`
    border: 0;
    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
    font-size: 1.8rem;
-   border: 1px solid rgba(var(--purple-1));
+   border: 1px solid rgba(var(--secondary));
    width: 90%;
    margin: 0 auto;
    font-weight: 200;

@@ -32,20 +32,20 @@ export const BannerContainerStyles = styled.div`
          .swiper-pagination-bullet {
             width: 2rem;
             height: 2rem;
-            border: 1px solid rgba(var(--purple-2));
+            border: 1px solid rgba(var(--secondary));
             background-color: transparent;
             transition: 0.5s;
             opacity: 1;
 
             &:hover {
-               border-color: rgba(var(--cyan));
+               border-color: rgba(var(--primary));
             }
          }
          .swiper-pagination-bullet-active {
             width: 3rem;
             border-radius: 1rem;
-            border: 1px solid rgba(var(--cyan));
-            background-color: rgba(var(--cyan));
+            border: 1px solid rgba(var(--primary));
+            background-color: rgba(var(--primary));
             transition: 0.5s;
          }
       }
@@ -62,7 +62,7 @@ export const BannerContainerStyles = styled.div`
             font-size: 5rem;
          }
          &:hover {
-            color: rgba(var(--purple-2));
+            color: rgba(var(--secondary));
             right: 0;
          }
       }
@@ -79,7 +79,7 @@ export const BannerContainerStyles = styled.div`
             font-size: 5rem;
          }
          &:hover {
-            color: rgba(var(--purple-2));
+            color: rgba(var(--secondary));
             left: 0;
          }
       }
@@ -222,10 +222,10 @@ export const BannerInfo = styled.div`
       top: -0.4rem;
       margin: 0.4rem 0 0 1.7rem;
       font-size: 2rem;
-      color: rgba(var(--cyan));
+      color: rgba(var(--primary));
       text-transform: uppercase;
       letter-spacing: 2px;
-      background-color: rgba(var(--cyan), 0.1);
+      background-color: rgba(var(--primary), 0.1);
       padding: 0.5rem;
 
       @media screen {

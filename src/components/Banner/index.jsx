@@ -197,10 +197,10 @@ const Banners = ({ isLoggedIn }) => {
                                           : t('Banner.add')
                                     }
                                     className={'button-wishlist'}
-                                    currentColor={'rgba(var(--purple-1))'}
+                                    currentColor={'rgba(var(--secondary))'}
                                     bgColor={'rgba(var(--dark))'}
                                     textTransform={'uppercase'}
-                                    hoverColor={'rgba(var(--purple-1))'}
+                                    hoverColor={'rgba(var(--secondary))'}
                                  />
                                  <ButtonLink
                                     url={isLoggedIn ? '/' : '/login'}
@@ -210,7 +210,7 @@ const Banners = ({ isLoggedIn }) => {
                                           : t('Banner.buy')
                                     }
                                     className={'button'}
-                                    currentColor={'rgba(var(--cyan))'}
+                                    currentColor={'rgba(var(--primary))'}
                                     bgColor={'rgba(var(--dark))'}
                                     textTransform={'uppercase'}
                                  />

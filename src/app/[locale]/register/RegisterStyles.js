@@ -39,7 +39,7 @@ export const RegisterForm = styled.form`
    z-index: 1;
    margin: 0 auto;
    background-color: rgba(var(--dark));
-   border: 1px solid rgba(var(--purple-1));
+   border: 1px solid rgba(var(--secondary));
    width: 60%;
    max-width: 80rem;
    min-width: 65rem;
@@ -55,7 +55,7 @@ export const RegisterForm = styled.form`
       margin-bottom: 0;
 
       a {
-         color: rgba(var(--cyan));
+         color: rgba(var(--primary));
          font-weight: bold;
          letter-spacing: 1px;
          text-decoration: underline;
@@ -79,6 +79,6 @@ export const Title = styled.h2`
    font-size: 2rem;
    width: 100%;
    margin: 0;
-   color: rgba(var(--purple-1));
-   border-bottom: 1px solid rgba(var(--purple-1));
+   color: rgba(var(--secondary));
+   border-bottom: 1px solid rgba(var(--secondary));
 `;

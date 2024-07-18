@@ -6,21 +6,19 @@ const redditSans = 'Reddit Sans'
 const outfit = 'outfit';
 const light = '217, 217, 217';
 const dark = '33, 33, 33';
-const purple1 = '165, 91, 254';
-const purple2 = '251, 4, 254';
-const cyan = '29, 227, 255';
+const primary = '138, 236, 140';
+const secondary = '29, 227, 255';
 const red = '233, 26, 58';
 const yellow = '255, 251, 0';
 
 const GlobalStyle = createGlobalStyle`
    :root {
-      --outfit: ${outfit};
       --reddit-sans: ${redditSans};
+      --outfit: ${outfit};
       --light: ${light};
       --dark: ${dark};
-      --purple-1: ${purple1};
-      --purple-2: ${purple2};
-      --cyan: ${cyan};
+      --primary: ${primary};
+      --secondary: ${secondary};
       --red: ${red};
       --yellow: ${yellow};
    }

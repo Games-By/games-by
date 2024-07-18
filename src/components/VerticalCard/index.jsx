@@ -62,16 +62,16 @@ const VerticalCard = ({
                   url={'/'}
                   className={'wish-button'}
                   Aboutblank={false}
-                  currentColor={'rgba(var(--purple-2))'}
-                  hoverColor={'rgba(var(--cyan))'}
+                  currentColor={'rgba(var(--secondary))'}
+                  hoverColor={'rgba(var(--primary))'}
                />
                <ButtonLink
                   title='Comprar agora'
                   url={'/'}
                   className={'buy-button'}
-                  bgColor={'rgba(var(--cyan), 0.1)'}
+                  bgColor={'rgba(var(--primary), 0.1)'}
                   Aboutblank={false}
-                  currentColor={'rgba(var(--cyan))'}
+                  currentColor={'rgba(var(--primary))'}
                   textTransform={'uppercase'}
                />
             </div>
