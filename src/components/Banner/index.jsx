@@ -10,7 +10,7 @@ import ButtonLink from '../ButtonLink/ButtonLink';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import Button from '../Button/Button';
 import { getStarIcons } from '@/utils/formatRating';
-import { Slide, ToastContainer, toast } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getWishlist } from '@/Services/client-data/getWishlist';
 import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
@@ -25,14 +25,14 @@ const Banners = ({ isLoggedIn }) => {
    const [localWishlist, setLocalWishlist] = useState([]);
    const [gameUpdated, setGameUpdated] = useState('');
 
-   const getBanners = async () => {
+   const getBanners = useCallback(async () => {
       const response = await getAllBanners();
       const mixedBanners = [
          ...response.discountBanners,
          ...response.launchBanners,
       ];
       setBanners(mixedBanners);
-   };
+   }, []);
 
    const futureRelease = (date) => {
       const releaseDate = new Date(date);
@@ -40,17 +40,32 @@ const Banners = ({ isLoggedIn }) => {
       return releaseDate > currentDate;
    };
 
-   const fetchWishlist = () => {
+   const fetchWishlist = useCallback(() => {
       try {
          const wishList = JSON.parse(localStorage.getItem('wishlist')) || [];
          setLocalWishlist(wishList.map((item) => item.name));
       } catch (error) {
          console.error('Error fetching wishlist:', error);
       }
-   };
+   }, []);
 
-   const handleWishlistClick = async (gameTitle) => {
-      if (isLoggedIn) {
+   const handleWishlistClick = useCallback(
+      async (gameTitle) => {
+         if (!isLoggedIn) {
+            toast('You need to log in to add games to your wishlist!', {
+               position: 'top-right',
+               autoClose: 3000,
+               hideProgressBar: false,
+               closeOnClick: true,
+               pauseOnHover: false,
+               draggable: true,
+               progress: undefined,
+               theme: 'dark',
+               transition: Slide,
+            });
+            return;
+         }
+
          try {
             if (!localWishlist.includes(gameTitle)) {
                setLocalWishlist((prev) => [...prev, gameTitle]);
@@ -90,29 +105,20 @@ const Banners = ({ isLoggedIn }) => {
          } finally {
             setGameUpdated(gameTitle);
          }
-      } else {
-         toast('You need to log in to add games to your wishlist!', {
-            position: 'top-right',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: 'dark',
-            transition: Slide,
-         });
-      }
-   };
+      },
+      [isLoggedIn, localWishlist]
+   );
 
-   const debouncedGetBanners = debounce(getBanners, 500);
+   const debouncedGetBanners = useCallback(debounce(getBanners, 500), [
+      getBanners,
+   ]);
 
    useEffect(() => {
       if (banners.length < 1) {
          debouncedGetBanners();
       }
       fetchWishlist();
-   }, [gameUpdated]);
+   }, [fetchWishlist, gameUpdated]);
 
    return (
       <>
@@ -177,11 +183,11 @@ const Banners = ({ isLoggedIn }) => {
                                           ? t('Banner.remove')
                                           : t('Banner.add')
                                     }
-                                    className={'button-wishlist'}
-                                    currentColor={'rgba(var(--secondary))'}
-                                    bgColor={'rgba(var(--dark))'}
-                                    textTransform={'uppercase'}
-                                    hoverColor={'rgba(var(--secondary))'}
+                                    className='button-wishlist'
+                                    currentColor='rgba(var(--secondary))'
+                                    bgColor='rgba(var(--dark))'
+                                    textTransform='uppercase'
+                                    hoverColor='rgba(var(--secondary))'
                                  />
                                  <ButtonLink
                                     url={isLoggedIn ? '/' : '/login'}
@@ -190,10 +196,10 @@ const Banners = ({ isLoggedIn }) => {
                                           ? t('Banner.pre')
                                           : t('Banner.buy')
                                     }
-                                    className={'button'}
-                                    currentColor={'rgba(var(--primary))'}
-                                    bgColor={'rgba(var(--dark))'}
-                                    textTransform={'uppercase'}
+                                    className='button'
+                                    currentColor='rgba(var(--primary))'
+                                    bgColor='rgba(var(--dark))'
+                                    textTransform='uppercase'
                                  />
                               </div>
                            </BannerInfo>
@@ -203,7 +209,6 @@ const Banners = ({ isLoggedIn }) => {
                </Swiper>
             )}
          </BannerContainerStyles>
-         <ToastContainer />
       </>
    );
 };

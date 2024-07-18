@@ -9,8 +9,8 @@ const VerticalCard = ({
    discount,
    code,
    price,
-   publisher,
-   year,
+   wishListAction,
+   isInWishlist,
    name,
    genre,
    cover,
@@ -58,7 +58,14 @@ const VerticalCard = ({
                   </span>
                </div>
                <Button
-                  icon={<MdFavoriteBorder />}
+                  onClick={wishListAction}
+                  icon={
+                     isInWishlist ? (
+                        <MdFavorite className='icon' />
+                     ) : (
+                        <MdFavoriteBorder className='icon' />
+                     )
+                  }
                   url={'/'}
                   className={'wish-button'}
                   Aboutblank={false}

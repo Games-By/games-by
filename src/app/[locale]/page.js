@@ -6,6 +6,7 @@ import { getWishlist } from '@/Services/client-data/getWishlist';
 import Banners from '@/components/Banner';
 import Releases from '@/components/Releases';
 import { debounce } from '@/utils/debounce';
+import { ToastContainer } from 'react-toastify';
 require('dotenv').config();
 
 const Index = () => {
@@ -61,7 +62,8 @@ const Index = () => {
          <title>Home | Games By</title>
          <Header isLoggedIn={isLoggedIn} />
          <Banners isLoggedIn={isLoggedIn} />
-         {/* <Releases /> */}
+         <Releases />
+         <ToastContainer />
       </>
    );
 };
