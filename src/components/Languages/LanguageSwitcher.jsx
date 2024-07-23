@@ -6,16 +6,9 @@ import { Switcher } from './LanguageSwitcherStyles';
 import { motion } from 'framer-motion';
 
 export const locales = [
-   { name: 'English', code: 'en' },
-   { name: 'Portuguese', code: 'pt' },
-   { name: 'Chinese', code: 'zh' },
-   { name: 'Spanish', code: 'es' },
-   { name: 'Hindi', code: 'hi' },
-   { name: 'French', code: 'fr' },
-   { name: 'Arabic', code: 'ar' },
-   { name: 'Bengali', code: 'bn' },
-   { name: 'Russian', code: 'ru' },
-   { name: 'Indonesian', code: 'id' },
+   { name: 'English', code: 'en-US' },
+   { name: 'Português', code: 'pt-BR' },
+   { name: 'Español', code: 'es-ES' },
 ];
 
 const LanguageSwitcher = () => {
@@ -52,7 +45,7 @@ const LanguageSwitcher = () => {
                   pathname.includes(getNewPathname(loc.code)) ? 'active' : ''
                }`}
             >
-               {loc.name} ({loc.code.toLocaleUpperCase()})
+               {loc.name} ({loc.code})
             </MotionLink>
          ))}
       </Switcher>

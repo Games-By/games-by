@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import AdvertisingSpace from '@/components/AdvertisingSpace/AdvertisingSpace';
+import { getWishlist } from '@/Services/client-data/getWishlist';
 require('dotenv').config();
 
 const LoginPage = () => {
@@ -42,11 +43,13 @@ const LoginPage = () => {
          const response = await axios.get(
             `${process.env.NEXT_PUBLIC_SERVER_URL}/user`,
             {
-               params: { email: email },
+               params: { email: email.toLowerCase() },
             }
          );
          if (response.status === 200) {
             localStorage.setItem('user', JSON.stringify(response.data.user));
+            const wishlist = await getWishlist();
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
          }
       } catch (error) {
          console.error('Error getting profile:', error);

@@ -20,6 +20,8 @@ const Dropdown = ({
       localStorage.removeItem('tokenExpiration');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('user');
+      localStorage.removeItem('cart');
+      localStorage.removeItem('wishlist');
 
       if (pathname.includes('/profile')) {
          router.replace('/').then(() => {

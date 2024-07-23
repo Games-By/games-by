@@ -18,6 +18,8 @@ const Profile = () => {
       localStorage.removeItem('tokenExpiration');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('user');
+      localStorage.removeItem('cart');
+      localStorage.removeItem('wishlist');
 
       router.replace('/login');
    };
