@@ -37,19 +37,11 @@ const Index = () => {
 
    return (
       <>
-         {isLoggedIn ? (
-            <div>
-               <p>Usuário logado!</p>
-            </div>
-         ) : (
-            <div>
-               <p>Usuário não logado!</p>
-            </div>
-         )}
          <title>Home | Games By</title>
          <Header isLoggedIn={isLoggedIn} />
          <Banners isLoggedIn={isLoggedIn} />
          <Releases />
+
          <ToastContainer />
       </>
    );

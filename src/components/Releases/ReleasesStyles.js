@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ReleaseStyles = styled.section`
    max-width: 190rem;
-   margin: 1rem auto;
+   margin: 5rem auto 1rem;
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
@@ -11,7 +11,8 @@ export const ReleaseStyles = styled.section`
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 2rem;
+      gap: 3rem;
+      margin: 5rem auto 3rem;
       @media screen {
          @media (max-width: 1250px) {
             padding: 0 2rem;
