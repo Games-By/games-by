@@ -13,7 +13,7 @@ export const TitleStyle = styled.h2`
    text-transform: capitalize;
 
    @media screen {
-      @media (max-width: 915px) {
+      @media (max-width: 1024px) {
          font-size: 2.7rem;
       }
    }

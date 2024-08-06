@@ -13,10 +13,14 @@ export const ReleaseStyles = styled.section`
       gap: 3rem;
       margin: 5rem auto 3rem;
       @media screen {
-         @media (max-width: 1250px) {
-            padding: 0 2rem;
+         @media (max-width: 1440px) {
+            width: 90%;
+            gap: 2rem;
          }
-         @media (max-width: 915px) {
+         @media (max-width: 1250px) {
+            padding: 0;
+         }
+         @media (max-width: 1024px) {
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -28,8 +32,9 @@ export const ReleaseStyles = styled.section`
             }
          }
          @media (max-width: 600px) {
-            padding: 0 2rem;
+            padding: 0;
             gap: 2rem;
+            width: 95%;
          }
       }
    }

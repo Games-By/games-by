@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const VarticalCardStyles = styled.div`
    height: auto;
-   max-width: 30rem;
+   max-width: 33rem;
    width: 25%;
    display: flex;
    flex-direction: column;
@@ -10,29 +10,29 @@ export const VarticalCardStyles = styled.div`
    justify-content: center;
 
    .cover {
-      height: 60%;
       width: 100%;
       border-radius: 1rem 1rem 0 0;
       height: 38.2rem;
-
+      background-color: rgba(var(--light), 0.1);
       img {
          object-position: top;
          object-fit: cover;
       }
 
       @media screen {
-         @media (max-width: 915px) {
+         @media (max-width: 1440px) {
             height: 30rem;
          }
-         @media (max-width: 480px) {
-            min-height: 20rem;
-            height: auto;
+         @media (max-width: 1024px) {
+            height: 30rem;
+         }
+         @media (max-width: 520px) {
+            height: 20rem;
          }
       }
    }
 
    .infos {
-      height: 40%;
       width: calc(100% - 2rem);
       min-height: 20rem;
       padding: 0 1rem 1rem 1rem;
@@ -41,7 +41,11 @@ export const VarticalCardStyles = styled.div`
             transparent 25%,
             rgba(var(--primary), 0.1) 100%
          ),
-         linear-gradient(200deg, transparent 25%, rgba(var(--primary), 0.1) 100%);
+         linear-gradient(
+            200deg,
+            transparent 25%,
+            rgba(var(--primary), 0.1) 100%
+         );
       display: grid;
       grid-template-columns: 20% 80%;
       grid-template-rows: auto auto auto auto 20%;
@@ -66,10 +70,10 @@ export const VarticalCardStyles = styled.div`
          justify-content: flex-start;
 
          @media screen {
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
                font-size: 2.5rem;
             }
-            @media (max-width: 915px) {
+            @media (max-width: 1024px) {
                font-size: 2.8rem;
             }
             @media (max-width: 675px) {
@@ -93,10 +97,10 @@ export const VarticalCardStyles = styled.div`
          color: rgba(var(--secondary), 0.5);
 
          @media screen {
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
                font-size: 1.5rem;
             }
-            @media (max-width: 915px) {
+            @media (max-width: 1024px) {
                font-size: 1.8rem;
             }
             @media (max-width: 675px) {
@@ -119,10 +123,10 @@ export const VarticalCardStyles = styled.div`
          transform: translateY(0.8rem);
 
          @media screen {
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
                font-size: 1.4rem;
             }
-            @media (max-width: 915px) {
+            @media (max-width: 1024px) {
                font-size: 1.65rem;
             }
             @media (max-width: 675px) {
@@ -149,11 +153,11 @@ export const VarticalCardStyles = styled.div`
             font-weight: 300;
             letter-spacing: 1px;
             @media screen {
-               @media (max-width: 1024px) {
+               @media (max-width: 1200px) {
                   font-size: 1.5rem;
                }
                @media (max-width: 520px) {
-                  font-size: 1.4rem;
+                  font-size: 1.2rem;
                }
                @media (max-width: 480px) {
                   font-size: 1.2rem;
@@ -164,21 +168,27 @@ export const VarticalCardStyles = styled.div`
             font-size: 3.5rem;
             letter-spacing: 1px;
             @media screen {
-               @media (max-width: 1024px) {
+               @media (max-width: 1200px) {
                   font-size: 3.2rem;
                }
-               @media (max-width: 915px) {
+               @media (max-width: 1024px) {
                   font-size: 3.5rem;
                }
                @media (max-width: 675px) {
                   font-size: 3.2rem;
                }
                @media (max-width: 520px) {
-                  font-size: 2.5rem;
+                  font-size: 1.8rem;
                }
                @media (max-width: 480px) {
                   font-size: 2rem;
                }
+            }
+         }
+
+         @media screen {
+            @media (max-width: 520px) {
+               align-self: flex-end;
             }
          }
       }
@@ -198,11 +208,11 @@ export const VarticalCardStyles = styled.div`
          }
 
          @media screen {
-            @media (max-width: 1024px) {
+            @media (max-width: 1200px) {
                width: 3.5rem;
                height: 3.5rem;
             }
-            @media (max-width: 915px) {
+            @media (max-width: 1024px) {
                width: 4rem;
                height: 4rem;
             }
@@ -229,19 +239,19 @@ export const VarticalCardStyles = styled.div`
             padding: 0 1.5rem;
 
             @media screen {
-               @media (max-width: 1024px) {
+               @media (max-width: 1200px) {
                   min-height: calc(3.5rem - 2px);
                   font-size: 1.3rem;
                   padding: 0 1rem;
                }
-               @media (max-width: 915px) {
+               @media (max-width: 1024px) {
                   min-height: calc(4rem - 2px);
                   font-size: 1.4rem;
                   padding: 0 1.5rem;
                }
                @media (max-width: 520px) {
                   font-size: 0.8rem;
-                  min-height: calc(3rem - 2px);
+                  min-height: calc(2rem - 2px);
                }
                @media (max-width: 390px) {
                   padding: 0 1rem;
@@ -257,30 +267,26 @@ export const VarticalCardStyles = styled.div`
       }
 
       @media screen {
+         @media (max-width: 1200px) {
+            height: 16rem;
+            min-height: 0;
+         }
          @media (max-width: 520px) {
-            min-height: 18rem;
-            height: 30%;
+            height: 13rem;
+            max-height: none;
+            min-height: 0;
          }
          @media (max-width: 480px) {
-            width: calc(100% - 1.4rem);
             min-height: 13rem;
-            padding: 0 0.7rem 0.7rem 0.7rem;
-            height: auto;
          }
       }
    }
    @media screen {
-      @media (max-width: 915px) {
-         max-width: 30rem;
-         height: 55rem;
+      @media (max-width: 1024px) {
+         width: 40%;
       }
       @media (max-width: 520px) {
-         height: 50rem;
-      }
-      @media (max-width: 480px) {
-         min-width: 15rem;
-         height: 35rem;
-         width: 49%;
+         width: 45%;
       }
    }
 `;
