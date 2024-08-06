@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Banners from '@/components/Banner';
 import Releases from '@/components/Releases';
 import { ToastContainer } from 'react-toastify';
+import Discover from '@/modules/Discover';
 require('dotenv').config();
 
 const Index = () => {
@@ -41,6 +42,7 @@ const Index = () => {
          <Header isLoggedIn={isLoggedIn} />
          <Banners isLoggedIn={isLoggedIn} />
          <Releases />
+         <Discover />
 
          <ToastContainer />
       </>

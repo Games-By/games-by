@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ReleaseStyles = styled.section`
-   max-width: 190rem;
    margin: 5rem auto 1rem;
    display: flex;
    flex-direction: column;

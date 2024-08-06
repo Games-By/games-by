@@ -6,5 +6,10 @@
       "remove": "Remove from WishList",
       "coming": "Coming Soon",
       "avaiable": "Now available"
+   },
+   "Discover": {
+      "discover": "Discover",
+      "presentation": "Explore new worlds and thrilling adventures! Discover <Emphasys>innovative</Emphasys>, <Emphasys>indie</Emphasys>, and <Emphasys>critically acclaimed</Emphasys> games in our exclusive session.",
+      "call": "Find your next digital addiction today!"
    }
 }
