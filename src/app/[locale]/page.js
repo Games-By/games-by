@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Banners from '@/components/Banner';
 import Releases from '@/components/Releases';
 import { ToastContainer } from 'react-toastify';
+import Discover from '@/modules/Discover';
 require('dotenv').config();
 
 const Index = () => {
@@ -37,19 +38,12 @@ const Index = () => {
 
    return (
       <>
-         {isLoggedIn ? (
-            <div>
-               <p>Usuário logado!</p>
-            </div>
-         ) : (
-            <div>
-               <p>Usuário não logado!</p>
-            </div>
-         )}
          <title>Home | Games By</title>
          <Header isLoggedIn={isLoggedIn} />
          <Banners isLoggedIn={isLoggedIn} />
          <Releases />
+         <Discover />
+
          <ToastContainer />
       </>
    );

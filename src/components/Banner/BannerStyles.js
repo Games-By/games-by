@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BannerContainerStyles = styled.div`
    height: 45rem;
-   max-width: 200rem;
+   max-width: 190rem;
    z-index: 1;
    margin: 0 auto;
 
@@ -15,6 +15,7 @@ export const BannerContainerStyles = styled.div`
       height: 30rem;
       width: 80%;
       height: 100%;
+      transition: 0.5s;
       cursor: pointer;
       .swiper-slide {
          display: flex;
@@ -86,47 +87,21 @@ export const BannerContainerStyles = styled.div`
 
       @media screen {
          @media (max-width: 1024px) {
-            width: 90%;
-         }
-         @media (max-width: 825px) {
             width: 95%;
          }
-         @media (max-width: 780px) {
+         @media (max-width: 768px) {
             width: 100%;
          }
-         @media (max-width: 1125px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-               height: 69.3%;
-            }
-         }
-         @media (max-width: 720px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-               height: 63.4%;
-            }
-         }
-         @media (max-width: 550px) {
-            .swiper-button-next,
-            .swiper-button-prev {
-               height: 54.6%;
+         @media (max-width: 620px) {
+            .swiper-button-prev, .swiper-button-next {
+               height: 63.5%;
             }
          }
       }
    }
-
    @media screen {
-      @media (max-width: 1125px) {
-         height: 48rem;
-      }
-      @media (max-width: 550px) {
-         height: 55rem;
-      }
-      @media (min-height: 1000px) {
-         height: 56rem;
-      }
-      @media (max-height: 700px) {
-         height: 60rem;
+      @media (max-width: 768px) {
+         height: 60vh;
       }
    }
 `;
@@ -159,16 +134,29 @@ export const BannerInfo = styled.div`
       font-size: 2.5rem;
       font-weight: 400;
       text-transform: uppercase;
+      color: rgba(var(--primary));
+      background: linear-gradient(
+         120deg,
+         rgba(var(--secondary)),
+         rgba(var(--primary))
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       @media screen {
-         @media (max-width: 720px) {
-            font-size: 2.8rem;
+         @media (max-width: 1024px) {
+            font-size: 2.2rem;
          }
-         @media (max-width: 670px) {
-            font-size: 2.3rem;
+         @media (max-width: 768px) {
+            position: absolute;
+            top: 0;
          }
-         @media (max-width: 550px) {
-            text-align: center;
-            margin: 3rem 0 0;
+         @media (max-width: 620px) {
+            position: initial;
+            margin: 0;
+         }
+         @media (max-width: 400px) {
+            font-size: 1.85rem;
          }
       }
    }
@@ -177,41 +165,17 @@ export const BannerInfo = styled.div`
       margin: 0 0 0 1.7rem;
       font-size: 1.2rem;
       max-width: 65rem;
-
       @media screen {
-         @media (max-width: 1200px) {
-            max-width: 60rem;
-         }
-         @media (max-width: 1130px) {
-            max-width: 55rem;
-         }
-         @media (max-width: 1080px) {
-            max-width: 50rem;
-         }
-         @media (max-width: 900px) {
-            max-width: 45rem;
-         }
-         @media (max-width: 780px) {
-            max-width: 42rem;
-            font-size: 1.15rem;
-         }
-         @media (max-width: 720px) {
-            max-width: 40rem;
+         @media (max-width: 1024px) {
             font-size: 1.2rem;
-            line-height: 1.8rem;
-            margin-top: 0.5rem;
          }
-         @media (max-width: 600px) {
-            width: 70%;
-            max-width: 35rem;
+         @media (max-width: 620px) {
+            margin: 0;
          }
-         @media (max-width: 550px) {
-            width: 90%;
-            max-width: none;
-            min-width: 29rem;
-            text-align: center;
+         @media (max-width: 400px) {
+            font-size: 1.1rem;
+            width: 95%;
             margin: 0 auto;
-            line-height: 1.6rem;
          }
       }
    }
@@ -219,27 +183,21 @@ export const BannerInfo = styled.div`
    .avaiable {
       position: absolute;
       right: 0rem;
-      top: -0.4rem;
-      margin: 0.4rem 0 0 1.7rem;
+      top: 0;
+      margin: 0;
       font-size: 2rem;
       color: rgba(var(--primary));
       text-transform: uppercase;
       letter-spacing: 2px;
       background-color: rgba(var(--primary), 0.1);
       padding: 0.5rem;
-
       @media screen {
-         @media (max-width: 600px) {
-            font-size: 1.5rem;
+         @media (max-width: 1024px) {
+            font-size: 1.7rem;
          }
-         @media (max-width: 550px) {
-            left: calc(50% - 14rem);
-            margin: 0;
-            width: 28rem;
-            white-space: nowrap;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+         @media (max-width: 620px) {
+            width: 20rem;
+            left: calc(50% - 10.5rem);
          }
       }
    }
@@ -260,32 +218,37 @@ export const BannerInfo = styled.div`
       }
 
       @media screen {
-         @media (max-width: 550px) {
-            bottom: 9.5rem;
+         @media (max-width: 620px) {
             width: 20rem;
-            left: calc(50% - 10rem);
+            height: 2.5rem;
+            left: calc(50% - 10.5rem);
+            top: -2.5rem;
             justify-content: center;
+            background-color: rgba(var(--dark), 0.95);
+            padding: 0 0.5rem;
          }
       }
    }
 
    .buttons {
-      position: absolute;
       display: flex;
       align-items: center;
+      height: 3.5rem;
       justify-content: flex-end;
-      gap: 1.5rem;
-      right: 2rem;
+      align-self: flex-end;
+      justify-self: flex-end;
+      position: absolute;
       bottom: 1rem;
+      right: 0;
       .button-wishlist {
-         padding: 0.5rem 2rem;
-         min-height: 2.5rem;
+         padding-left: 2rem;
+         padding-right: 2rem;
+         max-width: none;
+         height: 100%;
+         margin: 0;
          font-size: 1rem;
          letter-spacing: 1px;
          white-space: nowrap;
-         max-width: none;
-         min-height: 3.5rem;
-         margin: 0;
          display: flex;
          justify-content: center;
          align-items: center;
@@ -296,10 +259,21 @@ export const BannerInfo = styled.div`
             height: 2.3rem;
             margin-right: 0.5rem;
          }
+
+         @media screen {
+            @media (max-width: 1024px) {
+               padding: 0 1rem;
+               font-size: 0.9rem;
+
+               .icon {
+                  width: 2rem;
+               }
+            }
+         }
       }
       .button {
-         padding: 0.5rem 2rem;
-         min-height: 2.5rem;
+         height: 100%;
+         padding: 0 2rem;
          font-size: 1rem;
          letter-spacing: 1px;
          white-space: nowrap;
@@ -308,35 +282,37 @@ export const BannerInfo = styled.div`
          &:hover {
             transform: scale(1.05);
          }
+
+         @media screen {
+            @media (max-width: 1024px) {
+               padding: 0 1rem;
+               font-size: 0.9rem;
+            }
+         }
       }
 
       @media screen {
-         @media (max-width: 720px) {
-            width: auto;
-            right: 1rem;
-            align-items: flex-end;
-
-            .button-wishlist,
-            .button {
-               width: 100%;
-            }
-         }
-         @media (max-width: 550px) {
-            flex-direction: column;
-            align-items: center;
-            width: 25rem;
-            left: calc(50% - 12.5rem);
-            gap: 0.8rem;
+         @media (max-width: 620px) {
+            position: initial;
+            justify-content: center;
+            align-self: center;
          }
       }
    }
 
    @media screen {
-      @media (max-width: 720px) {
-         height: 30%;
+      @media (max-width: 768px) {
+         height: 26.5%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
       }
-      @media (max-width: 550px) {
-         height: 40%;
+      @media (max-width: 620px) {
+         justify-content: center;
+         align-self: center;
+         text-align: center;
+         gap: 1rem;
+         padding-top: 2.5rem;
       }
    }
 `;
