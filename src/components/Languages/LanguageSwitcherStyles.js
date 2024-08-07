@@ -12,7 +12,7 @@ export const Switcher = styled(motion.div)`
    backdrop-filter: blur(10px);
    position: fixed;
    right: 1rem;
-   top: 11.3rem;
+   top: 8rem;
    z-index: 1;
    width: 20rem;
    border-radius: 0 0 2rem 2rem;
@@ -75,7 +75,7 @@ export const Switcher = styled(motion.div)`
 
    @media screen {
       @media (max-width: 660px) {
-         top: 9.3rem;
+         top: 6rem;
          right: 3rem;
 
          &::before {

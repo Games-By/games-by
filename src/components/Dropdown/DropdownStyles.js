@@ -11,7 +11,7 @@ export const DropdownStyles = styled(motion.div)`
    background-color: rgba(var(--dark), 0.9);
    backdrop-filter: blur(10px);
    position: absolute;
-   top: 11.3rem;
+   top:8rem;
    right: 5rem;
    z-index: 1;
    min-width: 25rem;
@@ -79,7 +79,7 @@ export const DropdownStyles = styled(motion.div)`
          border-radius: 0 0 0 2rem;
          right: 0;
          border-right: none;
-         top: 9.3rem;
+         top: 6rem;
 
          .option {
             width: auto;
