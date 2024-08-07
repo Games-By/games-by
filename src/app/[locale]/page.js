@@ -6,6 +6,7 @@ import Banners from '@/components/Banner';
 import Releases from '@/components/Releases';
 import { ToastContainer } from 'react-toastify';
 import Discover from '@/modules/Discover';
+import HorizontalImages from '@/modules/HorizontalImages';
 require('dotenv').config();
 
 const Index = () => {
@@ -43,6 +44,7 @@ const Index = () => {
          <Banners isLoggedIn={isLoggedIn} />
          <Releases />
          <Discover />
+         <HorizontalImages />
 
          <ToastContainer />
       </>
