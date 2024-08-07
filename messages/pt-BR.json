@@ -6,5 +6,10 @@
       "remove": "Remover da Lista de Desejos",
       "coming": "Em Breve",
       "avaiable": "Já Disponível"
+   },
+   "Discover": {
+      "discover": "Descobrir",
+      "presentation": "Explore novos mundos e aventuras emocionantes! Descubra jogos <Emphasys>inovadores</Emphasys>, <Emphasys>indie</Emphasys> e <Emphasys>aclamados pela crítica</Emphasys> em nossa sessão exclusiva.",
+      "call": "Encontre seu próximo vício digital hoje!"
    }
 }

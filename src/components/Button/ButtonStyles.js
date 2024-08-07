@@ -5,7 +5,7 @@ export const ButtonStyles = styled.button`
    font-weight: 300;
    font-size: 1.8rem;
    text-transform: uppercase;
-   width: 60%;
+   width: auto;
    max-width: 20.6rem;
    background-color: rgba(56, 56, 56, 0.7);
    border-radius: 20px;
