@@ -19,10 +19,10 @@ const SkeletonDetails = styled.div`
 const SearchedItemSkeleton = () => {
    return (
       <SkeletonContainer>
-         <SkeletonEffect width={'7rem'} height={10} />
+         <SkeletonEffect width={'7rem'} height={'10rem'} />
          <SkeletonDetails>
-            <SkeletonEffect width={'90%'} height={3} />
-            <SkeletonEffect width={'20%'} height={2} />
+            <SkeletonEffect width={'90%'} height={'3rem'} />
+            <SkeletonEffect width={'20%'} height={'2rem'} />
          </SkeletonDetails>
       </SkeletonContainer>
    );

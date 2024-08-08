@@ -9,6 +9,7 @@ import { getWishlist } from '@/Services/client-data/getWishlist';
 import { Slide, toast } from 'react-toastify';
 import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
 import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
+import VerticalCardSkeleton from '../VerticalCard/VerticalCardSkeleton';
 
 const Releases = () => {
    const locale = useLocale();
@@ -108,19 +109,29 @@ const Releases = () => {
          <ReleaseStyles>
             <Title text='Top New releases' />
             <div className='releases'>
-               {releases.slice(0, 4).map((release) => (
-                  <VerticalCard
-                     key={release._id}
-                     name={release.name}
-                     cover={release.images.coverImage}
-                     code={release.prices[locale].currencyCode}
-                     price={release.prices[locale].amount}
-                     discount={release.discount}
-                     genre={release.genres[locale]}
-                     isInWishlist={localWishlist.includes(release.name)}
-                     wishListAction={() => handleWishlistClick(release.name)}
-                  />
-               ))}
+               {releases.length > 0 ? (
+                  releases
+                     .slice(0, 4)
+                     .map((release) => (
+                        <VerticalCard
+                           key={release._id}
+                           name={release.name}
+                           cover={release.images.coverImage}
+                           code={release.prices[locale].currencyCode}
+                           price={release.prices[locale].amount}
+                           discount={release.discount}
+                           genre={release.genres[locale]}
+                           isInWishlist={localWishlist.includes(release.name)}
+                           wishListAction={() =>
+                              handleWishlistClick(release.name)
+                           }
+                        />
+                     ))
+               ) :
+                  [...Array(4)].map((_, i) => (
+                  <VerticalCardSkeleton />
+               )
+               )}
             </div>
          </ReleaseStyles>
       </>
