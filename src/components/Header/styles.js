@@ -20,15 +20,14 @@ export const HeaderStyle = styled.header`
       @media screen {
          @media (max-width: 850px) {
             margin-left: 0;
-            width: 6rem;
+            width: 12rem;
             height: 4rem;
-            margin: 0 2rem;
+            margin: 0 0 0 1rem;
          }
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             margin-left: 0;
             width: 6rem;
-            height: 4rem;
-            margin: 0 0.5rem 0 1rem;
+            height: 3rem;
          }
       }
    }
@@ -41,19 +40,44 @@ export const HeaderStyle = styled.header`
       position: relative;
       z-index: 1;
       cursor: pointer;
+      position: absolute;
+      right: 8.8rem;
+      top: calc(50% - 1.5rem);
+      width: 1.5rem;
+      height: 1.5rem;
+
+      svg {
+         width: 100%;
+         height: 100%;
+         stroke: rgba(var(--secondary));
+         z-index: 1;
+         transition: 0.5s;
+      }
 
       &::after {
+         transition: 0.5s;
          content: '';
          position: absolute;
-         background-color: rgba(var(--light));
+         border: 1px solid rgba(var(--secondary));
          height: 100%;
          width: 100%;
+         padding: 0.5rem;
          border-radius: 50%;
+      }
+
+      &:hover {
+         svg {
+            stroke: rgba(var(--primary));
+         }
+         &::after {
+            background-color: rgba(var(--primary), 0.1);
+         border: 1px solid rgba(var(--primary));
+         }
       }
    }
 
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          justify-content: flex-start;
          height: 6rem;
       }
@@ -74,14 +98,14 @@ export const Language = styled.div`
       object-fit: contain;
       z-index: 5;
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             font-size: 2.3rem;
          }
       }
    }
 
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          position: absolute;
          right: 1rem;
          margin: 0;
@@ -100,7 +124,7 @@ export const MenuBar = styled.div`
    z-index: 5;
 
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          font-size: 2.5rem;
       }
    }
@@ -119,7 +143,7 @@ export const Cart = styled.div`
       font-size: 1rem;
       padding: 0.3rem;
       border-radius: 50%;
-      right: -0.5rem;
+      right: -0. 5rem;
       top: -0.5rem;
       min-width: 1.3rem;
       min-height: 1.3rem;
@@ -127,7 +151,7 @@ export const Cart = styled.div`
       align-items: center;
       justify-content: center;
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             font-size: 0.8rem;
             min-width: 1.1rem;
             min-height: 1.1rem;
@@ -139,14 +163,14 @@ export const Cart = styled.div`
       stroke: rgba(var(--secondary));
 
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             font-size: 2.5rem;
             margin: 0;
          }
       }
    }
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          position: absolute;
          right: 4rem;
       }

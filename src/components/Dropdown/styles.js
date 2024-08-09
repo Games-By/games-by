@@ -32,7 +32,7 @@ export const DropdownStyles = styled(motion.div)`
       top: -4rem;
 
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             left: auto;
             right: 0;
             top: -5rem;
@@ -72,7 +72,7 @@ export const DropdownStyles = styled(motion.div)`
    }
 
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          min-width: 0;
          width: 0;
          max-width: 40rem;

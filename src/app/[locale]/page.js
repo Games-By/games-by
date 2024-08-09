@@ -1,16 +1,18 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 import { useEffect, useState } from 'react';
 import Banners from '@/components/Banner';
 import Releases from '@/components/Releases';
 import { ToastContainer } from 'react-toastify';
 import Discover from '@/modules/Discover';
 import HorizontalImages from '@/modules/HorizontalImages';
+import useWindowSize from '@/hooks/useWindowSize';
 require('dotenv').config();
 
 const Index = () => {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const { width } = useWindowSize();
 
    const checkTokenExpiration = () => {
       const tokenExpiration = localStorage.getItem('tokenExpiration');
@@ -41,7 +43,7 @@ const Index = () => {
       <>
          <title>Home | Games By</title>
          <Header isLoggedIn={isLoggedIn} />
-         <main style={{paddingTop: '8rem'}}>
+         <main style={{ paddingTop: width > 768 ? '8rem' : '6rem' }}>
             <Banners isLoggedIn={isLoggedIn} />
             <Releases />
             <Discover />

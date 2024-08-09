@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { ProfileThumbLink, ProfileContainer } from './ProfileThumbStyles';
+import { ProfileThumbLink, ProfileContainer } from './styles';
 import { Link } from '../../../navigation';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -33,6 +33,11 @@ const ProfileThumb = ({ windowWidth, handle }) => {
       if (authToken) {
          setTokenValid(true);
       }
+      if (!tokenValid) {
+         localStorage.removeItem('wishlist');
+         localStorage.removeItem('user');
+         localStorage.removeItem('cart');
+      }
 
       if (!profileImage) {
          const user = JSON.parse(localStorage.getItem('user'));
@@ -44,14 +49,14 @@ const ProfileThumb = ({ windowWidth, handle }) => {
 
    return (
       <>
-         <ProfileContainer style={{ right: windowWidth <= 660 && '11rem' }}>
+         <ProfileContainer>
             {profileImage ? (
                <Link
                   onMouseEnter={() => {
-                     windowWidth > 660 && handle(true);
+                     windowWidth > 768 && handle(true);
                   }}
                   onMouseLeave={() => {
-                     windowWidth > 660 && handle(false);
+                     windowWidth > 768 && handle(false);
                   }}
                   href={tokenValid ? `/profile` : '/'}
                >

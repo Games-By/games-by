@@ -1,31 +1,29 @@
 import Image from 'next/image';
-import { SearchedItemStyles, Separator } from './SearchedItemStyles';
+import { SearchedItemStyles } from './styles';
 import { Link } from '../../../navigation';
 
-const SearchedItem = ({ name, image, url, release, isLast, id }) => {
+const SearchedItem = ({ name, image, url, release, id }) => {
    return (
       <>
          <div
             onClick={() => {
                localStorage.setItem('GameId', id);
             }}
+            className='item-box'
          >
             <Link href={url}>
                <SearchedItemStyles>
-                  <h3 className='title'>{name}</h3>
                   <Image
                      src={image}
                      alt={`${name} wallpaper`}
-                     width={100}
-                     height={100}
+                     width={250}
+                     height={250}
                      quality={100}
                      className='cover'
-                     style={{ width: 'auto', height: 'auto' }}
                   />
-                  <p className='date'>{release}</p>
+                  <h3 className='title'>{name}</h3>
                </SearchedItemStyles>
             </Link>
-            {!isLast && <Separator />}
          </div>
       </>
    );

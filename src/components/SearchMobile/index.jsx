@@ -1,5 +1,5 @@
 import { IoIosClose } from 'react-icons/io';
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar';
 import { SearchMobileContainer } from './SearchMobileStyles';
 
 const SearchMobile = ({ onClick }) => {

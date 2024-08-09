@@ -1,5 +1,5 @@
 import { Link } from '../../../navigation';
-import { DropdownStyles } from './DropdownStyles';
+import { DropdownStyles } from './styles';
 import { useRouter, usePathname } from '../../../navigation';
 import { FaSignOutAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -34,15 +34,15 @@ const Dropdown = ({
 
    const dropdownVariants = {
       initial:
-         windowWidth < 660 && isVisible
+         windowWidth < 768 && isVisible
             ? { opacity: 0, width: 0 }
             : { opacity: 0, height: 0 },
       animate:
-         windowWidth < 660 && isVisible
+         windowWidth < 768 && isVisible
             ? { opacity: 1, width: '50%' }
             : { opacity: 1, height: 'auto' },
       exit:
-         windowWidth < 660 && isVisible
+         windowWidth < 768 && isVisible
             ? { opacity: 0, width: 0 }
             : { opacity: 0, height: 0 },
    };
@@ -54,9 +54,9 @@ const Dropdown = ({
             animate={dropdownVariants.animate}
             exit={dropdownVariants.exit}
             transition={{ duration: 0.3 }}
-            onMouseEnter={windowWidth > 660 ? onMouseEnter : null}
-            onMouseLeave={windowWidth > 660 ? onMouseLeave : null}
-            onClick={windowWidth <= 660 ? onClick : null}
+            onMouseEnter={windowWidth > 768 ? onMouseEnter : null}
+            onMouseLeave={windowWidth > 768 ? onMouseLeave : null}
+            onClick={windowWidth <= 768 ? onClick : null}
          >
             {list.map((item, index) => (
                <MotionLink

@@ -1,4 +1,4 @@
-const MagnifyingGlassIcon = ({ color, className }) => (
+const MagnifyingGlassIcon = ({ className }) => (
    <svg
       width='19'
       height='21'
@@ -12,7 +12,6 @@ const MagnifyingGlassIcon = ({ color, className }) => (
          y1='12.6079'
          x2='0.755298'
          y2='19.4055'
-         stroke={color ? color : 'rgba(var(--dark))'}
          strokeWidth='2'
       />
       <circle
@@ -20,7 +19,6 @@ const MagnifyingGlassIcon = ({ color, className }) => (
          cy='7.5'
          r='6.5'
          fill='none'
-         stroke={color ? color : 'rgba(var(--dark))'}
          strokeWidth='2'
       />
    </svg>
