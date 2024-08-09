@@ -21,9 +21,12 @@ const Index = () => {
       }
       const expirationDate = new Date(tokenExpiration);
       if (new Date() > expirationDate) {
+         localStorage.removeItem('wishlist');
+         localStorage.removeItem('user');
+         localStorage.removeItem('cart');
+         localStorage.removeItem('userEmail');
          localStorage.removeItem('authToken');
          localStorage.removeItem('tokenExpiration');
-         localStorage.removeItem('userEmail');
          return false;
       }
       return true;

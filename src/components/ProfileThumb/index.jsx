@@ -33,11 +33,6 @@ const ProfileThumb = ({ windowWidth, handle }) => {
       if (authToken) {
          setTokenValid(true);
       }
-      if (!tokenValid) {
-         localStorage.removeItem('wishlist');
-         localStorage.removeItem('user');
-         localStorage.removeItem('cart');
-      }
 
       if (!profileImage) {
          const user = JSON.parse(localStorage.getItem('user'));
