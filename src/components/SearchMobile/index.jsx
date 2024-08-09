@@ -1,6 +1,5 @@
-import { IoIosClose } from 'react-icons/io';
 import SearchBar from '../SearchBar';
-import { SearchMobileContainer } from './SearchMobileStyles';
+import { SearchMobileContainer } from './styles';
 
 const SearchMobile = ({ onClick }) => {
    const handleSearchBarClick = (e) => {
@@ -8,8 +7,21 @@ const SearchMobile = ({ onClick }) => {
    };
    return (
       <>
-         <SearchMobileContainer onClick={onClick}>
-            <SearchBar onclick={handleSearchBarClick} autoFocus={true} />
+         <SearchMobileContainer
+            onClick={onClick}
+            initial={{ opacity: 0, y: '100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }}
+            transition={{
+               duration: 0.5,
+               ease: [0.42, 0, 0.58, 1],
+            }}
+         >
+            <SearchBar
+               onclick={handleSearchBarClick}
+               autoFocus={true}
+               className='search-bar'
+            />
          </SearchMobileContainer>
       </>
    );

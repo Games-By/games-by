@@ -10,7 +10,8 @@ export const HeaderStyle = styled.header`
    position: fixed;
    transition: 0.5s;
    scroll-padding-top: 100rem;
-   z-index: 50;
+   z-index: 20;
+   backdrop-filter: ${(props) => (props.blur ? 'blur(1rem)' : '')};
 
    .logo {
       object-fit: contain;
@@ -38,19 +39,18 @@ export const HeaderStyle = styled.header`
       padding: 0.5rem;
       transform: scale(0.85);
       position: relative;
-      z-index: 1;
       cursor: pointer;
       position: absolute;
       right: 8.8rem;
       top: calc(50% - 1.5rem);
       width: 1.5rem;
       height: 1.5rem;
+      z-index: 21;
 
       svg {
          width: 100%;
          height: 100%;
          stroke: rgba(var(--secondary));
-         z-index: 1;
          transition: 0.5s;
       }
 
@@ -71,7 +71,7 @@ export const HeaderStyle = styled.header`
          }
          &::after {
             background-color: rgba(var(--primary), 0.1);
-         border: 1px solid rgba(var(--primary));
+            border: 1px solid rgba(var(--primary));
          }
       }
    }
@@ -90,13 +90,14 @@ export const Language = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+   z-index: 21;
 
    .globe {
       font-size: 3rem;
       cursor: pointer;
       fill: rgba(var(--secondary));
       object-fit: contain;
-      z-index: 5;
+
       @media screen {
          @media (max-width: 768px) {
             font-size: 2.3rem;
@@ -121,7 +122,7 @@ export const MenuBar = styled.div`
    align-items: center;
    justify-content: center;
    cursor: pointer;
-   z-index: 5;
+   z-index: 21;
 
    @media screen {
       @media (max-width: 768px) {
@@ -133,8 +134,9 @@ export const MenuBar = styled.div`
 export const Cart = styled.div`
    margin: 0 1rem;
    position: relative;
-   z-index: 5;
    cursor: pointer;
+   z-index: 21;
+
    .number {
       position: absolute;
       color: rgba(var(--dark));
@@ -143,13 +145,14 @@ export const Cart = styled.div`
       font-size: 1rem;
       padding: 0.3rem;
       border-radius: 50%;
-      right: -0. 5rem;
+      right: -0.5rem;
       top: -0.5rem;
       min-width: 1.3rem;
       min-height: 1.3rem;
       display: flex;
       align-items: center;
       justify-content: center;
+
       @media screen {
          @media (max-width: 768px) {
             font-size: 0.8rem;
@@ -158,6 +161,7 @@ export const Cart = styled.div`
          }
       }
    }
+
    .cart {
       font-size: 3rem;
       stroke: rgba(var(--secondary));
@@ -169,6 +173,7 @@ export const Cart = styled.div`
          }
       }
    }
+
    @media screen {
       @media (max-width: 768px) {
          position: absolute;

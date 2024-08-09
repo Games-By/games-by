@@ -16,6 +16,7 @@ import data from '@/data/menu.json';
 import { useCartContext } from '../../contexts/CartContext';
 import useWindowSize from '@/hooks/useWindowSize';
 import useScrollPosition from '@/hooks/useScrollPosition';
+import { AnimatePresence } from 'framer-motion';
 
 const { dropdownOptions } = data;
 
@@ -35,9 +36,7 @@ const Header = ({ isLoggedIn }) => {
    }, [isLoggedIn, fetchCart]);
 
    return (
-      <HeaderStyle
-         style={{ backdropFilter: scrollPosition > 80 && 'blur(10px)' }}
-      >
+      <HeaderStyle blur={scrollPosition > 80}>
          <Link href={`/`}>
             <Image
                src={
@@ -52,9 +51,14 @@ const Header = ({ isLoggedIn }) => {
             />
          </Link>
          {width >= 768 && <SearchBar />}
-         {isSearchOpen && width < 768 && (
-            <SearchMobile onClick={() => setIsSearchOpen(false)} />
-         )}
+         <AnimatePresence>
+            {isSearchOpen && width < 768 && (
+               <SearchMobile
+                  onClick={() => setIsSearchOpen(false)}
+                  isSearchOpen={isSearchOpen}
+               />
+            )}
+         </AnimatePresence>
          {width < 768 && (
             <div className='icon-box' onClick={() => setIsSearchOpen(true)}>
                <MagnifyingGlassIcon />

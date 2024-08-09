@@ -31,7 +31,7 @@ export const SearchBarStyles = styled(motion.div)`
 
       &:focus {
          width: 45rem;
-         z-index: 51;
+         z-index: 11;
          outline: none;
          caret-color: rgba(var(--secondary));
       }
@@ -127,6 +127,9 @@ export const SearchBox = styled(motion.ul)`
    @media screen {
       @media (max-width: 1024px) {
          width: 30rem;
+      }
+      @media (max-width: 768px) {
+         width: 90%;
       }
    }
 `;
