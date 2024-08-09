@@ -129,7 +129,7 @@ const Releases = () => {
                      ))
                ) :
                   [...Array(4)].map((_, i) => (
-                  <VerticalCardSkeleton />
+                  <VerticalCardSkeleton  key={i}/>
                )
                )}
             </div>

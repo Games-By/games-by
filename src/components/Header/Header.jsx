@@ -15,12 +15,14 @@ import Dropdown from '../Dropdown/Dropdown';
 import data from '@/data/menu.json';
 import { useCartContext } from '../../contexts/CartContext';
 import useWindowSize from '@/hooks/useWindowSize';
+import useScrollPosition from '@/hooks/useScrollPosition';
 
 const { dropdownOptions } = data;
 
 const Header = ({ isLoggedIn }) => {
    const route = useRouter();
    const { width } = useWindowSize();
+   const scrollPosition = useScrollPosition();
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
    const [menuVisible, setMenuVisible] = useState(width > 660);
@@ -33,7 +35,9 @@ const Header = ({ isLoggedIn }) => {
    }, [isLoggedIn, fetchCart]);
 
    return (
-      <HeaderStyle>
+      <HeaderStyle
+         style={{ backgroundColor: scrollPosition > 80 && 'rgba(var(--dark), .0)', backdropFilter: scrollPosition > 80 && 'blur(10px)'}}
+      >
          <Link href={`/`}>
             <Image
                src={

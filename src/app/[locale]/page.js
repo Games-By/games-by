@@ -41,11 +41,12 @@ const Index = () => {
       <>
          <title>Home | Games By</title>
          <Header isLoggedIn={isLoggedIn} />
-         <Banners isLoggedIn={isLoggedIn} />
-         <Releases />
-         <Discover />
-         <HorizontalImages />
-
+         <main style={{paddingTop: '8rem'}}>
+            <Banners isLoggedIn={isLoggedIn} />
+            <Releases />
+            <Discover />
+            <HorizontalImages />
+         </main>
          <ToastContainer />
       </>
    );

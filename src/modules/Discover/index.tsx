@@ -31,9 +31,8 @@ const Discover = () => {
                </Call>
                <Portrait>
                   {portraitImages.map((image, i) => (
-                     <div className='image-box'>
+                     <div className='image-box' key={i}>
                         <Image
-                           key={i}
                            alt='game cover'
                            src={image}
                            height={400}
@@ -41,6 +40,7 @@ const Discover = () => {
                            quality={100}
                            style={{ objectFit: 'cover' }}
                            className='image'
+
                         />
                      </div>
                   ))}

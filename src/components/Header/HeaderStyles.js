@@ -3,10 +3,14 @@ import styled from 'styled-components';
 export const HeaderStyle = styled.header`
    width: 100vw;
    height: 8rem;
-   background-color: rgba(var(--dark));
+   border-bottom: 1px solid rgba(var(--primary));
    display: flex;
    align-items: center;
    justify-content: space-between;
+   position: fixed;
+   transition: 0.5s;
+   scroll-padding-top: 100rem;
+   z-index: 50;
 
    .logo {
       object-fit: contain;
