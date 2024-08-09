@@ -12,13 +12,11 @@ import { CgMenuRight, CgMenuRightAlt } from 'react-icons/cg';
 import { IoCartOutline } from 'react-icons/io5';
 import { VscGlobe } from 'react-icons/vsc';
 import Dropdown from '../Dropdown';
-import data from '@/data/menu.json';
 import { useCartContext } from '../../contexts/CartContext';
 import useWindowSize from '@/hooks/useWindowSize';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import { AnimatePresence } from 'framer-motion';
 
-const { dropdownOptions } = data;
 
 const Header = ({ isLoggedIn }) => {
    const route = useRouter();
@@ -122,7 +120,6 @@ const Header = ({ isLoggedIn }) => {
                   <Dropdown
                      windowWidth={width}
                      isVisible={menuVisible}
-                     list={dropdownOptions}
                      onMouseEnter={() => setMenuVisible(true)}
                      onMouseLeave={() => setMenuVisible(false)}
                      onClick={() => setMenuVisible(!menuVisible)}

@@ -23,22 +23,23 @@ export const DropdownStyles = styled(motion.div)`
    .option {
       text-align: center;
       width: 100%;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       color: rgba(var(--light));
       font-size: 1.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
       align-content: center;
-      font-weight: 300;
+      font-weight: 200;
+      text-transform: capitalize;
       white-space: nowrap;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
 
       &:nth-child(1) {
-         padding-top: 1rem;
+         padding-top: 2rem;
       }
       &:nth-last-child(1) {
-         padding-bottom: 1rem;
+         padding-bottom: 2rem;
          margin-bottom: 0;
       }
 
@@ -52,17 +53,28 @@ export const DropdownStyles = styled(motion.div)`
 
       &:hover {
          color: rgba(var(--primary), 0.8);
+         font-weight: 400;
          svg {
             fill: rgba(var(--primary));
          }
       }
    }
 
+   .locales {
+      display: flex;
+      overflow: hidden;
+      .flag {
+         transition: 0.5s;
+         &:hover {
+            scale: 1.1;
+         }
+      }
+   }
    @media screen {
       @media (max-width: 768px) {
          min-width: 0;
          width: 0;
-         max-width: 40rem;
+         max-width: 31rem;
          border-radius: 0 0 0 2rem;
          right: -1px;
          border-right: none;
