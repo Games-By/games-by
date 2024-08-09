@@ -85,29 +85,51 @@ const Header = ({ isLoggedIn }) => {
                {!menuVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
             </MenuBar>
          )}
-         {width >= 768 && (
-            <Language
-               onMouseEnter={() => setTranslateActive(true)}
-               onMouseLeave={() => setTranslateActive(false)}
-               onClick={() => {
-                  width >= 768 && setTranslateActive(!translateActive);
-               }}
-               style={{ right: isLoggedIn && width <= 768 && '4.5rem' }}
-            >
-               <VscGlobe className='globe' />
-               {translateActive && <LanguageSwitcher />}
-            </Language>
+         {(width >= 768 || translateActive) && (
+            <>
+               {translateActive && (
+                  <div
+                     className='invisible-bar-2'
+                     onMouseEnter={() => setTranslateActive(true)}
+                     onMouseLeave={() => setTranslateActive(false)}
+                  ></div>
+               )}
+               <Language
+                  onMouseEnter={() => setTranslateActive(true)}
+                  onMouseLeave={() => setTranslateActive(false)}
+                  onClick={() => {
+                     width >= 768 && setTranslateActive(!translateActive);
+                  }}
+                  style={{ right: isLoggedIn && width <= 768 && '4.5rem' }}
+               >
+                  <VscGlobe className='globe' />
+                  <AnimatePresence>
+                     {translateActive && <LanguageSwitcher />}
+                  </AnimatePresence>
+               </Language>
+            </>
          )}
-         {(menuVisible || width < 768) && (
-            <Dropdown
-               windowWidth={width}
-               isVisible={menuVisible}
-               list={dropdownOptions}
-               onMouseEnter={() => setMenuVisible(true)}
-               onMouseLeave={() => setMenuVisible(false)}
-               onClick={() => setMenuVisible(!menuVisible)}
-            />
-         )}
+         <AnimatePresence>
+            {(menuVisible || width < 768) && (
+               <>
+                  {menuVisible && (
+                     <div
+                        className='invisible-bar-1'
+                        onMouseEnter={() => setMenuVisible(true)}
+                        onMouseLeave={() => setMenuVisible(false)}
+                     ></div>
+                  )}
+                  <Dropdown
+                     windowWidth={width}
+                     isVisible={menuVisible}
+                     list={dropdownOptions}
+                     onMouseEnter={() => setMenuVisible(true)}
+                     onMouseLeave={() => setMenuVisible(false)}
+                     onClick={() => setMenuVisible(!menuVisible)}
+                  />
+               </>
+            )}
+         </AnimatePresence>
       </HeaderStyle>
    );
 };

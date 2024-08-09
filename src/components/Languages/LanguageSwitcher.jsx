@@ -27,9 +27,9 @@ const LanguageSwitcher = () => {
    const MotionLink = motion(Link);
    return (
       <Switcher
-         initial={{ opacity: 0, height: 0 }}
+         initial={{ height: 0 }}
          animate={{ opacity: 1, height: 'auto' }}
-         exit={{ opacity: 0, height: 0 }}
+         exit={{ height: 0 }}
          transition={{ duration: 0.3 }}
       >
          {locales.map((loc) => (

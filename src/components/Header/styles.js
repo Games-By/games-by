@@ -76,6 +76,20 @@ export const HeaderStyle = styled.header`
       }
    }
 
+   .invisible-bar-1 {
+      width: 12rem;
+      height: 4rem;
+      position: absolute;
+      top: 4rem;
+      right: 8rem;
+   }
+   .invisible-bar-2 {
+      width: 6rem;
+      height: 4rem;
+      position: absolute;
+      top: 4rem;
+      right: 1rem;
+   }
    @media screen {
       @media (max-width: 768px) {
          justify-content: flex-start;
