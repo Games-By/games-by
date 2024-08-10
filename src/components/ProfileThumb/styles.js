@@ -9,7 +9,7 @@ export const ProfileContainer = styled.div`
    @media screen {
       @media (max-width: 768px) {
          position: absolute;
-         right: 8rem;
+         right: 0;
       }
    }
 `;
@@ -39,8 +39,13 @@ export const ProfileThumbLink = styled.div`
 
    @media screen {
       @media (max-width: 768px) {
-         width: 4rem;
-         height: 4rem;
+         width: 3.5rem;
+         height: 3.5rem;
+
+         .profile-svg {
+            width: 100%;
+            height: 100%;
+         }
       }
    }
 `;

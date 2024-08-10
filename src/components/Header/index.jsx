@@ -17,8 +17,8 @@ import useWindowSize from '@/hooks/useWindowSize';
 import useScrollPosition from '@/hooks/useScrollPosition';
 import { AnimatePresence } from 'framer-motion';
 
-
-const Header = ({ isLoggedIn }) => {
+const Header = () => {
+   const isLoggedIn = localStorage.getItem('authToken');
    const route = useRouter();
    const { width } = useWindowSize();
    const scrollPosition = useScrollPosition();

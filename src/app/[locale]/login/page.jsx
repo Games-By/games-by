@@ -46,9 +46,17 @@ const LoginPage = () => {
                params: { email: email.toLowerCase() },
             }
          );
+         const imageName = response.data.user.image;
          if (response.status === 200) {
             localStorage.setItem('user', JSON.stringify(response.data.user));
+            const imageProfile = await axios.get(
+               `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
+               {
+                  params: { imageName },
+               }
+            );
             const wishlist = await getWishlist();
+            localStorage.setItem('imageProfile', JSON.stringify(imageProfile));
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
          }
       } catch (error) {

@@ -31,6 +31,7 @@ const Dropdown = ({
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
       localStorage.removeItem('wishlist');
+      localStorage.removeItem('imageProfile');
 
       if (pathname.includes('/profile')) {
          router.replace('/').then(() => {
@@ -69,8 +70,9 @@ const Dropdown = ({
                transition={{ duration: 0.1, delay: 0.2 }}
                key={index}
                href={
-                  item.title['en-US'] === 'Library' ||
-                  item.title['en-US'] === 'WishList'
+                  user &&
+                  (item.title['en-US'] === 'Library' ||
+                     item.title['en-US'] === 'WishList')
                      ? `${
                           user.username
                              ? encodeURIComponent(user.username)
@@ -90,7 +92,7 @@ const Dropdown = ({
          {width < 768 && (
             <div className='locales'>
                {locales.map((loc) => (
-                  <Link href={loc.code} className='flag'>
+                  <Link href={loc.code} className='flag' key={loc.code}>
                      <Image width={35} height={25} alt='flag' src={loc.flag} />
                   </Link>
                ))}

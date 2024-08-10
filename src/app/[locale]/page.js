@@ -45,7 +45,7 @@ const Index = () => {
    return (
       <>
          <title>Home | Games By</title>
-         <Header isLoggedIn={isLoggedIn} />
+         <Header />
          <main style={{ paddingTop: width > 768 ? '8rem' : '6rem' }}>
             <Banners isLoggedIn={isLoggedIn} />
             <Releases />
