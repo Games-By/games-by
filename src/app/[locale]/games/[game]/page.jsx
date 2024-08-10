@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 import Game from '@/components/Game';
 import { debounce } from '@/utils/debounce';
 import { getGameById } from '@/Services/games-service/getGames';
