@@ -4,11 +4,12 @@ import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Switcher } from './LanguageSwitcherStyles';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export const locales = [
-   { name: 'English', code: 'en-US' },
-   { name: 'Português', code: 'pt-BR' },
-   { name: 'Español', code: 'es-ES' },
+   { name: 'English', code: 'en-US', flag: 'https://www.svgrepo.com/show/508668/flag-us.svg' },
+   { name: 'Português', code: 'pt-BR', flag: 'https://www.svgrepo.com/show/405433/flag-for-flag-brazil.svg' },
+   { name: 'Español', code: 'es-ES', flag: 'https://www.svgrepo.com/show/248935/spain.svg' },
 ];
 
 const LanguageSwitcher = () => {
@@ -27,9 +28,9 @@ const LanguageSwitcher = () => {
    const MotionLink = motion(Link);
    return (
       <Switcher
-         initial={{ opacity: 0, height: 0 }}
+         initial={{ height: 0 }}
          animate={{ opacity: 1, height: 'auto' }}
-         exit={{ opacity: 0, height: 0 }}
+         exit={{ height: 0 }}
          transition={{ duration: 0.3 }}
       >
          {locales.map((loc) => (
@@ -45,6 +46,7 @@ const LanguageSwitcher = () => {
                   pathname.includes(getNewPathname(loc.code)) ? 'active' : ''
                }`}
             >
+               <Image width={30} height={20} alt='flag' src={loc.flag} />
                {loc.name} ({loc.code})
             </MotionLink>
          ))}

@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { SearchBarStyles, SearchBox } from './SearchBarStyles';
+import { SearchBarStyles, SearchBox } from './styles';
 import Image from 'next/image';
 import { useRouter } from '../../../navigation';
 import { getGamesByName } from '@/Services/games-service/getGames';
 import { debounce } from '@/utils/debounce';
-import SearchedItem from '../SearchedItem/SearchedItem';
+import SearchedItem from '../SearchedItem';
 import SearchedItemSkeleton from '../SearchedItem/SearchedItemSkeleton';
 import MagnifyingGlassIcon from '@/assets/MagnifyingGlass';
 
-const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
+const SearchBar = ({ autoFocus, onclick, className }) => {
    const router = useRouter();
    const [isSearched, setIsSearched] = useState(false);
    const [searched, setSearched] = useState('');
@@ -31,7 +31,7 @@ const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
          );
 
          setFindGames([...filteredGames]);
-         setIsSearched(true)
+         setIsSearched(true);
       } catch (error) {
          console.error('Error fetching games:', error);
       } finally {
@@ -79,7 +79,7 @@ const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
 
    return (
       <>
-         <SearchBarStyles whileTap={{ scale: 0.995 }} onClick={onclick}>
+         <SearchBarStyles whileTap={{ scale: 0.995 }} onClick={onclick} className={className}>
             <input
                ref={searchInputRef}
                className='search'
@@ -92,13 +92,13 @@ const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
                autoFocus={autoFocus ? autoFocus : false}
             />
             <div className='glass' onClick={navigateToCatalog}>
-               <MagnifyingGlassIcon color={'rgba(var(--secondary))'} />
+               <MagnifyingGlassIcon />
             </div>
             {searched.length > 0 && isSearched && (
                <SearchBox
                   ref={searchInputRef}
                   initial={{ opacity: 0, maxHeight: 0 }}
-                  animate={{ opacity: 1, maxHeight: '500px' }}
+                  animate={{ opacity: 1, maxHeight: '750px' }}
                   exit={{ opacity: 0, maxHeight: 0 }}
                   transition={{ duration: 0.4, ease: 'easeInOut' }}
                >
@@ -106,22 +106,26 @@ const SearchBar = ({ isLoggedIn, autoFocus, onclick }) => {
                      findGames.length < 1 ? (
                         <SearchedItemSkeleton />
                      ) : (
-                        findGames.map((_, index) => <SearchedItemSkeleton key={`skeleton-${index}`} />)
+                        findGames.map((_, index) => (
+                           <SearchedItemSkeleton key={`skeleton-${index}`} />
+                        ))
                      )
-                  ) : findGames.length > 0  && !isLoading ? (
-                     findGames.map((game, index) => (
-                        <SearchedItem
-                           key={game._id}
-                           id={game._id}
-                           name={game.name}
-                           image={game.images.coverImage}
-                           release={game.releaseYear}
-                           url={`/games/${encodeURIComponent(
-                              game.name.toLowerCase()
-                           )}`}
-                           isLast={index === findGames.length - 1}
-                        />
-                     ))
+                  ) : findGames.length > 0 && !isLoading ? (
+                     findGames.map(
+                        (game, index) =>
+                           index < 5 && (
+                              <SearchedItem
+                                 key={game._id}
+                                 id={game._id}
+                                 name={game.name}
+                                 image={game.images.coverImage}
+                                 release={game.releaseYear}
+                                 url={`/games/${encodeURIComponent(
+                                    game.name.toLowerCase()
+                                 )}`}
+                              />
+                           )
+                     )
                   ) : (
                      <div className='searched-item'>No games found</div>
                   )}

@@ -3,10 +3,15 @@ import styled from 'styled-components';
 export const HeaderStyle = styled.header`
    width: 100vw;
    height: 8rem;
-   background-color: rgba(var(--dark));
+   border-bottom: 1px solid rgba(var(--primary));
    display: flex;
    align-items: center;
    justify-content: space-between;
+   position: fixed;
+   transition: 0.5s;
+   scroll-padding-top: 100rem;
+   z-index: 20;
+   backdrop-filter: ${(props) => (props.blur ? 'blur(1rem)' : '')};
 
    .logo {
       object-fit: contain;
@@ -16,15 +21,14 @@ export const HeaderStyle = styled.header`
       @media screen {
          @media (max-width: 850px) {
             margin-left: 0;
-            width: 6rem;
+            width: 12rem;
             height: 4rem;
-            margin: 0 2rem;
+            margin: 0 0 0 1rem;
          }
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             margin-left: 0;
             width: 6rem;
-            height: 4rem;
-            margin: 0 0.5rem 0 1rem;
+            height: 3rem;
          }
       }
    }
@@ -35,21 +39,59 @@ export const HeaderStyle = styled.header`
       padding: 0.5rem;
       transform: scale(0.85);
       position: relative;
-      z-index: 1;
       cursor: pointer;
+      position: absolute;
+      right: 8.8rem;
+      top: calc(50% - 1.5rem);
+      width: 1.5rem;
+      height: 1.5rem;
+      z-index: 21;
+
+      svg {
+         width: 100%;
+         height: 100%;
+         stroke: rgba(var(--secondary));
+         transition: 0.5s;
+      }
 
       &::after {
+         transition: 0.5s;
          content: '';
          position: absolute;
-         background-color: rgba(var(--light));
+         border: 1px solid rgba(var(--secondary));
          height: 100%;
          width: 100%;
+         padding: 0.5rem;
          border-radius: 50%;
+      }
+
+      &:hover {
+         svg {
+            stroke: rgba(var(--primary));
+         }
+         &::after {
+            background-color: rgba(var(--primary), 0.1);
+            border: 1px solid rgba(var(--primary));
+         }
       }
    }
 
+   .invisible-bar-1 {
+      width: 12rem;
+      height: 4rem;
+      position: absolute;
+      top: 4rem;
+      right: 8rem;
+   }
+   .invisible-bar-2 {
+      width: 6rem;
+      height: 4rem;
+      position: absolute;
+      top: 4rem;
+      right: 1rem;
+   }
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          justify-content: flex-start;
          height: 6rem;
       }
@@ -62,22 +104,23 @@ export const Language = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+   z-index: 21;
 
    .globe {
       font-size: 3rem;
       cursor: pointer;
       fill: rgba(var(--secondary));
       object-fit: contain;
-      z-index: 5;
+
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             font-size: 2.3rem;
          }
       }
    }
 
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          position: absolute;
          right: 1rem;
          margin: 0;
@@ -93,10 +136,10 @@ export const MenuBar = styled.div`
    align-items: center;
    justify-content: center;
    cursor: pointer;
-   z-index: 5;
+   z-index: 21;
 
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          font-size: 2.5rem;
       }
    }
@@ -105,8 +148,9 @@ export const MenuBar = styled.div`
 export const Cart = styled.div`
    margin: 0 1rem;
    position: relative;
-   z-index: 5;
    cursor: pointer;
+   z-index: 21;
+
    .number {
       position: absolute;
       color: rgba(var(--dark));
@@ -122,27 +166,30 @@ export const Cart = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             font-size: 0.8rem;
             min-width: 1.1rem;
             min-height: 1.1rem;
          }
       }
    }
+
    .cart {
       font-size: 3rem;
       stroke: rgba(var(--secondary));
 
       @media screen {
-         @media (max-width: 660px) {
+         @media (max-width: 768px) {
             font-size: 2.5rem;
             margin: 0;
          }
       }
    }
+
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          position: absolute;
          right: 4rem;
       }

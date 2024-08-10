@@ -6,54 +6,42 @@ export const DropdownStyles = styled(motion.div)`
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   gap: 1.5rem;
-   padding: 1rem 0 2rem;
    background-color: rgba(var(--dark), 0.9);
    backdrop-filter: blur(10px);
    position: absolute;
-   top: 11.3rem;
+   top: 8rem;
    right: 5rem;
-   z-index: 1;
    min-width: 25rem;
    width: 25%;
    border-radius: 0 0 2rem 2rem;
    border: 1px solid rgba(var(--primary));
    border-top: none;
    color: rgba(var(--light));
-   z-index: 2;
-
-   &::before {
-      content: '';
-      height: 4rem;
-      width: 90%;
-      left: 0;
-      background-color: transparent;
-      position: fixed;
-      top: -4rem;
-
-      @media screen {
-         @media (max-width: 660px) {
-            left: auto;
-            right: 0;
-            top: -5rem;
-            height: 5rem;
-            width: 5rem;
-         }
-      }
-   }
+   z-index: 21;
+   overflow: hidden;
 
    .option {
       text-align: center;
       width: 100%;
-      margin: 0 auto;
+      margin-bottom: 1rem;
       color: rgba(var(--light));
       font-size: 1.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 300;
+      align-content: center;
+      font-weight: 200;
+      text-transform: capitalize;
       white-space: nowrap;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+
+      &:nth-child(1) {
+         padding-top: 2rem;
+      }
+      &:nth-last-child(1) {
+         padding-bottom: 2rem;
+         margin-bottom: 0;
+      }
 
       svg {
          fill: rgba(var(--light));
@@ -65,21 +53,32 @@ export const DropdownStyles = styled(motion.div)`
 
       &:hover {
          color: rgba(var(--primary), 0.8);
+         font-weight: 400;
          svg {
             fill: rgba(var(--primary));
          }
       }
    }
 
+   .locales {
+      display: flex;
+      overflow: hidden;
+      .flag {
+         transition: 0.5s;
+         &:hover {
+            scale: 1.1;
+         }
+      }
+   }
    @media screen {
-      @media (max-width: 660px) {
+      @media (max-width: 768px) {
          min-width: 0;
          width: 0;
-         max-width: 40rem;
+         max-width: 31rem;
          border-radius: 0 0 0 2rem;
-         right: 0;
+         right: -1px;
          border-right: none;
-         top: 9.3rem;
+         top: 6rem;
 
          .option {
             width: auto;

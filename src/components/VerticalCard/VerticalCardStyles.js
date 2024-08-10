@@ -23,9 +23,6 @@ export const VarticalCardStyles = styled.div`
          @media (max-width: 1440px) {
             height: 30rem;
          }
-         @media (max-width: 1024px) {
-            height: 30rem;
-         }
          @media (max-width: 520px) {
             height: 20rem;
          }
@@ -274,7 +271,6 @@ export const VarticalCardStyles = styled.div`
          @media (max-width: 520px) {
             height: 13rem;
             max-height: none;
-            min-height: 0;
          }
          @media (max-width: 480px) {
             min-height: 13rem;

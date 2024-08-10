@@ -1,15 +1,35 @@
 {
    "dropdownOptions": [
       {
-         "title": "WishList",
-         "url": "/profile/wishlist"
+         "title": {
+            "en-US": "Profile",
+            "pt-BR": "Perfil",
+            "es-ES": "Perfil"
+         },
+         "url": "/profile"
       },
       {
-         "title": "Coupons",
-         "url": "/coupons"
+         "title": {
+            "en-US": "Library",
+            "pt-BR": "Biblioteca",
+            "es-ES": "Biblioteca"
+         },
+         "url": "/library"
       },
       {
-         "title": "Sign Out",
+         "title": {
+            "en-US": "WishList",
+            "pt-BR": "Lista de desejos",
+            "es-ES": "Lista de deseos"
+         },
+         "url": "/wishlist"
+      },
+      {
+         "title": {
+            "en-US": "Sign Out",
+            "pt-BR": "Sair",
+            "es-ES": "Salir"
+         },
          "url": "/"
       }
    ]

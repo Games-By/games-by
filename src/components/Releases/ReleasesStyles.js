@@ -8,7 +8,9 @@ export const ReleaseStyles = styled.section`
    align-items: center;
    .releases {
       display: flex;
-      justify-content: space-between;
+      width: 90%;
+      max-width: 170rem;
+      justify-content: space-evenly;
       align-items: flex-start;
       gap: 3rem;
       margin: 5rem auto 3rem;
@@ -24,11 +26,11 @@ export const ReleaseStyles = styled.section`
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            padding: 0 1rem;
+            padding: 0;
             gap: 4rem;
 
             & > * {
-               flex: 1 1 calc(50% - 2rem);
+               flex: 1 1 calc(49% - 2rem);
             }
          }
          @media (max-width: 600px) {

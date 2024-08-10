@@ -20,6 +20,7 @@ const Profile = () => {
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
       localStorage.removeItem('wishlist');
+      localStorage.removeItem('imageProfile');
 
       router.replace('/login');
    };
