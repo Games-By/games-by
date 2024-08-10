@@ -7,10 +7,9 @@ export const ProfileContainer = styled.div`
    width: 5rem;
    z-index: 5;
    @media screen {
-      @media (max-width: 660px) {
-         justify-content: flex-end;
+      @media (max-width: 768px) {
          position: absolute;
-         right: 9rem;
+         right: 0;
       }
    }
 `;
@@ -39,9 +38,14 @@ export const ProfileThumbLink = styled.div`
    }
 
    @media screen {
-      @media (max-width: 660px) {
-         width: 4rem;
-         height: 4rem;
+      @media (max-width: 768px) {
+         width: 3.5rem;
+         height: 3.5rem;
+
+         .profile-svg {
+            width: 100%;
+            height: 100%;
+         }
       }
    }
 `;

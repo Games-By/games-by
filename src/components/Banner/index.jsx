@@ -17,6 +17,7 @@ import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
 import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
 import { debounce } from '@/utils/debounce';
 import { useLocale, useTranslations } from 'next-intl';
+import BannerSkeleton from './BannerSkeleton';
 
 const Banners = ({ isLoggedIn }) => {
    const locale = useLocale();
@@ -123,7 +124,7 @@ const Banners = ({ isLoggedIn }) => {
    return (
       <>
          <BannerContainerStyles>
-            {banners.length > 0 && (
+            {banners.length > 0 ? (
                <Swiper
                   centeredSlides={true}
                   loop={true}
@@ -207,7 +208,8 @@ const Banners = ({ isLoggedIn }) => {
                      </SwiperSlide>
                   ))}
                </Swiper>
-            )}
+            ) :
+            <BannerSkeleton />}
          </BannerContainerStyles>
       </>
    );

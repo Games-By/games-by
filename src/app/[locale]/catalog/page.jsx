@@ -1,7 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import React from 'react';
-import Header from '@/components/Header/Header';
+import Header from '@/components/Header';
 import { useSearchParams } from 'next/navigation';
 
 const Catalog = () => {
