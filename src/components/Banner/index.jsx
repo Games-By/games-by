@@ -7,24 +7,18 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { getAllBanners } from '@/Services/games-service/getBanners';
 import ButtonLink from '../ButtonLink/ButtonLink';
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
-import Button from '../Button/Button';
 import { getStarIcons } from '@/utils/formatRating';
-import { Slide, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getWishlist } from '@/Services/client-data/getWishlist';
-import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
-import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
 import { debounce } from '@/utils/debounce';
 import { useLocale, useTranslations } from 'next-intl';
 import BannerSkeleton from './BannerSkeleton';
+import WishlistButton from '../WishlistButton';
 
 const Banners = ({ isLoggedIn }) => {
    const locale = useLocale();
    const t = useTranslations();
    const [banners, setBanners] = useState([]);
    const [localWishlist, setLocalWishlist] = useState([]);
-   const [gameUpdated, setGameUpdated] = useState('');
 
    const getBanners = useCallback(async () => {
       const response = await getAllBanners();
@@ -50,66 +44,6 @@ const Banners = ({ isLoggedIn }) => {
       }
    }, []);
 
-   const handleWishlistClick = useCallback(
-      async (gameTitle) => {
-         if (!isLoggedIn) {
-            toast('You need to log in to add games to your wishlist!', {
-               position: 'top-right',
-               autoClose: 3000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: false,
-               draggable: true,
-               progress: undefined,
-               theme: 'dark',
-               transition: Slide,
-            });
-            return;
-         }
-
-         try {
-            if (!localWishlist.includes(gameTitle)) {
-               setLocalWishlist((prev) => [...prev, gameTitle]);
-               await addGameToWishlist(gameTitle);
-               toast(`${gameTitle} Added to wish list.`, {
-                  position: 'top-right',
-                  autoClose: 2000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                  theme: 'dark',
-                  transition: Slide,
-               });
-            } else {
-               setLocalWishlist((prev) =>
-                  prev.filter((title) => title !== gameTitle)
-               );
-               await removeGameFromWishlist(gameTitle);
-               toast(`${gameTitle} removed from your wish list.`, {
-                  position: 'top-right',
-                  autoClose: 2000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: false,
-                  draggable: true,
-                  progress: undefined,
-                  theme: 'dark',
-                  transition: Slide,
-               });
-            }
-            const wishList = await getWishlist();
-            localStorage.setItem('wishlist', JSON.stringify(wishList));
-         } catch (error) {
-            console.error('Error adding or removing game to wishlist:', error);
-         } finally {
-            setGameUpdated(gameTitle);
-         }
-      },
-      [isLoggedIn, localWishlist]
-   );
-
    const debouncedGetBanners = useCallback(debounce(getBanners, 500), [
       getBanners,
    ]);
@@ -119,7 +53,7 @@ const Banners = ({ isLoggedIn }) => {
          debouncedGetBanners();
       }
       fetchWishlist();
-   }, [fetchWishlist, gameUpdated]);
+   }, [fetchWishlist]);
 
    return (
       <>
@@ -166,29 +100,14 @@ const Banners = ({ isLoggedIn }) => {
                                  </div>
                               )}
                               <div className='buttons'>
-                                 <Button
-                                    onClick={() =>
-                                       handleWishlistClick(banner.gameTitle)
-                                    }
-                                    icon={
-                                       localWishlist.includes(
-                                          banner.gameTitle
-                                       ) ? (
-                                          <MdFavorite className='icon' />
-                                       ) : (
-                                          <MdFavoriteBorder className='icon' />
-                                       )
-                                    }
-                                    title={
+                                 <WishlistButton
+                                    gameTitle={banner.gameTitle}
+                                    content={
                                        localWishlist.includes(banner.gameTitle)
                                           ? t('Banner.remove')
                                           : t('Banner.add')
                                     }
                                     className='button-wishlist'
-                                    currentColor='rgba(var(--secondary))'
-                                    bgColor='rgba(var(--dark))'
-                                    textTransform='uppercase'
-                                    hoverColor='rgba(var(--secondary))'
                                  />
                                  <ButtonLink
                                     url={isLoggedIn ? '/' : '/login'}
@@ -208,8 +127,9 @@ const Banners = ({ isLoggedIn }) => {
                      </SwiperSlide>
                   ))}
                </Swiper>
-            ) :
-            <BannerSkeleton />}
+            ) : (
+               <BannerSkeleton />
+            )}
          </BannerContainerStyles>
       </>
    );
