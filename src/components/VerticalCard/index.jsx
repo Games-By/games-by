@@ -3,10 +3,26 @@ import { VarticalCardStyles } from './VerticalCardStyles';
 import DiscountPrice from '../DiscountPrice';
 import ButtonLink from '../ButtonLink/ButtonLink';
 import WishlistButton from '../WishlistButton';
+import DiscountPricePercentage from '../DiscountPricePercentage';
 
-const VerticalCard = ({ discount, code, price, name, genre, cover }) => {
+const VerticalCard = ({
+   discount,
+   code,
+   price,
+   name,
+   genre,
+   cover,
+   className,
+}) => {
    return (
-      <VarticalCardStyles>
+      <VarticalCardStyles className={className}>
+         {discount && (
+            <DiscountPricePercentage
+               discount={discount}
+               className={'percentage'}
+               signal={'-'}
+            />
+         )}
          <div className='cover'>
             <Image
                height={600}

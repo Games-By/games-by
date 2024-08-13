@@ -1,12 +1,11 @@
-import { DiscountPricePercentageStyles } from "./DiscountPricePercentageStyles";
+import { DiscountPricePercentageStyles } from './DiscountPricePercentageStyles';
 
-const DiscountPricePercentage = ({ discount, signal, bgcolor }) => {
+const DiscountPricePercentage = ({ discount, signal, bgcolor, className }) => {
    return (
       <>
-         <DiscountPricePercentageStyles bgcolor={bgcolor}>
+         <DiscountPricePercentageStyles bgcolor={bgcolor} className={className}>
             {signal ? signal : ''}
-            {discount ? discount : ''}
-            %
+            {discount ? discount : ''}%
          </DiscountPricePercentageStyles>
       </>
    );

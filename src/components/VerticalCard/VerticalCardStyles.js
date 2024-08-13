@@ -8,6 +8,7 @@ export const VarticalCardStyles = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   position: relative;
 
    .cover {
       width: 100%;
@@ -277,6 +278,15 @@ export const VarticalCardStyles = styled.div`
          }
       }
    }
+
+   .percentage {
+      z-index: 1;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
+   }
+
    @media screen {
       @media (max-width: 1024px) {
          width: 40%;
