@@ -30,7 +30,7 @@ const Offers = () => {
 
    return (
       <OfferStyles>
-         <Title text={t('title')} />
+         <Title text={t('title')} className={'title'} />
          <div className='deals'>
             {isLoading
                ? [...Array(4)].map((_, i) => <VerticalCardSkeleton key={i} />)
@@ -40,6 +40,7 @@ const Offers = () => {
                           <VerticalCard
                              className={'card'}
                              key={game._id}
+                             id={game._id}
                              name={game.name}
                              genre={game.genres[locale]}
                              discount={game.discount}
