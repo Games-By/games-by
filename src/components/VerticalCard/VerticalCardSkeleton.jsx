@@ -3,8 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import SkeletonEffect from '../Skeleton';
 
 const SkeletonContainer = styled.div`
-   width: 25%;
-   max-width: 33rem;
+   width: 25rem;
    position: relative;
    border: 1px solid rgba(250, 250, 250, 0.1);
    border-radius: 1rem;
@@ -14,26 +13,18 @@ const SkeletonContainer = styled.div`
 
       @media screen {
          @media (max-width: 1440px) {
-            height: 30rem;
+            height: 25rem;
          }
-         @media (max-width: 520px) {
+         @media (max-width: 768px) {
             height: 20rem;
          }
-      }
-   }
-   @media screen {
-      @media (max-width: 1024px) {
-         width: 40%;
-      }
-      @media (max-width: 520px) {
-         width: 45%;
       }
    }
 `;
 const SkeletonDetails = styled.div`
    width: calc(100% - 2rem);
-   height: 19rem;
-   padding: 1rem;
+   height: calc(13rem - 2rem);
+   padding: 5px 1rem 1rem;
    background-color: rgba(var(--dark));
    border-radius: 0 0 1rem 1rem;
 
@@ -43,12 +34,20 @@ const SkeletonDetails = styled.div`
 
    .price {
       position: absolute;
-      bottom: 5rem;
-      right: 1rem;
+      bottom: 4rem;
+      right: 0.8rem;
+
+      @media screen {
+         @media (max-width: 768px) {
+            width: 35%;
+            height: 2.1rem;
+            bottom: 3.5rem;
+         }
+      }
    }
 
    .buttons {
-      height: 3rem;
+      height: 2.5rem;
       width: 93%;
       display: flex;
       justify-content: space-between;
@@ -59,14 +58,22 @@ const SkeletonDetails = styled.div`
       .circle {
          border-radius: 50%;
       }
+      @media screen {
+         @media (max-width: 768px) {
+            height: 2.1rem;
+            width: 95%;
+         }
+      }
    }
 
    @media screen {
-      @media (max-width: 1200px) {
-         height: 15rem;
+      @media (max-width: 1440px) {
+         height: calc(12.1rem - 2rem);
       }
-      @media (max-width: 520px) {
-         height: 13rem;
+      @media (max-width: 768px) {
+         padding: 5px 0.7rem 0.7rem;
+         width: calc(100% - 1.4rem);
+         height: calc(9.99rem - 2rem);
       }
    }
 `;
@@ -74,19 +81,19 @@ const SkeletonDetails = styled.div`
 const VerticalCardSkeleton = () => {
    return (
       <SkeletonContainer>
-         <SkeletonEffect width={'100%'} height={'38rem'} className='image' />
+         <SkeletonEffect width={'100%'} height={'30rem'} className='image' />
          <SkeletonDetails>
-            <SkeletonEffect width={'85%'} height={'3rem'} />
+            <SkeletonEffect width={'85%'} height={'2rem'} />
             <SkeletonEffect
                width={'50%'}
                height={'1.5rem'}
                className='content'
             />
-            <SkeletonEffect width={'50%'} height={'3rem'} className='price' />
+            <SkeletonEffect width={'50%'} height={'2rem'} className='price' />
             <div className='buttons'>
                <SkeletonEffect
-                  width={'3rem'}
-                  height={'100%'}
+                  width={'2.5rem'}
+                  height={'2.5rem'}
                   className='circle'
                />
                <SkeletonEffect width={'10rem'} height={'100%'} />
