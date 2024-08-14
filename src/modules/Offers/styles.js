@@ -7,38 +7,32 @@ export const OfferStyles = styled.div`
    padding: 5rem 0 2rem;
    align-items: center;
    width: 100%;
-   max-width: 190rem;
+   max-width: 170rem;
    margin: 0 auto;
 
    .deals {
       display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      align-content: flex-start;
       gap: 5rem;
       margin-top: 2rem;
-      width: 90%;
-      @media screen {
-         @media (max-width: 1024px) {
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: space-evenly;
-         }
-      }
-   }
+      width: 92%;
 
-   .card {
-      width: 100%;
-      .infos {
-         height: 20rem;
-         @media (max-width: 520px) {
-            height: fit-content;
+      @media (max-width: 1204px) {
+         flex-wrap: wrap;
+         max-width: 55rem;
+         gap: 2rem;
+         justify-content: space-between;
+
+         & > * {
+            flex: 1 1 calc(31% - 2rem);
          }
       }
-      @media screen {
-         @media (max-width: 1024px) {
-            width: 47%;
-         }
-         @media (max-width: 380px) {
-            width: 46%;
-         }
+
+      @media (max-width: 768px) {
+         gap: 1.5rem;
+         justify-content: space-between;
       }
    }
 `;

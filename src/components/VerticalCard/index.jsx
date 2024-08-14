@@ -4,6 +4,7 @@ import DiscountPrice from '../DiscountPrice';
 import ButtonLink from '../ButtonLink/ButtonLink';
 import WishlistButton from '../WishlistButton';
 import DiscountPricePercentage from '../DiscountPricePercentage';
+import useElementSize from '@/hooks/useElementSize';
 
 const VerticalCard = ({
    discount,
@@ -12,10 +13,12 @@ const VerticalCard = ({
    name,
    genre,
    cover,
+   portraitCover,
    className,
 }) => {
+   const [size, cardRef] = useElementSize();
    return (
-      <VarticalCardStyles className={className}>
+      <VarticalCardStyles ref={cardRef} className={className}>
          {discount && (
             <DiscountPricePercentage
                discount={discount}
@@ -36,8 +39,10 @@ const VerticalCard = ({
                priority
                alt={`capa de ${name}`}
                src={
-                  cover
+                  cover && size.ElementWidth <= 290
                      ? cover
+                     : size.ElementWidth > 290
+                     ? portraitCover
                      : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
                }
             />

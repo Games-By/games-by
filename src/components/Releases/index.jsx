@@ -32,19 +32,22 @@ const Releases = () => {
             <div className='releases'>
                {releases.length > 0
                   ? releases
-                       .slice(0, 4)
+                       .slice(0, 5)
                        .map((release) => (
                           <VerticalCard
                              key={release._id}
                              name={release.name}
                              cover={release.images.coverImage}
+                             portraitCover={
+                                release.images.secondaryCovers[0].url
+                             }
                              code={release.prices[locale].currencyCode}
                              price={release.prices[locale].amount}
                              discount={release.discount}
                              genre={release.genres[locale]}
                           />
                        ))
-                  : [...Array(4)].map((_, i) => (
+                  : [...Array(5)].map((_, i) => (
                        <VerticalCardSkeleton key={i} />
                     ))}
             </div>

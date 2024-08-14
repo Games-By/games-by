@@ -13,8 +13,15 @@ export const TitleStyle = styled.h2`
    text-transform: capitalize;
 
    @media screen {
+      @media (max-width: 1440px) {
+         font-size: 2.8rem;
+         width: 94%;
+      }
       @media (max-width: 1024px) {
-         font-size: 2.7rem;
+         font-size: 2.6rem;
+      }
+      @media (max-width: 768px) {
+         font-size: 2rem;
       }
    }
 `;

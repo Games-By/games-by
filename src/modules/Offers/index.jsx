@@ -41,10 +41,12 @@ const Offers = () => {
                              className={'card'}
                              key={game._id}
                              name={game.name}
+                             genre={game.genres[locale]}
                              discount={game.discount}
                              code={game.prices[locale].currencyCode}
                              price={game.prices[locale].amount}
                              cover={game.images.coverImage}
+                             portraitCover={game.images.secondaryCovers[0].url}
                           />
                        );
                     }
