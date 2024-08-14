@@ -29,7 +29,7 @@ export const ReleaseStyles = styled.section`
             align-items: center;
             padding: 0;
             gap: 3rem;
-            max-width: 70rem;
+            max-width: 60rem;
 
             & > * {
                flex: 1 1 calc(31% - 2rem);
