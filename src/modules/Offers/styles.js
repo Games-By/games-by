@@ -6,15 +6,24 @@ export const OfferStyles = styled.div`
    justify-content: center;
    padding: 5rem 0 2rem;
    align-items: center;
-   width: 100%;
+   width: 90%;
    max-width: 190rem;
    margin: 0 auto;
 
    .title {
       width: 100%;
       text-align: center;
-      font-size: 5rem;
+      font-size: 4rem;
       margin: 3rem 0;
+
+      @media screen {
+         @media (max-width: 768px) {
+            font-size: 3rem;
+         }
+         @media (max-width: 450px) {
+            font-size: 2rem;
+         }
+      }
    }
 
    .deals {
@@ -40,6 +49,12 @@ export const OfferStyles = styled.div`
       @media (max-width: 768px) {
          gap: 1.5rem;
          justify-content: space-between;
+      }
+   }
+
+   @media screen {
+      @media (max-width: 768px) {
+         width: 94%;
       }
    }
 `;
