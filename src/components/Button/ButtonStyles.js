@@ -24,8 +24,6 @@ export const ButtonStyles = styled.button`
       fill: ${(props) => props.color || 'rgba(var(--light))'};
       stroke: ${(props) => props.color || 'rgba(var(--light))'};
       object-fit: contain;
-      height: 50%;
-      width: 2.3rem;
    }
 
    &:hover {

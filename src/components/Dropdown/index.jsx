@@ -69,17 +69,13 @@ const Dropdown = ({
                exit={{ y: 0, opacity: 0 }}
                transition={{ duration: 0.1, delay: 0.2 }}
                key={index}
-               href={
-                  user &&
-                  (item.title['en-US'] === 'Library' ||
-                     item.title['en-US'] === 'WishList')
-                     ? `${
-                          user.username
-                             ? encodeURIComponent(user.username)
-                             : user.name
-                       }${item.url}`
-                     : item.url
-               }
+                  href={
+                     user &&
+                     (item.title['en-US'] === 'Library' ||
+                        item.title['en-US'] === 'WishList')
+                        ? `${encodeURIComponent(user.username)}${item.url}`
+                        : item.url
+                  }
                onClick={
                   item.title['en-US'] === 'Sign Out' ? handleLogout : null
                }
