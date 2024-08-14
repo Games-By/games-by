@@ -1,9 +1,9 @@
 const { TitleStyle } = require('./TitleStyles');
 
-const Title = ({text}) => {
+const Title = ({ text, className }) => {
    return (
       <>
-         <TitleStyle>{text}</TitleStyle>
+         <TitleStyle className={className}>{text}</TitleStyle>
       </>
    );
 };

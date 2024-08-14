@@ -7,8 +7,15 @@ export const OfferStyles = styled.div`
    padding: 5rem 0 2rem;
    align-items: center;
    width: 100%;
-   max-width: 170rem;
+   max-width: 190rem;
    margin: 0 auto;
+
+   .title {
+      width: 100%;
+      text-align: center;
+      font-size: 5rem;
+      margin: 3rem 0;
+   }
 
    .deals {
       display: flex;
