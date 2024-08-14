@@ -149,8 +149,8 @@ export const VarticalCardStyles = styled.div`
          align-self: flex-end;
          justify-self: flex-start;
          svg {
-            width: 100%;
-            height: 100%;
+            width: 95%;
+            height: 95%;
          }
 
          @media screen {

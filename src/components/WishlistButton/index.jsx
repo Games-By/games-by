@@ -89,7 +89,7 @@ const WishlistButton = ({ gameTitle, content, className }) => {
    return (
       <Button
          onClick={handleWishlistClick}
-         title={content ? content : ''}
+         title={content && content}
          icon={
             localWishlist.includes(gameTitle) ? (
                <MdFavorite className='icon' />

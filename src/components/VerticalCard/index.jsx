@@ -67,7 +67,7 @@ const VerticalCard = ({
                      : null}
                </span>
             </div>
-            <WishlistButton gameTitle={name} />
+            <WishlistButton gameTitle={name} className={'wish-button'} />
             <ButtonLink
                title='Comprar agora'
                url={'/'}
