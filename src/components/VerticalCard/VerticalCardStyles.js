@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 export const VarticalCardStyles = styled.div`
-   height: auto;
-   max-width: 33rem;
-   width: 25%;
+   height: 100%;
+   width: 25rem;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   position: relative;
 
    .cover {
       width: 100%;
       border-radius: 1rem 1rem 0 0;
-      height: 38.2rem;
+      height: 30rem;
       background-color: rgba(var(--light), 0.1);
       img {
          object-position: top;
@@ -21,9 +21,9 @@ export const VarticalCardStyles = styled.div`
 
       @media screen {
          @media (max-width: 1440px) {
-            height: 30rem;
+            height: 25rem;
          }
-         @media (max-width: 520px) {
+         @media (max-width: 768px) {
             height: 20rem;
          }
       }
@@ -31,8 +31,7 @@ export const VarticalCardStyles = styled.div`
 
    .infos {
       width: calc(100% - 2rem);
-      min-height: 20rem;
-      padding: 0 1rem 1rem 1rem;
+      padding: 5px 1rem 1rem;
       background: linear-gradient(
             30deg,
             transparent 25%,
@@ -45,8 +44,9 @@ export const VarticalCardStyles = styled.div`
          );
       display: grid;
       grid-template-columns: 20% 80%;
-      grid-template-rows: auto auto auto auto 20%;
+      grid-template-rows: auto 15% auto auto 3rem;
       justify-items: end;
+      justify-content: center;
       grid-template-areas:
          'name name name'
          'genre genre genre'
@@ -54,12 +54,15 @@ export const VarticalCardStyles = styled.div`
          'amount amount amount'
          'wish buy buy';
       border-radius: 0 0 1rem 1rem;
+      gap: 3px;
+      transition: 0.5s;
+
       .name {
          grid-area: name;
          width: 100%;
          cursor: pointer;
          margin: 0;
-         font-size: 2.8rem;
+         font-size: 2rem;
          font-weight: 500;
          letter-spacing: 1px;
          display: flex;
@@ -67,20 +70,11 @@ export const VarticalCardStyles = styled.div`
          justify-content: flex-start;
 
          @media screen {
-            @media (max-width: 1200px) {
-               font-size: 2.5rem;
+            @media (max-width: 1440px) {
+               font-size: 1.7rem;
             }
-            @media (max-width: 1024px) {
-               font-size: 2.8rem;
-            }
-            @media (max-width: 675px) {
-               font-size: 2.5rem;
-            }
-            @media (max-width: 520px) {
+            @media (max-width: 768px) {
                font-size: 1.5rem;
-            }
-            @media (max-width: 480px) {
-               margin-top: 0.3rem;
             }
          }
       }
@@ -88,56 +82,25 @@ export const VarticalCardStyles = styled.div`
       .genre {
          grid-area: genre;
          width: 100%;
-         font-size: 1.7rem;
+         font-size: 1.3rem;
          font-weight: 300;
          letter-spacing: 2px;
          color: rgba(var(--secondary), 0.5);
-
          @media screen {
-            @media (max-width: 1200px) {
-               font-size: 1.5rem;
-            }
-            @media (max-width: 1024px) {
-               font-size: 1.8rem;
-            }
-            @media (max-width: 675px) {
-               font-size: 1.5rem;
-            }
-            @media (max-width: 520px) {
-               font-size: 1.2rem;
-            }
-            @media (max-width: 480px) {
+            @media (max-width: 1440px) {
                font-size: 1.1rem;
+            }
+            @media (max-width: 768px) {
+               font-size: 1rem;
             }
          }
       }
 
       .discount {
          grid-area: discount;
-         font-size: 1.5rem;
+         font-size: 1.25rem;
          margin: 0;
          letter-spacing: 1px;
-         transform: translateY(0.8rem);
-
-         @media screen {
-            @media (max-width: 1200px) {
-               font-size: 1.4rem;
-            }
-            @media (max-width: 1024px) {
-               font-size: 1.65rem;
-            }
-            @media (max-width: 675px) {
-               font-size: 1.4rem;
-               transform: translateY(0.5rem);
-            }
-            @media (max-width: 520px) {
-               font-size: 1.3rem;
-            }
-            @media (max-width: 480px) {
-               font-size: 0.9rem;
-               transform: translateY(0.3rem);
-            }
-         }
       }
 
       .amount {
@@ -146,57 +109,43 @@ export const VarticalCardStyles = styled.div`
          .code {
             color: rgba(var(--secondary));
             margin-right: 0.5rem;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 300;
             letter-spacing: 1px;
-            @media screen {
-               @media (max-width: 1200px) {
-                  font-size: 1.5rem;
-               }
-               @media (max-width: 520px) {
-                  font-size: 1.2rem;
-               }
-               @media (max-width: 480px) {
-                  font-size: 1.2rem;
-               }
-            }
          }
          .value {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             letter-spacing: 1px;
-            @media screen {
-               @media (max-width: 1200px) {
-                  font-size: 3.2rem;
+         }
+         @media screen {
+            @media (max-width: 1440px) {
+               .code {
+                  font-size: 1.25rem;
+                  margin-right: 3px;
                }
-               @media (max-width: 1024px) {
-                  font-size: 3.5rem;
-               }
-               @media (max-width: 675px) {
-                  font-size: 3.2rem;
-               }
-               @media (max-width: 520px) {
-                  font-size: 1.8rem;
-               }
-               @media (max-width: 480px) {
-                  font-size: 2rem;
+               .value {
+                  font-size: 2.2rem;
                }
             }
-         }
-
-         @media screen {
-            @media (max-width: 520px) {
-               align-self: flex-end;
+            @media (max-width: 768px) {
+               .code {
+                  font-size: 1.1rem;
+                  margin-right: 2px;
+               }
+               .value {
+                  font-size: 2rem;
+               }
             }
          }
       }
 
       .wish-button {
          grid-area: wish;
-         padding: 0.8rem;
+         padding: 0.5rem;
          border-radius: 50%;
          margin: 0;
-         width: 4rem;
-         height: 4rem;
+         width: 3rem;
+         height: 3rem;
          align-self: flex-end;
          justify-self: flex-start;
          svg {
@@ -205,20 +154,9 @@ export const VarticalCardStyles = styled.div`
          }
 
          @media screen {
-            @media (max-width: 1200px) {
-               width: 3.5rem;
-               height: 3.5rem;
-            }
-            @media (max-width: 1024px) {
-               width: 4rem;
-               height: 4rem;
-            }
-            @media (max-width: 520px) {
-               width: 3rem;
-               height: 3rem;
-            }
-            @media (max-width: 390px) {
-               align-self: center;
+            @media (max-width: 768px) {
+               width: 2.5rem;
+               height: 2.5rem;
             }
          }
       }
@@ -228,61 +166,44 @@ export const VarticalCardStyles = styled.div`
          align-self: flex-end;
          justify-self: flex-end;
          .buy-button {
-            min-height: calc(4rem - 2px);
-            font-size: 1.4rem;
+            min-height: calc(3rem - 2px);
+            font-size: 1.1rem;
             font-weight: 500;
             margin: 0;
             white-space: nowrap;
             padding: 0 1.5rem;
-
             @media screen {
-               @media (max-width: 1200px) {
-                  min-height: calc(3.5rem - 2px);
-                  font-size: 1.3rem;
-                  padding: 0 1rem;
-               }
-               @media (max-width: 1024px) {
-                  min-height: calc(4rem - 2px);
-                  font-size: 1.4rem;
-                  padding: 0 1.5rem;
-               }
-               @media (max-width: 520px) {
-                  font-size: 0.8rem;
-                  min-height: calc(2rem - 2px);
+               @media (max-width: 768px) {
+                  min-height: calc(2.5rem - 2px);
+                  font-size: 1rem;
                }
                @media (max-width: 390px) {
+                  min-height: calc(2.5rem - 2px);
+                  font-size: 0.9rem;
                   padding: 0 1rem;
                }
-            }
-         }
-
-         @media screen {
-            @media (max-width: 390px) {
-               align-self: center;
             }
          }
       }
 
       @media screen {
-         @media (max-width: 1200px) {
-            height: 16rem;
-            min-height: 0;
+         @media (max-width: 1440px) {
+            grid-template-rows: auto 12% auto auto 3rem;
          }
-         @media (max-width: 520px) {
-            height: 13rem;
-            max-height: none;
-         }
-         @media (max-width: 480px) {
-            min-height: 13rem;
+         @media (max-width: 768px) {
+            grid-template-rows: auto 12% auto auto 2.5rem;
+            gap: 1px;
+            padding: 5px 0.7rem 0.7rem;
+            width: calc(100% - 1.4rem);
          }
       }
    }
-   @media screen {
-      @media (max-width: 1024px) {
-         width: 40%;
-      }
-      @media (max-width: 520px) {
-         width: 45%;
-      }
+
+   .percentage {
+      z-index: 1;
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
    }
 `;

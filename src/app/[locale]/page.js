@@ -8,6 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import Discover from '@/modules/Discover';
 import HorizontalImages from '@/modules/HorizontalImages';
 import useWindowSize from '@/hooks/useWindowSize';
+import Offers from '@/modules/Offers';
 require('dotenv').config();
 
 const Index = () => {
@@ -51,6 +52,7 @@ const Index = () => {
             <Releases />
             <Discover />
             <HorizontalImages />
+            <Offers />
          </main>
          <ToastContainer />
       </>

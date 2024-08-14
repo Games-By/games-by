@@ -49,10 +49,11 @@ const HorizontalImages = () => {
          <Images>
             <div className='paralaxes'>
                {paralaxes.map((paralax, i) => (
-                  <Paralax>
-                     <span className={`${paralax.title['en']}`}>{paralax.title[currentLocale(locale)]}</span>
+                  <Paralax key={i}>
+                     <span className={`${paralax.title['en']}`}>
+                        {paralax.title[currentLocale(locale)]}
+                     </span>
                      <Image
-                        key={i}
                         src={paralax.image}
                         alt={`paralax image ${i + 1}`}
                         width={300}
