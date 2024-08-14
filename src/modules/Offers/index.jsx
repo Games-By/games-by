@@ -40,6 +40,7 @@ const Offers = () => {
                           <VerticalCard
                              className={'card'}
                              key={game._id}
+                             id={game._id}
                              name={game.name}
                              genre={game.genres[locale]}
                              discount={game.discount}

@@ -5,6 +5,7 @@ import ButtonLink from '../ButtonLink/ButtonLink';
 import WishlistButton from '../WishlistButton';
 import DiscountPricePercentage from '../DiscountPricePercentage';
 import useElementSize from '@/hooks/useElementSize';
+import { Link } from '../../../navigation';
 
 const VerticalCard = ({
    discount,
@@ -15,6 +16,7 @@ const VerticalCard = ({
    cover,
    portraitCover,
    className,
+   id,
 }) => {
    const [size, cardRef] = useElementSize();
    return (
@@ -27,28 +29,43 @@ const VerticalCard = ({
             />
          )}
          <div className='cover'>
-            <Image
-               height={600}
-               width={300}
-               style={{
-                  height: '100%',
-                  width: '100%',
-                  borderRadius: '1rem 1rem 0 0',
+            <Link
+               href={`/games/${encodeURIComponent(name.toLowerCase())}`}
+               onClick={() => {
+                  localStorage.setItem('GameId', id);
                }}
-               quality={100}
-               priority
-               alt={`capa de ${name}`}
-               src={
-                  cover && size.ElementWidth <= 290
-                     ? cover
-                     : size.ElementWidth > 290
-                     ? portraitCover
-                     : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
-               }
-            />
+            >
+               <Image
+                  height={600}
+                  width={300}
+                  style={{
+                     height: '100%',
+                     width: '100%',
+                     borderRadius: '1rem 1rem 0 0',
+                  }}
+                  quality={100}
+                  priority
+                  alt={`capa de ${name}`}
+                  src={
+                     cover && size.ElementWidth <= 290
+                        ? cover
+                        : size.ElementWidth > 290
+                        ? portraitCover
+                        : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
+                  }
+               />
+            </Link>
          </div>
          <div className='infos'>
-            <h3 className='name'>{name ? name : null}</h3>
+            <Link
+               href={`/games/${encodeURIComponent(name.toLowerCase())}`}
+               onClick={() => {
+                  localStorage.setItem('GameId', id);
+               }}
+               className='name'
+            >
+               {name ? name : null}
+            </Link>
             <span className='genre'>{genre ? genre : null}</span>
             {discount ? (
                <DiscountPrice

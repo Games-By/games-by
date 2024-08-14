@@ -36,6 +36,7 @@ const Releases = () => {
                        .map((release) => (
                           <VerticalCard
                              key={release._id}
+                             id={release._id}
                              name={release.name}
                              cover={release.images.coverImage}
                              portraitCover={
