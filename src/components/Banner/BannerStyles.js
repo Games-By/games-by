@@ -93,7 +93,8 @@ export const BannerContainerStyles = styled.div`
             width: 100%;
          }
          @media (max-width: 620px) {
-            .swiper-button-prev, .swiper-button-next {
+            .swiper-button-prev,
+            .swiper-button-next {
                height: 63.5%;
             }
          }
@@ -233,18 +234,16 @@ export const BannerInfo = styled.div`
    .buttons {
       display: flex;
       align-items: center;
-      height: 3.5rem;
       justify-content: flex-end;
       align-self: flex-end;
       justify-self: flex-end;
+      gap: 1rem;
       position: absolute;
       bottom: 1rem;
-      right: 0;
-      .button-wishlist {
-         padding-left: 2rem;
-         padding-right: 2rem;
+      right: 1.5rem;
+      .wishlist-button {
+         padding: 0.5rem 2rem;
          max-width: none;
-         height: 100%;
          margin: 0;
          font-size: 1rem;
          letter-spacing: 1px;
@@ -252,17 +251,33 @@ export const BannerInfo = styled.div`
          display: flex;
          justify-content: center;
          align-items: center;
+         border: 1px solid rgba(var(--secondary), 0.75);
+         color: rgba(var(--secondary), 0.75);
+         transition: 0.5s;
+         max-height: 3.5rem;
 
          .icon {
+            transition: 0.5s;
+            fill: rgba(var(--secondary), 0.75);
             width: 2.5rem;
             min-width: 2rem;
             height: 2.3rem;
             margin-right: 0.5rem;
          }
 
+         &:hover {
+            scale: 1.01;
+            border: 1px solid rgba(var(--secondary));
+            color: rgba(var(--secondary));
+
+            .icon {
+               fill: rgba(var(--secondary));
+            }
+         }
+
          @media screen {
             @media (max-width: 1024px) {
-               padding: 0 1rem;
+               padding: 0.5rem 1.5rem;
                font-size: 0.9rem;
 
                .icon {
@@ -271,21 +286,23 @@ export const BannerInfo = styled.div`
             }
          }
       }
-      .button {
-         height: 100%;
-         padding: 0 2rem;
-         font-size: 1rem;
+      .buy-button {
+         padding: 0.8rem 2rem;
+         font-size: 1.3rem;
          letter-spacing: 1px;
-         white-space: nowrap;
          transition: 0.5s;
+         color: rgba(var(--primary));
+         border: 1px solid rgba(var(--primary));
 
          &:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            background-color: rgba(var(--primary), 0.4);
+            color: rgba(var(--light));
          }
 
          @media screen {
             @media (max-width: 1024px) {
-               padding: 0 1rem;
+               padding: 1rem 1.5rem;
                font-size: 0.9rem;
             }
          }
@@ -296,6 +313,7 @@ export const BannerInfo = styled.div`
             position: initial;
             justify-content: center;
             align-self: center;
+            flex-direction: column;
          }
       }
    }

@@ -107,7 +107,7 @@ const Banners = ({ isLoggedIn }) => {
                                           ? t('Banner.remove')
                                           : t('Banner.add')
                                     }
-                                    className='button-wishlist'
+                                    className='wishlist-button'
                                  />
                                  <ButtonLink
                                     url={isLoggedIn ? '/' : '/login'}
@@ -116,8 +116,7 @@ const Banners = ({ isLoggedIn }) => {
                                           ? t('Banner.pre')
                                           : t('Banner.buy')
                                     }
-                                    className='button'
-                                    bgColor='rgba(var(--dark))'
+                                    className='buy-button'
                                     textTransform='uppercase'
                                  />
                               </div>
