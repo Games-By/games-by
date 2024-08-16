@@ -17,22 +17,21 @@ export const ButtonStyles = styled.button`
    align-items: center;
    justify-content: center;
    transition: 0.5s;
-   color: ${(props) => props.color || 'rgba(var(--light))'};
-   border: 1px solid ${(props) => props.color || 'rgba(var(--light))'};
+   color: rgba(var(--light));
+   border: 1px solid rgba(var(--light));
 
    svg {
-      fill: ${(props) => props.color || 'rgba(var(--light))'};
-      stroke: ${(props) => props.color || 'rgba(var(--light))'};
+      fill: rgba(var(--light));
+      stroke: rgba(var(--light));
       object-fit: contain;
    }
 
    &:hover {
-      transform: scale(1.03);
-      color: ${(props) => props.hoverColor || 'rgba(var(--light))'};
-      border: 1px solid ${(props) => props.hoverColor || 'rgba(var(--light))'};
+      color: rgba(var(--light));
+      border: 1px solid rgba(var(--light));
       svg {
-         fill: ${(props) => props.hoverColor || 'rgba(var(--light))'};
-         stroke: ${(props) => props.hoverColor || 'rgba(var(--light))'};
+         fill: rgba(var(--light));
+         stroke: rgba(var(--light));
       }
    }
 `;

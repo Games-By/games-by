@@ -4,8 +4,6 @@ import { ButtonStyles } from './ButtonStyles';
 const Button = ({
    title,
    icon,
-   currentColor,
-   hoverColor,
    textTransform,
    className,
    loading,
@@ -15,8 +13,6 @@ const Button = ({
       <>
          <ButtonStyles
             style={{ textTransform: textTransform }}
-            color={currentColor}
-            hoverColor={hoverColor}
             className={className}
             disabled={loading}
             onClick={onClick}
