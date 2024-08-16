@@ -91,7 +91,6 @@ const VerticalCard = ({
                className={'buy-button'}
                bgColor={'rgba(var(--primary), 0.1)'}
                Aboutblank={false}
-               currentColor={'rgba(var(--primary))'}
                textTransform={'uppercase'}
             />
          </div>

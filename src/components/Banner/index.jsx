@@ -117,7 +117,6 @@ const Banners = ({ isLoggedIn }) => {
                                           : t('Banner.buy')
                                     }
                                     className='button'
-                                    currentColor='rgba(var(--primary))'
                                     bgColor='rgba(var(--dark))'
                                     textTransform='uppercase'
                                  />

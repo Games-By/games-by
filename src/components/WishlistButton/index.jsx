@@ -104,8 +104,6 @@ const WishlistButton = ({ gameTitle, content = false, className }) => {
          url={'/'}
          className={['wish-button', className && className]}
          Aboutblank={false}
-         currentColor={'rgba(var(--secondary))'}
-         hoverColor={'rgba(var(--primary))'}
       />
    );
 };
