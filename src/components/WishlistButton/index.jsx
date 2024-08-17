@@ -5,10 +5,11 @@ import { addGameToWishlist } from '@/Services/client-data/AddGameToWishlist';
 import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWishlist';
 import { getWishlist } from '@/Services/client-data/getWishlist';
 import Button from '../Button/Button';
-import { title } from 'process';
+import { useTranslations } from 'next-intl';
 
-const WishlistButton = ({ gameTitle, content, className }) => {
+const WishlistButton = ({ gameTitle, content = false, className }) => {
    const [localWishlist, setLocalWishlist] = useState([]);
+   const t = useTranslations('Banner');
    const authToken =
       typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
 
@@ -89,7 +90,10 @@ const WishlistButton = ({ gameTitle, content, className }) => {
    return (
       <Button
          onClick={handleWishlistClick}
-         title={content && content}
+         title={
+            content &&
+            (localWishlist.includes(gameTitle) ? t('remove') : t('add'))
+         }
          icon={
             localWishlist.includes(gameTitle) ? (
                <MdFavorite className='icon' />
@@ -100,8 +104,6 @@ const WishlistButton = ({ gameTitle, content, className }) => {
          url={'/'}
          className={['wish-button', className && className]}
          Aboutblank={false}
-         currentColor={'rgba(var(--secondary))'}
-         hoverColor={'rgba(var(--primary))'}
       />
    );
 };
