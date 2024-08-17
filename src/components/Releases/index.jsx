@@ -46,6 +46,7 @@ const Releases = () => {
                              price={release.prices[locale].amount}
                              discount={release.discount}
                              genre={release.genres[locale]}
+                             className={'card'}
                           />
                        ))
                   : [...Array(5)].map((_, i) => (

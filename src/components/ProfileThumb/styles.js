@@ -35,6 +35,8 @@ export const ProfileThumbLink = styled.div`
       fill: rgba(var(--dark));
       stroke: rgba(var(--dark));
       color: rgba(var(--dark));
+      width: 60%;
+      height: 60%;
    }
 
    @media screen {

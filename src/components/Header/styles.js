@@ -74,6 +74,13 @@ export const HeaderStyle = styled.header`
             border: 1px solid rgba(var(--primary));
          }
       }
+
+      @media screen {
+         @media (max-width: 768px) {
+            top: calc(50% - 1.2rem);
+            right: 9rem;
+         }
+      }
    }
 
    .invisible-bar-1 {
@@ -122,7 +129,7 @@ export const Language = styled.div`
    @media screen {
       @media (max-width: 768px) {
          position: absolute;
-         right: 1rem;
+         right: 12.5rem;
          margin: 0;
       }
    }
@@ -191,7 +198,8 @@ export const Cart = styled.div`
    @media screen {
       @media (max-width: 768px) {
          position: absolute;
-         right: 4rem;
+         right: 4.5rem;
+         top: calc(50% - 1rem);
       }
    }
 `;
