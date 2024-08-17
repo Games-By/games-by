@@ -23,27 +23,40 @@ export const ReleaseStyles = styled.section`
          @media (max-width: 1250px) {
             padding: 0;
          }
-         @media (max-width: 1024px) {
+         @media (max-width: 1120px) {
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             padding: 0;
             gap: 3rem;
-            max-width: 60rem;
+            max-width: 70rem;
 
             & > * {
-               flex: 1 1 calc(31% - 2rem);
+               flex: 1 1 calc(30%);
             }
          }
          @media (max-width: 768px) {
             gap: 2rem;
+            .card {
+               max-width: none;
+            }
             & > * {
                flex: 1 1 calc(45% - 2rem);
             }
          }
          @media (max-width: 600px) {
             padding: 0;
-            gap: 1.5rem;
+            gap: 0.5rem;
+            margin: 0;
+            justify-content: space-around;
+         }
+         @media (max-width: 450px) {
+            & > * {
+               flex: 1 1 calc(40% - 2rem);
+            }
+            .card {
+               max-width: 35rem;
+            }
          }
       }
    }
