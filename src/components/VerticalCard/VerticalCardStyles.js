@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const VarticalCardStyles = styled.div`
    height: 100%;
    width: 25rem;
+   min-width: 20rem;
+   max-width: 35rem;
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -15,7 +17,7 @@ export const VarticalCardStyles = styled.div`
       height: 30rem;
       background-color: rgba(var(--light), 0.1);
       img {
-         object-position: top;
+         object-position: center;
          object-fit: cover;
       }
 
@@ -101,6 +103,15 @@ export const VarticalCardStyles = styled.div`
          font-size: 1.25rem;
          margin: 0;
          letter-spacing: 1px;
+
+         @media screen {
+            @media (max-width: 768px) {
+               font-size: 1.2rem;
+            }
+            @media (max-width: 500px) {
+               font-size: 1rem;
+            }
+         }
       }
 
       .amount {
@@ -169,6 +180,7 @@ export const VarticalCardStyles = styled.div`
 
          @media screen {
             @media (max-width: 768px) {
+               font-size: 1.5rem;
                bottom: 0.5rem;
             }
          }
@@ -223,5 +235,20 @@ export const VarticalCardStyles = styled.div`
       top: 0.5rem;
       right: 0.5rem;
       font-size: 1.5rem;
+
+      @media screen {
+         @media (max-width: 768px) {
+            font-size: 1.2rem;
+         }
+         @media (max-width: 500px) {
+            font-size: 1rem;
+         }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 450px) {
+         min-width: 16rem;
+      }
    }
 `;

@@ -83,7 +83,7 @@ const Header = () => {
                {!menuVisible ? <CgMenuRight /> : <CgMenuRightAlt />}
             </MenuBar>
          )}
-         {(width >= 768 || translateActive) && (
+         {(width >= 768 || translateActive || (width < 768 && !isLoggedIn)) && (
             <>
                {translateActive && (
                   <div

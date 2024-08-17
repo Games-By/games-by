@@ -64,7 +64,7 @@ const ProfileThumb = ({ windowWidth, handle }) => {
                      width={25}
                      height={25}
                      quality={100}
-                     className='profile-icon profile-svg'
+                     className='profile-icon'
                   />
                </ProfileThumbLink>
             </Link>
