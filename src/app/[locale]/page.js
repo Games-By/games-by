@@ -9,6 +9,7 @@ import Discover from '@/modules/Discover';
 import HorizontalImages from '@/modules/HorizontalImages';
 import useWindowSize from '@/hooks/useWindowSize';
 import Offers from '@/modules/Offers';
+import Columns from '@/modules/Columns';
 require('dotenv').config();
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
          localStorage.removeItem('cart');
          localStorage.removeItem('userEmail');
          localStorage.removeItem('authToken');
+         localStorage.removeItem('imageProfile');
          localStorage.removeItem('tokenExpiration');
          return false;
       }
@@ -53,6 +55,7 @@ const Index = () => {
             <Discover />
             <HorizontalImages />
             <Offers />
+            <Columns />
          </main>
          <ToastContainer />
       </>

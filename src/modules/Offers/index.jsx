@@ -34,25 +34,30 @@ const Offers = () => {
          <div className='deals'>
             {isLoading
                ? [...Array(4)].map((_, i) => <VerticalCardSkeleton key={i} />)
-               : gamesInOffer.map((game) => {
-                    if (game.discount > 0) {
-                       return (
-                          <VerticalCard
-                             className={'card'}
-                             key={game._id}
-                             id={game._id}
-                             name={game.name}
-                             genre={game.genres[locale]}
-                             discount={game.discount}
-                             code={game.prices[locale].currencyCode}
-                             price={game.prices[locale].amount}
-                             cover={game.images.coverImage}
-                             portraitCover={game.images.secondaryCovers[0].url}
-                          />
-                       );
-                    }
-                    return null;
-                 })}
+               : gamesInOffer
+                    .filter((game) => game.discount > 0)
+                    .slice(0, 4)
+                    .map((game, i) => {
+                       if (game.discount > 0) {
+                          return (
+                             <VerticalCard
+                                className={'card'}
+                                key={game._id}
+                                id={game._id}
+                                name={game.name}
+                                genre={game.genres[locale]}
+                                discount={game.discount}
+                                code={game.prices[locale].currencyCode}
+                                price={game.prices[locale].amount}
+                                cover={game.images.coverImage}
+                                portraitCover={
+                                   game.images.secondaryCovers[0].url
+                                }
+                             />
+                          );
+                       }
+                       return null;
+                    })}
          </div>
       </OfferStyles>
    );

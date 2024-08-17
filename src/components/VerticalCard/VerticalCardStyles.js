@@ -139,49 +139,67 @@ export const VarticalCardStyles = styled.div`
          }
       }
 
-      .wish-button {
-         grid-area: wish;
+      .wishlist-button {
+         font-size: 2rem;
          padding: 0.5rem;
-         border-radius: 50%;
          margin: 0;
-         width: 3rem;
-         height: 3rem;
-         align-self: flex-end;
-         justify-self: flex-start;
-         svg {
-            width: 95%;
-            height: 95%;
+         position: absolute;
+         left: 0.5rem;
+         bottom: 1rem;
+         color: rgba(var(--secondary));
+         border: 1px solid rgba(var(--secondary));
+         background-color: rgba(var(--secondary), 0.1);
+
+         .icon {
+            fill: rgba(var(--secondary));
+            padding: 0;
+            margin: 0;
+            transition: 0.5s;
+            margin: 0 auto;
+         }
+
+         &:hover {
+            color: rgba(var(--primary));
+            border: 1px solid rgba(var(--primary));
+            background-color: rgba(var(--primary), 0.1);
+            svg {
+               fill: rgba(var(--primary));
+            }
          }
 
          @media screen {
             @media (max-width: 768px) {
-               width: 2.5rem;
-               height: 2.5rem;
+               bottom: 0.5rem;
             }
          }
       }
 
-      .button {
+      .buy-button {
          grid-area: buy;
          align-self: flex-end;
          justify-self: flex-end;
-         .buy-button {
-            min-height: calc(3rem - 2px);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin: 0;
-            white-space: nowrap;
-            padding: 0 1.5rem;
-            @media screen {
-               @media (max-width: 768px) {
-                  min-height: calc(2.5rem - 2px);
-                  font-size: 1rem;
-               }
-               @media (max-width: 390px) {
-                  min-height: calc(2.5rem - 2px);
-                  font-size: 0.9rem;
-                  padding: 0 1rem;
-               }
+         min-height: calc(3rem - 2px);
+         font-size: 1.1rem;
+         font-weight: 500;
+         margin: 0;
+         white-space: nowrap;
+         padding: 0 1.5rem;
+         color: rgba(var(--primary));
+         border: 1px solid rgba(var(--primary));
+         transition: 0.5s;
+         &:hover {
+            scale: 1.01;
+            background-color: rgba(var(--primary), 0.1);
+         }
+         @media screen {
+            @media (max-width: 768px) {
+               min-height: calc(2.5rem - 2px);
+               font-size: 1rem;
+            }
+            @media (max-width: 390px) {
+               min-height: calc(2.5rem - 2px);
+               font-size: 0.9rem;
+               padding: 0 1rem;
             }
          }
       }
