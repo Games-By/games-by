@@ -33,6 +33,13 @@ export const ColumnsStyle = styled.div`
          color: rgba(var(--primary));
          border: 1px solid rgba(var(--primary));
       }
+
+      @media screen {
+         @media (max-width: 768px) {
+            padding: 0.3rem 1rem;
+            font-size: 1.3rem;
+         }
+      }
    }
 
    @media screen {

@@ -80,7 +80,7 @@ export const HorizontalCardStyles = styled.div`
 
          @media screen {
             @media (max-width: 510px) {
-               bottom: 2.5rem;
+               bottom: 2.8rem;
                font-size: 1rem;
             }
          }
@@ -104,7 +104,7 @@ export const HorizontalCardStyles = styled.div`
 
          @media screen {
             @media (max-width: 510px) {
-               font-size: 1.5rem;
+               font-size: 1.7rem;
                bottom: 1.5rem;
 
                .code {
@@ -142,7 +142,7 @@ export const HorizontalCardStyles = styled.div`
                font-size: 1.1rem;
                padding: 0.3rem 1.5rem;
                position: initial;
-               transform: translate(65% ,calc(100% + 4px));
+               transform: translate(65% ,calc(100% + 1px));
             }
          }
       }
@@ -188,7 +188,22 @@ export const HorizontalCardStyles = styled.div`
             @media (max-width: 590px) {
                border-radius: 50%;
                padding: 0.5rem;
+               svg {
+                  font-size: 1.2rem;
+               }
             }
+         }
+      }
+
+      @media screen {
+         @media (max-width: 1440px) {
+            height: 10.2rem;
+         }
+         @media (max-width: 1100px) {
+            height: 9.18rem;
+         }
+         @media (max-width: 510px) {
+            height: 6rem;
          }
       }
    }

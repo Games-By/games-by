@@ -22,7 +22,7 @@ const Columns = () => {
 
       const sortedGames = [...games].sort((a, b) => b.rating - a.rating);
 
-      setTopSellers(sortedGames.slice(0, 5   ));
+      setTopSellers(sortedGames.slice(0, 5));
    };
 
    const getAllGames = async () => {
@@ -46,7 +46,11 @@ const Columns = () => {
    return (
       <>
          <ColumnsStyle>
-            <GamesColumn sectionTitle={'Free-to-Play'} games={freeGames} url={'/catalog?searched=free'} />
+            <GamesColumn
+               sectionTitle={'Free-to-Play'}
+               games={freeGames}
+               url={'/catalog?searched=free'}
+            />
             <Separator />
             <GamesColumn sectionTitle={'Top Sellers'} games={topSellers} />
          </ColumnsStyle>
