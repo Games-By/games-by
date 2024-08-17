@@ -49,6 +49,15 @@ export const BannerContainerStyles = styled.div`
             background-color: rgba(var(--primary));
             transition: 0.5s;
          }
+         @media screen {
+            @media (max-width: 768px) {
+               padding: 1.18rem 0;
+               .swiper-pagination-bullet {
+                  width: 1.5rem;
+                  height: 1.5rem;
+               }
+            }
+         }
       }
       .swiper-button-next {
          position: absolute;
@@ -91,18 +100,17 @@ export const BannerContainerStyles = styled.div`
          }
          @media (max-width: 768px) {
             width: 100%;
+            .swiper-button-prev,
+            .swiper-button-next {
+               height: 26.8rem;
+            }
          }
          @media (max-width: 620px) {
             .swiper-button-prev,
             .swiper-button-next {
-               height: 63.5%;
+               height: 24.4rem;
             }
          }
-      }
-   }
-   @media screen {
-      @media (max-width: 768px) {
-         height: 60vh;
       }
    }
 `;
@@ -145,6 +153,9 @@ export const BannerInfo = styled.div`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       @media screen {
+         @media (max-width: 1440px) {
+            font-size: 2.3rem;
+         }
          @media (max-width: 1024px) {
             font-size: 2.2rem;
          }
@@ -165,13 +176,15 @@ export const BannerInfo = styled.div`
    .description {
       margin: 0 0 0 1.7rem;
       font-size: 1.2rem;
+      font-weight: 300;
       max-width: 65rem;
       @media screen {
          @media (max-width: 1024px) {
             font-size: 1.2rem;
          }
          @media (max-width: 620px) {
-            margin: 0;
+            width: 96%;
+            margin: 0 auto;
          }
          @media (max-width: 400px) {
             font-size: 1.1rem;
@@ -193,12 +206,21 @@ export const BannerInfo = styled.div`
       background-color: rgba(var(--primary), 0.1);
       padding: 0.5rem;
       @media screen {
-         @media (max-width: 1024px) {
+         @media (max-width: 1440px) {
             font-size: 1.7rem;
          }
+         @media (max-width: 1024px) {
+            font-size: 1.6rem;
+         }
+         @media (max-width: 850px) {
+            font-size: 1.5rem;
+            padding: 0.3rem 0.6rem;
+         }
          @media (max-width: 620px) {
+            font-size: 1.2rem;
             width: 20rem;
-            left: calc(50% - 10.5rem);
+            padding: 0.2rem 0;
+            left: calc(50% - 10rem);
          }
       }
    }
@@ -206,7 +228,6 @@ export const BannerInfo = styled.div`
    .star-icons {
       display: flex;
       align-items: center;
-      gap: 3px;
       position: absolute;
       bottom: 1rem;
       left: 1rem;
@@ -214,19 +235,20 @@ export const BannerInfo = styled.div`
       letter-spacing: 3px;
       svg {
          fill: rgba(var(--yellow));
-         height: 2rem;
-         width: 1rem;
       }
 
       @media screen {
          @media (max-width: 620px) {
+            font-size: 1.3rem;
             width: 20rem;
-            height: 2.5rem;
+            height: 2.3rem;
             left: calc(50% - 10.5rem);
-            top: -2.5rem;
+            top: -2.3rem;
             justify-content: center;
+            align-items: center;
             background-color: rgba(var(--dark), 0.95);
-            padding: 0 0.5rem;
+            padding: 0;
+            left: calc(50% - 10rem);
          }
       }
    }
@@ -259,10 +281,7 @@ export const BannerInfo = styled.div`
          .icon {
             transition: 0.5s;
             fill: rgba(var(--secondary), 0.75);
-            width: 2.5rem;
-            min-width: 2rem;
-            height: 2.3rem;
-            margin-right: 0.5rem;
+            font-size: 2rem;
          }
 
          &:hover {
@@ -276,6 +295,13 @@ export const BannerInfo = styled.div`
          }
 
          @media screen {
+            @media (max-width: 1440px) {
+               padding: 0.5rem 1rem;
+               font-size: 0.9rem;
+               .icon {
+                  font-size: 1.5rem;
+               }
+            }
             @media (max-width: 1024px) {
                padding: 0.5rem 1.5rem;
                font-size: 0.9rem;
@@ -287,7 +313,7 @@ export const BannerInfo = styled.div`
          }
       }
       .buy-button {
-         padding: 0.8rem 2rem;
+         padding: 0.65rem 2rem;
          font-size: 1.3rem;
          letter-spacing: 1px;
          transition: 0.5s;
@@ -301,9 +327,9 @@ export const BannerInfo = styled.div`
          }
 
          @media screen {
-            @media (max-width: 1024px) {
-               padding: 1rem 1.5rem;
-               font-size: 0.9rem;
+            @media (max-width: 1440px) {
+               padding: 0.5rem 1.5rem;
+               font-size: 1.2rem;
             }
          }
       }
@@ -320,7 +346,7 @@ export const BannerInfo = styled.div`
 
    @media screen {
       @media (max-width: 768px) {
-         height: 26.5%;
+         height: 15rem;
          display: flex;
          flex-direction: column;
          justify-content: center;
