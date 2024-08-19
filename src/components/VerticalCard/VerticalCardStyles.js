@@ -23,10 +23,10 @@ export const VarticalCardStyles = styled.div`
 
       @media screen {
          @media (max-width: 1440px) {
-            height: 25rem;
+            height: 30rem;
          }
          @media (max-width: 768px) {
-            height: 20rem;
+            height: 25rem;
          }
       }
    }
