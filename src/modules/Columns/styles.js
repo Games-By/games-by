@@ -7,6 +7,7 @@ export const ColumnsStyle = styled.div`
    position: relative;
    gap: 6rem;
    display: flex;
+   padding-bottom: 2rem;
 
    @media screen {
       @media (max-width: 1440px) {

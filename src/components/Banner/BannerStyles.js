@@ -157,7 +157,7 @@ export const BannerInfo = styled.div`
             font-size: 2.3rem;
          }
          @media (max-width: 1024px) {
-            font-size: 2.2rem;
+            font-size: 2rem;
          }
          @media (max-width: 768px) {
             position: absolute;
@@ -185,6 +185,7 @@ export const BannerInfo = styled.div`
          @media (max-width: 620px) {
             width: 96%;
             margin: 0 auto;
+            transform: translateY(-1rem);
          }
          @media (max-width: 400px) {
             font-size: 1.1rem;
@@ -217,7 +218,7 @@ export const BannerInfo = styled.div`
             padding: 0.3rem 0.6rem;
          }
          @media (max-width: 620px) {
-            font-size: 1.2rem;
+            font-size: 1rem;
             width: 20rem;
             padding: 0.2rem 0;
             left: calc(50% - 10rem);
@@ -243,7 +244,7 @@ export const BannerInfo = styled.div`
             width: 20rem;
             height: 2.3rem;
             left: calc(50% - 10.5rem);
-            top: -2.3rem;
+            top: -2.2rem;
             justify-content: center;
             align-items: center;
             background-color: rgba(var(--dark), 0.95);
@@ -356,7 +357,8 @@ export const BannerInfo = styled.div`
          align-self: center;
          text-align: center;
          gap: 1rem;
-         padding-top: 2.5rem;
+         padding-top: 2.6rem;
+         bottom: 4.3rem;
       }
    }
 `;
