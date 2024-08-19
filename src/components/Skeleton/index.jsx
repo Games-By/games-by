@@ -10,7 +10,7 @@ const shimmerAnimation = keyframes`
 const SkeletonContainer = styled.div`
    width: ${(props) => props.width ? props.width : "90%" };
    height: ${(props) => props.height ? props.height : '2rem' };
-   background-color: ${(props) => props.theme === 'dark' ? props.theme + 'rgba(255,255,255, 0.5)' : 'rgba(0,0,0, 0.5)' };
+   background-color: ${(props) => props.theme === 'dark' ?  'rgba(255,255,255, 0.2)' : 'rgba(0,0,0, 0.5)' };
    border-radius: 8px;
    position: relative;
    overflow: hidden;
