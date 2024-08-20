@@ -30,7 +30,9 @@ const SkeletonContainer = styled.div`
 
 const SkeletonDetails = styled.div`
    height: auto;
-   min-height: calc(13.2rem + ${(props) => (props.height ? '1.7rem' : '0px')});
+   min-height: calc(
+      13.2rem + ${(props) => (props.height ? props.height : '0px')}
+   );
    width: 100%;
    background-color: rgba(var(--dark));
    border-radius: 0 0 1rem 1rem;
@@ -126,14 +128,14 @@ const SkeletonDetails = styled.div`
    @media screen {
       @media (max-width: 1440px) {
          min-height: calc(
-            12.1rem + ${(props) => (props.height ? '1.7rem' : '0px')}
+            12.1rem + ${(props) => (props.height ? props.height : '0px')}
          );
       }
       @media (max-width: 768px) {
          padding: 5px 0.7rem 0.7rem;
          width: calc(100% - 1.4rem);
          min-height: calc(
-            8.3rem + ${(props) => (props.height ? '1.7rem' : '4px')}
+            8.3rem + ${(props) => (props.height ? props.height : '4px')}
          );
       }
    }
@@ -143,7 +145,7 @@ const VerticalCardSkeleton = ({ discount = false }) => {
    return (
       <SkeletonContainer>
          <SkeletonEffect width={'100%'} height={'30rem'} className='image' />
-         <SkeletonDetails height={discount}>
+         <SkeletonDetails height={discount ? '1.7rem' : undefined}>
             <SkeletonEffect width={'85%'} height={'2.2rem'} className='name' />
             <SkeletonEffect width={'50%'} height={'1.5rem'} className='genre' />
             {discount && (
