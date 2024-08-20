@@ -10,6 +10,7 @@ import HorizontalImages from '@/modules/HorizontalImages';
 import useWindowSize from '@/hooks/useWindowSize';
 import Offers from '@/modules/Offers';
 import Columns from '@/modules/Columns';
+import Footer from '@/modules/Footer';
 require('dotenv').config();
 
 const Index = () => {
@@ -56,6 +57,7 @@ const Index = () => {
             <HorizontalImages />
             <Offers />
             <Columns />
+            <Footer />
          </main>
          <ToastContainer />
       </>
