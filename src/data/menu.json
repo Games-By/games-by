@@ -32,5 +32,76 @@
          },
          "url": "/"
       }
+   ],
+   "footer": [
+      {
+         "title": {
+            "en-US": "Customer Service",
+            "pt-BR": "Atendimento ao cliente",
+            "es-ES": "Servicio al cliente"
+         },
+         "itens": [
+            {
+               "en-US": "Contact Us",
+               "pt-BR": "Fale conosco",
+               "es-ES": "Contáctenos",
+               "url": "/"
+            },
+            {
+               "en-US": "Return Policy",
+               "pt-BR": "Política de devolução",
+               "es-ES": "Política de devoluciones",
+               "url": "/"
+            },
+            {
+               "en-US": "Payment Methods",
+               "pt-BR": "Métodos de pagamento",
+               "es-ES": "Métodos de pago",
+               "url": "/"
+            }
+         ]
+      },
+      {
+         "title": {
+            "en-US": "Support",
+            "pt-BR": "Suporte",
+            "es-ES": "Soporte"
+         },
+         "itens": [
+            {
+               "en-US": "Returns",
+               "pt-BR": "Devolução",
+               "es-ES": "Devoluciones",
+               "url": "/"
+            }
+         ]
+      },
+      {
+         "title": {
+            "en-US": "Payment Rules",
+            "pt-BR": "Regras de pagamento",
+            "es-ES": "Reglas de pago"
+         },
+         "itens": [
+            {
+               "en-US": "Credit and Debit Card",
+               "pt-BR": "Cartão de crédito e débito",
+               "es-ES": "Tarjeta de crédito y débito",
+               "url": "/"
+            },
+            {
+               "en-US": "Gift Card",
+               "pt-BR": "Cartão presente",
+               "es-ES": "Tarjeta de regalo",
+               "url": "/"
+            },
+            {
+               "en-US": "Pix",
+               "pt-BR": "Pix",
+               "es-ES": "Pix",
+               "url": "/"
+            }
+         ]
+      }
    ]
 }
