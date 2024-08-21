@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ColumnsStyle = styled.div`
    width: 95%;
    max-width: 150rem;
-   margin: 12rem auto 5rem;
+   margin: 8rem auto 5rem;
    position: relative;
    gap: 6rem;
    display: flex;
