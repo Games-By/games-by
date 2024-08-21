@@ -17,6 +17,12 @@ export const FooterStyles = styled.footer`
          }
          @media (max-width: 600px) {
             width: 14rem;
+            left: 1rem;
+            top: 0;
+         }
+         @media (max-width: 460px) {
+            width: 12rem;
+            left: 0;
             top: 0;
          }
       }
@@ -76,6 +82,12 @@ export const FooterStyles = styled.footer`
    @media screen {
       @media (max-width: 1024px) {
          padding: 10rem 1rem 5rem;
+      }
+      @media (max-width: 600px) {
+         min-height: 15rem;
+      }
+      @media (max-width: 460px) {
+         padding: 8rem 1rem 5rem;
       }
    }
 `;
