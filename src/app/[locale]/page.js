@@ -57,8 +57,8 @@ const Index = () => {
             <HorizontalImages />
             <Offers />
             <Columns />
-            <Footer />
          </main>
+         <Footer />
          <ToastContainer />
       </>
    );

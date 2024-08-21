@@ -8,14 +8,15 @@ export const FooterSectionStyles = styled.div`
       width: 100%;
       border-bottom: 1px solid rgba(var(--primary));
       margin-bottom: 5px;
+      white-space: nowrap;
 
       @media screen {
          @media (max-width: 768px) {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 700;
          }
          @media (max-width: 600px) {
-            font-size: 1.2em;
+            font-size: 1rem;
             font-weight: 600;
             margin-bottom: 3px;
          }
@@ -41,7 +42,7 @@ export const FooterSectionStyles = styled.div`
                line-height: 2rem;
             }
             @media (max-width: 600px) {
-               font-size: 1em;
+               font-size: 1rem;
                line-height: 1.5rem;
                font-weight: 300;
             }
