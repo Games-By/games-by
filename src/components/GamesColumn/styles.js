@@ -16,6 +16,9 @@ export const ColumnsStyle = styled.div`
          @media (max-width: 1440px) {
             width: 95%;
          }
+         @media (max-width: 410px) {
+            width: 98%;
+         }
       }
    }
    .view-more-button {
