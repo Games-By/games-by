@@ -4,11 +4,13 @@ import SkeletonEffect from '../Skeleton';
 
 const SkeletonContainer = styled.div`
    padding: 0 0 1.5rem;
-   margin: 3rem 0 0;
+   margin: 1.5rem 0 0;
    display: flex;
    align-items: flex-start;
-   justify-content: flex-end;
+   justify-content: flex-start;
+   gap: 1rem;
    position: relative;
+   height: 12rem;
 
    &::after {
       content: '';
@@ -25,13 +27,15 @@ const SkeletonContainer = styled.div`
    &:nth-last-child(1) {
       padding-bottom: 0;
 
+      .buttons {
+         bottom: 0;
+      }
+
       &::after {
          display: none;
       }
    }
    .image {
-      position: absolute;
-      left: 0;
       display: flex;
 
       @media screen {
@@ -44,84 +48,105 @@ const SkeletonContainer = styled.div`
             height: 9.18rem;
          }
          @media (max-width: 510px) {
-            width: 10rem;
-            height: 6rem;
+            width: 12rem;
+            height: 7.5rem;
+         }
+         @media (max-width: 380px) {
+            width: 11rem;
+            height: 7rem;
          }
       }
-   }
-`;
-const SkeletonDetails = styled.div`
-   width: calc(100% - 21rem);
-   height: 12rem;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   justify-content: flex-start;
-   position: relative;
-
-   .play-button {
-      position: absolute;
-      right: 0;
-      top: 0;
-      border-radius: 2rem;
-   }
-   .wishlist-button {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      border-radius: 2rem;
-   }
-   .price {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      border-radius: 5px;
    }
 
    @media screen {
       @media (max-width: 1440px) {
          height: 10.2rem;
-         width: calc(100% - 18rem);
-         .name {
-            height: 2.5rem;
-         }
-         .wishlist-button {
-            width: 18.6rem;
-            height: 2.5rem;
-         }
       }
       @media (max-width: 1100px) {
          height: 9.18rem;
-         width: calc(100% - 16.3rem);
-
-         .wishlist-button {
-            width: 3rem;
-            height: 3rem;
-         }
-      }
-      @media (max-width: 1440px) {
-         .wishlist-button {
-            width: 17rem;
-            height: 2.5rem;
-         }
-      }
-      @media (max-width: 590px) {
-         .play-button {
-            width: 6.6rem;
-            height: 2.7rem;
-         }
-         .price {
-            width: 3.5rem;
-            height: 1.7rem;
-         }
-         .wishlist-button {
-            width: 2.4rem;
-            height: 2.4rem;
-         }
       }
       @media (max-width: 510px) {
-         height: 6rem;
-         width: calc(100% - 11rem);
+         height: 7.5rem;
+      }
+      @media (max-width: 380px) {
+         height: 7rem;
+      }
+   }
+`;
+const SkeletonDetails = styled.div`
+   width: max-content;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: space-between;
+
+   .buttons {
+      position: absolute;
+      right: 0;
+      bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      .play-button {
+         border-radius: 2rem;
+      }
+      .wishlist-button {
+         border-radius: 2rem;
+      }
+
+      @media screen {
+         @media (max-width: 590px) {
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            gap: 5px;
+
+            .play-button {
+               height: 2.7rem;
+               width: 6.575rem;
+            }
+
+            .wishlist-button {
+               width: 2.7rem;
+               height: 2.7rem;
+            }
+         }
+         @media (max-width: 430px) {
+            .play-button {
+               height: 2.1rem;
+               width: 5.518rem;
+            }
+
+            .wishlist-button {
+               width: 2.1rem;
+               height: 2.1rem;
+            }
+         }
+      }
+   }
+   .price {
+      border-radius: 5px;
+
+      @media screen {
+         @media (max-width: 590px) {
+            height: 2rem;
+         }
+         @media (max-width: 430px) {
+            width: 5rem;
+            height: 1.8rem;
+         }
+      }
+   }
+
+   .name {
+      @media screen {
+         @media (max-width: 590px) {
+            height: 2.5rem;
+         }
+         @media (max-width: 430px) {
+            width: 12rem;
+            height: 2.2rem;
+         }
       }
    }
 `;
@@ -136,29 +161,31 @@ const HorizontalCardSkeleton = () => {
          />
          <SkeletonDetails>
             <SkeletonEffect
-               width={'50%'}
+               width={'15rem'}
                height={'3rem'}
                theme={'dark'}
                className={'name'}
             />
             <SkeletonEffect
                width={'8rem'}
-               height={'3rem'}
-               theme={'dark'}
-               className={'play-button'}
-            />
-            <SkeletonEffect
-               width={'20rem'}
-               height={'3rem'}
-               theme={'dark'}
-               className={'wishlist-button'}
-            />
-            <SkeletonEffect
-               width={'4.5rem'}
                height={'2.6rem'}
                theme={'dark'}
                className={'price'}
             />
+            <div className='buttons'>
+               <SkeletonEffect
+                  width={'2.9rem'}
+                  height={'2.9rem'}
+                  theme={'dark'}
+                  className={'wishlist-button'}
+               />
+               <SkeletonEffect
+                  width={'8rem'}
+                  height={'2.9rem'}
+                  theme={'dark'}
+                  className={'play-button'}
+               />
+            </div>
          </SkeletonDetails>
       </SkeletonContainer>
    );
