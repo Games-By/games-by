@@ -17,6 +17,7 @@ import Logo from '@/components/Logo';
 import { validateEmail, validatePassword } from '@/utils/validateLoginFields';
 import { handleLoginError } from '@/utils/loginErrors';
 import { FaCheck } from 'react-icons/fa';
+import Checkbox from '@/components/Checkbox';
 require('dotenv').config();
 
 const LoginPage = () => {
@@ -132,16 +133,13 @@ const LoginPage = () => {
                      error={passwordError}
                      className={'input'}
                   />
-                  <Remenber>
-                     {keepLoggedIn && <FaCheck className='check'/>}
-                     <input
-                        type='checkbox'
-                        className='checkbox'
-                        checked={keepLoggedIn}
-                        onChange={handleCheckboxChange}
-                     />
-                     <span className='text' style={{color: keepLoggedIn && 'rgba(var(--primary), .9)'}}>Remember me</span>
-                  </Remenber>
+                  <Checkbox
+                     checked={keepLoggedIn}
+                     onChange={() => {
+                        handleCheckboxChange();
+                     }}
+                     label='Remember me'
+                  />
                </Inputs>
                <Access>
                   <span className='forgot-passaword'>Forgot the password?</span>
@@ -150,6 +148,8 @@ const LoginPage = () => {
                      textTransform={`capitalize`}
                      onClick={handleLogin}
                      loading={loading}
+                     className={'button'}
+                     loadingSize={9.5}
                   />
                   <span className='or'>or</span>
                   <Link href={'/register'} className='register'>

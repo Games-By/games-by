@@ -28,7 +28,7 @@ export const InputStyles = styled.input`
    border-radius: 0.8rem;
    border: 1px solid rgba(var(--secondary));
    background-color: rgba(var(--light), 0.05);
-   width: calc(100% - 1.2rem);
+   width: calc(100% - 1.4rem);
    font-weight: 200;
    font-size: 1.5rem;
    letter-spacing: 1px;

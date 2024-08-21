@@ -34,7 +34,7 @@ export const LoginBox = styled.div`
    z-index: 1;
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
+   justify-content: space-evenly;
    height: 50rem;
    width: 45rem;
    border: 1px solid rgba(var(--secondary));
@@ -56,75 +56,41 @@ export const Inputs = styled.div`
    padding-bottom: 2.5rem;
 `;
 
-export const Remenber = styled.div`
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: absolute;
-   bottom: 0;
-   left: 8px;
-   margin: 0;
-
-   input[type='checkbox'] {
-      appearance: none;
-      -webkit-appearance: none;
-      transition: 0.5s;
-      background-color: rgba(var(--light), 0.1);
-      border: 1px solid rgba(var(--secondary));
-      width: 2rem;
-      height: 2rem;
-      border-radius: 4px;
-      transition: 0.5s;
-      cursor: pointer;
-
-      &:checked {
-         background-color: rgba(var(--primary), 0.1);
-         border: 1px solid rgba(var(--primary));
-      }
-   }
-   .check {
-      scale: 0;
-      z-index: -1;
-      fill: rgba(var(--primary));
-      position: absolute;
-      left: 9px;
-      animation: checked 0.3s forwards;
-   }
-
-   @keyframes checked {
-      from {
-         scale: 0;
-      }
-      to {
-         scale: 1;
-      }
-   }
-   .text {
-      font-size: 1.4rem;
-      margin-left: 3px;
-      letter-spacing: 1px;
-      font-weight: 800;
-      transition: 0.5s;
-   }
-`;
-
 export const Access = styled.div`
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   gap: 3px;
 
    .forgot-passaword {
       font-size: 1.2rem;
-      color: rgba(var(--secondary), 0.7);
+      color: rgba(var(--primary), 0.7);
       cursor: pointer;
+      transition: 0.5s;
 
       &:hover {
-         color: rgba(var(--secondary));
+         color: rgba(var(--primary));
       }
    }
-   .or {
+
+   .button {
       font-size: 1.5rem;
+      width: 90%;
+      padding: 8px 0;
+      border: 1px solid rgba(var(--secondary));
+      color: rgba(var(--secondary));
+      background-color: rgba(var(--secondary), 0.1);
+
+      &:hover {
+         border: 1px solid rgba(var(--primary));
+         color: rgba(var(--primary));
+         background-color: rgba(var(--primary), 0.1);
+      }
+   }
+
+   .or {
+      font-size: 1.6rem;
       margin: 0;
       position: relative;
       &::before,
@@ -145,13 +111,14 @@ export const Access = styled.div`
    }
    .register {
       padding: 0.5rem;
-      color: rgba(var(--secondary));
-      text-decoration: underline;
+      color: rgba(var(--primary));
       font-size: 1.6rem;
       letter-spacing: 1px;
+      transition: 0.5s;
 
       &:hover {
-         color: rgba(var(--primary), 0.9);
+         scale: 1.02;
+         text-decoration: underline;
       }
    }
 `;
