@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const LoginPageStyles = styled.div`
    height: 100vh;
-   min-height: 50rem;
+   min-height: 55rem;
    margin: 0 auto;
    overflow-y: hidden;
    display: flex;
@@ -28,16 +28,6 @@ export const LoginPageStyles = styled.div`
       height: 100%;
       position: absolute;
    }
-
-   @media screen {
-      @media (max-width: 1200px) and (min-height: 970px) {
-         flex-direction: column-reverse;
-      }
-      @media (max-width: 450px) {
-         padding: 0 1rem;
-         min-height: 43rem;
-      }
-   }
 `;
 
 export const LoginBox = styled.div`
@@ -45,51 +35,38 @@ export const LoginBox = styled.div`
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   height: 40rem;
-   min-width: 35rem;
-   padding: 2rem;
+   height: 50rem;
+   width: 45rem;
    border: 1px solid rgba(var(--secondary));
    background-color: rgba(var(--dark));
    border-radius: 1.1rem;
 
    .logo {
       margin: 0 auto;
-      width: auto;
-
-      @media screen {
-         @media (max-width: 450px) {
-            height: 4.5rem;
-         }
-      }
    }
-   .input-container {
+`;
+
+export const Inputs = styled.div`
+   display: flex;
+   flex-direction: column;
+   width: 95%;
+   margin: 0 auto;
+   gap: 0.5rem;
+   position: relative;
+
+   .input {
+      /* background-color: red; */
+   }
+
+   .keep {
       display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 0.5rem;
-      position: relative;
-      padding-bottom: 2rem;
-
-      .keep {
-         display: flex;
-         align-items: center;
-         font-size: 1.3rem;
-         justify-content: center;
-         width: 12rem;
-         position: absolute;
-         bottom: 0;
-         left: 1rem;
-      }
-   }
-
-   @media screen {
-      @media (max-width: 450px) {
-         width: 85%;
-         min-width: 29rem;
-         height: 75%;
-         max-height: 41rem;
-         min-height: 35rem;
-      }
+      align-items: center;
+      font-size: 1.3rem;
+      justify-content: center;
+      width: 12rem;
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
    }
 `;
 
