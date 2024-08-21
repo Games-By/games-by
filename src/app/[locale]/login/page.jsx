@@ -2,7 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, Link } from '../../../../navigation';
 import axios from 'axios';
-import { Access, Inputs, LoginBox, LoginPageStyles } from './LoginPageStyles';
+import {
+   Access,
+   Inputs,
+   LoginBox,
+   LoginPageStyles,
+   Remenber,
+} from './LoginPageStyles';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import AdvertisingSpace from '@/components/AdvertisingSpace/AdvertisingSpace';
@@ -10,6 +16,7 @@ import { getWishlist } from '@/Services/client-data/getWishlist';
 import Logo from '@/components/Logo';
 import { validateEmail, validatePassword } from '@/utils/validateLoginFields';
 import { handleLoginError } from '@/utils/loginErrors';
+import { FaCheck } from 'react-icons/fa';
 require('dotenv').config();
 
 const LoginPage = () => {
@@ -125,14 +132,16 @@ const LoginPage = () => {
                      error={passwordError}
                      className={'input'}
                   />
-                  <span className='keep'>
+                  <Remenber>
+                     {keepLoggedIn && <FaCheck className='check'/>}
                      <input
                         type='checkbox'
+                        className='checkbox'
                         checked={keepLoggedIn}
                         onChange={handleCheckboxChange}
                      />
-                     Remember me
-                  </span>
+                     <span className='text' style={{color: keepLoggedIn && 'rgba(var(--primary), .9)'}}>Remember me</span>
+                  </Remenber>
                </Inputs>
                <Access>
                   <span className='forgot-passaword'>Forgot the password?</span>
