@@ -3,13 +3,14 @@ import styled from 'styled-components';
 export const PersonalData = styled.div`
    margin: 0 auto;
    display: flex;
-   gap: 3rem;
+   gap: 2rem 0;
    flex-wrap: wrap;
    justify-content: space-between;
    align-items: flex-start;
+   width: 100%;
 
    .input {
-      width: calc(50% - 1.5rem);
+      width: 49%;
       align-self: flex-start;
       justify-self: flex-start;
       margin: 0;
@@ -20,44 +21,23 @@ export const PersonalData = styled.div`
          }
       }
    }
-
    @media screen {
-      @media (max-width: 768px) {
-         width: 95%;
-         gap: 3rem 1rem;
+      @media (max-width: 500px) {
+         width: 90%;
       }
    }
 `;
 
 export const Gender = styled.div`
    position: relative;
-   width: 46%;
-   height: 6rem;
+   width: 49%;
    display: flex;
    justify-content: flex-start;
    flex-direction: column;
-   padding: 0 0.5rem;
-
-   .selector {
-      height: 70%;
-      width: 100%;
-      background-color: rgba(var(--light));
-      border: 1px solid rgba(var(--secondary), 0.6);
-      border-radius: 0.6rem;
-      padding-left: 1rem;
-      cursor: pointer;
-
-      option {
-         font-size: 1.5rem;
-      }
-
-      &:focus {
-         outline: none;
-      }
-   }
+   padding: 0 0 1.8rem 0;
 
    label {
-      margin-left: 0.5rem;
+      margin-left: 0.8rem;
    }
 
    .other {
@@ -72,7 +52,7 @@ export const Gender = styled.div`
    }
 
    .error {
-      color: rgba(var(--red));;
+      color: rgba(var(--red));
       border: 2px solid rgba(var(--red));
    }
 

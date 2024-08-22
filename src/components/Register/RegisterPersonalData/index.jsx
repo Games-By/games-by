@@ -3,6 +3,7 @@ import Input from '../../Input/Input';
 import { Gender, PersonalData } from './PersonalData';
 import { Title } from '@/app/[locale]/register/RegisterStyles';
 import { Error, Label } from '@/components/Input/InputStyles';
+import CustomSelect from '@/components/CustomSelect';
 
 const RegisterPersonalData = ({ data, onChange, error }) => {
    const locale = useLocale();
@@ -32,7 +33,7 @@ const RegisterPersonalData = ({ data, onChange, error }) => {
                label={'Birth'}
                error={error.birth}
             />
-            {locale === 'pt' && (
+            {locale === 'pt-BR' && (
                <Input
                   type='text'
                   name='userID'
@@ -46,33 +47,25 @@ const RegisterPersonalData = ({ data, onChange, error }) => {
                />
             )}
             <Gender>
-               <Label style={{color: error.gender && 'rgba(var(--red))' }}>
+               <Label style={{ color: error.gender && 'rgba(var(--red))' }}>
                   Gender *
                </Label>
-               <select
+               <CustomSelect
                   name='gender'
                   value={data.gender}
                   onChange={onChange}
-                  placeholder='Gender'
-                  className={`selector ${error.gender && 'error'}`}
-               >
-                  <option value=''>Select Gender</option>
-                  <option value='male'>Male</option>
-                  <option value='female'>Female</option>
-                  <option value='other'>Other</option>
-               </select>
+                  placeholder='Select Gender'
+                  options={[
+                     { value: '', label: 'Select Gender' },
+                     { value: 'male', label: 'Male' },
+                     { value: 'female', label: 'Female' },
+                     { value: 'other', label: 'Other' },
+                  ]}
+                  error={error.gender}
+               />
                {error.gender && (
                   <Error style={{ marginTop: '1.5rem' }}>{error.gender}</Error>
                )}
-               {/* {data.gender !== 'male' && data.gender !== 'female' && data.gender !== '' && (
-                  <Input
-                     name={'gender'}
-                     onChange={onChange}
-                     placeholder={'Wich ?'}
-                     value={data.gender}
-                     className='other'
-                  />
-               )} */}
             </Gender>
          </PersonalData>
       </>
