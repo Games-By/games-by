@@ -2,13 +2,54 @@ import styled from 'styled-components';
 
 export const LoginPageStyles = styled.div`
    height: 100vh;
-   min-height: 50rem;
+   min-height: 55rem;
    margin: 0 auto;
    overflow-y: hidden;
    display: flex;
    align-items: center;
-   justify-content: space-around;
+   justify-content: flex-start;
    position: relative;
+
+   .back {
+      position: fixed;
+      left: 3rem;
+      top: 3rem;
+      font-size: 2rem;
+      font-weight: 300;
+      z-index: 10;
+      background-color: rgba(var(--primary), 0.5);
+      border: 1px solid rgba(var(--secondary), 0.5);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2rem;
+      gap: 5px;
+      transition: 0.5s;
+
+      &:hover {
+         background-color: rgba(var(--secondary), 0.5);
+      }
+
+      @media screen {
+         @media (max-width: 1024px) {
+            left: 2rem;
+            top: 2rem;
+            font-size: 1.5rem;
+         }
+         @media (max-width: 850px) {
+            left: 21vw;
+         }
+         @media (max-width: 600px) {
+            left: 11vw;
+         }
+         @media (max-width: 480px) {
+            left: 1rem;
+            top: 1rem;
+            font-size: 1rem;
+         }
+      }
+   }
 
    &::before {
       content: '';
@@ -29,13 +70,11 @@ export const LoginPageStyles = styled.div`
       position: absolute;
    }
 
-   @media screen {
-      @media (max-width: 1200px) and (min-height: 970px) {
-         flex-direction: column-reverse;
-      }
-      @media (max-width: 450px) {
-         padding: 0 1rem;
-         min-height: 43rem;
+   .ads {
+      width: 60vw;
+
+      @media screen and (max-width: 1024px) {
+         display: none;
       }
    }
 `;
@@ -44,51 +83,56 @@ export const LoginBox = styled.div`
    z-index: 1;
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
-   height: 40rem;
-   min-width: 35rem;
-   padding: 2rem;
+   justify-content: space-evenly;
+   height: 100%;
+   width: 40vw;
    border: 1px solid rgba(var(--secondary));
-   background-color: rgba(var(--dark));
-   border-radius: 1.1rem;
+   border-right: none;
+   background-color: rgba(var(--dark), 0.95);
+   border-radius: 0;
+   position: absolute;
+   right: 0;
+   transition: 0.5s;
 
    .logo {
       margin: 0 auto;
-      width: auto;
-
-      @media screen {
-         @media (max-width: 450px) {
-            height: 4.5rem;
-         }
-      }
-   }
-   .input-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      gap: 0.5rem;
-      position: relative;
-      padding-bottom: 2rem;
-
-      .keep {
-         display: flex;
-         align-items: center;
-         font-size: 1.3rem;
-         justify-content: center;
-         width: 12rem;
-         position: absolute;
-         bottom: 0;
-         left: 1rem;
-      }
    }
 
    @media screen {
-      @media (max-width: 450px) {
-         width: 85%;
-         min-width: 29rem;
-         height: 75%;
-         max-height: 41rem;
-         min-height: 35rem;
+      @media (max-width: 1024px) {
+         width: 50vw;
+      }
+      @media (max-width: 860px) {
+         width: 80vw;
+      }
+      @media (max-width: 600px) {
+         width: 90vw;
+      }
+      @media (max-width: 480px) {
+         width: 100vw;
+         background-color: rgba(var(--dark), 0.9);
+      }
+   }
+`;
+
+export const Inputs = styled.div`
+   display: flex;
+   flex-direction: column;
+   width: 90%;
+   max-width: 45rem;
+   margin: 0 auto;
+   gap: 0.5rem;
+   position: relative;
+   padding-bottom: 3rem;
+
+   @media screen {
+      @media (max-width: 600px) {
+         width: 70%;
+         min-width: 34rem;
+      }
+      @media (max-width: 390px) {
+         width: 80%;
+         min-width: 30rem;
       }
    }
 `;
@@ -98,19 +142,38 @@ export const Access = styled.div`
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   gap: 3px;
+   transform: translateY(-4rem);
 
    .forgot-passaword {
       font-size: 1.2rem;
-      color: rgba(var(--secondary), 0.7);
+      color: rgba(var(--primary), 0.7);
       cursor: pointer;
+      transition: 0.5s;
 
       &:hover {
-         color: rgba(var(--secondary));
+         color: rgba(var(--primary));
       }
    }
-   .or {
+
+   .button {
       font-size: 1.5rem;
-      margin: 0;
+      width: 90%;
+      padding: 8px 0;
+      border: 1px solid rgba(var(--secondary));
+      color: rgba(var(--secondary));
+      background-color: rgba(var(--secondary), 0.1);
+
+      &:hover {
+         border: 1px solid rgba(var(--primary));
+         color: rgba(var(--primary));
+         background-color: rgba(var(--primary), 0.1);
+      }
+   }
+
+   .or {
+      font-size: 1.6rem;
+      margin: 0.5rem 0;
       position: relative;
       &::before,
       &::after {
@@ -129,14 +192,14 @@ export const Access = styled.div`
       }
    }
    .register {
-      padding: 0.5rem;
-      color: rgba(var(--secondary));
-      text-decoration: underline;
+      color: rgba(var(--primary));
       font-size: 1.6rem;
       letter-spacing: 1px;
+      transition: 0.5s;
 
       &:hover {
-         color: rgba(var(--primary), 0.9);
+         scale: 1.02;
+         text-decoration: underline;
       }
    }
 `;

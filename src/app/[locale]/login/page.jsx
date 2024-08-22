@@ -1,27 +1,28 @@
 'use client';
-import { useTranslations } from 'next-intl';
-import React, { useEffect } from 'react';
-import { Link, useRouter } from '../../../../navigation';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRouter, Link } from '../../../../navigation';
 import axios from 'axios';
-import { Access, LoginBox, LoginPageStyles } from './LoginPageStyles';
-import Image from 'next/image';
+import { Access, Inputs, LoginBox, LoginPageStyles } from './LoginPageStyles';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import AdvertisingSpace from '@/components/AdvertisingSpace/AdvertisingSpace';
 import { getWishlist } from '@/Services/client-data/getWishlist';
+import Logo from '@/components/Logo';
+import { validateEmail, validatePassword } from '@/utils/validateLoginFields';
+import { handleLoginError } from '@/utils/loginErrors';
+import Checkbox from '@/components/Checkbox';
+import { useTranslations } from 'next-intl';
 require('dotenv').config();
+import { GrHomeRounded } from "react-icons/gr";
 
 const LoginPage = () => {
    const router = useRouter();
-   const [loginData, setLoginData] = useState({
-      email: '',
-      password: '',
-   });
+   const [loginData, setLoginData] = useState({ email: '', password: '' });
    const [emailError, setEmailError] = useState('');
    const [passwordError, setPasswordError] = useState('');
    const [loading, setLoading] = useState(false);
    const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+   const t = useTranslations('LoginPage');
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
@@ -33,27 +34,21 @@ const LoginPage = () => {
    const handleChange = (e) => {
       setEmailError('');
       setPasswordError('');
-      setLoginData({
-         ...loginData,
-         [e.target.name]: e.target.value,
-      });
+      setLoginData({ ...loginData, [e.target.name]: e.target.value });
    };
+
    const getUser = async (email) => {
       try {
          const response = await axios.get(
             `${process.env.NEXT_PUBLIC_SERVER_URL}/user`,
-            {
-               params: { email: email.toLowerCase() },
-            }
+            { params: { email: email.toLowerCase() } }
          );
          const imageName = response.data.user.image;
          if (response.status === 200) {
             localStorage.setItem('user', JSON.stringify(response.data.user));
             const imageProfile = await axios.get(
                `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
-               {
-                  params: { imageName },
-               }
+               { params: { imageName } }
             );
             const wishlist = await getWishlist();
             localStorage.setItem('imageProfile', JSON.stringify(imageProfile));
@@ -63,9 +58,20 @@ const LoginPage = () => {
          console.error('Error getting profile:', error);
       }
    };
+
    const handleLogin = async () => {
       const lowercaseEmail = loginData.email.toLowerCase();
       const password = loginData.password;
+
+      const emailValidationError = validateEmail(lowercaseEmail, t);
+      const passwordValidationError = validatePassword(password, t);
+
+      if (emailValidationError || passwordValidationError) {
+         setEmailError(emailValidationError);
+         setPasswordError(passwordValidationError);
+         return;
+      }
+
       const dataToSend = { email: lowercaseEmail, password: password };
       try {
          setLoading(true);
@@ -81,96 +87,72 @@ const LoginPage = () => {
          localStorage.setItem('authToken', response.data.token);
          localStorage.setItem('userEmail', lowercaseEmail);
          await getUser(loginData.email);
-         router.replace('/');
       } catch (error) {
-         if (
-            error.response &&
-            error.response.data &&
-            error.response.data.message
-         ) {
-            const { message } = error.response.data;
-
-            if (message.includes('E-mail') || loginData.email === '') {
-               setEmailError('The E-mail field is required!');
-            } else if (message.includes('User not found!')) {
-               setEmailError('This email address is not registered');
-            }
-
-            if (
-               message.includes('password' && 'not filled') ||
-               loginData.password === ''
-            ) {
-               setPasswordError('The Password field is required!');
-            } else if (message.includes('password' && 'is invalid!')) {
-               setPasswordError('The password is incorrect!');
-            }
-         } else {
-            console.error('Error when logging in', error);
-         }
+         handleLoginError(error, loginData, setEmailError, setPasswordError, t);
       } finally {
+         router.replace('/');
          setLoading(false);
       }
    };
+
    const handleCheckboxChange = () => {
       setKeepLoggedIn((prev) => !prev);
    };
+
    return (
       <>
          <title>Login | Games By</title>
          <LoginPageStyles>
-            <AdvertisingSpace />
+            <Link href={'/'} className='back'><GrHomeRounded />Back to home</Link>
+            <div className='ads'>
+               <AdvertisingSpace />
+            </div>
             <LoginBox>
-               <Image
-                  src={`/assets/logo.png`}
-                  width={200}
-                  height={50}
-                  alt='Logo of Games By'
-                  quality={100}
-                  className='logo'
-               />
-
-               <div className='input-container'>
+               <Logo className={'logo'} />
+               <Inputs>
                   <Input
                      type='text'
-                     placeholder='Enter your email'
+                     placeholder={t('emailPlaceholder')}
                      value={loginData.email}
                      name='email'
                      onChange={handleChange}
                      label={'E-mail'}
                      required={true}
                      error={emailError}
+                     className={'input'}
                   />
                   <Input
                      type='password'
-                     placeholder='Type your password'
+                     placeholder={t('passwordPlaceholder')}
                      value={loginData.password}
                      name='password'
                      onChange={handleChange}
-                     label={'Password'}
+                     label={t('password')}
                      required={true}
                      error={passwordError}
+                     className={'input'}
                   />
-                  <span className='keep'>
-                     <input
-                        type='checkbox'
-                        checked={keepLoggedIn}
-                        onChange={handleCheckboxChange}
-                     />
-                     keep me logged
-                  </span>
-               </div>
-
+                  <Checkbox
+                     checked={keepLoggedIn}
+                     onChange={() => {
+                        handleCheckboxChange();
+                     }}
+                     label={t('remenber')}
+                  />
+               </Inputs>
                <Access>
-                  <span className='forgot-passaword'>Forgot the password?</span>
+                  <span className='forgot-passaword'>{t('forgot')}</span>
                   <Button
                      title={'Login'}
                      textTransform={`capitalize`}
                      onClick={handleLogin}
                      loading={loading}
+                     className={'button'}
+                     loadingSize={9.5}
                   />
-                  <span className='or'>or</span>
+                  <span className='or'>{t('or')}</span>
                   <Link href={'/register'} className='register'>
-                     Register me
+                     {t('register')}
                   </Link>
                </Access>
             </LoginBox>

@@ -14,5 +14,23 @@
    },
    "Deals": {
       "title": "Mejores ofertas de la semana"
+   },
+   "LoginPage": {
+      "emailPlaceholder": "Introduce tu correo electrónico",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Escribe tu contraseña",
+      "remenber": "Recuérdame",
+      "forgot": "¿Olvidaste la contraseña?",
+      "or": "o",
+      "register": "Regístrate",
+      "errors": {
+         "genericEmail": "Ocurrió un error inesperado con el correo electrónico.",
+         "genericEmailandPassword": "¡El correo electrónico o la contraseña son incorrectos!",
+         "genericPassword": "Ocurrió un error inesperado con la contraseña.",
+         "emptyEmail": "¡El campo de correo electrónico es obligatorio!",
+         "invalidEmail": "¡Por favor, introduce una dirección de correo válida!",
+         "emptyPassword": "¡El campo de contraseña es obligatorio!",
+         "userNotFound": "Esta dirección de correo electrónico no está registrada."
+      }
    }
 }
