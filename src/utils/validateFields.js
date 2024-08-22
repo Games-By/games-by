@@ -1,4 +1,6 @@
-export const validateFields = (formData, setError, locale) => {
+import { getAllUsers } from '@/Services/client-data/getAllUsers';
+
+export const validateFields = async (formData, setError, locale) => {
    const newErrorState = {};
 
    if (!formData.name) {
@@ -11,6 +13,22 @@ export const validateFields = (formData, setError, locale) => {
          newErrorState.name = 'Name is too short';
       } else if (formData.name.length > 50) {
          newErrorState.name = 'Name is too long';
+      }
+   }
+
+   if (!formData.username) {
+      newErrorState.username = 'The field "Username" is required';
+   } else {
+      const allUsers = await getAllUsers();
+
+      const userExists = allUsers.users.some(
+         (user) => user.username === formData.username
+      );
+
+      if (userExists) {
+         newErrorState.username = 'The username is already taken.';
+      } else {
+         console.log('Username is available');
       }
    }
 
@@ -52,7 +70,7 @@ export const validateFields = (formData, setError, locale) => {
       newErrorState.confirmEmail = 'The E-mail addresses are different';
    }
 
-   if (!formData.userID && locale === 'pt') {
+   if (!formData.userID && locale === 'pt-BR') {
       newErrorState.userID = 'The field "CPF" is required';
    } else {
       const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;

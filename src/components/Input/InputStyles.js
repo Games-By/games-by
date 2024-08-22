@@ -79,6 +79,7 @@ export const Error = styled.p`
    left: 8px;
    max-width: 34rem;
    overflow-x: hidden;
+   white-space: nowrap;
    text-overflow: ellipsis;
    @media screen {
       @media (max-width: 1024px) {

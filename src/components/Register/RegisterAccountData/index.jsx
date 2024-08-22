@@ -3,6 +3,7 @@ import Input from '../../Input/Input';
 import { AccountData, PhotoSelector } from './AccountData';
 import { Title } from '@/app/[locale]/register/RegisterStyles';
 import { Label } from '@/components/Input/InputStyles';
+import { IoMdPhotos } from 'react-icons/io';
 
 const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
    const imageInputRef = useRef(null);
@@ -10,6 +11,19 @@ const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
       <>
          <AccountData>
             <Title>Account Data</Title>
+            <div style={{ width: '100%' }}>
+               <Input
+                  type='text'
+                  name='username'
+                  value={data.username}
+                  onChange={onChange}
+                  placeholder='username'
+                  required={true}
+                  className={'input'}
+                  label={'Username'}
+                  error={error.username}
+               />
+            </div>
             <Input
                type='text'
                name='email'
@@ -63,6 +77,7 @@ const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
                   ref={imageInputRef}
                   onChange={imageChange}
                />
+               <IoMdPhotos className='icon' />
             </PhotoSelector>
          </AccountData>
       </>
