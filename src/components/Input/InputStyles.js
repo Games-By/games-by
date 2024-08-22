@@ -57,6 +57,15 @@ export const Label = styled.label`
    margin-left: 8px;
    margin-bottom: 2px;
    letter-spacing: 2px;
+
+   @media screen {
+      @media (max-width: 1024px) {
+         font-size: 1.7rem;
+      }
+      @media (max-width: 768px) {
+         font-size: 1.5rem;
+      }
+   }
 `;
 
 export const Error = styled.p`
@@ -71,4 +80,9 @@ export const Error = styled.p`
    max-width: 34rem;
    overflow-x: hidden;
    text-overflow: ellipsis;
+   @media screen {
+      @media (max-width: 1024px) {
+         font-size: 1.3rem;
+      }
+   }
 `;

@@ -13,6 +13,7 @@ import { handleLoginError } from '@/utils/loginErrors';
 import Checkbox from '@/components/Checkbox';
 import { useTranslations } from 'next-intl';
 require('dotenv').config();
+import { GrHomeRounded } from "react-icons/gr";
 
 const LoginPage = () => {
    const router = useRouter();
@@ -102,7 +103,10 @@ const LoginPage = () => {
       <>
          <title>Login | Games By</title>
          <LoginPageStyles>
-            <AdvertisingSpace />
+            <Link href={'/'} className='back'><GrHomeRounded />Back to home</Link>
+            <div className='ads'>
+               <AdvertisingSpace />
+            </div>
             <LoginBox>
                <Logo className={'logo'} />
                <Inputs>

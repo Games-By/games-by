@@ -25,6 +25,12 @@ export const CheckboxStyles = styled.div`
          background-color: rgba(var(--primary), 0.1);
          border: 1px solid rgba(var(--primary));
       }
+      @media screen {
+         @media (max-width: 768px) {
+            width: 1.8rem;
+            height: 1.8rem;
+         }
+      }
    }
    .check {
       z-index: -1;
@@ -42,5 +48,14 @@ export const CheckboxStyles = styled.div`
       letter-spacing: 1px;
       font-weight: 800;
       transition: 0.5s;
+
+      @media screen {
+         @media (max-width: 1024px) {
+            font-size: 1.3rem;
+         }
+         @media (max-width: 768px) {
+            font-size: 1.25rem;
+         }
+      }
    }
 `;

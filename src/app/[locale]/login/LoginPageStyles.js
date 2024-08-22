@@ -7,8 +7,49 @@ export const LoginPageStyles = styled.div`
    overflow-y: hidden;
    display: flex;
    align-items: center;
-   justify-content: space-around;
+   justify-content: flex-start;
    position: relative;
+
+   .back {
+      position: fixed;
+      left: 3rem;
+      top: 3rem;
+      font-size: 2rem;
+      font-weight: 300;
+      z-index: 10;
+      background-color: rgba(var(--primary), 0.5);
+      border: 1px solid rgba(var(--secondary), 0.5);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2rem;
+      gap: 5px;
+      transition: 0.5s;
+
+      &:hover {
+         background-color: rgba(var(--secondary), 0.5);
+      }
+
+      @media screen {
+         @media (max-width: 1024px) {
+            left: 2rem;
+            top: 2rem;
+            font-size: 1.5rem;
+         }
+         @media (max-width: 850px) {
+            left: 21vw;
+         }
+         @media (max-width: 600px) {
+            left: 11vw;
+         }
+         @media (max-width: 480px) {
+            left: 1rem;
+            top: 1rem;
+            font-size: 1rem;
+         }
+      }
+   }
 
    &::before {
       content: '';
@@ -28,6 +69,14 @@ export const LoginPageStyles = styled.div`
       height: 100%;
       position: absolute;
    }
+
+   .ads {
+      width: 60vw;
+
+      @media screen and (max-width: 1024px) {
+         display: none;
+      }
+   }
 `;
 
 export const LoginBox = styled.div`
@@ -35,25 +84,57 @@ export const LoginBox = styled.div`
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
-   height: 50rem;
-   width: 45rem;
+   height: 100%;
+   width: 40vw;
    border: 1px solid rgba(var(--secondary));
-   background-color: rgba(var(--dark));
-   border-radius: 1.1rem;
+   border-right: none;
+   background-color: rgba(var(--dark), 0.95);
+   border-radius: 0;
+   position: absolute;
+   right: 0;
+   transition: 0.5s;
 
    .logo {
       margin: 0 auto;
+   }
+
+   @media screen {
+      @media (max-width: 1024px) {
+         width: 50vw;
+      }
+      @media (max-width: 860px) {
+         width: 80vw;
+      }
+      @media (max-width: 600px) {
+         width: 90vw;
+      }
+      @media (max-width: 480px) {
+         width: 100vw;
+         background-color: rgba(var(--dark), 0.9);
+      }
    }
 `;
 
 export const Inputs = styled.div`
    display: flex;
    flex-direction: column;
-   width: 95%;
+   width: 90%;
+   max-width: 45rem;
    margin: 0 auto;
    gap: 0.5rem;
    position: relative;
    padding-bottom: 3rem;
+
+   @media screen {
+      @media (max-width: 600px) {
+         width: 70%;
+         min-width: 34rem;
+      }
+      @media (max-width: 390px) {
+         width: 80%;
+         min-width: 30rem;
+      }
+   }
 `;
 
 export const Access = styled.div`
@@ -62,6 +143,7 @@ export const Access = styled.div`
    align-items: center;
    justify-content: center;
    gap: 3px;
+   transform: translateY(-4rem);
 
    .forgot-passaword {
       font-size: 1.2rem;
@@ -91,7 +173,7 @@ export const Access = styled.div`
 
    .or {
       font-size: 1.6rem;
-      margin: .5rem 0;
+      margin: 0.5rem 0;
       position: relative;
       &::before,
       &::after {
