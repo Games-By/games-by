@@ -8,6 +8,7 @@ const Button = ({
    className,
    loading,
    onClick,
+   loadingSize
 }) => {
    return (
       <>
@@ -18,7 +19,7 @@ const Button = ({
             onClick={onClick}
          >
             {icon && icon}
-            {loading ? <Loading loading={loading} /> : title}
+            {loading ? <Loading loading={loading} size={loadingSize && loadingSize} /> : title}
          </ButtonStyles>
       </>
    );
