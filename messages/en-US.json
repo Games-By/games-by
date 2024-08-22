@@ -14,6 +14,23 @@
    },
    "Deals": {
       "title": "Best deals of the week"
+   },
+   "LoginPage": {
+      "emailPlaceholder": "Enter your email",
+      "password": "Password",
+      "passwordPlaceholder": "Type your password",
+      "remenber": "Remenber me",
+      "forgot": "Forgot the password?",
+      "or": "or",
+      "register": "Register me",
+      "errors": {
+         "genericEmail": "An unexpected error occurred with the email.",
+         "genericEmailandPassword": "The E-mail or Password field is incorrect!",
+         "genericPassword": "An unexpected error occurred with the password.",
+         "emptyEmail": "The E-mail field is required!",
+         "invalidEmail": "Please enter a valid email address!",
+         "emptyPassword": "The Password field is required!",
+         "userNotFound": "This email address is not registered."
+      }
    }
-
 }

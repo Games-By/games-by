@@ -1,16 +1,16 @@
-export const validateEmail = (email) => {
+export const validateEmail = (email, t) => {
    if (!email) {
-      return 'The E-mail field is required!';
+      return t('errors.emptyEmail');
    }
    if (!/\S+@\S+\.\S+/.test(email)) {
-      return 'Please enter a valid email address!';
+      return t('errors.invalidEmail')
    }
    return '';
 };
 
-export const validatePassword = (password) => {
+export const validatePassword = (password, t) => {
    if (!password) {
-      return 'The Password field is required!';
+      return t('errors.emptyPassword');
    }
    return '';
 };

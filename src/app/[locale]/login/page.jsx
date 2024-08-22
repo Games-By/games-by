@@ -2,13 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter, Link } from '../../../../navigation';
 import axios from 'axios';
-import {
-   Access,
-   Inputs,
-   LoginBox,
-   LoginPageStyles,
-   Remenber,
-} from './LoginPageStyles';
+import { Access, Inputs, LoginBox, LoginPageStyles } from './LoginPageStyles';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import AdvertisingSpace from '@/components/AdvertisingSpace/AdvertisingSpace';
@@ -16,8 +10,8 @@ import { getWishlist } from '@/Services/client-data/getWishlist';
 import Logo from '@/components/Logo';
 import { validateEmail, validatePassword } from '@/utils/validateLoginFields';
 import { handleLoginError } from '@/utils/loginErrors';
-import { FaCheck } from 'react-icons/fa';
 import Checkbox from '@/components/Checkbox';
+import { useTranslations } from 'next-intl';
 require('dotenv').config();
 
 const LoginPage = () => {
@@ -27,6 +21,7 @@ const LoginPage = () => {
    const [passwordError, setPasswordError] = useState('');
    const [loading, setLoading] = useState(false);
    const [keepLoggedIn, setKeepLoggedIn] = useState(false);
+   const t = useTranslations('LoginPage');
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
@@ -67,8 +62,8 @@ const LoginPage = () => {
       const lowercaseEmail = loginData.email.toLowerCase();
       const password = loginData.password;
 
-      const emailValidationError = validateEmail(lowercaseEmail);
-      const passwordValidationError = validatePassword(password);
+      const emailValidationError = validateEmail(lowercaseEmail, t);
+      const passwordValidationError = validatePassword(password, t);
 
       if (emailValidationError || passwordValidationError) {
          setEmailError(emailValidationError);
@@ -93,7 +88,7 @@ const LoginPage = () => {
          await getUser(loginData.email);
          router.replace('/');
       } catch (error) {
-         handleLoginError(error, loginData, setEmailError, setPasswordError);
+         handleLoginError(error, loginData, setEmailError, setPasswordError, t);
       } finally {
          setLoading(false);
       }
@@ -113,7 +108,7 @@ const LoginPage = () => {
                <Inputs>
                   <Input
                      type='text'
-                     placeholder='Enter your email'
+                     placeholder={t('emailPlaceholder')}
                      value={loginData.email}
                      name='email'
                      onChange={handleChange}
@@ -124,11 +119,11 @@ const LoginPage = () => {
                   />
                   <Input
                      type='password'
-                     placeholder='Type your password'
+                     placeholder={t('passwordPlaceholder')}
                      value={loginData.password}
                      name='password'
                      onChange={handleChange}
-                     label={'Password'}
+                     label={t('password')}
                      required={true}
                      error={passwordError}
                      className={'input'}
@@ -138,11 +133,11 @@ const LoginPage = () => {
                      onChange={() => {
                         handleCheckboxChange();
                      }}
-                     label='Remember me'
+                     label={t('remenber')}
                   />
                </Inputs>
                <Access>
-                  <span className='forgot-passaword'>Forgot the password?</span>
+                  <span className='forgot-passaword'>{t('forgot')}</span>
                   <Button
                      title={'Login'}
                      textTransform={`capitalize`}
@@ -151,9 +146,9 @@ const LoginPage = () => {
                      className={'button'}
                      loadingSize={9.5}
                   />
-                  <span className='or'>or</span>
+                  <span className='or'>{t('or')}</span>
                   <Link href={'/register'} className='register'>
-                     Register me
+                     {t('register')}
                   </Link>
                </Access>
             </LoginBox>

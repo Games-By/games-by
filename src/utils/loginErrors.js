@@ -2,17 +2,18 @@ export const handleLoginError = (
    error,
    loginData,
    setEmailError,
-   setPasswordError
+   setPasswordError,
+   t
 ) => {
    if (error.response && error.response.data && error.response.data.message) {
       const { message } = error.response.data;
 
       if (loginData.email === '' || message.toLowerCase().includes('e-mail')) {
-         setEmailError('The E-mail field is required!');
+         setEmailError(t('errors.emptyEmail'));
       } else if (message.includes('User not found!')) {
-         setEmailError('This email address is not registered');
+         setEmailError(t('errors.userNotFound'));
       } else {
-         setEmailError('An unexpected error occurred with the email.');
+         setEmailError(t('errors.genericEmail'));
       }
 
       if (
@@ -20,12 +21,12 @@ export const handleLoginError = (
          message.toLowerCase().includes('password')
       ) {
          if (message.includes('not filled')) {
-            setPasswordError('The Password field is required!');
+            setPasswordError(t('errors.emptyPassword'));
          } else if (message.includes('is invalid!')) {
-            setEmailError('The E-mail or Password field is incorrect!');
-            setPasswordError('The E-mail or Password is incorrect!');
+            setEmailError(t('errors.genericEmailandPassword'));
+            setPasswordError(t('errors.genericEmailandPassword'));
          } else {
-            setPasswordError('An unexpected error occurred with the password.');
+            setPasswordError(t('errors.genericPassword'));
          }
       }
    } else {

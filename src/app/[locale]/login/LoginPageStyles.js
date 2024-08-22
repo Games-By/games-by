@@ -53,7 +53,7 @@ export const Inputs = styled.div`
    margin: 0 auto;
    gap: 0.5rem;
    position: relative;
-   padding-bottom: 2.5rem;
+   padding-bottom: 3rem;
 `;
 
 export const Access = styled.div`
@@ -91,7 +91,7 @@ export const Access = styled.div`
 
    .or {
       font-size: 1.6rem;
-      margin: 0;
+      margin: .5rem 0;
       position: relative;
       &::before,
       &::after {
@@ -110,7 +110,6 @@ export const Access = styled.div`
       }
    }
    .register {
-      padding: 0.5rem;
       color: rgba(var(--primary));
       font-size: 1.6rem;
       letter-spacing: 1px;
