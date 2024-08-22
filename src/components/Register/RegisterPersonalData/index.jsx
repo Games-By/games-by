@@ -1,7 +1,6 @@
 import { useLocale } from 'next-intl';
 import Input from '../../Input/Input';
-import { Gender, PersonalData } from './PersonalData';
-import { Title } from '@/app/[locale]/register/RegisterStyles';
+import { Gender, PersonalData, Title } from './PersonalData';
 import { Error, Label } from '@/components/Input/InputStyles';
 import CustomSelect from '@/components/CustomSelect';
 

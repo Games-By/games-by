@@ -85,3 +85,12 @@ export const PhotoSelector = styled.div`
       }
    }
 `;
+
+export const Title = styled.h5`
+   font-size: 2rem;
+   font-weight: 300;
+   letter-spacing: 2px;
+   width: 100%;
+   margin: 0;
+   color: rgba(var(--primary));
+`;

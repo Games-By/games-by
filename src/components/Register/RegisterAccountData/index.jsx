@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import Input from '../../Input/Input';
-import { AccountData, PhotoSelector } from './AccountData';
-import { Title } from '@/app/[locale]/register/RegisterStyles';
+import { AccountData, PhotoSelector, Title } from './AccountData';
 import { Label } from '@/components/Input/InputStyles';
 import { IoMdPhotos } from 'react-icons/io';
 

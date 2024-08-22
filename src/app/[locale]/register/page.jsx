@@ -12,11 +12,12 @@ import { Link, useRouter } from '../../../../navigation';
 require('dotenv').config();
 
 const Register = () => {
-   const t = useTranslations('Index');
+   // const t = useTranslations('Index');
    const router = useRouter();
    const locale = useLocale();
    const [formData, setFormData] = useState({
       name: '',
+      username: '',
       birth: '',
       email: '',
       confirmEmail: '',
@@ -34,6 +35,7 @@ const Register = () => {
    const [imageData, setImageData] = useState(null);
    const [error, setError] = useState({
       name: '',
+      username: '',
       birth: '',
       email: '',
       confirmEmail: '',
@@ -84,8 +86,14 @@ const Register = () => {
       e.preventDefault();
       try {
          setLoading(true);
-         const response = await userRegister(e, formData, imageData, setError, locale);
-         if(response.status === 201) router.push('/login');
+         const response = await userRegister(
+            e,
+            formData,
+            imageData,
+            setError,
+            locale
+         );
+         if (response && response.status === 201) router.push('/login');
       } catch (error) {
          console.error(error);
       } finally {
@@ -98,6 +106,7 @@ const Register = () => {
          <title>Register | Games By</title>
          <RegisterStyles>
             <RegisterForm onSubmit={register}>
+               <h4 className='title'>Create Account</h4>
                <RegisterPersonalData
                   data={formData}
                   error={error}
@@ -109,8 +118,12 @@ const Register = () => {
                   onChange={handleChange}
                   imageChange={handleImageChange}
                />
-               <p className='terms'>By registering, you agree to our <Link href="/terms">Terms and Conditions</Link>.</p>
+               <p className='terms'>
+                  By registering, you agree to our{' '}
+                  <Link href='/terms'>Terms and Conditions</Link>.
+               </p>
                <Button
+                  className={'button'}
                   onClick={register}
                   title={'Register'}
                   loading={loading}
