@@ -27,6 +27,7 @@
       "swiper": "^9.3.2"
    },
    "devDependencies": {
+      "cypress": "^13.13.3",
       "eslint": "^8.41.0",
       "eslint-config-prettier": "^8.8.0"
    }

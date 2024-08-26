@@ -7,9 +7,7 @@ import { debounce } from '@/utils/debounce';
 
 const ProfileThumb = ({ windowWidth, handle }) => {
    const [profileImage, setProfileImage] = useState(null);
-   const [tokenValid, setTokenValid] = useState(
-      () => !!localStorage.getItem('authToken')
-   );
+   const [tokenValid, setTokenValid] = useState(null);
 
    const handleImageUser = useCallback(async () => {
       try {
@@ -28,6 +26,10 @@ const ProfileThumb = ({ windowWidth, handle }) => {
    );
 
    useEffect(() => {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+         setTokenValid(true);
+      }
       if (!profileImage) {
          const user = JSON.parse(localStorage.getItem('user'));
          if (user?.image) {

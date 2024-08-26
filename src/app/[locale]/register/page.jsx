@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { RegisterStyles, RegisterForm } from './RegisterStyles';
+import { RegisterForm } from './RegisterStyles';
 import RegisterPersonalData from '@/components/Register/RegisterPersonalData';
 import RegisterAccountData from '@/components/Register/RegisterAccountData';
 import { formatBirth } from '@/utils/formatBirth';
@@ -105,33 +105,31 @@ const Register = () => {
    return (
       <>
          <title>Register | Games By</title>
-         <RegisterStyles>
-            <RegisterForm onSubmit={register}>
-               <h4 className='title'>{t('createAccount')}</h4>
-               <RegisterPersonalData
-                  data={formData}
-                  error={error}
-                  onChange={handleChange}
-               />
-               <RegisterAccountData
-                  data={formData}
-                  error={error}
-                  onChange={handleChange}
-                  imageChange={handleImageChange}
-               />
-               <p className='terms'>
-                  {t.rich('terms', {
-                     Emphasys: (chunks) => <Link href='/terms'>{chunks}</Link>,
-                  })}
-               </p>
-               <Button
-                  className={'button'}
-                  onClick={register}
-                  title={t('registerButton')}
-                  loading={loading}
-               />
-            </RegisterForm>
-         </RegisterStyles>
+         <RegisterForm onSubmit={register}>
+            <h4 className='title'>{t('createAccount')}</h4>
+            <RegisterPersonalData
+               data={formData}
+               error={error}
+               onChange={handleChange}
+            />
+            <RegisterAccountData
+               data={formData}
+               error={error}
+               onChange={handleChange}
+               imageChange={handleImageChange}
+            />
+            <p className='terms'>
+               {t.rich('terms', {
+                  Emphasys: (chunks) => <Link href='/terms'>{chunks}</Link>,
+               })}
+            </p>
+            <Button
+               className={'button'}
+               onClick={register}
+               title={t('registerButton')}
+               loading={loading}
+            />
+         </RegisterForm>
       </>
    );
 };
