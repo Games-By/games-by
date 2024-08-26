@@ -57,7 +57,7 @@ const Dropdown = ({
       if (user) {
          setUser(user);
       }
-   });
+   }, [onMouseEnter]);
 
    const MotionLink = motion(Link);
    return (

@@ -18,7 +18,7 @@ import useScrollPosition from '@/hooks/useScrollPosition';
 import { AnimatePresence } from 'framer-motion';
 
 const Header = () => {
-   const [isLoggedIn, setIsLoggedIn] = useState(null);
+   const isLoggedIn = localStorage.getItem('authToken');
    const route = useRouter();
    const { width } = useWindowSize();
    const scrollPosition = useScrollPosition();
@@ -28,10 +28,6 @@ const Header = () => {
    const { cartCount, fetchCart } = useCartContext();
 
    useEffect(() => {
-      const logged = localStorage.getItem('authToken');
-      if (logged) {
-         setIsLoggedIn(logged);
-      }
       if (isLoggedIn) {
          fetchCart();
       }
