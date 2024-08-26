@@ -60,6 +60,43 @@
          "inputConfirmPasswordPlaceholder": "Digite sua senha",
          "profilePhoto": "Foto de Perfil"
       },
-      "registerButton": "Registrar"
+      "registerButton": "Registrar",
+      "errors": {
+         "name": {
+            "requiredName": "O campo 'Nome' é obrigatório",
+            "invalidName": "O nome deve conter apenas letras e espaços",
+            "longName": "O nome é muito longo",
+            "shortName": "O nome é muito curto"
+         },
+         "username": {
+            "requiredUsername": "O campo 'Nome de Usuário' é obrigatório",
+            "invalidUserName": "O nome de usuário já está em uso."
+         },
+         "birth": {
+            "requiredBirth": "O campo 'Data de Nascimento' é obrigatório",
+            "birthFormat": "A data de nascimento deve estar no formato DD/MM/AAAA",
+            "birthFuture": "A data de nascimento não pode estar no futuro",
+            "moreThenThirteen": "Você deve ter pelo menos 13 anos de idade"
+         },
+         "email": {
+            "requiredEmail": "O campo 'E-mail' é obrigatório",
+            "invalidEmail": "O e-mail não é válido",
+            "requiredConfirmEmail": "O campo 'Confirmar E-mail' é obrigatório",
+            "differentEmails": "Os endereços de e-mail são diferentes"
+         },
+         "id": {
+            "requiredId": "O campo 'CPF' é obrigatório",
+            "invalidId": "O CPF deve ser válido"
+         },
+         "password": {
+            "requiredPassword": "O campo 'Senha' é obrigatório",
+            "requiredConfirmPassword": "O campo 'Confirmar Senha' é obrigatório",
+            "invalidPassword": "A senha deve ter pelo menos 8 caracteres e incluir letras maiúsculas, minúsculas, número e caractere especial",
+            "differentPasswords": "As senhas são diferentes"
+         },
+         "gender": {
+            "requiredGender": "O campo 'Gênero' é obrigatório"
+         }
+      }
    }
 }

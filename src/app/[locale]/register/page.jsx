@@ -91,7 +91,8 @@ const Register = () => {
             formData,
             imageData,
             setError,
-            locale
+            locale,
+            t
          );
          if (response && response.status === 201) router.push('/login');
       } catch (error) {

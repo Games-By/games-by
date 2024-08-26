@@ -60,6 +60,43 @@
          "inputConfirmPasswordPlaceholder": "Type your password",
          "profilePhoto": "Profile Photo"
       },
-      "registerButton": "Register"
+      "registerButton": "Register",
+      "errors": {
+         "name": {
+            "requiredName": "The field 'Name' is required",
+            "invalidName": "Name must contain only letters and spaces",
+            "longName": "Name is too long",
+            "shortName": "Name is too short"
+         },
+         "username": {
+            "requiredUsername": "The field 'Username' is required",
+            "invalidUserName": "The username is already taken."
+         },
+         "birth": {
+            "requiredBirth": "The field 'Birth' is required",
+            "birthFormat": "Birth date must be in DD/MM/YYYY format",
+            "birthFuture": "Birth date cannot be in the future",
+            "moreThenThirteen": "You must be at least 13 years old"
+         },
+         "email": {
+            "requiredEmail": "The field 'Email' is required",
+            "invalidEmail": "E-mail is not valid",
+            "requiredConfirmEmail": "The field 'Confirm-Email' is required",
+            "differentEmails": "The E-mail addresses are different"
+         },
+         "id": {
+            "requiredId": "The field 'CPF' is required",
+            "invalidId": "User ID must be a valid CPF"
+         },
+         "password": {
+            "requiredPassword": "The field 'Password' is required",
+            "requiredConfirmPassword": "The field 'Confirm Password' is required",
+            "invalidPassword": "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character",
+            "differentPasswords": "The E-mail addresses are different"
+         },
+         "gender": {
+            "requiredGender": "The field 'Gender' is required"
+         }
+      }
    }
 }
