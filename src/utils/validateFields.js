@@ -1,90 +1,106 @@
-export const validateFields = (formData, setError, locale) => {
+import { getAllUsers } from '@/Services/client-data/getAllUsers';
+
+export const validateFields = async (formData, setError, locale, t) => {
    const newErrorState = {};
 
    if (!formData.name) {
-      newErrorState.name = 'The field "Name" is required';
+      newErrorState.name = t('errors.name.requiredName');
    } else {
       const lettersRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]*$/;
       if (!lettersRegex.test(formData.name)) {
-         newErrorState.name = 'Name must contain only letters and spaces';
+         newErrorState.name = t('errors.name.invalidName');
       } else if (formData.name.length < 2) {
-         newErrorState.name = 'Name is too short';
+         newErrorState.name = t('errors.name.shortName');
       } else if (formData.name.length > 50) {
-         newErrorState.name = 'Name is too long';
+         newErrorState.name = t('errors.name.longName');
+      }
+   }
+
+   if (!formData.username) {
+      newErrorState.username = t('errors.username.requiredUsername');
+   } else {
+      const allUsers = await getAllUsers();
+
+      const userExists = allUsers.users.some(
+         (user) => user.username === formData.username
+      );
+
+      if (userExists) {
+         newErrorState.username = t('errors.username.invalidUserName');
       }
    }
 
    if (!formData.birth) {
-      newErrorState.birth = 'The field "Birth" is required';
+      newErrorState.birth = t('errors.birth.requiredBirth');
    } else {
       const birthRegex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/;
       if (!birthRegex.test(formData.birth)) {
-         newErrorState.birth = 'Birth date must be in DD/MM/YYYY format';
+         newErrorState.birth = t('errors.birth.birthFormat');
       } else {
          const [day, month, year] = formData.birth.split('/').map(Number);
          const birthDate = new Date(year, month - 1, day);
          if (birthDate > new Date()) {
-            newErrorState.birth = 'Birth date cannot be in the future';
+            newErrorState.birth = t('errors.birth.birthFuture');
          } else {
             const ageDifMs = Date.now() - birthDate.getTime();
             const ageDate = new Date(ageDifMs);
             const age = Math.abs(ageDate.getUTCFullYear() - 1970);
             if (age < 13) {
-               newErrorState.birth = 'You must be at least 13 years old';
+               newErrorState.birth = t('errors.birth.moreThenThirteen');
             }
          }
       }
    }
 
    if (!formData.email) {
-      newErrorState.email = 'The field "E-mail" is required';
+      newErrorState.email = t('errors.email.requiredEmail');
    } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-         newErrorState.email = 'E-mail is not valid';
+         newErrorState.email = t('errors.email.invalidEmail');
       }
    }
 
    if (!formData.confirmEmail) {
-      newErrorState.confirmEmail = 'The field "Confirm Email" is required';
+      newErrorState.confirmEmail = t('errors.email.requiredConfirmEmail');
    }
    if (formData.confirmEmail !== formData.email) {
-      newErrorState.confirmEmail = 'The E-mail addresses are different';
+      newErrorState.confirmEmail = t('errors.email.differentEmails');
    }
 
-   if (!formData.userID && locale === 'pt') {
-      newErrorState.userID = 'The field "CPF" is required';
+   if (!formData.userID && locale === 'pt-BR') {
+      newErrorState.userID = t('errors.id.requiredId');
    } else {
       const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
       if (
          (!cpfRegex.test(formData.userID) && locale === 'pt') ||
          (!validateCPF(formData.userID) && locale === 'pt')
       ) {
-         newErrorState.userID = 'User ID must be a valid CPF';
+         newErrorState.userID = t('errors.id.invalidId');
       }
    }
 
    if (!formData.password) {
-      newErrorState.password = 'The field "Password" is required';
+      newErrorState.password = t('errors.password.requiredPassword');
    } else {
       const passwordRegex =
          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
       if (!passwordRegex.test(formData.password)) {
-         newErrorState.password =
-            'Password must be at least 8 characters long and include uppercase, lowercase, number, and special character';
+         newErrorState.password = t('errors.password.invalidPassword');
       }
    }
 
    if (!formData.confirmPassword) {
-      newErrorState.confirmPassword =
-         'The field "Confirm Password" is required';
+      newErrorState.confirmPassword = t(
+         'errors.password.requiredConfirmPassword'
+      );
    }
    if (formData.confirmPassword !== formData.password) {
-      newErrorState.confirmPassword = 'The passwords are different';
+      newErrorState.confirmPassword = t('errors.password.differentPasswords');
    }
 
    if (!formData.gender) {
-      newErrorState.gender = 'Gender is required';
+      newErrorState.gender = t('errors.gender.requiredGender');
    }
 
    setError((prevState) => ({ ...prevState, ...newErrorState }));

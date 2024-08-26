@@ -32,5 +32,71 @@
          "emptyPassword": "¡El campo de contraseña es obligatorio!",
          "userNotFound": "Esta dirección de correo electrónico no está registrada."
       }
+   },
+   "RegisterPage": {
+      "createAccount": "Crear Cuenta",
+      "terms": "Al registrarte, aceptas nuestros <Emphasys>Términos y Condiciones</Emphasys>",
+      "personalData": {
+         "title": "Datos Personales",
+         "inputNameLabel": "Nombre",
+         "inputNamePlaceholder": "Escribe tu nombre",
+         "inputBirthLabel": "Fecha de Nacimiento",
+         "inputGenderLabel": "Género",
+         "inputGenderOptions": {
+            "selectGender": "Seleccionar Género",
+            "male": "Hombre",
+            "female": "Mujer",
+            "other": "Otro"
+         }
+      },
+      "accountData": {
+         "title": "Datos de la Cuenta",
+         "inputUsernameLabel": "Nombre de Usuario",
+         "inputUsernamePlaceholder": "Escribe tu nombre de usuario",
+         "inputConfirmEmailLabel": "Confirmar Correo Electrónico",
+         "inputPasswordLabel": "Contraseña",
+         "inputPasswordPlaceholder": "Escribe tu contraseña",
+         "inputConfirmPasswordLabel": "Confirmar Contraseña",
+         "inputConfirmPasswordPlaceholder": "Escribe tu contraseña",
+         "profilePhoto": "Foto de Perfil"
+      },
+      "registerButton": "Registrarse",
+      "errors": {
+         "name": {
+            "requiredName": "El campo 'Nombre' es obligatorio",
+            "invalidName": "El nombre debe contener solo letras y espacios",
+            "longName": "El nombre es demasiado largo",
+            "shortName": "El nombre es demasiado corto"
+         },
+         "username": {
+            "requiredUsername": "El campo 'Nombre de Usuario' es obligatorio",
+            "invalidUserName": "El nombre de usuario ya está en uso."
+         },
+         "birth": {
+            "requiredBirth": "El campo 'Fecha de Nacimiento' es obligatorio",
+            "birthFormat": "La fecha de nacimiento debe estar en formato DD/MM/AAAA",
+            "birthFuture": "La fecha de nacimiento no puede estar en el futuro",
+            "moreThenThirteen": "Debes tener al menos 13 años de edad"
+         },
+         "email": {
+            "requiredEmail": "El campo 'Correo Electrónico' es obligatorio",
+            "invalidEmail": "El correo electrónico no es válido",
+            "requiredConfirmEmail": "El campo 'Confirmar Correo Electrónico' es obligatorio",
+            "differentEmails": "Las direcciones de correo electrónico son diferentes"
+         },
+         "id": {
+            "requiredId": "El campo 'CPF' es obligatorio",
+            "invalidId": "El CPF debe ser válido"
+         },
+         "password": {
+            "requiredPassword": "El campo 'Contraseña' es obligatorio",
+            "requiredConfirmPassword": "El campo 'Confirmar Contraseña' es obligatorio",
+            "invalidPassword": "La contraseña debe tener al menos 8 caracteres e incluir letras mayúsculas, minúsculas, número y carácter especial",
+            "differentPasswords": "Las contraseñas son diferentes"
+         },
+         "gender": {
+            "requiredGender": "El campo 'Género' es obligatorio"
+         }
+      }
    }
 }
