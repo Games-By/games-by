@@ -12,7 +12,6 @@ import { Link, useRouter } from '../../../../navigation';
 require('dotenv').config();
 
 const Register = () => {
-   // const t = useTranslations('Index');
    const router = useRouter();
    const locale = useLocale();
    const [formData, setFormData] = useState({
@@ -45,6 +44,7 @@ const Register = () => {
       gender: '',
    });
    const [loading, setLoading] = useState(false);
+   const t = useTranslations('RegisterPage');
 
    const handleChange = (e) => {
       const { name, value } = e.target;
@@ -106,7 +106,7 @@ const Register = () => {
          <title>Register | Games By</title>
          <RegisterStyles>
             <RegisterForm onSubmit={register}>
-               <h4 className='title'>Create Account</h4>
+               <h4 className='title'>{t('createAccount')}</h4>
                <RegisterPersonalData
                   data={formData}
                   error={error}
@@ -119,13 +119,14 @@ const Register = () => {
                   imageChange={handleImageChange}
                />
                <p className='terms'>
-                  By registering, you agree to our{' '}
-                  <Link href='/terms'>Terms and Conditions</Link>.
+                  {t.rich('terms', {
+                     Emphasys: (chunks) => <Link href='/terms'>{chunks}</Link>,
+                  })}
                </p>
                <Button
                   className={'button'}
                   onClick={register}
-                  title={'Register'}
+                  title={t('registerButton')}
                   loading={loading}
                />
             </RegisterForm>

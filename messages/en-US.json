@@ -32,5 +32,34 @@
          "emptyPassword": "The Password field is required!",
          "userNotFound": "This email address is not registered."
       }
+   },
+   "RegisterPage": {
+      "createAccount": "Create Account",
+      "terms": "By registering, you agree to our <Emphasys>Terms and Conditions</Emphasys>",
+      "personalData": {
+         "title": "Personal Data",
+         "inputNameLabel": "Name",
+         "inputNamePlaceholder": "Type your name",
+         "inputBirthLabel": "Birth",
+         "inputGenderLabel": "Gender",
+         "inputGenderOptions": {
+            "selectGender": "Select Gender",
+            "male": "Male",
+            "female": "Female",
+            "other": "Other"
+         }
+      },
+      "accountData": {
+         "title": "Account Data",
+         "inputUsernameLabel": "Username",
+         "inputUsernamePlaceholder": "Type your username",
+         "inputConfirmEmailLabel": "Confirm E-mail",
+         "inputPasswordLabel": "Password",
+         "inputPasswordPlaceholder": "Type your password",
+         "inputConfirmPasswordLabel": "Confirm Password",
+         "inputConfirmPasswordPlaceholder": "Type your password",
+         "profilePhoto": "Profile Photo"
+      },
+      "registerButton": "Register"
    }
 }

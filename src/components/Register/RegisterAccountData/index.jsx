@@ -3,23 +3,26 @@ import Input from '../../Input/Input';
 import { AccountData, PhotoSelector, Title } from './AccountData';
 import { Label } from '@/components/Input/InputStyles';
 import { IoMdPhotos } from 'react-icons/io';
+import { useTranslations } from 'next-intl';
 
 const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
    const imageInputRef = useRef(null);
+   const t = useTranslations('RegisterPage');
+
    return (
       <>
          <AccountData>
-            <Title>Account Data</Title>
+            <Title>{t('accountData.title')}</Title>
             <div style={{ width: '100%' }}>
                <Input
                   type='text'
                   name='username'
                   value={data.username}
                   onChange={onChange}
-                  placeholder='username'
+                  placeholder={t('accountData.inputUsernamePlaceholder')}
                   required={true}
                   className={'input'}
-                  label={'Username'}
+                  label={t('accountData.inputUsernameLabel')}
                   error={error.username}
                />
             </div>
@@ -28,7 +31,7 @@ const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
                name='email'
                value={data.email}
                onChange={onChange}
-               placeholder='Email'
+               placeholder='email@exemple.com'
                required={true}
                className={'input'}
                label={'E-mail'}
@@ -39,10 +42,10 @@ const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
                name='confirmEmail'
                value={data.confirmEmail}
                onChange={onChange}
-               placeholder='Confirm E-mail'
+               placeholder={'email@exemple.com'}
                required={true}
                className={'input'}
-               label={'Confirm E-mail'}
+               label={t('accountData.inputConfirmEmailLabel')}
                error={error.confirmEmail}
             />
             <Input
@@ -50,10 +53,10 @@ const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
                name='password'
                value={data.password}
                onChange={onChange}
-               placeholder='Password'
+               placeholder={t('accountData.inputPasswordPlaceholder')}
                required={true}
                className={'input'}
-               label={'Password'}
+               label={t('accountData.inputPasswordLabel')}
                error={error.password}
             />
             <Input
@@ -61,14 +64,14 @@ const RegisterAccountData = ({ data, onChange, error, imageChange }) => {
                name='confirmPassword'
                value={data.confirmPassword}
                onChange={onChange}
-               placeholder='Confirm Password'
+               placeholder={t('accountData.inputConfirmPasswordPlaceholder')}
                required={true}
                className={'input'}
-               label={'Confirm Password'}
+               label={t('accountData.inputConfirmPasswordLabel')}
                error={error.confirmPassword}
             />
             <PhotoSelector>
-               <Label>Profile Photo</Label>
+               <Label>{t('accountData.profilePhoto')}</Label>
                <input
                   className='file-selector'
                   type='file'

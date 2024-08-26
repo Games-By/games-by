@@ -32,5 +32,34 @@
          "emptyPassword": "¡El campo de contraseña es obligatorio!",
          "userNotFound": "Esta dirección de correo electrónico no está registrada."
       }
+   },
+   "RegisterPage": {
+      "createAccount": "Crear Cuenta",
+      "terms": "Al registrarte, aceptas nuestros <Emphasys>Términos y Condiciones</Emphasys>",
+      "personalData": {
+         "title": "Datos Personales",
+         "inputNameLabel": "Nombre",
+         "inputNamePlaceholder": "Escribe tu nombre",
+         "inputBirthLabel": "Fecha de Nacimiento",
+         "inputGenderLabel": "Género",
+         "inputGenderOptions": {
+            "selectGender": "Seleccionar Género",
+            "male": "Hombre",
+            "female": "Mujer",
+            "other": "Otro"
+         }
+      },
+      "accountData": {
+         "title": "Datos de la Cuenta",
+         "inputUsernameLabel": "Nombre de Usuario",
+         "inputUsernamePlaceholder": "Escribe tu nombre de usuario",
+         "inputConfirmEmailLabel": "Confirmar Correo Electrónico",
+         "inputPasswordLabel": "Contraseña",
+         "inputPasswordPlaceholder": "Escribe tu contraseña",
+         "inputConfirmPasswordLabel": "Confirmar Contraseña",
+         "inputConfirmPasswordPlaceholder": "Escribe tu contraseña",
+         "profilePhoto": "Foto de Perfil"
+      },
+      "registerButton": "Registrarse"
    }
 }
