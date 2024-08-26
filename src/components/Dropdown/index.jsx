@@ -8,6 +8,7 @@ import data from '@/data/menu.json';
 import { useLocale } from 'next-intl';
 import { locales } from '@/components/Languages/LanguageSwitcher';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const { dropdownOptions } = data;
 
@@ -22,7 +23,7 @@ const Dropdown = ({
    const pathname = usePathname();
    const { width } = useWindowSize();
    const locale = useLocale();
-   const user = JSON.parse(localStorage.getItem('user'));
+   const [user, setUser] = useState(null);
 
    const handleLogout = () => {
       localStorage.removeItem('authToken');
@@ -51,6 +52,13 @@ const Dropdown = ({
       exit: windowWidth < 768 && isVisible ? { width: 0 } : { height: 0 },
    };
 
+   useEffect(() => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+         setUser(user);
+      }
+   }, [onMouseEnter]);
+
    const MotionLink = motion(Link);
    return (
       <DropdownStyles
@@ -69,13 +77,13 @@ const Dropdown = ({
                exit={{ y: 0, opacity: 0 }}
                transition={{ duration: 0.1, delay: 0.2 }}
                key={index}
-                  href={
-                     user &&
-                     (item.title['en-US'] === 'Library' ||
-                        item.title['en-US'] === 'WishList')
-                        ? `${encodeURIComponent(user.username)}${item.url}`
-                        : item.url
-                  }
+               href={
+                  user &&
+                  (item.title['en-US'] === 'Library' ||
+                     item.title['en-US'] === 'WishList')
+                     ? `${encodeURIComponent(user.username)}${item.url}`
+                     : item.url
+               }
                onClick={
                   item.title['en-US'] === 'Sign Out' ? handleLogout : null
                }

@@ -17,46 +17,7 @@ export const useCartContext = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
    const [cartCount, setCartCount] = useState(0);
    const [cartItems, setCartItems] = useState([]);
-   const authToken = localStorage.getItem('authToken');
-
-   useEffect(() => {
-      const updateCart = async () => {
-         const savedCart = localStorage.getItem('cart');
-         const cartList = JSON.parse(savedCart) || [];
-         const localCart = JSON.parse(localStorage.getItem('localCart')) || [];
-
-         if (savedCart && authToken) {
-            if (localCart.length > 0) {
-               const itemsToAdd = localCart.filter(
-                  (item) =>
-                     !cartList.some(
-                        (cartItem) =>
-                           cartItem.name === item.name &&
-                           cartItem.platform === item.platform
-                     )
-               );
-
-               for (const item of itemsToAdd) {
-                  await addToCart(item);
-               }
-
-               const updatedCartList = [...cartList, ...itemsToAdd];
-               localStorage.setItem('cart', JSON.stringify(updatedCartList));
-               localStorage.removeItem('localCart');
-
-               setCartItems(updatedCartList);
-               setCartCount(updatedCartList.length);
-            } else {
-               setCartItems(cartList);
-               setCartCount(cartList.length);
-            }
-         } else {
-            fetchCart();
-         }
-      };
-
-      updateCart();
-   }, [authToken]);
+   const [authToken, setAuthToken] = useState(null);
 
    const fetchCart = useCallback(async () => {
       try {
@@ -118,6 +79,51 @@ export const CartProvider = ({ children }) => {
       },
       [authToken, cartItems, setCartItems, setCartCount]
    );
+
+   useEffect(() => {
+      if (typeof window !== 'undefined') {
+         const token = localStorage.getItem('authToken');
+         setAuthToken(token);
+
+         const updateCart = async () => {
+            const savedCart = localStorage.getItem('cart');
+            const cartList = JSON.parse(savedCart) || [];
+            const localCart =
+               JSON.parse(localStorage.getItem('localCart')) || [];
+
+            if (savedCart && token) {
+               if (localCart.length > 0) {
+                  const itemsToAdd = localCart.filter(
+                     (item) =>
+                        !cartList.some(
+                           (cartItem) =>
+                              cartItem.name === item.name &&
+                              cartItem.platform === item.platform
+                        )
+                  );
+
+                  for (const item of itemsToAdd) {
+                     await addToCart(item);
+                  }
+
+                  const updatedCartList = [...cartList, ...itemsToAdd];
+                  localStorage.setItem('cart', JSON.stringify(updatedCartList));
+                  localStorage.removeItem('localCart');
+
+                  setCartItems(updatedCartList);
+                  setCartCount(updatedCartList.length);
+               } else {
+                  setCartItems(cartList);
+                  setCartCount(cartList.length);
+               }
+            } else {
+               fetchCart();
+            }
+         };
+
+         updateCart();
+      }
+   }, [fetchCart]);
 
    return (
       <CartContext.Provider
