@@ -1,26 +1,8 @@
 import styled from 'styled-components';
 
-export const RegisterStyles = styled.div`
-   position: relative;
-   height: 100vh;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   justify-content: center;
-   padding: 4rem 0;
-   background-color: rgba(var(--dark), 0.2);
-
-   @media screen {
-      @media (max-width: 500px) {
-         align-items: flex-start;
-         justify-content: flex-start;
-         padding: 0;
-      }
-   }
-`;
 export const RegisterForm = styled.form`
    z-index: 1;
-   margin: 0 auto;
+   margin: 4rem auto;
    background-color: rgba(var(--dark));
    border: 1px solid rgba(var(--secondary));
    width: 80rem;
