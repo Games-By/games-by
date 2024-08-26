@@ -13,7 +13,7 @@ import { handleLoginError } from '@/utils/loginErrors';
 import Checkbox from '@/components/Checkbox';
 import { useTranslations } from 'next-intl';
 require('dotenv').config();
-import { GrHomeRounded } from "react-icons/gr";
+import { GrHomeRounded } from 'react-icons/gr';
 
 const LoginPage = () => {
    const router = useRouter();
@@ -23,6 +23,7 @@ const LoginPage = () => {
    const [loading, setLoading] = useState(false);
    const [keepLoggedIn, setKeepLoggedIn] = useState(false);
    const t = useTranslations('LoginPage');
+   const [isClient, setIsClient] = useState(false);
 
    useEffect(() => {
       const authToken = localStorage.getItem('authToken');
@@ -99,64 +100,73 @@ const LoginPage = () => {
       setKeepLoggedIn((prev) => !prev);
    };
 
+   useEffect(() => {
+      setIsClient(true);
+   });
+
    return (
       <>
          <title>Login | Games By</title>
-         <LoginPageStyles>
-            <Link href={'/'} className='back'><GrHomeRounded />Back to home</Link>
-            <div className='ads'>
-               <AdvertisingSpace />
-            </div>
-            <LoginBox>
-               <Logo className={'logo'} />
-               <Inputs>
-                  <Input
-                     type='text'
-                     placeholder={t('emailPlaceholder')}
-                     value={loginData.email}
-                     name='email'
-                     onChange={handleChange}
-                     label={'E-mail'}
-                     required={true}
-                     error={emailError}
-                     className={'input'}
-                  />
-                  <Input
-                     type='password'
-                     placeholder={t('passwordPlaceholder')}
-                     value={loginData.password}
-                     name='password'
-                     onChange={handleChange}
-                     label={t('password')}
-                     required={true}
-                     error={passwordError}
-                     className={'input'}
-                  />
-                  <Checkbox
-                     checked={keepLoggedIn}
-                     onChange={() => {
-                        handleCheckboxChange();
-                     }}
-                     label={t('remenber')}
-                  />
-               </Inputs>
-               <Access>
-                  <span className='forgot-passaword'>{t('forgot')}</span>
-                  <Button
-                     title={'Login'}
-                     textTransform={`capitalize`}
-                     onClick={handleLogin}
-                     loading={loading}
-                     className={'button'}
-                     loadingSize={9.5}
-                  />
-                  <span className='or'>{t('or')}</span>
-                  <Link href={'/register'} className='register'>
-                     {t('register')}
-                  </Link>
-               </Access>
-            </LoginBox>
-         </LoginPageStyles>
+         {isClient && (
+            <LoginPageStyles>
+               <Link href={'/'} className='back'>
+                  <GrHomeRounded />
+                  Back to home
+               </Link>
+               <div className='ads'>
+                  <AdvertisingSpace />
+               </div>
+               <LoginBox>
+                  <Logo className={'logo'} />
+                  <Inputs>
+                     <Input
+                        type='text'
+                        placeholder={t('emailPlaceholder')}
+                        value={loginData.email}
+                        name='email'
+                        onChange={handleChange}
+                        label={'E-mail'}
+                        required={true}
+                        error={emailError}
+                        className={'input'}
+                     />
+                     <Input
+                        type='password'
+                        placeholder={t('passwordPlaceholder')}
+                        value={loginData.password}
+                        name='password'
+                        onChange={handleChange}
+                        label={t('password')}
+                        required={true}
+                        error={passwordError}
+                        className={'input'}
+                     />
+                     <Checkbox
+                        checked={keepLoggedIn}
+                        onChange={() => {
+                           handleCheckboxChange();
+                        }}
+                        label={t('remenber')}
+                     />
+                  </Inputs>
+                  <Access>
+                     <span className='forgot-passaword'>{t('forgot')}</span>
+                     <Button
+                        title={'Login'}
+                        textTransform={`capitalize`}
+                        onClick={handleLogin}
+                        loading={loading}
+                        className={'button'}
+                        loadingSize={9.5}
+                     />
+                     <span className='or'>{t('or')}</span>
+                     <Link href={'/register'} className='register'>
+                        {t('register')}
+                     </Link>
+                  </Access>
+               </LoginBox>
+            </LoginPageStyles>
+         )}
       </>
    );
 };
