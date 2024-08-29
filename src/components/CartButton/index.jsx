@@ -1,26 +1,30 @@
-import { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { BsFillCartPlusFill, BsCartXFill } from 'react-icons/bs';
-import { Slide, toast } from 'react-toastify';
 import Button from '../Button/Button';
 import { useCartContext } from '@/contexts/CartContext';
 
 const CartButton = ({ game, content = false, className }) => {
    const { cartItems, addItemToCart, removeItemFromCart } = useCartContext();
-   const isInCart = cartItems.some((item) => item.name === game.name);
+   const [isInCart, setIsInCart] = useState(
+      cartItems.some((item) => item.name === game.name)
+   );
 
    const handleCartClick = useCallback(async () => {
       try {
          if (isInCart) {
+            setIsInCart(false);
             const item = cartItems.find((item) => item.name === game.name);
             const id = item ? item._id : null;
             await removeItemFromCart(id, game.name);
          } else {
+            setIsInCart(true);
             await addItemToCart(game);
          }
       } catch (error) {
          console.error('Erro ao adicionar ou remover item do carrinho:', error);
+         setIsInCart(!isInCart);
       }
-   }, [addItemToCart, removeItemFromCart, game, isInCart]);
+   }, [addItemToCart, removeItemFromCart, game, isInCart, cartItems]);
 
    return (
       <Button
@@ -34,10 +38,10 @@ const CartButton = ({ game, content = false, className }) => {
             )
          }
          url={'/'}
-         className={['wish-button', className].join(' ')}
+         className={['button', className].join(' ')}
          Aboutblank={false}
       />
    );
 };
 
-export default CartButton;
+export default React.memo(CartButton);
