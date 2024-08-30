@@ -35,6 +35,7 @@ export const CartProvider = ({ children }) => {
          try {
             if (authToken) {
                await addToCart(item);
+               fetchCart();
             }
             setCartItems((prevItems) => {
                const updatedItems = [...prevItems, item];

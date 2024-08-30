@@ -9,7 +9,7 @@ export const addToCart = async (game) => {
          'pt-BR': game.description['pt-BR'],
          'es-ES': game.description['es-ES'],
       },
-      image: game.images.coverImage,
+      image: game.images?.coverImage,
       platform: game.platforms,
       genres: {
          'en-US': game.genres['en-US'],
