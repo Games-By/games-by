@@ -38,7 +38,11 @@ const CartButton = ({ game, content = false, className }) => {
             )
          }
          url={'/'}
-         className={['button', className].join(' ')}
+         className={[
+            'button',
+            className,
+            isInCart ? 'isInCart' : 'isNotInCart',
+         ].join(' ')}
          Aboutblank={false}
       />
    );
