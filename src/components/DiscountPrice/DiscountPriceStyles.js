@@ -10,6 +10,7 @@ export const DiscountPriceStyles = styled.p`
    font-weight: 200;
    gap: 0.3rem;
    max-width: 7rem;
+   margin: 0;
 
    color: rgba(var(--red));
    &::after {
