@@ -104,7 +104,14 @@ export const CartProvider = ({ children }) => {
                   );
 
                   for (const item of itemsToAdd) {
-                     await addToCart(item);
+                     const itemNoExistsInCart = cartList.some(
+                        (cartItem) =>
+                           cartItem.name === item.name &&
+                           cartItem.platform === item.platform
+                     );
+                     if (itemNoExistsInCart) {
+                        await addToCart(item);
+                     }
                   }
 
                   const updatedCartList = [...cartList, ...itemsToAdd];
