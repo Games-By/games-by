@@ -61,6 +61,10 @@ export const HeaderStyle = styled.header`
          height: 6rem;
          padding: 0 1.5rem;
          width: calc(100% - 3rem);
+
+         .invisible-bar {
+            right: 0.5rem;
+         }
       }
       @media (max-width: 400px) {
          padding: 0 0.5rem;

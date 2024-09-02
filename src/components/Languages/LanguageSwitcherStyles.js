@@ -68,8 +68,8 @@ export const Switcher = styled(motion.div)`
 
    @media screen {
       @media (max-width: 768px) {
-         top: 6rem;
-         right: 0rem;
+         top: 6.5rem;
+         right: .5rem;
 
          &::before {
             top: -4rem;
