@@ -4,10 +4,12 @@ import Header from '@/components/Header';
 import Game from '@/components/Game';
 import { debounce } from '@/utils/debounce';
 import { getGameById } from '@/Services/games-service/getGames';
+import { GameContainer } from './styles';
+import { ToastContainer } from 'react-toastify';
 
 const GamePage = () => {
    const [game, setGame] = useState({});
-   const [isLoading, setIsLoading] = useState(false);
+   const [isLoading, setIsLoading] = useState(true);
 
    const getGame = async () => {
       const id = localStorage.getItem('GameId');
@@ -19,6 +21,7 @@ const GamePage = () => {
             setIsLoading(false);
          } catch (error) {
             console.error('Error fetching game:', error);
+         } finally {
             setIsLoading(false);
          }
       }
@@ -41,7 +44,10 @@ const GamePage = () => {
                : 'Game | Games By'}
          </title>
          <Header />
-         <Game game={game} isLoading={isLoading} />
+         <GameContainer>
+            <Game game={game} isLoading={isLoading} />
+         </GameContainer>
+         <ToastContainer />
       </>
    );
 };

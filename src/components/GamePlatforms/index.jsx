@@ -11,9 +11,9 @@ import { CiMobile3 } from 'react-icons/ci';
 import { Platforms } from './styles';
 import XboxOne from '@/assets/XboxOne';
 
-const GamePlatforms = ({ platforms = [] }) => {
+const GamePlatforms = ({ platforms = [], className }) => {
    return (
-      <Platforms>
+      <Platforms className={className}>
          {platforms.map((platform, index) => {
             const platformLowerCase = platform.toLowerCase();
             if (platformLowerCase === 'pc') {
