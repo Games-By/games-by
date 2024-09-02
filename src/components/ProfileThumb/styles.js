@@ -4,7 +4,6 @@ export const ProfileContainer = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 5rem;
    z-index: 5;
 `;
 
@@ -67,6 +66,20 @@ export const ProfileThumbLink = styled.div`
 
             svg {
                font-size: 2rem;
+            }
+         }
+      }
+      @media (max-width: 400px) {
+         height: 3.5rem;
+         padding: 0 5px 0 5px;
+
+         .profile-icon,
+         .profile-image {
+            width: 2.5rem;
+            height: 2.5rem;
+
+            svg {
+               font-size: 1.7rem;
             }
          }
       }

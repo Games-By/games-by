@@ -8,12 +8,21 @@ export const ArrowsContainer = styled.div`
    .arrow {
       margin: 0;
       padding: 0;
-      font-size: 2.5rem;
+      font-size: 2rem;
       border-radius: 50%;
-      width: 4rem;
-      height: 4rem;
+      width: 3.5rem;
+      height: 3.5rem;
       display: flex;
       justify-content: center;
       align-items: center;
+   }
+
+   @media screen {
+      @media (max-width: 768px) {
+         .arrow {
+            width: 3rem;
+            height: 3rem;
+         }
+      }
    }
 `;

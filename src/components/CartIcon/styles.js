@@ -31,6 +31,11 @@ export const Cart = styled.div`
             width: 1.5rem;
             height: 1.5rem;
          }
+         @media (max-width: 400px) {
+            font-size: 0.8rem;
+            width: 1.2rem;
+            height: 1.2rem;
+         }
       }
    }
 
@@ -44,11 +49,15 @@ export const Cart = styled.div`
             font-size: 2.5rem;
             margin: 0;
          }
+         @media (max-width: 400px) {
+            font-size: 2rem;
+         }
       }
    }
 
    @media screen {
-      @media (max-width: 768px) {
+      @media (max-width: 400px) {
+         margin: 0 0.5rem;
       }
    }
 `;
