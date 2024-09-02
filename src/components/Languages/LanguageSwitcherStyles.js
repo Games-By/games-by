@@ -5,24 +5,23 @@ export const Switcher = styled(motion.div)`
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
-   background-color: rgba(var(--dark), 0.9);
+   align-items: flex-start;
+   background-color: rgba(var(--light-gray), 0.9);
    backdrop-filter: blur(10px);
    position: fixed;
    right: 1rem;
-   top: 8rem;
+   top: 8.5rem;
    width: 20rem;
-   border-radius: 0 0 2rem 2rem;
-   border: 1px solid rgba(var(--primary));
+   border-radius: 2rem;
    border-top: none;
    color: rgba(var(--light));
    z-index: 21;
    overflow: hidden;
+   padding-left: 1.5rem;
 
 
    .language {
       text-align: center;
-      width: 100%;
       margin-bottom: 1rem;
       padding-bottom: 1rem;
       color: rgba(var(--light));
@@ -33,15 +32,16 @@ export const Switcher = styled(motion.div)`
       height: 2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding-bottom: 0.6rem;
       letter-spacing: 1px;
 
       &:nth-child(1) {
-         padding-top: 1rem;
+         padding-top: 2rem;
       }
       &:nth-last-child(1) {
-         padding-bottom: 1rem;
+         padding-bottom: 2rem;
+         margin-bottom: 0;
          &::after {
             display: none;
          }
