@@ -1,27 +1,40 @@
 import styled from 'styled-components';
 
-export const TitleStyle = styled.h2`
-   font-size: 3rem;
-   color: rgba(var(--light));
-   font-weight: 300;
-   letter-spacing: 2px;
-   border-bottom: 1px solid rgba(var(--secondary));
-   width: 90%;
-   padding-bottom: 0.4rem;
-   margin: 0 auto 2rem;
-   max-width: 190rem;
-   text-transform: capitalize;
+export const TitleStyle = styled.div`
+   width: 96%;
+   max-width: 160rem;
+   padding: 0 1rem;
+   margin: 0 auto;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   gap: 2rem;
+   border-bottom: 1px solid rgba(var(--primary));
+   .text {
+      white-space: nowrap;
+      font-size: 3.5rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: rgba(var(--light));
+      letter-spacing: 3px;
+      margin: 0;
 
-   @media screen {
-      @media (max-width: 1440px) {
-         font-size: 2.8rem;
-         width: 94%;
+      @media screen {
+         @media (max-width: 1440px) {
+            font-size: 2.8rem;
+            width: 94%;
+         }
+         @media (max-width: 1024px) {
+            font-size: 2.6rem;
+         }
+         @media (max-width: 768px) {
+            font-size: 2rem;
+         }
       }
-      @media (max-width: 1024px) {
-         font-size: 2.6rem;
-      }
-      @media (max-width: 768px) {
-         font-size: 2rem;
-      }
+   }
+   svg {
+      font-size: 3.5rem;
+      fill: rgba(var(--primary));
+      border-radius: 2rem;
    }
 `;
