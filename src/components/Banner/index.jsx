@@ -95,8 +95,8 @@ const Banners = ({ isLoggedIn }) => {
                               )}
                               {banner.type === 'discount' && banner.rating && (
                                  <div className='star-icons'>
-                                    {getStarIcons(banner.rating)} |{' '}
-                                    {banner.rating / 10}
+                                    {getStarIcons(banner.rating, 1.6)} |{' '}
+                                    {banner.rating}
                                  </div>
                               )}
                               <div className='buttons'>

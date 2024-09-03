@@ -2,21 +2,24 @@ import styled from 'styled-components';
 
 export const BannerContainerStyles = styled.div`
    height: 45rem;
-   max-width: 190rem;
    z-index: 1;
    margin: 0 auto;
+   background-color: rgba(var(--dark-gray));
 
    .swiper {
+      border-radius: 2rem;
       display: flex;
       justify-content: center;
       align-items: center;
       justify-items: center;
       margin: 0 auto;
-      height: 30rem;
-      width: 80%;
-      height: 100%;
+      width: 90%;
+      height: calc(100% - 3rem);
       transition: 0.5s;
+      max-width: 144rem;
       cursor: pointer;
+      padding-bottom: 3rem;
+
       .swiper-slide {
          display: flex;
          justify-content: center;
@@ -25,10 +28,13 @@ export const BannerContainerStyles = styled.div`
       }
 
       .swiper-pagination {
-         bottom: 0rem;
+         height: 3rem;
+         bottom: 0;
          left: 0;
-         padding: 1rem 0;
-         background-color: rgba(0, 0, 0);
+         background-color: rgba(var(--dark-gray));
+         display: flex;
+         align-items: center;
+         justify-content: center;
 
          .swiper-pagination-bullet {
             width: 2rem;
@@ -51,46 +57,81 @@ export const BannerContainerStyles = styled.div`
          }
          @media screen {
             @media (max-width: 768px) {
-               padding: 1.18rem 0;
                .swiper-pagination-bullet {
                   width: 1.5rem;
                   height: 1.5rem;
                }
+               .swiper-pagination-bullet-active {
+                  width: 2rem;
+               }
+            }
+         }
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+         position: absolute;
+         background-color: rgba(var(--light-gray), 0.8);
+         width: 5rem;
+         height: 5rem;
+         top: 3rem;
+         color: rgba(var(--light));
+         border: 1px solid rgba(var(--light));
+         border-radius: 50%;
+         transition: 0.3s;
+
+         &::after {
+            font-size: 2.5rem;
+            font-weight: 800;
+         }
+
+         @media screen {
+            @media (max-width: 1024px) {
+               width: 4.5rem;
+               height: 4.5rem;
+               &::after {
+                  font-size: 2rem;
+               }
+            }
+            @media (max-width: 768px) {
+               width: 4rem;
+               height: 4rem;
+               top: 2.5rem;
+               &::after {
+                  font-size: 1.8rem;
+               }
+            }
+         }
+      }
+      .swiper-button-prev {
+         left: auto;
+         right: 6.5rem;
+         &:hover {
+            color: rgba(var(--secondary));
+         }
+         &:active {
+            transform: translateX(-1px);
+            color: rgba(var(--primary));
+         }
+
+         @media screen {
+            @media (max-width: 768px) {
+               right: 5rem;
             }
          }
       }
       .swiper-button-next {
-         position: absolute;
-         background-color: rgba(var(--dark), 0.4);
-         width: 8rem;
-         height: 67.9%;
-         top: 0;
-         right: -2rem;
-         color: rgba(var(--light));
-         transition: 0.3s;
-         &::after {
-            font-size: 5rem;
-         }
+         right: 1rem;
          &:hover {
             color: rgba(var(--secondary));
-            right: 0;
          }
-      }
-      .swiper-button-prev {
-         position: absolute;
-         background-color: rgba(var(--dark), 0.4);
-         width: 8rem;
-         height: 67.9%;
-         top: 0;
-         left: -2rem;
-         color: rgba(var(--light));
-         transition: 0.3s;
-         &::after {
-            font-size: 5rem;
+         &:active {
+            transform: translateX(1px);
          }
-         &:hover {
-            color: rgba(var(--secondary));
-            left: 0;
+         @media screen {
+            @media (max-width: 768px) {
+               right: 0.5rem;
+            }
          }
       }
 
@@ -98,18 +139,8 @@ export const BannerContainerStyles = styled.div`
          @media (max-width: 1024px) {
             width: 95%;
          }
-         @media (max-width: 768px) {
-            width: 100%;
-            .swiper-button-prev,
-            .swiper-button-next {
-               height: 26.8rem;
-            }
-         }
          @media (max-width: 620px) {
-            .swiper-button-prev,
-            .swiper-button-next {
-               height: 24.4rem;
-            }
+            width: 98%;
          }
       }
    }
@@ -127,15 +158,19 @@ export const BannerStyle = styled.div`
    background-repeat: no-repeat;
    background-size: cover;
    position: relative;
+   border-radius: 2rem;
 `;
 
 export const BannerInfo = styled.div`
-   background-color: rgba(var(--dark), 0.95);
+   background-color: rgba(var(--dark), 1);
    width: 100%;
    height: 25%;
    position: absolute;
-   bottom: 4.4rem;
+   bottom: -1px;
+   right: 0;
+   left: 0;
    padding-bottom: 1rem;
+   border-radius: 0 0 2rem 2rem;
    cursor: auto;
 
    .title {
@@ -178,6 +213,7 @@ export const BannerInfo = styled.div`
       font-size: 1.2rem;
       font-weight: 300;
       max-width: 65rem;
+      color: rgba(var(--light), 0.8);
       @media screen {
          @media (max-width: 1024px) {
             font-size: 1.2rem;
@@ -200,16 +236,13 @@ export const BannerInfo = styled.div`
       right: 0rem;
       top: 0;
       margin: 0;
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: rgba(var(--primary));
       text-transform: uppercase;
       letter-spacing: 2px;
       background-color: rgba(var(--primary), 0.1);
-      padding: 0.5rem;
+      padding: 0.5rem 1.5rem;
       @media screen {
-         @media (max-width: 1440px) {
-            font-size: 1.7rem;
-         }
          @media (max-width: 1024px) {
             font-size: 1.6rem;
          }
@@ -231,16 +264,18 @@ export const BannerInfo = styled.div`
       align-items: center;
       position: absolute;
       bottom: 1rem;
-      left: 1rem;
+      left: 1.5rem;
       font-size: 1.5rem;
+      font-weight: 600;
       letter-spacing: 3px;
       svg {
          fill: rgba(var(--yellow));
+         margin-right: 5px;
       }
 
       @media screen {
          @media (max-width: 620px) {
-            font-size: 1.3rem;
+            font-size: 1.11rem;
             width: 20rem;
             height: 2.3rem;
             left: calc(50% - 10.5rem);
@@ -250,6 +285,10 @@ export const BannerInfo = styled.div`
             background-color: rgba(var(--dark), 0.95);
             padding: 0;
             left: calc(50% - 10rem);
+
+            svg {
+               margin-right: 3px;
+            }
          }
       }
    }
@@ -262,7 +301,7 @@ export const BannerInfo = styled.div`
       justify-self: flex-end;
       gap: 1rem;
       position: absolute;
-      bottom: 1rem;
+      bottom: 1.5rem;
       right: 1.5rem;
       .wishlist-button {
          padding: 0.5rem 2rem;
@@ -341,6 +380,7 @@ export const BannerInfo = styled.div`
             justify-content: center;
             align-self: center;
             flex-direction: column;
+            margin-bottom: 5px;
          }
       }
    }
@@ -358,7 +398,6 @@ export const BannerInfo = styled.div`
          text-align: center;
          gap: 1rem;
          padding-top: 2.6rem;
-         bottom: 4.3rem;
       }
    }
 `;

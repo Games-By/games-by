@@ -1,6 +1,6 @@
 import { IoIosStar, IoIosStarHalf, IoIosStarOutline } from 'react-icons/io';
 
-export const getStarIcons = (rating) => {
+export const getStarIcons = (rating, size) => {
    const starCount = (rating / 10) * 5;
    const fullStars = Math.floor(starCount);
    const hasHalfStar = starCount - fullStars >= 0.5;
@@ -10,20 +10,26 @@ export const getStarIcons = (rating) => {
 
    for (let i = 0; i < fullStars; i++) {
       stars.push(
-         <IoIosStar style={{ fontSize: '1.8rem' }} key={`star-full-${i}`} />
+         <IoIosStar
+            style={{ fontSize: size ? `${size}rem` : '1.8rem' }}
+            key={`star-full-${i}`}
+         />
       );
    }
 
    if (hasHalfStar) {
       stars.push(
-         <IoIosStarHalf style={{ fontSize: '1.8rem' }} key={`star-half`} />
+         <IoIosStarHalf
+            style={{ fontSize: size ? `${size}rem` : '1.8rem' }}
+            key={`star-half`}
+         />
       );
    }
 
    for (let i = 0; i < emptyStars; i++) {
       stars.push(
          <IoIosStarOutline
-            style={{ fontSize: '1.8rem' }}
+            style={{ fontSize: size ? `${size}rem` : '1.8rem' }}
             key={`star-empty-${i}`}
          />
       );
