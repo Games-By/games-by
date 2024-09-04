@@ -51,7 +51,7 @@ const Header = () => {
                   style={{
                      zIndex: 22,
                      transform: isSidebarOpen
-                        ? 'translateX(27.5rem)'
+                        ? 'translateX(29.5rem)'
                         : 'translateX(0)',
                      transition: '0.4s',
                   }}
