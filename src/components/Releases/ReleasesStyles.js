@@ -8,13 +8,26 @@ export const ReleaseStyles = styled.section`
    align-items: center;
    background-color: rgba(var(--dark-gray));
    .releases {
-      display: flex;
       width: 96%;
       max-width: 160rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
+      justify-items: flex-start;
       gap: 1rem;
-      flex-wrap: wrap;
       margin: 2rem auto 0;
+
+      .card {
+      }
+
+      @media screen {
+         @media (max-width: 768px) {
+            grid-template-columns: repeat(auto-fit, minmax(17rem, 17rem));
+            gap: 5px;
+            width: 98%;
+         }
+      }
    }
 `;

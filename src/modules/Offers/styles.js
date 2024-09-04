@@ -11,13 +11,22 @@ export const OfferStyles = styled.div`
 
    .deals {
       max-width: 160rem;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      align-content: flex-start;
-      flex-wrap: wrap;
-      gap: 1rem;
       margin-top: 2rem;
       width: 96%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
+      align-items: center;
+      justify-content: center;
+      align-items: center;
+      justify-items: flex-start;
+      gap: 1rem;
+
+      @media screen {
+         @media (max-width: 768px) {
+            grid-template-columns: repeat(auto-fit, minmax(17rem, 17rem));
+            gap: 5px;
+            width: 98%;
+         }
+      }
    }
 `;
