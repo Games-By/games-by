@@ -25,27 +25,27 @@ const VerticalCard = ({
       <VarticalCardStyles
          ref={cardRef}
          className={className}
-         href={`/games/${encodeURIComponent(name.toLowerCase())}`}
          onClick={() => {
             localStorage.setItem('GameId', id);
             setAccessing(true);
+            router.push(`/games/${encodeURIComponent(name.toLowerCase())}`);
          }}
          discount={discount}
       >
-         {accessing && (
-            <div className='loading'>
-               <Loading />
-               <span>acessando</span>
-            </div>
-         )}
-         {discount && (
-            <DiscountPricePercentage
-               discount={discount}
-               className={'percentage'}
-               signal={'-'}
-            />
-         )}
          <div className='cover'>
+            {discount && (
+               <DiscountPricePercentage
+                  discount={discount}
+                  className={'percentage'}
+                  signal={'-'}
+               />
+            )}
+            {accessing && (
+               <div className='loading'>
+                  <Loading />
+                  <span>acessando</span>
+               </div>
+            )}
             <Image
                height={800}
                width={500}
@@ -78,7 +78,13 @@ const VerticalCard = ({
                      : null}
                </span>
             </div>
-            <WishlistButton gameTitle={name} className={'wishlist-button'} />
+            <div
+               onClick={(e) => {
+                  e.stopPropagation();
+               }}
+            >
+               <WishlistButton gameTitle={name} className={'wishlist-button'} />
+            </div>
             <Button
                title='Comprar agora'
                onClick={(e) => {
