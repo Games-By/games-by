@@ -1,26 +1,69 @@
 import styled from 'styled-components';
 import { Link } from '../../../navigation';
 
-export const VarticalCardStyles = styled(Link)`
+export const VarticalCardStyles = styled.div`
    height: auto;
    width: 20rem;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   position: relative;
+   cursor: pointer;
+   padding: 5px;
+   border-radius: 2rem;
+   transition: 0.5s;
 
    .cover {
       width: 100%;
       height: 30rem;
       background-color: rgba(var(--light), 0.1);
       border-radius: 2rem;
+      position: relative;
+
       img {
          height: 100%;
          width: 100%;
          border-radius: inherit;
          object-position: center;
          object-fit: cover;
+      }
+      .loading {
+         z-index: 5;
+         transition: 0.2s;
+         position: absolute;
+         top: 0;
+         background-color: rgba(var(--light), 0.2);
+         border-radius: 2rem;
+         width: 100%;
+         height: 30rem;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         gap: 1rem;
+         text-transform: uppercase;
+         color: rgba(var(--yellow));
+         @media screen {
+            @media (max-width: 768px) {
+               height: 20rem;
+            }
+         }
+      }
+      .percentage {
+         z-index: 1;
+         position: absolute;
+         top: 1rem;
+         right: 0.5rem;
+         font-size: 1.2rem;
+
+         @media screen {
+            @media (max-width: 768px) {
+               font-size: 1.1rem;
+            }
+            @media (max-width: 500px) {
+               font-size: 1rem;
+            }
+         }
       }
 
       @media screen {
@@ -37,6 +80,7 @@ export const VarticalCardStyles = styled(Link)`
       display: flex;
       flex-direction: column;
       align-items: flex-end;
+      position: relative;
 
       .name {
          width: 100%;
@@ -155,44 +199,8 @@ export const VarticalCardStyles = styled(Link)`
       }
    }
 
-   .percentage {
-      z-index: 1;
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      font-size: 1.5rem;
-
-      @media screen {
-         @media (max-width: 768px) {
-            font-size: 1.2rem;
-         }
-         @media (max-width: 500px) {
-            font-size: 1rem;
-         }
-      }
-   }
-
-   .loading {
-      z-index: 5;
-      transition: 0.2s;
-      position: absolute;
-      top: 0;
-      background-color: rgba(var(--light), 0.2);
-      border-radius: 2rem;
-      width: 100%;
-      height: 30rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      text-transform: uppercase;
-      color: rgba(var(--yellow));
-      @media screen {
-         @media (max-width: 768px) {
-            height: 20rem;
-         }
-      }
+   :hover {
+      background-color: rgba(var(--light-gray), 0.8);
    }
 
    @media screen {
