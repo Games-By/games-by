@@ -6,6 +6,8 @@ import WishlistButton from '../WishlistButton';
 import DiscountPricePercentage from '../DiscountPricePercentage';
 import useElementSize from '@/hooks/useElementSize';
 import { useRouter } from '../../../navigation';
+import { useState } from 'react';
+import Loading from '../Loading/Loading';
 
 const VerticalCard = ({
    discount,
@@ -17,6 +19,7 @@ const VerticalCard = ({
    id,
 }) => {
    const [size, cardRef] = useElementSize();
+   const [accessing, setAccessing] = useState(false);
    const router = useRouter();
    return (
       <VarticalCardStyles
@@ -25,9 +28,16 @@ const VerticalCard = ({
          href={`/games/${encodeURIComponent(name.toLowerCase())}`}
          onClick={() => {
             localStorage.setItem('GameId', id);
+            setAccessing(true);
          }}
          discount={discount}
       >
+         {accessing && (
+            <div className='loading'>
+               <Loading />
+               <span>acessando</span>
+            </div>
+         )}
          {discount && (
             <DiscountPricePercentage
                discount={discount}

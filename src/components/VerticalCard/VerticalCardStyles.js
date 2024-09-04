@@ -172,6 +172,29 @@ export const VarticalCardStyles = styled(Link)`
       }
    }
 
+   .loading {
+      z-index: 5;
+      transition: 0.2s;
+      position: absolute;
+      top: 0;
+      background-color: rgba(var(--light), 0.2);
+      border-radius: 2rem;
+      width: 100%;
+      height: 30rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      text-transform: uppercase;
+      color: rgba(var(--yellow));
+      @media screen {
+         @media (max-width: 768px) {
+            height: 20rem;
+         }
+      }
+   }
+
    @media screen {
       @media (max-width: 768px) {
          width: 16rem;
