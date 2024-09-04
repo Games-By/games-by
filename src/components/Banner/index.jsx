@@ -13,12 +13,14 @@ import { debounce } from '@/utils/debounce';
 import { useLocale, useTranslations } from 'next-intl';
 import BannerSkeleton from './BannerSkeleton';
 import WishlistButton from '../WishlistButton';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const Banners = ({ isLoggedIn }) => {
    const locale = useLocale();
    const t = useTranslations();
    const [banners, setBanners] = useState([]);
    const [localWishlist, setLocalWishlist] = useState([]);
+   const { width } = useWindowSize();
 
    const getBanners = useCallback(async () => {
       const response = await getAllBanners();
@@ -57,7 +59,7 @@ const Banners = ({ isLoggedIn }) => {
 
    return (
       <>
-         <BannerContainerStyles>
+         <BannerContainerStyles width={width}>
             {banners.length > 0 ? (
                <Swiper
                   centeredSlides={true}

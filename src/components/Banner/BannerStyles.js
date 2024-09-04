@@ -5,6 +5,7 @@ export const BannerContainerStyles = styled.div`
    z-index: 1;
    margin: 0 auto;
    background-color: rgba(var(--dark-gray));
+   padding-top: ${(props) => (props.width > 1024 ? '8rem' : '6rem')};
 
    .swiper {
       border-radius: 2rem;

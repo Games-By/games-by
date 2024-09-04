@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HeaderStyle = styled.header`
-   width: calc(100% - 8rem);
+   width: calc(100% - 34rem);
    height: 8rem;
    background-color: rgba(var(--dark-gray));
    display: flex;
@@ -57,7 +57,7 @@ export const HeaderStyle = styled.header`
       right: 4rem;
    }
    @media screen {
-      @media (max-width: 768px) {
+      @media (max-width: 1024px) {
          height: 6rem;
          padding: 0 1.5rem;
          width: calc(100% - 3rem);

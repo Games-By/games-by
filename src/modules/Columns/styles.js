@@ -40,6 +40,9 @@ export const Separator = styled.div`
    background-color: rgba(var(--primary));
 
    @media screen {
+      @media (max-width: 1120px) {
+         height: 40.5rem;
+      }
       @media (max-width: 1024px) {
          width: 1px;
          height: 41rem;

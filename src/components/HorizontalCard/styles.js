@@ -17,6 +17,10 @@ export const HorizontalCardStyles = styled.div`
       border-radius: 1rem;
 
       @media screen {
+         @media (max-width: 1120px) {
+            width: 12rem;
+            height: 7rem;
+         }
          @media (max-width: 1024px) {
             width: 12rem;
             height: 7rem;

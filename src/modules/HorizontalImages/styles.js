@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Images = styled.div`
    background-color: rgba(var(--light-gray), 0.5);
-   width: 100vw;
+   width: calc(100vw - 28rem);
 
    .paralaxes {
       margin: 0 auto;
@@ -12,12 +12,14 @@ export const Images = styled.div`
       gap: 5rem;
       width: 90%;
       max-width: 170rem;
-      height: 25rem;
+      height: 20rem;
       transition: 0.5s;
 
       @media screen {
-         @media (max-width: 1240px) {
-            height: 20rem;
+         @media (max-width: 1440px) {
+            height: 18rem;
+            width: 96%;
+            gap: 1rem;
          }
       }
    }

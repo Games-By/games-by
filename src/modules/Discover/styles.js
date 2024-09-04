@@ -22,7 +22,14 @@ export const DiscoverStyles = styled.section`
             flex-direction: column;
             width: 100%;
             margin: 4rem auto 0;
+            padding-bottom: 0;
          }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 1024px) {
+         padding-bottom: 0;
       }
    }
 `;

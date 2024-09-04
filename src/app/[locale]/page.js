@@ -1,5 +1,4 @@
 'use client';
-import { useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import { useEffect, useState } from 'react';
 import Banners from '@/components/Banner';
@@ -7,15 +6,15 @@ import Releases from '@/components/Releases';
 import { ToastContainer } from 'react-toastify';
 import Discover from '@/modules/Discover';
 import HorizontalImages from '@/modules/HorizontalImages';
-import useWindowSize from '@/hooks/useWindowSize';
 import Offers from '@/modules/Offers';
 import Columns from '@/modules/Columns';
 import Footer from '@/modules/Footer';
+import SideBar from '@/components/SideBar';
+import { Main } from '@/Styles/styles';
 require('dotenv').config();
 
 const Index = () => {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
-   const { width } = useWindowSize();
 
    const checkTokenExpiration = () => {
       const tokenExpiration = localStorage.getItem('tokenExpiration');
@@ -49,15 +48,18 @@ const Index = () => {
    return (
       <>
          <title>Home | Games By</title>
-         <Header />
-         <main style={{ paddingTop: width > 768 ? '8rem' : '6rem' }}>
-            <Banners isLoggedIn={isLoggedIn} />
-            <Releases />
-            <Discover />
-            <HorizontalImages />
-            <Offers />
-            <Columns />
-         </main>
+         <Main>
+            <SideBar />
+            <div className='main-content'>
+               <Header />
+               <Banners isLoggedIn={isLoggedIn} />
+               <Releases />
+               <Discover />
+               <HorizontalImages />
+               <Offers />
+               <Columns />
+            </div>
+         </Main>
          <Footer />
          <ToastContainer />
       </>
