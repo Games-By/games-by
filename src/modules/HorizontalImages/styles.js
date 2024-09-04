@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Images = styled.div`
-   background-color: rgba(33, 33, 33, 0.5);
+   background-color: rgba(var(--light-gray), 0.5);
    width: 100vw;
 
    .paralaxes {

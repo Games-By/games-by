@@ -21,19 +21,36 @@ export const TitleStyle = styled.div`
 
       @media screen {
          @media (max-width: 1440px) {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             width: 94%;
          }
          @media (max-width: 1024px) {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
          }
          @media (max-width: 768px) {
-            font-size: 2rem;
+            font-size: 1.5rem;
+         }
+         @media (max-width: 390px) {
+            letter-spacing: 2px;
          }
       }
    }
    svg {
       font-size: 3.5rem;
       fill: rgba(var(--primary));
+   }
+   @media screen {
+      @media (max-width: 1024px) {
+         gap: 1rem;
+         svg {
+            font-size: 2.7rem;
+         }
+      }
+      @media (max-width: 768px) {
+         gap: 0.5rem;
+         svg {
+            font-size: 2.2rem;
+         }
+      }
    }
 `;
