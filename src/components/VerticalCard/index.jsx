@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import { VarticalCardStyles } from './VerticalCardStyles';
 import DiscountPrice from '../DiscountPrice';
-import ButtonLink from '../ButtonLink/ButtonLink';
+import Button from '../Button/Button';
 import WishlistButton from '../WishlistButton';
 import DiscountPricePercentage from '../DiscountPricePercentage';
 import useElementSize from '@/hooks/useElementSize';
+import { useRouter } from '../../../navigation';
 
 const VerticalCard = ({
    discount,
@@ -16,6 +17,7 @@ const VerticalCard = ({
    id,
 }) => {
    const [size, cardRef] = useElementSize();
+   const router = useRouter();
    return (
       <VarticalCardStyles
          ref={cardRef}
@@ -67,9 +69,12 @@ const VerticalCard = ({
                </span>
             </div>
             <WishlistButton gameTitle={name} className={'wishlist-button'} />
-            <ButtonLink
+            <Button
                title='Comprar agora'
-               url={'/'}
+               onClick={(e) => {
+                  e.stopPropagation();
+                  router.push('/teste');
+               }}
                className={'buy-button'}
                Aboutblank={false}
                textTransform={'uppercase'}
