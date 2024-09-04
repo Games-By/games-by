@@ -46,13 +46,15 @@ const Columns = () => {
    return (
       <>
          <ColumnsStyle>
-            <GamesColumn
-               sectionTitle={'Free-to-Play'}
-               games={freeGames}
-               url={'/catalog?searched=free'}
-            />
-            <Separator />
-            <GamesColumn sectionTitle={'Top Sellers'} games={topSellers} />
+            <div className='columns'>
+               <GamesColumn
+                  sectionTitle={'Free-to-Play'}
+                  games={freeGames}
+                  url={'/catalog?searched=free'}
+               />
+               <Separator />
+               <GamesColumn sectionTitle={'Top Sellers'} games={topSellers} />
+            </div>
          </ColumnsStyle>
       </>
    );

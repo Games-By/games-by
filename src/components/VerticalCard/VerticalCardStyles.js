@@ -199,7 +199,7 @@ export const VarticalCardStyles = styled.div`
       }
    }
 
-   :hover {
+   &:hover {
       background-color: rgba(var(--light-gray), 0.8);
    }
 
