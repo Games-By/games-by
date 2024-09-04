@@ -35,6 +35,5 @@ export const TitleStyle = styled.div`
    svg {
       font-size: 3.5rem;
       fill: rgba(var(--primary));
-      border-radius: 2rem;
    }
 `;
