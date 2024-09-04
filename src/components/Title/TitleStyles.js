@@ -8,11 +8,11 @@ export const TitleStyle = styled.div`
    display: flex;
    align-items: center;
    justify-content: flex-start;
-   gap: 2rem;
+   gap: 1.5rem;
    border-bottom: 1px solid rgba(var(--primary));
    .text {
       white-space: nowrap;
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 500;
       text-transform: uppercase;
       color: rgba(var(--light));
