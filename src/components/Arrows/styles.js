@@ -18,7 +18,7 @@ export const ArrowsContainer = styled.div`
    }
 
    @media screen {
-      @media (max-width: 768px) {
+      @media (max-width: 1024px) {
          .arrow {
             width: 3rem;
             height: 3rem;

@@ -56,6 +56,16 @@ export const HeaderStyle = styled.header`
       top: 4rem;
       right: 4rem;
    }
+
+   .background {
+      position: absolute;
+      background-color: transparent;
+      backdrop-filter: blur(1px);
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      transition: 0.4s;
+   }
    @media screen {
       @media (max-width: 1024px) {
          height: 6rem;
@@ -66,7 +76,7 @@ export const HeaderStyle = styled.header`
             right: 0.5rem;
          }
       }
-      @media (max-width: 400px) {
+      @media (max-width: 768px) {
          padding: 0 0.5rem;
          width: calc(100% - 1rem);
       }
@@ -80,7 +90,7 @@ export const MainNavigation = styled.div`
    gap: 2rem;
    @media screen {
       @media (max-width: 768px) {
-         gap: 1.5rem;
+         gap: 0.8rem;
       }
    }
 `;

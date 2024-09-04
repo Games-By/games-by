@@ -15,20 +15,20 @@ import { VscGlobe } from 'react-icons/vsc';
 import Dropdown from '../Dropdown';
 import { useCartContext } from '../../contexts/CartContext';
 import useWindowSize from '@/hooks/useWindowSize';
-import useScrollPosition from '@/hooks/useScrollPosition';
 import { AnimatePresence } from 'framer-motion';
 import Arrows from '@/components/Arrows';
 import { Turn as Hamburger } from 'hamburger-react';
 import CartIcon from '../CartIcon';
+import SideBar from '../SideBar';
 
 const Header = () => {
    const isLoggedIn = localStorage.getItem('authToken');
    const { width } = useWindowSize();
-   const scrollPosition = useScrollPosition();
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
    const [menuVisible, setMenuVisible] = useState(width > 768);
    const { cartCount, fetchCart } = useCartContext();
+   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
    useEffect(() => {
       if (isLoggedIn) {
@@ -37,25 +37,47 @@ const Header = () => {
    }, [isLoggedIn, fetchCart]);
 
    return (
-      <HeaderStyle blur={scrollPosition > 80}>
+      <HeaderStyle>
+         <SideBar isOpen={isSidebarOpen} />
+         {isSidebarOpen && (
+            <div
+               className='background'
+               onClick={() => setIsSidebarOpen(false)}
+            ></div>
+         )}
          <MainNavigation>
-            {width > 768 && <Arrows />}
-            {width > 768 && <SearchBar />}
-            {width <= 768 && (
-               <Hamburger
-                  duration={0.4}
-                  rounded
-                  direction='right'
-                  color='rgba(var(--light))'
-                  onToggle={(toggled) => {
-                     if (toggled) {
-                        // open a menu
-                     } else {
-                        // close a menu
-                     }
+            {width <= 1024 && (
+               <div
+                  style={{
+                     zIndex: 22,
+                     transform: isSidebarOpen
+                        ? 'translateX(27.5rem)'
+                        : 'translateX(0)',
+                     transition: '0.4s',
                   }}
-               />
+               >
+                  <Hamburger
+                     duration={0.4}
+                     rounded
+                     direction='right'
+                     color={
+                        isSidebarOpen
+                           ? 'rgba(var(--primary))'
+                           : 'rgba(var(--light))'
+                     }
+                     onToggle={(toggled) => {
+                        if (toggled) {
+                           setIsSidebarOpen(true);
+                        } else {
+                           setIsSidebarOpen(false);
+                        }
+                     }}
+                     toggled={isSidebarOpen}
+                  />
+               </div>
             )}
+            {width > 1024 && <Arrows />}
+            {width > 768 && <SearchBar />}
             {width <= 768 && (
                <div className='icon-box' onClick={() => setIsSearchOpen(true)}>
                   <MagnifyingGlassIcon size={16} />

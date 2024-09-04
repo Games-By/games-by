@@ -11,10 +11,12 @@ import Columns from '@/modules/Columns';
 import Footer from '@/modules/Footer';
 import SideBar from '@/components/SideBar';
 import { Main } from '@/Styles/styles';
+import useWindowSize from '@/hooks/useWindowSize';
 require('dotenv').config();
 
 const Index = () => {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const { width } = useWindowSize();
 
    const checkTokenExpiration = () => {
       const tokenExpiration = localStorage.getItem('tokenExpiration');
@@ -49,7 +51,7 @@ const Index = () => {
       <>
          <title>Home | Games By</title>
          <Main>
-            <SideBar />
+            {width > 1024 && <SideBar isOpen={true} />}
             <div className='main-content'>
                <Header />
                <Banners isLoggedIn={isLoggedIn} />
