@@ -6,11 +6,11 @@ export const OfferStyles = styled.div`
    justify-content: center;
    padding: 5rem 0 2rem;
    align-items: center;
-   max-width: 170rem;
-   background-color: rgba(var(--dark-gray));
    margin: 0 auto;
+   background-color: rgba(var(--dark-gray));
 
    .deals {
+      max-width: 160rem;
       display: flex;
       justify-content: center;
       align-items: flex-start;
