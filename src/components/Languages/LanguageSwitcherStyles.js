@@ -10,7 +10,7 @@ export const Switcher = styled(motion.div)`
    backdrop-filter: blur(10px);
    position: fixed;
    right: 1rem;
-   top: 8.5rem;
+   top: 7rem;
    width: 20rem;
    border-radius: 2rem;
    border-top: none;

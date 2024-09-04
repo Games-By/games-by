@@ -8,7 +8,7 @@ export const DropdownStyles = styled(motion.div)`
    align-items: flex-end;
    background-color: rgba(var(--light-gray));
    position: absolute;
-   top: 8.5rem;
+   top: 7rem;
    right: 5rem;
    border-radius: 2rem;
    color: rgba(var(--light));
