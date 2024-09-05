@@ -1,7 +1,7 @@
-const MagnifyingGlassIcon = ({ className }) => (
+const MagnifyingGlassIcon = ({ className, size }) => (
    <svg
-      width='19'
-      height='21'
+      width={size}
+      height={size + 2}
       viewBox='0 0 19 21'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

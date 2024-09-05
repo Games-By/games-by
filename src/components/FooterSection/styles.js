@@ -3,22 +3,22 @@ import styled from 'styled-components';
 export const FooterSectionStyles = styled.div`
    width: 25rem;
    .title {
-      font-size: 1.8rem;
       font-weight: 800;
       width: 100%;
       border-bottom: 1px solid rgba(var(--primary));
-      margin-bottom: 5px;
       white-space: nowrap;
+      padding: 0;
+      .text {
+         font-size: 1.3rem;
+         letter-spacing: 1px;
+      }
 
       @media screen {
-         @media (max-width: 768px) {
-            font-size: 1.35rem;
-            font-weight: 700;
-         }
          @media (max-width: 600px) {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 3px;
+            .text {
+               font-size: 1rem;
+               letter-spacing: 1px;
+            }
          }
       }
    }
@@ -26,8 +26,8 @@ export const FooterSectionStyles = styled.div`
    .itens {
       padding: 0;
       .item {
-         line-height: 2.5rem;
-         font-size: 1.5rem;
+         line-height: 1.8rem;
+         font-size: 1.2rem;
          transition: 0.5s;
 
          &:hover {

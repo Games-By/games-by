@@ -1,9 +1,12 @@
 const { TitleStyle } = require('./TitleStyles');
 
-const Title = ({ text, className }) => {
+const Title = ({ icon, text, className }) => {
    return (
       <>
-         <TitleStyle className={className}>{text}</TitleStyle>
+         <TitleStyle className={className}>
+            {icon && icon}
+            <h2 className='text'>{text}</h2>
+         </TitleStyle>
       </>
    );
 };

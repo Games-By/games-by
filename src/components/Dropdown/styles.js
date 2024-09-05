@@ -5,25 +5,20 @@ export const DropdownStyles = styled(motion.div)`
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items: center;
-   background-color: rgba(var(--dark), 0.9);
-   backdrop-filter: blur(10px);
+   align-items: flex-end;
+   background-color: rgba(var(--light-gray));
    position: absolute;
-   top: 8rem;
+   top: 7rem;
    right: 5rem;
-   min-width: 25rem;
-   width: 25%;
-   border-radius: 0 0 2rem 2rem;
-   border: 1px solid rgba(var(--primary));
-   border-top: none;
+   border-radius: 2rem;
    color: rgba(var(--light));
+   padding: 0 3rem;
    z-index: 21;
    overflow: hidden;
 
    .option {
-      text-align: center;
-      width: 100%;
-      margin-bottom: 1rem;
+      text-align: left;
+      margin-bottom: 2rem;
       color: rgba(var(--light));
       font-size: 1.8rem;
       display: flex;
@@ -72,17 +67,8 @@ export const DropdownStyles = styled(motion.div)`
    }
    @media screen {
       @media (max-width: 768px) {
-         min-width: 0;
-         width: 0;
-         max-width: 31rem;
-         border-radius: 0 0 0 2rem;
-         right: -1px;
-         border-right: none;
-         top: 6rem;
-
-         .option {
-            width: auto;
-         }
+         top: 6.5rem;
+         right: 0.5rem;
       }
    }
 `;

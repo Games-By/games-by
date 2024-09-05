@@ -3,95 +3,69 @@ import styled from 'styled-components';
 import SkeletonEffect from '../Skeleton';
 
 const SkeletonContainer = styled.div`
-   width: 25rem;
-   min-width: 20rem;
+   width: 20rem;
+   height: fit-content;
    position: relative;
-   border: 1px solid rgba(250, 250, 250, 0.1);
    border-radius: 1rem;
    .image {
       margin: 0 auto;
-      border-radius: 1rem 1rem 0 0;
+      border-radius: 2rem;
 
       @media screen {
-         @media (max-width: 1440px) {
-            height: 30rem;
-         }
          @media (max-width: 768px) {
-            height: 25rem;
+            height: 20rem;
          }
       }
    }
    @media screen {
-      @media (max-width: 450px) {
-         min-width: 16rem;
+      @media (max-width: 768px) {
+         width: 16rem;
       }
    }
 `;
 
 const SkeletonDetails = styled.div`
-   height: auto;
-   min-height: calc(
-      13.2rem + ${(props) => (props.height ? props.height : '0px')}
-   );
+   height: ${(props) => (props.discount ? '10.1rem' : '8.3rem')};
    width: 100%;
-   background-color: rgba(var(--dark));
    border-radius: 0 0 1rem 1rem;
    position: relative;
 
    .name {
-      transform: translate(1rem, 5px);
+      transform: translate(0, 5px);
       border-radius: 5px;
 
       @media screen {
          @media (max-width: 768px) {
-            height: 2rem;
-            transform: translate(0, 0);
-         }
-      }
-   }
-
-   .genre {
-      transform: translate(1rem, 1rem);
-      @media screen {
-         @media (max-width: 768px) {
-            height: 1.2rem;
-            transform: translate(0, 3px);
+            height: 1.4rem;
          }
       }
    }
 
    .discount {
       position: absolute;
-      right: 5px;
-      transform: translate(0, 1.5rem);
+      right: 0;
+      top: 2.8rem;
       border-radius: 5px;
 
       @media screen {
-         @media (max-width: 1440px) {
-            transform: translate(0, 1rem);
-         }
-
          @media (max-width: 768px) {
-            transform: translate(0, 0);
-            width: 7rem;
+            height: 1.3rem;
+            width: 6rem;
+            top: 2.2rem;
          }
       }
    }
 
    .price {
       position: absolute;
-      bottom: 4.5rem;
-      right: 0.5rem;
+      right: 0;
+      bottom: 3rem;
 
       @media screen {
-         @media (max-width: 1440px) {
-            height: 2.5rem;
-         }
-
          @media (max-width: 768px) {
-            height: 2.5rem;
-            width: 8.6rem;
-            bottom: 3.3rem;
+            height: 1.8rem;
+            width: 7.3rem;
+            bottom: 3.2rem;
          }
       }
    }
@@ -99,13 +73,12 @@ const SkeletonDetails = styled.div`
    .circle {
       border-radius: 50%;
       position: absolute;
-      left: 5px;
-      bottom: 1rem;
+      left: 0;
+      bottom: 0;
       @media screen {
          @media (max-width: 768px) {
-            height: 2.7rem;
-            width: 2.7rem;
-            bottom: 5px;
+            height: 2.6rem;
+            width: 2.6rem;
          }
       }
    }
@@ -113,30 +86,20 @@ const SkeletonDetails = styled.div`
    .buy-button {
       border-radius: 2rem;
       position: absolute;
-      right: 5px;
-      bottom: 1rem;
+      right: 0;
+      bottom: 0;
 
       @media screen {
          @media (max-width: 768px) {
-            height: 2.5rem;
+            height: 2.6rem;
             width: 11.8rem;
-            bottom: 5px;
          }
       }
    }
 
    @media screen {
-      @media (max-width: 1440px) {
-         min-height: calc(
-            12.1rem + ${(props) => (props.height ? props.height : '0px')}
-         );
-      }
       @media (max-width: 768px) {
-         padding: 5px 0.7rem 0.7rem;
-         width: calc(100% - 1.4rem);
-         min-height: calc(
-            8.3rem + ${(props) => (props.height ? props.height : '4px')}
-         );
+         height: ${(props) => (props.discount ? '8.7rem' : '7.3rem')};
       }
    }
 `;
@@ -145,9 +108,8 @@ const VerticalCardSkeleton = ({ discount = false }) => {
    return (
       <SkeletonContainer>
          <SkeletonEffect width={'100%'} height={'30rem'} className='image' />
-         <SkeletonDetails height={discount ? '1.7rem' : undefined}>
-            <SkeletonEffect width={'85%'} height={'2.2rem'} className='name' />
-            <SkeletonEffect width={'50%'} height={'1.5rem'} className='genre' />
+         <SkeletonDetails discount={discount}>
+            <SkeletonEffect width={'80%'} height={'1.9rem'} className='name' />
             {discount && (
                <SkeletonEffect
                   width={'8rem'}
@@ -155,15 +117,19 @@ const VerticalCardSkeleton = ({ discount = false }) => {
                   className={'discount'}
                />
             )}
-            <SkeletonEffect width={'10rem'} height={'3rem'} className='price' />
             <SkeletonEffect
-               width={'3.2rem'}
-               height={'3.2rem'}
+               width={'9.4rem'}
+               height={'2.3rem'}
+               className='price'
+            />
+            <SkeletonEffect
+               width={'2.8rem'}
+               height={'2.8rem'}
                className='circle'
             />
             <SkeletonEffect
-               width={'12.5rem'}
-               height={'3rem'}
+               width={'14rem'}
+               height={'2.8rem'}
                className={'buy-button'}
             />
          </SkeletonDetails>

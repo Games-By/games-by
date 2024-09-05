@@ -1,80 +1,74 @@
 import Image from 'next/image';
 import { VarticalCardStyles } from './VerticalCardStyles';
 import DiscountPrice from '../DiscountPrice';
-import ButtonLink from '../ButtonLink/ButtonLink';
+import Button from '../Button/Button';
 import WishlistButton from '../WishlistButton';
 import DiscountPricePercentage from '../DiscountPricePercentage';
 import useElementSize from '@/hooks/useElementSize';
-import { Link } from '../../../navigation';
+import { useRouter } from '../../../navigation';
+import { useState } from 'react';
+import Loading from '../Loading/Loading';
 
 const VerticalCard = ({
    discount,
    code,
    price,
    name,
-   genre,
    cover,
-   portraitCover,
    className,
    id,
 }) => {
    const [size, cardRef] = useElementSize();
+   const [accessing, setAccessing] = useState(false);
+   const router = useRouter();
    return (
-      <VarticalCardStyles ref={cardRef} className={className}>
-         {discount && (
-            <DiscountPricePercentage
-               discount={discount}
-               className={'percentage'}
-               signal={'-'}
-            />
-         )}
+      <VarticalCardStyles
+         ref={cardRef}
+         className={className}
+         onClick={() => {
+            localStorage.setItem('GameId', id);
+            setAccessing(true);
+            router.push(`/games/${encodeURIComponent(name.toLowerCase())}`);
+         }}
+         discount={discount}
+      >
          <div className='cover'>
-            <Link
-               href={`/games/${encodeURIComponent(name.toLowerCase())}`}
-               onClick={() => {
-                  localStorage.setItem('GameId', id);
-               }}
-            >
-               <Image
-                  height={600}
-                  width={300}
-                  style={{
-                     height: '100%',
-                     width: '100%',
-                     borderRadius: '1rem 1rem 0 0',
-                  }}
-                  quality={100}
-                  priority
-                  alt={`capa de ${name}`}
-                  src={
-                     cover && size.ElementWidth <= 290
-                        ? cover
-                        : size.ElementWidth > 290
-                        ? portraitCover
-                        : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
-                  }
+            {discount && (
+               <DiscountPricePercentage
+                  discount={discount}
+                  className={'percentage'}
+                  signal={'-'}
                />
-            </Link>
+            )}
+            {accessing && (
+               <div className='loading'>
+                  <Loading />
+                  <span>acessando</span>
+               </div>
+            )}
+            <Image
+               height={800}
+               width={500}
+               quality={100}
+               priority
+               alt={`${name} cover image`}
+               src={
+                  cover
+                     ? cover
+                     : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
+               }
+            />
          </div>
          <div className='infos'>
-            <Link
-               href={`/games/${encodeURIComponent(name.toLowerCase())}`}
-               onClick={() => {
-                  localStorage.setItem('GameId', id);
-               }}
-               className='name'
-            >
-               {name ? name : null}
-            </Link>
-            <span className='genre'>{genre ? genre : null}</span>
-            {discount ? (
-               <DiscountPrice
-                  currencyCode={code}
-                  price={price}
-                  classname={'discount'}
-               />
-            ) : null}
+            <span className='name'>{name ? name : null}</span>
             <div className='amount'>
+               {discount ? (
+                  <DiscountPrice
+                     currencyCode={code}
+                     price={price}
+                     classname={'discount'}
+                  />
+               ) : null}
                <span className='code'>{code ? code : 'R$'}</span>
                <span className='value'>
                   {!discount && price
@@ -84,10 +78,19 @@ const VerticalCard = ({
                      : null}
                </span>
             </div>
-            <WishlistButton gameTitle={name} className={'wishlist-button'} />
-            <ButtonLink
+            <div
+               onClick={(e) => {
+                  e.stopPropagation();
+               }}
+            >
+               <WishlistButton gameTitle={name} className={'wishlist-button'} />
+            </div>
+            <Button
                title='Comprar agora'
-               url={'/'}
+               onClick={(e) => {
+                  e.stopPropagation();
+                  router.push('/teste');
+               }}
                className={'buy-button'}
                Aboutblank={false}
                textTransform={'uppercase'}

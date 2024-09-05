@@ -9,16 +9,13 @@ export const SearchedItemStyles = styled.li`
    gap: 1rem;
    align-items: center;
    justify-content: flex-start;
-   border: 1px solid rgba(var(--dark));
-   backdrop-filter: blur(5rem);
-   box-shadow: rgba(var(--secondary), 0.2) 0px 2px 8px 0px;
    border-radius: 1rem;
    transition: 0.5s;
 
    .title {
       margin: 0;
       font-size: 2rem;
-      font-weight: 500;
+      font-weight: 300;
 
       @media screen {
          @media (max-width: 1024px) {
@@ -31,10 +28,14 @@ export const SearchedItemStyles = styled.li`
       object-fit: cover;
       height: 100%;
       width: 5rem;
+      border: 1px solid transparent;
+      transition: 0.3s;
    }
 
    &:hover {
-      box-shadow: rgba(var(--primary), 0.2) 0px 2px 8px 0px;
       color: rgba(var(--primary));
+      .cover {
+         border: 1px solid rgba(var(--primary));
+      }
    }
 `;

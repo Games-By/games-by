@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
 export const ColumnsStyle = styled.div`
-   width: 50%;
+   width: 48%;
+   max-width: 60rem;
    position: relative;
    .title {
       width: 100%;
       color: rgba(var(--primary));
+      padding: 0;
+
+      .text {
+         font-size: 2rem;
+      }
    }
 
    .games {
@@ -24,23 +30,19 @@ export const ColumnsStyle = styled.div`
    .view-more-button {
       position: absolute;
       right: 0;
-      top: 0;
+      top: 2px;
       white-space: nowrap;
-      padding: 0.5rem 1rem;
-      font-size: 1.5rem;
+      padding: 0.2rem 1rem;
+      font-size: 1rem;
       transition: 0.5s;
 
       &:hover {
-         background-color: rgba(var(--light), 0.5);
-         scale: 1.03;
          color: rgba(var(--primary));
          border: 1px solid rgba(var(--primary));
       }
 
       @media screen {
          @media (max-width: 768px) {
-            padding: 0.3rem 1rem;
-            font-size: 1.3rem;
          }
       }
    }

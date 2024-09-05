@@ -4,49 +4,83 @@ export const ProfileContainer = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   width: 5rem;
    z-index: 5;
-   @media screen {
-      @media (max-width: 768px) {
-         position: absolute;
-         right: 0;
-      }
-   }
 `;
 
 export const ProfileThumbLink = styled.div`
    cursor: pointer;
-   height: 5rem;
-   width: 5rem;
-   background-color: rgba(var(--primary));
+   height: 4rem;
    display: flex;
    align-items: center;
    justify-content: center;
-   border-radius: 50%;
+   gap: 5px;
+   background-color: rgba(var(--light-gray));
+   border-radius: 3rem;
+   padding: 0 1rem 0 5px;
+   transition: 0.4s;
+
+   .user-name {
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+   }
+
+   .arrow-icon {
+      font-size: 2rem;
+      fill: transparent;
+      stroke: rgba(var(--light), 0.5);
+   }
 
    .profile-image {
       border-radius: 50%;
-      width: 100%;
-      height: 100%;
+      width: 3.5rem;
+      height: 3.5rem;
       object-fit: contain;
+      background-color: rgba(var(--primary), 0.5);
    }
 
    .profile-icon {
-      fill: rgba(var(--dark));
-      stroke: rgba(var(--dark));
-      color: rgba(var(--dark));
-      width: 60%;
-      height: 60%;
+      border-radius: 50%;
+      background-color: rgba(var(--primary), 0.5);
+      width: 3.5rem;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+         fill: rgba(var(--light));
+         font-size: 2.5rem;
+      }
+   }
+
+   &:hover {
+      background-color: rgba(var(--secondary), 0.1);
    }
 
    @media screen {
       @media (max-width: 768px) {
-         width: 3.5rem;
-         height: 3.5rem;
+         .profile-icon,
+         .profile-image {
+            width: 3rem;
+            height: 3rem;
 
-         .profile-svg {
-            width: 100%;
-            height: 100%;
+            svg {
+               font-size: 2rem;
+            }
+         }
+      }
+      @media (max-width: 400px) {
+         height: 3.5rem;
+         padding: 0 5px 0 5px;
+
+         .profile-icon,
+         .profile-image {
+            width: 2.5rem;
+            height: 2.5rem;
+
+            svg {
+               font-size: 1.7rem;
+            }
          }
       }
    }

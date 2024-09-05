@@ -6,14 +6,14 @@ export const CopyrightStyles = styled.div`
    position: absolute;
    bottom: 0;
    left: 0;
-   padding: 1rem 0;
+   padding: 5px 0;
 
    display: flex;
    justify-content: center;
    align-items: center;
    .message {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       letter-spacing: 1px;
       .business {
          letter-spacing: 0;
@@ -26,7 +26,7 @@ export const CopyrightStyles = styled.div`
       }
       @media screen {
          @media (max-width: 600px) {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
          }
       }
    }

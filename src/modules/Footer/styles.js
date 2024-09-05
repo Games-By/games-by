@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const FooterStyles = styled.footer`
-   border-top: 1px solid rgba(var(--secondary));
-   padding: 8rem 1rem 5rem 18rem;
+   width: calc(100% - (40rem + 13rem));
+   margin-left: 40rem;
+   border-top: 1px solid rgba(var(--secondary), 0.3);
+   background-color: rgba(var(--dark));
+   padding: 6rem 1rem 3rem 12rem;
    position: relative;
    min-height: 20rem;
 
@@ -10,51 +13,30 @@ export const FooterStyles = styled.footer`
       position: absolute;
       left: 2rem;
       top: 1rem;
-
       @media screen {
-         @media (max-width: 1024px) {
-            width: 16rem;
-         }
          @media (max-width: 600px) {
-            width: 14rem;
             left: 1rem;
-            top: 0;
-         }
-         @media (max-width: 460px) {
-            width: 12rem;
-            left: 0;
-            top: 0;
          }
       }
    }
 
    .sections {
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-start;
       align-items: flex-start;
       gap: 2rem;
-
-      @media screen {
-         @media (max-width: 600px) {
-            gap: 1rem;
-            width: 95%;
-         }
-      }
    }
 
    .social {
       position: absolute;
-      right: 4rem;
+      right: 2.5rem;
       top: 2rem;
       @media screen {
-         @media (max-width: 768px) {
-            right: 2rem;
-         }
          @media (max-width: 600px) {
-            right: 1rem;
+            right: 1.5rem;
          }
       }
    }
@@ -63,31 +45,41 @@ export const FooterStyles = styled.footer`
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      gap: 1rem;
+      position: absolute;
+      bottom: 3rem;
+      right: 2rem;
+      gap: 5px;
       img {
          object-fit: contain;
          border: 1px solid rgba(var(--secondary), 0.2);
          border-radius: 5px;
          display: flex;
          align-items: center;
-         @media screen {
-            @media (max-width: 600px) {
+      }
+      @media screen {
+         @media (max-width: 600px) {
+            right: 0.5rem;
+            bottom: 2.5rem;
+            img {
                width: 4rem;
-               height: 3rem;
+               height: 2rem;
             }
          }
       }
    }
 
    @media screen {
+      @media (max-width: 1520px) {
+         width: calc(100% - (30rem + 13rem));
+         margin-left: 30rem;
+      }
       @media (max-width: 1024px) {
-         padding: 10rem 1rem 5rem;
+         width: calc(100% - 13rem);
+         margin-left: 0;
       }
       @media (max-width: 600px) {
-         min-height: 15rem;
-      }
-      @media (max-width: 460px) {
-         padding: 8rem 1rem 5rem;
+         width: calc(100% - 2rem);
+         padding: 6rem 0 2rem 2rem;
       }
    }
 `;

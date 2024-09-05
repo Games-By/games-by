@@ -4,10 +4,12 @@ import { createGlobalStyle } from 'styled-components';
 
 const redditSans = 'Reddit Sans'
 const outfit = 'outfit';
-const light = '217, 217, 217';
-const dark = '33, 33, 33';
-const primary = '138, 236, 140';
-const secondary = '29, 227, 255';
+const primaryGreen = '138, 236, 140';
+const secondaryBlue = '29, 227, 255';
+const light = '235, 235, 235';
+const dark = '10, 11, 14';
+const darkgray = '17, 19, 24'
+const lightGray = '29, 31, 36'
 const red = '233, 26, 58';
 const yellow = '255, 251, 0';
 
@@ -15,10 +17,12 @@ const GlobalStyle = createGlobalStyle`
    :root {
       --reddit-sans: ${redditSans};
       --outfit: ${outfit};
+      --primary: ${primaryGreen};
+      --secondary: ${secondaryBlue};
       --light: ${light};
       --dark: ${dark};
-      --primary: ${primary};
-      --secondary: ${secondary};
+      --dark-gray: ${darkgray};
+      --light-gray: ${lightGray};
       --red: ${red};
       --yellow: ${yellow};
    }
