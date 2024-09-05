@@ -6,6 +6,7 @@ import { ReleaseStyles } from './ReleasesStyles';
 import { debounce } from '@/utils/debounce';
 import Title from '../Title';
 import VerticalCardSkeleton from '../VerticalCard/VerticalCardSkeleton';
+import { SlGraph } from 'react-icons/sl';
 
 const Releases = () => {
    const locale = useLocale();
@@ -28,11 +29,11 @@ const Releases = () => {
    return (
       <>
          <ReleaseStyles>
-            <Title text='Top New releases' />
+            <Title icon={<SlGraph />} text='Top New releases' />
             <div className='releases'>
                {releases.length > 0
                   ? releases
-                       .slice(0, 5)
+                       .slice(0, 6)
                        .map((release) => (
                           <VerticalCard
                              key={release._id}
@@ -49,7 +50,7 @@ const Releases = () => {
                              className={'card'}
                           />
                        ))
-                  : [...Array(5)].map((_, i) => (
+                  : [...Array(6)].map((_, i) => (
                        <VerticalCardSkeleton key={i} />
                     ))}
             </div>

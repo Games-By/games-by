@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React from 'react';
 import { Call, DiscoverStyles, Portrait } from './styles';
-import {} from 'next-intl/server';
+import { MdOutlineGames } from "react-icons/md";
 
 const Discover = () => {
    const t = useTranslations('Discover');
@@ -17,7 +17,7 @@ const Discover = () => {
    return (
       <>
          <DiscoverStyles>
-            <Title text={t('discover')} />
+            <Title text={t('discover')} icon={<MdOutlineGames style={{fontSize: '2rem', transform: 'rotate(-30deg)'}} />} />
             <div className='content'>
                <Call>
                   <p className='presentation'>

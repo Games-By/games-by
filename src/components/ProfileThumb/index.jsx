@@ -4,16 +4,20 @@ import { ProfileThumbLink, ProfileContainer } from './styles';
 import { Link } from '../../../navigation';
 import { useEffect, useState, useCallback } from 'react';
 import { debounce } from '@/utils/debounce';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { TbChevronDown, TbChevronUp } from 'react-icons/tb';
+import ProfileThumbSkeleton from './ProfileThumbSkeleton';
 
-const ProfileThumb = ({ windowWidth, handle }) => {
+const ProfileThumb = ({ windowWidth, onClick, isOpen, tokenValid }) => {
    const [profileImage, setProfileImage] = useState(null);
-   const [tokenValid, setTokenValid] = useState(null);
-
+   const [username, setUsername] = useState(null);
    const handleImageUser = useCallback(async () => {
       try {
          const image = JSON.parse(localStorage.getItem('imageProfile'));
          if (image && image.data && image.data.image) {
             setProfileImage(image.data.image);
+            const user = JSON.parse(localStorage.getItem('user'));
+            setUsername(user.username);
          }
       } catch (error) {
          console.error('Error getting profile photo:', error);
@@ -26,10 +30,6 @@ const ProfileThumb = ({ windowWidth, handle }) => {
    );
 
    useEffect(() => {
-      const token = localStorage.getItem('authToken');
-      if (token) {
-         setTokenValid(true);
-      }
       if (!profileImage) {
          const user = JSON.parse(localStorage.getItem('user'));
          if (user?.image) {
@@ -40,13 +40,9 @@ const ProfileThumb = ({ windowWidth, handle }) => {
 
    return (
       <ProfileContainer>
-         {profileImage ? (
-            <Link
-               onMouseEnter={() => windowWidth > 768 && handle(true)}
-               onMouseLeave={() => windowWidth > 768 && handle(false)}
-               href={tokenValid ? `/profile` : '/'}
-            >
-               <ProfileThumbLink>
+         {tokenValid ? (
+            profileImage ? (
+               <ProfileThumbLink onClick={onClick}>
                   <Image
                      src={`data:image/jpeg;base64,${profileImage}`}
                      alt='profile'
@@ -55,19 +51,23 @@ const ProfileThumb = ({ windowWidth, handle }) => {
                      quality={100}
                      className='profile-image'
                   />
+                  <span className='user-name'>{username}</span>
+                  {isOpen ? (
+                     <TbChevronUp className='arrow-icon' />
+                  ) : (
+                     <TbChevronDown className='arrow-icon' />
+                  )}
                </ProfileThumbLink>
-            </Link>
+            ) : (
+               <ProfileThumbSkeleton />
+            )
          ) : (
             <Link href={`/login`}>
                <ProfileThumbLink>
-                  <Image
-                     src={'/assets/icons/profile.svg'}
-                     alt='profile'
-                     width={25}
-                     height={25}
-                     quality={100}
-                     className='profile-icon'
-                  />
+                  <div className='profile-icon'>
+                     <BsFillPersonFill />
+                  </div>
+                  <span className='user-name'>Login</span>
                </ProfileThumbLink>
             </Link>
          )}

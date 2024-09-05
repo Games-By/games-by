@@ -1,112 +1,64 @@
 import styled from 'styled-components';
+import { Link } from '../../../navigation';
 
 export const VarticalCardStyles = styled.div`
-   height: 100%;
-   width: 25rem;
-   min-width: 20rem;
-   max-width: 35rem;
+   height: auto;
+   width: 20rem;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   position: relative;
+   cursor: pointer;
+   padding: 5px;
+   border-radius: 2rem;
+   transition: 0.5s;
 
    .cover {
       width: 100%;
-      border-radius: 1rem 1rem 0 0;
       height: 30rem;
       background-color: rgba(var(--light), 0.1);
+      border-radius: 2rem;
+      position: relative;
+
       img {
+         height: 100%;
+         width: 100%;
+         border-radius: inherit;
          object-position: center;
          object-fit: cover;
       }
-
-      @media screen {
-         @media (max-width: 1440px) {
-            height: 30rem;
-         }
-         @media (max-width: 768px) {
-            height: 25rem;
-         }
-      }
-   }
-
-   .infos {
-      width: calc(100% - 2rem);
-      padding: 5px 1rem 1rem;
-      background: linear-gradient(
-            30deg,
-            transparent 25%,
-            rgba(var(--primary), 0.1) 100%
-         ),
-         linear-gradient(
-            200deg,
-            transparent 25%,
-            rgba(var(--primary), 0.1) 100%
-         );
-      display: grid;
-      grid-template-columns: 20% 80%;
-      grid-template-rows: auto 15% auto auto 3rem;
-      justify-items: end;
-      justify-content: center;
-      grid-template-areas:
-         'name name name'
-         'genre genre genre'
-         'discount discount discount'
-         'amount amount amount'
-         'wish buy buy';
-      border-radius: 0 0 1rem 1rem;
-      gap: 3px;
-      transition: 0.5s;
-
-      .name {
-         grid-area: name;
+      .loading {
+         z-index: 5;
+         transition: 0.2s;
+         position: absolute;
+         top: 0;
+         background-color: rgba(var(--light), 0.2);
+         border-radius: 2rem;
          width: 100%;
-         cursor: pointer;
-         margin: 0;
-         font-size: 2rem;
-         font-weight: 500;
-         letter-spacing: 1px;
+         height: 30rem;
          display: flex;
-         align-items: flex-end;
-         justify-content: flex-start;
-
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         gap: 1rem;
+         text-transform: uppercase;
+         color: rgba(var(--yellow));
          @media screen {
-            @media (max-width: 1440px) {
-               font-size: 1.7rem;
-            }
             @media (max-width: 768px) {
-               font-size: 1.5rem;
+               height: 20rem;
             }
          }
       }
+      .percentage {
+         z-index: 1;
+         position: absolute;
+         top: 1rem;
+         right: 0.5rem;
+         font-size: 1.2rem;
 
-      .genre {
-         grid-area: genre;
-         width: 100%;
-         font-size: 1.3rem;
-         font-weight: 300;
-         letter-spacing: 2px;
-         color: rgba(var(--secondary), 0.5);
          @media screen {
-            @media (max-width: 1440px) {
+            @media (max-width: 768px) {
                font-size: 1.1rem;
-            }
-            @media (max-width: 768px) {
-               font-size: 1rem;
-            }
-         }
-      }
-
-      .discount {
-         grid-area: discount;
-         font-size: 1.25rem;
-         margin: 0;
-         letter-spacing: 1px;
-
-         @media screen {
-            @media (max-width: 768px) {
-               font-size: 1.2rem;
             }
             @media (max-width: 500px) {
                font-size: 1rem;
@@ -114,49 +66,88 @@ export const VarticalCardStyles = styled.div`
          }
       }
 
-      .amount {
-         grid-area: amount;
-         color: rgba(var(--light));
-         .code {
-            color: rgba(var(--secondary));
-            margin-right: 0.5rem;
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 1px;
+      @media screen {
+         @media (max-width: 768px) {
+            height: 20rem;
          }
-         .value {
-            font-size: 2.5rem;
-            letter-spacing: 1px;
-         }
+      }
+   }
+
+   .infos {
+      width: 100%;
+      padding: 5px 0 0;
+      transition: 0.5s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
+
+      .name {
+         width: 100%;
+         font-size: 1.5rem;
+         font-weight: 500;
+         letter-spacing: 1px;
          @media screen {
-            @media (max-width: 1440px) {
-               .code {
-                  font-size: 1.25rem;
-                  margin-right: 3px;
-               }
-               .value {
-                  font-size: 2.2rem;
+            @media (max-width: 768px) {
+               font-size: 1.25rem;
+            }
+         }
+      }
+
+      .amount {
+         color: rgba(var(--light));
+         text-align: right;
+         position: relative;
+         padding-top: ${(props) => props.discount && '1.8rem'};
+         .discount {
+            font-size: 1.25rem;
+            margin: 0;
+            letter-spacing: 1px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            @media screen {
+               @media (max-width: 768px) {
+                  font-size: 1rem;
                }
             }
-            @media (max-width: 768px) {
-               .code {
+         }
+         .code {
+            color: rgba(var(--secondary));
+            margin-right: 0.2rem;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            @media screen {
+               @media (max-width: 768px) {
                   font-size: 1.1rem;
-                  margin-right: 2px;
                }
-               .value {
-                  font-size: 2rem;
+            }
+         }
+         .value {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            @media screen {
+               @media (max-width: 768px) {
+                  font-size: 1.5rem;
                }
+            }
+         }
+
+         @media screen {
+            @media (max-width: 768px) {
+               padding-top: ${(props) => props.discount && '1.4rem'};
             }
          }
       }
 
       .wishlist-button {
-         font-size: 2rem;
+         font-size: 1.7rem;
          padding: 0.5rem;
          margin: 0;
          position: absolute;
-         left: 0.5rem;
-         bottom: 1rem;
+         left: 0;
+         bottom: 0;
          color: rgba(var(--secondary));
          border: 1px solid rgba(var(--secondary));
          background-color: rgba(var(--secondary), 0.1);
@@ -181,21 +172,17 @@ export const VarticalCardStyles = styled.div`
          @media screen {
             @media (max-width: 768px) {
                font-size: 1.5rem;
-               bottom: 0.5rem;
             }
          }
       }
 
       .buy-button {
-         grid-area: buy;
-         align-self: flex-end;
-         justify-self: flex-end;
-         min-height: calc(3rem - 2px);
+         width: 70%;
          font-size: 1.1rem;
          font-weight: 500;
-         margin: 0;
+         margin: 5px 0 0;
+         padding: 0.6rem 0;
          white-space: nowrap;
-         padding: 0 1.5rem;
          color: rgba(var(--primary));
          border: 1px solid rgba(var(--primary));
          transition: 0.5s;
@@ -203,52 +190,23 @@ export const VarticalCardStyles = styled.div`
             scale: 1.01;
             background-color: rgba(var(--primary), 0.1);
          }
+
          @media screen {
             @media (max-width: 768px) {
-               min-height: calc(2.5rem - 2px);
-               font-size: 1rem;
+               padding: 0.55rem 0;
             }
-            @media (max-width: 390px) {
-               min-height: calc(2.5rem - 2px);
-               font-size: 0.9rem;
-               padding: 0 1rem;
-            }
-         }
-      }
-
-      @media screen {
-         @media (max-width: 1440px) {
-            grid-template-rows: auto 12% auto auto 3rem;
-         }
-         @media (max-width: 768px) {
-            grid-template-rows: auto 12% auto auto 2.5rem;
-            gap: 1px;
-            padding: 5px 0.7rem 0.7rem;
-            width: calc(100% - 1.4rem);
          }
       }
    }
 
-   .percentage {
-      z-index: 1;
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      font-size: 1.5rem;
-
-      @media screen {
-         @media (max-width: 768px) {
-            font-size: 1.2rem;
-         }
-         @media (max-width: 500px) {
-            font-size: 1rem;
-         }
-      }
+   &:hover {
+      background-color: rgba(var(--light-gray), 0.8);
    }
 
    @media screen {
-      @media (max-width: 450px) {
-         min-width: 16rem;
+      @media (max-width: 768px) {
+         width: 16rem;
+         margin-bottom: 1rem;
       }
    }
 `;

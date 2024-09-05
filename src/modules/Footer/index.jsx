@@ -11,7 +11,7 @@ const { footer } = data;
 const Footer = () => {
    return (
       <FooterStyles>
-         <Logo className={'logo'} />
+         <Logo className={'logo'} logoWidth={100} logoHeight={40} />
          <div className='sections'>
             {footer.map((item, i) => (
                <FooterSection key={i} title={item.title} itens={item.itens} />

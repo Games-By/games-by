@@ -6,14 +6,24 @@ import { useLocale } from 'next-intl';
 import DiscountPrice from '../DiscountPrice';
 import DiscountPricePercentage from '../DiscountPricePercentage';
 import useWindowSize from '@/hooks/useWindowSize';
+import { useRouter } from '../../../navigation';
+import Button from '../Button/Button';
 
 const HorizontalCard = ({ game }) => {
    const locale = useLocale();
    const { width } = useWindowSize();
+   const router = useRouter();
 
    return (
       <>
-         <HorizontalCardStyles>
+         <HorizontalCardStyles
+            onClick={() => {
+               localStorage.setItem('GameId', game._id);
+               router.push(
+                  `/games/${encodeURIComponent(game.name.toLowerCase())}`
+               );
+            }}
+         >
             <Image
                alt={`cover of ${game.name}`}
                src={
@@ -67,17 +77,24 @@ const HorizontalCard = ({ game }) => {
                   </div>
                </div>
                <div className='buttons'>
-                  <WishlistButton
-                     gameTitle={game.name}
-                     className={'wishlist-button'}
-                  />
-                  <ButtonLink
+                  <div
+                     onClick={(e) => {
+                        e.stopPropagation();
+                     }}
+                  >
+                     <WishlistButton
+                        gameTitle={game.name}
+                        className={'wishlist-button'}
+                     />
+                  </div>
+                  <Button
                      title={game.prices['en-US'].amount > 0 ? 'Buy' : 'Play'}
-                     url={`/games/${game.name}`}
+                     url={`/`}
                      className={'play-button'}
                      textTransform={'uppercase'}
-                     action={() => {
-                        localStorage.setItem('GameId', game._id);
+                     onClick={(e) => {
+                        e.stopPropagation();
+                        router.push('/teste');
                      }}
                   />
                </div>

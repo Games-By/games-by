@@ -44,12 +44,9 @@ const Dropdown = ({
    };
 
    const dropdownVariants = {
-      initial: windowWidth < 768 && isVisible ? { width: 0 } : { height: 0 },
-      animate:
-         windowWidth < 768 && isVisible
-            ? { opacity: 1, width: '70%' }
-            : { opacity: 1, height: 'auto' },
-      exit: windowWidth < 768 && isVisible ? { width: 0 } : { height: 0 },
+      initial: { height: 0 },
+      animate: { opacity: 1, height: 'auto' },
+      exit: { height: 0 },
    };
 
    useEffect(() => {
@@ -65,17 +62,17 @@ const Dropdown = ({
          initial={dropdownVariants.initial}
          animate={dropdownVariants.animate}
          exit={dropdownVariants.exit}
-         transition={{ duration: 0.3 }}
-         onMouseEnter={windowWidth > 768 ? onMouseEnter : null}
-         onMouseLeave={windowWidth > 768 ? onMouseLeave : null}
-         onClick={windowWidth <= 768 ? onClick : null}
+         transition={{ duration: 0.4 }}
+         onMouseEnter={onMouseEnter}
+         onMouseLeave={onMouseLeave}
+         onClick={onClick}
       >
          {dropdownOptions.map((item, index) => (
             <MotionLink
                initial={{ y: 0, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                exit={{ y: 0, opacity: 0 }}
-               transition={{ duration: 0.1, delay: 0.2 }}
+               transition={{ duration: 0.1 }}
                key={index}
                href={
                   user &&

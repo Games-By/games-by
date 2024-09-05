@@ -88,10 +88,10 @@ const LoginPage = () => {
          localStorage.setItem('authToken', response.data.token);
          localStorage.setItem('userEmail', lowercaseEmail);
          await getUser(loginData.email);
+         router.replace('/');
       } catch (error) {
          handleLoginError(error, loginData, setEmailError, setPasswordError, t);
       } finally {
-         router.replace('/');
          setLoading(false);
       }
    };

@@ -2,12 +2,14 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const SearchBarStyles = styled(motion.div)`
-   border-radius: 3rem;
-   background-color: rgba(var(--light), 0.7);
+   height: 3.3rem;
+   border-radius: 2rem;
+   background-color: rgba(var(--dark), 0.7);
+   border: 1px solid rgba(var(--secondary), 0.6);
    margin: 0 auto;
    display: flex;
    justify-content: space-between;
-   padding: 0 1rem 0 2rem;
+   padding: 0 0.5rem 0 1.5rem;
    align-items: center;
    position: relative;
    z-index: 10;
@@ -16,30 +18,37 @@ export const SearchBarStyles = styled(motion.div)`
       background-color: transparent;
       border: 0;
       width: 100%;
-      height: 90%;
+      height: 100%;
       width: 21.5rem;
-      height: 4rem;
       font-weight: 600;
       letter-spacing: 1px;
       font-size: 1.2rem;
       transition: 0.5s;
+      color: rgba(var(--primary));
 
       &::placeholder {
-         color: rgba(var(--dark));
+         color: rgba(var(--light), 0.6);
          opacity: 0.5;
       }
 
       &:focus {
-         width: 45rem;
          z-index: 11;
          outline: none;
          caret-color: rgba(var(--secondary));
+
+         ~ {
+            .glass {
+               svg {
+                  stroke: rgba(var(--secondary), 1);
+               }
+            }
+         }
       }
 
       @media screen {
          @media (max-width: 1024px) {
-            width: 15rem;
-            font-size: 1rem;
+            width: 20rem;
+            font-size: 1.1rem;
 
             &:focus {
                width: 30rem;
@@ -54,23 +63,17 @@ export const SearchBarStyles = styled(motion.div)`
       display: flex;
       align-items: center;
       justify-content: center;
-      border-left: 1px solid rgba(var(--secondary));
-      transition: 0.5s;
 
       svg {
-         stroke: rgba(var(--secondary));
+         stroke: rgba(var(--secondary), 0.6);
+         transition: 0.5s;
       }
 
       &:hover {
-         border-left: 1px solid rgba(var(--primary));
          svg {
             stroke: rgba(var(--primary));
          }
       }
-   }
-
-   &:focus {
-      width: 40rem;
    }
 `;
 
@@ -80,11 +83,10 @@ export const SearchBox = styled(motion.ul)`
    position: absolute;
    right: 0;
    left: 1rem;
-   top: 90%;
+   top: 100%;
    padding: 1rem 0.5rem;
    border-radius: 1rem;
-   background-color: rgba(var(--dark), 0.9);
-   backdrop-filter: blur(10px);
+   background-color: rgba(var(--light-gray));
    display: flex;
    justify-content: flex-start;
    flex-direction: column;

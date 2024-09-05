@@ -31,14 +31,14 @@ const LanguageSwitcher = () => {
          initial={{ height: 0 }}
          animate={{ opacity: 1, height: 'auto' }}
          exit={{ height: 0 }}
-         transition={{ duration: 0.3 }}
+         transition={{ duration: 0.4 }}
       >
          {locales.map((loc) => (
             <MotionLink
                initial={{ y: 0, opacity: 0 }}
                animate={{ y: 0, opacity: 1 }}
                exit={{ y: 0, opacity: 0 }}
-               transition={{ duration: 0.1, delay: 0.2 }}
+               transition={{ duration: 0.1 }}
                key={loc.code}
                href={getNewPathname(loc.code)}
                locale={loc.code}

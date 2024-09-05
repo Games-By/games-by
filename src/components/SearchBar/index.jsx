@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { SearchBarStyles, SearchBox } from './styles';
-import Image from 'next/image';
 import { useRouter } from '../../../navigation';
 import { getGamesByName } from '@/Services/games-service/getGames';
 import { debounce } from '@/utils/debounce';
@@ -79,7 +78,7 @@ const SearchBar = ({ autoFocus, onclick, className }) => {
 
    return (
       <>
-         <SearchBarStyles whileTap={{ scale: 0.995 }} onClick={onclick} className={className}>
+         <SearchBarStyles onClick={onclick} className={className}>
             <input
                ref={searchInputRef}
                className='search'
@@ -92,7 +91,7 @@ const SearchBar = ({ autoFocus, onclick, className }) => {
                autoFocus={autoFocus ? autoFocus : false}
             />
             <div className='glass' onClick={navigateToCatalog}>
-               <MagnifyingGlassIcon />
+               <MagnifyingGlassIcon size={16} />
             </div>
             {searched.length > 0 && isSearched && (
                <SearchBox

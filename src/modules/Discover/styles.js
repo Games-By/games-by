@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
 export const DiscoverStyles = styled.section`
-   background: rgb(33, 33, 33);
    background: linear-gradient(
       10deg,
-      rgba(33, 33, 33, 0.5) 50%,
-      rgba(0, 0, 0, 1) 50%
+      rgba(var(--light-gray), 0.5) 50%,
+      rgba(var(--dark-gray)) 50%
    );
    padding-bottom: 2rem;
    .content {
@@ -23,7 +22,14 @@ export const DiscoverStyles = styled.section`
             flex-direction: column;
             width: 100%;
             margin: 4rem auto 0;
+            padding-bottom: 0;
          }
+      }
+   }
+
+   @media screen {
+      @media (max-width: 1024px) {
+         padding-bottom: 0;
       }
    }
 `;
@@ -37,13 +43,13 @@ export const Call = styled.div`
    align-content: center;
 
    .presentation {
-      font-size: 3rem;
+      font-size: 2.3rem;
       margin: 0;
-
-      font-weight: 600;
+      font-weight: 500;
+      letter-spacing: 1px;
       .emphasys {
          font-weight: 300;
-         font-size: 3.5rem;
+         font-size: 2.5rem;
          font-style: italic;
          letter-spacing: 2px;
          white-space: nowrap;
@@ -58,54 +64,44 @@ export const Call = styled.div`
       }
 
       @media screen {
-         @media (max-width: 1620px) {
-            font-size: 2.8rem;
-
-            .emphasys {
-               font-size: 3.3rem;
-            }
-         }
          @media (max-width: 1230px) {
-            font-size: 2.5rem;
-            .emphasys {
-               font-size: 2.7rem;
-            }
-         }
-         @media (max-width: 600px) {
             font-size: 1.9rem;
             .emphasys {
                font-size: 2rem;
             }
          }
-         @media (max-width: 450px) {
-            font-size: 1.4rem;
+         @media (max-width: 540px) {
+            font-size: 1.3rem;
             .emphasys {
-               font-size: 1.6rem;
+               font-size: 1.4rem;
             }
          }
       }
    }
 
    .call {
-      font-size: 3.5rem;
+      font-size: 2.2rem;
       white-space: nowrap;
+      font-weight: 100;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       width: 100%;
+      margin: 3rem 0 0 1rem;
       color: rgba(var(--primary));
-      letter-spacing: 1px;
-      font-weight: 700;
 
       @media screen {
-         @media (max-width: 1620px) {
-            font-size: 3rem;
-         }
          @media (max-width: 1230px) {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
          }
-         @media (max-width: 600px) {
-            font-size: 2rem;
+         @media (max-width: 1024px) {
+            margin: 3rem auto 1rem;
          }
-         @media (max-width: 450px) {
-            font-size: 1.6rem;
+         @media (max-width: 540px) {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+         }
+         @media (max-width: 540px) {
+            font-size: 1.3rem;
          }
       }
    }
@@ -115,9 +111,15 @@ export const Call = styled.div`
          width: 48%;
       }
       @media (max-width: 1024px) {
-         width: 90%;
+         width: 85%;
          text-align: center;
          margin: 0 auto;
+      }
+      @media (max-width: 768px) {
+         width: 92%;
+      }
+      @media (max-width: 540px) {
+         width: 96%;
       }
    }
 `;
@@ -127,7 +129,8 @@ export const Portrait = styled.div`
    justify-content: center;
    align-items: center;
    border-radius: 1rem;
-   width: 45%;
+   width: 60rem;
+   height: 30rem;
 
    .image-box {
       height: 100%;
@@ -137,6 +140,7 @@ export const Portrait = styled.div`
          clip-path: polygon(15% 0%, 100% 0, 85% 100%, 0 100%);
          border-radius: 2rem;
          width: 100%;
+         height: 100%;
       }
 
       :nth-child(1) {
@@ -154,17 +158,13 @@ export const Portrait = styled.div`
 
    @media screen {
       @media (max-width: 1024px) {
-         width: 140%;
+         width: 135%;
          transform: translateX(-15%);
+         height: 20rem;
 
          .image-box > .image {
             object-position: top;
             border-radius: 0;
-         }
-      }
-      @media (max-width: 768px) {
-         .image-box > .image {
-            height: 25rem;
          }
       }
    }
