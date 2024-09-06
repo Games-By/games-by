@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import useWindowSize from '@/hooks/useWindowSize';
 import { GameGenres, SideBarStyles } from './styles';
 import Logo from '../Logo';
@@ -6,12 +6,22 @@ import { Link } from '../../../navigation';
 import Navigation from '../Navigation';
 import { useLocale } from 'next-intl';
 import data from '@/data/menu.json';
+import { FaPlusCircle } from 'react-icons/fa';
 
 const { genresData } = data;
 
 const SideBar = ({ isOpen, setIsOpen }) => {
+   const [user, setUser] = useState({});
    const { width } = useWindowSize();
    const locale = useLocale();
+
+   useEffect(() => {
+      const localUser = JSON.parse(localStorage.getItem('user'));
+      if (localUser) {
+         setUser(localUser);
+      }
+   }, []);
+
    return (
       <>
          <SideBarStyles isOpen={isOpen}>
@@ -29,6 +39,17 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                   ))}
                </ul>
             </GameGenres>
+            {user && user.admin && (
+               <Link
+                  href='https://www.google.com'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='dashboard-button'
+               >
+                  <FaPlusCircle />
+                  <span>ADMIN GAMES</span>
+               </Link>
+            )}
          </SideBarStyles>
       </>
    );

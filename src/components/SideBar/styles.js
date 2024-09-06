@@ -27,6 +27,37 @@ export const SideBarStyles = styled.div`
       }
    }
 
+   .dashboard-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+      width: 10rem;
+      height: 10rem;
+      margin: 0 auto;
+      font-size: 1.4rem;
+      padding: 5px;
+      border-radius: 1rem;
+      background-color: rgba(var(--light-gray));
+      transition: 0.4s;
+
+      position: absolute;
+      bottom: 1rem;
+      left: calc(50% - 5.5rem);
+      svg {
+         transition: 0.4s;
+         font-size: 3rem;
+      }
+
+      &:hover {
+         color: rgba(var(--primary));
+         svg {
+            fill: rgba(var(--primary));
+         }
+      }
+   }
+
    @media screen {
       @media (max-width: 1440px) {
          width: 25rem;
