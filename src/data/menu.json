@@ -33,6 +33,44 @@
          "url": "/settings"
       }
    ],
+   "genresData": {
+      "en-US": [
+         "Action",
+         "Adventure",
+         "Role-Playing (RPG)",
+         "Strategy",
+         "Simulation",
+         "Sports",
+         "Racing",
+         "Fighting",
+         "Puzzle",
+         "Horror"
+      ],
+      "pt-BR": [
+         "Ação",
+         "Aventura",
+         "RPG (Role-Playing Game)",
+         "Estratégia",
+         "Simulação",
+         "Esportes",
+         "Corrida",
+         "Luta",
+         "Quebra-Cabeça",
+         "Terror"
+      ],
+      "es-ES": [
+         "Acción",
+         "Aventura",
+         "Rol (RPG)",
+         "Estrategia",
+         "Simulación",
+         "Deportes",
+         "Carreras",
+         "Lucha",
+         "Rompecabezas",
+         "Terror"
+      ]
+   },
    "dropdownOptions": [
       {
          "title": {
