@@ -4,11 +4,11 @@ import { useLocale, useTranslations } from 'next-intl';
 import {
    Buttons,
    GameBox,
+   GameContainer,
    GameDescription,
    GameTitle,
    Genres,
    Rating,
-   Wallpaper,
 } from './styles';
 import Image from 'next/image';
 import ButtonLink from '../ButtonLink/ButtonLink';
@@ -19,74 +19,82 @@ import GameMedia from '../GameMedia';
 import GamePrice from '../GamePrice';
 import { getStarIcons } from '@/utils/formatRating';
 import MetacriticScore from '../MetaScore';
+import useWindowSize from '@/hooks/useWindowSize';
 
 const Game = ({ game, isLoading }) => {
    const t = useTranslations();
    const locale = useLocale();
+   const { width } = useWindowSize();
 
    return (
       <>
          {!isLoading ? (
-            <GameBox>
-               <Wallpaper image={game.images?.wallpapers[2].url}></Wallpaper>
-               <Image
-                  alt=''
-                  width={600}
-                  height={500}
-                  src={game.images?.coverImage}
-                  quality={100}
-                  className='cover'
-               />
-               <div className='infos'>
-                  <GameTitle>{game.name}</GameTitle>
-                  <GameDescription>{game.description[locale]}</GameDescription>
-                  <Rating>
-                     <div className='star-icons'>
-                        {getStarIcons(game.rating)} | {game.rating}
-                     </div>
-                     <MetacriticScore metacriticScore={game.metacriticScore} />
-                  </Rating>
-                  <GamePrice
-                     amount={game.prices[locale].amount}
-                     currencyCode={game.prices[locale].currencyCode}
-                     discount={game.discount}
-                     className={'prices'}
-                  />
+            <GameContainer>
+               <GameBox image={game.images?.wallpapers[2].url}>
+                  <div className='top'>
+                     <Rating className='rating'>
+                        <div className='star-icons'>
+                           {getStarIcons(game.rating, 1.4)} | {game.rating}
+                        </div>
+                     </Rating>
+                     <ButtonLink
+                        title={'Community Hub'}
+                        url={game.community?.website}
+                        Aboutblank={true}
+                        className={`community-button`}
+                     />
+                  </div>
+                  <div className='infos'>
+                     <Image
+                        alt=''
+                        width={600}
+                        height={500}
+                        src={width > 768 ? game.images?.coverImage : game.images?.secondaryCovers[0].url}
+                        quality={100}
+                        className='cover'
+                     />
+                     <GameTitle className='name'>{game.name}</GameTitle>
+                     <GameDescription className='description'>
+                        {game.description[locale]}
+                     </GameDescription>
+                     <GamePrice
+                        amount={game.prices[locale].amount}
+                        currencyCode={game.prices[locale].currencyCode}
+                        discount={game.discount}
+                        className={'price'}
+                     />
+                     <Genres className='genres'>
+                        <p className='title'>
+                           Tags populares definidas pelo usuários para este
+                           produto:
+                        </p>
+                        {game.genres[locale].map((genre) => (
+                           <span className='genre' key={genre}>
+                              {genre}
+                           </span>
+                        ))}
+                     </Genres>
+                     <Buttons>
+                        <ButtonLink title={'Buy'} url={''} className={`buy`} />
+                        <CartButton game={game} className={'cart'} />
+                        <WishlistButton
+                           gameTitle={game.name}
+                           content={true}
+                           className={`wish`}
+                        />
+                     </Buttons>
+                  </div>
                   <GamePlatforms
                      platforms={game.platforms}
                      className={'platforms'}
                   />
-               </div>
-               <Genres>
-                  <p className='title'>
-                     Tags populares definidas pelo usuários para este produto:
-                  </p>
-                  {game.genres[locale].map((genre) => (
-                     <span className='genre' key={genre}>
-                        {genre}
-                     </span>
-                  ))}
-               </Genres>
-               <Buttons>
-                  <ButtonLink
-                     title={'Community Hub'}
-                     url={game.community?.website}
-                     Aboutblank={true}
-                     className={`community`}
+                  <GameMedia
+                     trailer={game.trailer}
+                     wallpapers={game.images.wallpapers}
                   />
-                  <CartButton game={game} className={'cart'} />
-                  <ButtonLink title={'Buy'} url={''} className={`buy`} />
-                  <WishlistButton
-                     gameTitle={game.name}
-                     content={true}
-                     className={`wish`}
-                  />
-               </Buttons>
-               <GameMedia
-                  trailer={game.trailer}
-                  wallpapers={game.images.wallpapers}
-               />
-            </GameBox>
+               </GameBox>
+               <div className='technical-information'></div>
+            </GameContainer>
          ) : (
             <p>loading...</p>
          )}

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const FooterStyles = styled.footer`
-   width: calc(100% - (40rem + 13rem));
-   margin-left: 40rem;
+   width: calc(100% - (30rem + 13rem));
+   margin-left: 30rem;
    border-top: 1px solid rgba(var(--secondary), 0.3);
    background-color: rgba(var(--dark));
    padding: 6rem 1rem 3rem 12rem;
@@ -69,9 +69,9 @@ export const FooterStyles = styled.footer`
    }
 
    @media screen {
-      @media (max-width: 1520px) {
-         width: calc(100% - (30rem + 13rem));
-         margin-left: 30rem;
+      @media (max-width: 1440px) {
+         width: calc(100% - (25rem + 13rem));
+         margin-left: 25rem;
       }
       @media (max-width: 1024px) {
          width: calc(100% - 13rem);
