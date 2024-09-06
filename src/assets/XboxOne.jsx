@@ -1,5 +1,6 @@
 const XboxOne = ({ className }) => (
    <svg
+      className={className}
       viewBox='0 -38.23 95.487 95.487'
       xmlns='http://www.w3.org/2000/svg'
       fill='#ffffff'

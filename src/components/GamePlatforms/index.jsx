@@ -18,10 +18,7 @@ const GamePlatforms = ({ platforms = [], className }) => {
             const platformLowerCase = platform.toLowerCase();
             if (platformLowerCase === 'pc') {
                return (
-                  <li
-                     key={index}
-                     style={{ fontSize: '2.6rem', fontWeight: 600 }}
-                  >
+                  <li key={index} className='icon' style={{ fontWeight: 600 }}>
                      PC
                   </li>
                );
@@ -33,8 +30,8 @@ const GamePlatforms = ({ platforms = [], className }) => {
             ) {
                return (
                   <li key={index} className='playstation'>
-                     <SiPlaystation style={{ fontSize: '2.5rem' }} />
-                     <SiPlaystation4 />
+                     <SiPlaystation className='ps' />
+                     <SiPlaystation4 className='icon'/>
                   </li>
                );
             }
@@ -45,42 +42,36 @@ const GamePlatforms = ({ platforms = [], className }) => {
             ) {
                return (
                   <li key={index} className='playstation'>
-                     <SiPlaystation style={{ fontSize: '2.5rem' }} />
-                     <SiPlaystation5 />
+                     <SiPlaystation className='ps' />
+                     <SiPlaystation5 className='icon'/>
                   </li>
                );
             }
             if (platformLowerCase.includes('nintendo switch')) {
                return (
-                  <li
-                     key={index}
-                     style={{ fontSize: '3.5rem', fontWeight: 600 }}
-                  >
-                     <SiNintendoswitch />
+                  <li key={index} style={{ fontWeight: 600 }}>
+                     <SiNintendoswitch className='icon' />
                   </li>
                );
             }
             if (platformLowerCase.includes('xbox one')) {
                return (
                   <li key={index} className='xbox-one'>
-                     <XboxOne />
+                     <XboxOne className={'icon'} />
                   </li>
                );
             }
             if (platformLowerCase.includes('xbox series')) {
                return (
-                  <li
-                     key={index}
-                     style={{ fontSize: '3.5rem', fontWeight: 600 }}
-                  >
-                     <SiXbox />
+                  <li key={index} style={{ fontWeight: 600 }}>
+                     <SiXbox className='icon'/>
                   </li>
                );
             }
             if (platformLowerCase.includes('mobile')) {
                return (
-                  <li key={index} style={{ fontSize: '4rem', fontWeight: 600 }}>
-                     <CiMobile3 />
+                  <li key={index}  style={{ fontWeight: 600 }}>
+                     <CiMobile3 className='icon' />
                   </li>
                );
             }
