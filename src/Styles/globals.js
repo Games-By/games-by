@@ -2,14 +2,14 @@
 
 import { createGlobalStyle } from 'styled-components';
 
-const redditSans = 'Reddit Sans'
+const redditSans = 'Reddit Sans';
 const outfit = 'outfit';
 const primaryGreen = '138, 236, 140';
 const secondaryBlue = '29, 227, 255';
 const light = '235, 235, 235';
 const dark = '10, 11, 14';
-const darkgray = '17, 19, 24'
-const lightGray = '29, 31, 36'
+const darkgray = '17, 19, 24';
+const lightGray = '29, 31, 36';
 const red = '233, 26, 58';
 const yellow = '255, 251, 0';
 
@@ -35,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
 
       body {
          scroll-behavior: smooth;
-         background-color: #010101;
+         background-color: rgba(var(--dark-gray));
          min-height: 100vh;
          margin: 0 auto;
          padding: 0;

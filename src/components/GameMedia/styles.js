@@ -5,6 +5,7 @@ export const MasonryContainer = styled(Masonry)`
    display: flex;
    width: auto;
    gap: 1rem;
+   margin-top: 2rem;
 `;
 
 export const MasonryItem = styled.div`

@@ -15,7 +15,7 @@ const GamePrice = ({ currencyCode, amount, discount, className }) => {
             ''
          )}
          {discount ? (
-            <DiscountPrice currencyCode={currencyCode} price={amount} classname={'price'}/>
+            <DiscountPrice currencyCode={currencyCode} price={amount} classname={'old-price'}/>
          ) : (
             ''
          )}
