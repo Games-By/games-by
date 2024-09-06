@@ -97,9 +97,9 @@ export const GameBox = styled.div`
       grid-template-areas:
          'cover name name'
          'cover description description'
-         'cover genres genres'
-         'cover price price';
+         'cover genres genres';
       gap: 1rem;
+      grid-template-rows: 4rem auto;
       justify-content: start;
       justify-items: stretch;
 
@@ -129,23 +129,44 @@ export const GameBox = styled.div`
       }
       .name {
          grid-area: name;
-      }
-      .description {
-         grid-area: description;
-      }
-      .price {
-         grid-area: price;
 
          @media screen {
             @media (max-width: 768px) {
+               align-self: flex-end;
+            }
+         }
+      }
+      .description {
+         grid-area: description;
+         max-width: 65rem;
+
+         @media screen {
+            @media (max-width: 768px) {
+               text-align: center;
+            }
+         }
+      }
+      .price {
+         grid-area: price;
+         position: absolute;
+         right: 0;
+         bottom: 0;
+
+         @media screen {
+            @media (max-width: 768px) {
+               position: initial;
                justify-content: center;
                align-items: center;
                margin: 2rem 0;
+            }
+            @media (max-width: 440px) {
+               margin: 1rem 0;
             }
          }
       }
       .genres {
          grid-area: genres;
+         max-height: 4.5rem;
       }
 
       @media screen {
@@ -157,7 +178,8 @@ export const GameBox = styled.div`
                'genres'
                'price '
                'buttons';
-            text-align: center;
+            text-align: end;
+            justify-content: center;
          }
       }
    }

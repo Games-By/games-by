@@ -5,16 +5,20 @@ export const Platforms = styled.div`
    justify-content: flex-start;
    align-items: center;
    gap: 2rem;
-margin: 2rem auto;
+   margin: 2rem auto;
+   flex-wrap: wrap;
    .icon {
       font-size: 3rem;
 
       @media screen {
-         @media (max-width: 1440px) {
+         @media (max-width: 1300px) {
             font-size: 2rem;
          }
-         @media (max-width: 1300px) {
-            font-size: 1.7rem;
+         @media (max-width: 1024px) {
+            font-size: 1.5rem;
+         }
+         @media (max-width: 440px) {
+            font-size: 1.2rem;
          }
       }
    }
@@ -61,12 +65,11 @@ margin: 2rem auto;
    }
 
    @media screen {
-      @media (max-width: 1440px) {
+      @media (max-width: 1024px) {
          gap: 1.5rem;
       }
-      @media (max-width: 1300px) {
+      @media (max-width: 440px) {
          gap: 1rem;
-         flex-wrap: wrap;
       }
    }
 `;

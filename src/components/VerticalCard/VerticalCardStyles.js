@@ -194,6 +194,7 @@ export const VarticalCardStyles = styled.div`
          @media screen {
             @media (max-width: 768px) {
                padding: 0.55rem 0;
+               font-size: 0.9rem;
             }
          }
       }

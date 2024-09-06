@@ -49,7 +49,11 @@ const Game = ({ game, isLoading }) => {
                         alt=''
                         width={600}
                         height={500}
-                        src={width > 768 ? game.images?.coverImage : game.images?.secondaryCovers[0].url}
+                        src={
+                           width > 768
+                              ? game.images?.coverImage
+                              : game.images?.secondaryCovers[0].url
+                        }
                         quality={100}
                         className='cover'
                      />
@@ -57,12 +61,6 @@ const Game = ({ game, isLoading }) => {
                      <GameDescription className='description'>
                         {game.description[locale]}
                      </GameDescription>
-                     <GamePrice
-                        amount={game.prices[locale].amount}
-                        currencyCode={game.prices[locale].currencyCode}
-                        discount={game.discount}
-                        className={'price'}
-                     />
                      <Genres className='genres'>
                         <p className='title'>
                            Tags populares definidas pelo usuários para este
@@ -83,6 +81,12 @@ const Game = ({ game, isLoading }) => {
                            className={`wish`}
                         />
                      </Buttons>
+                     <GamePrice
+                        amount={game.prices[locale].amount}
+                        currencyCode={game.prices[locale].currencyCode}
+                        discount={game.discount}
+                        className={'price'}
+                     />
                   </div>
                   <GamePlatforms
                      platforms={game.platforms}
@@ -93,7 +97,9 @@ const Game = ({ game, isLoading }) => {
                      wallpapers={game.images.wallpapers}
                   />
                </GameBox>
-               <div className='technical-information'></div>
+               <div className='technical-information'>
+                  informações tecnicas do game
+               </div>
             </GameContainer>
          ) : (
             <p>loading...</p>

@@ -26,7 +26,7 @@ const Header = () => {
    const { width } = useWindowSize();
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
-   const [menuVisible, setMenuVisible] = useState(width > 768);
+   const [menuVisible, setMenuVisible] = useState(false);
    const { cartCount, fetchCart } = useCartContext();
    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const Header = () => {
 
    return (
       <HeaderStyle>
-         <SideBar isOpen={isSidebarOpen} />
+         {width <= 1024 && <SideBar isOpen={isSidebarOpen} />}
          {isSidebarOpen && (
             <div
                className='background'
@@ -51,10 +51,14 @@ const Header = () => {
                   style={{
                      zIndex: 22,
                      transform: isSidebarOpen
-                        ? 'translateX(29.5rem)'
+                        ? 'translateX(23rem)'
                         : 'translateX(0)',
                      transition: '0.4s',
+                     backgroundColor: isSidebarOpen
+                        ? 'rgba(var(--dark))'
+                        : 'transparent',
                   }}
+                  className='hamburguer-box'
                >
                   <Hamburger
                      duration={0.4}
