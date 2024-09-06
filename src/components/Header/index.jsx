@@ -38,7 +38,7 @@ const Header = () => {
 
    return (
       <HeaderStyle>
-         {width <= 768 && <SideBar isOpen={isSidebarOpen} />}
+         {width <= 1024 && <SideBar isOpen={isSidebarOpen} />}
          {isSidebarOpen && (
             <div
                className='background'
@@ -51,10 +51,14 @@ const Header = () => {
                   style={{
                      zIndex: 22,
                      transform: isSidebarOpen
-                        ? 'translateX(29.5rem)'
+                        ? 'translateX(23rem)'
                         : 'translateX(0)',
                      transition: '0.4s',
+                     backgroundColor: isSidebarOpen
+                        ? 'rgba(var(--dark))'
+                        : 'transparent',
                   }}
+                  className='hamburguer-box'
                >
                   <Hamburger
                      duration={0.4}
