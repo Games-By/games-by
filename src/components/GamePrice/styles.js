@@ -19,7 +19,8 @@ export const GamePriceContainer = styled.div`
    .amount {
       letter-spacing: 1px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
+      justify-content: center;
       gap: 0.5rem;
 
       .code {
@@ -28,7 +29,6 @@ export const GamePriceContainer = styled.div`
       }
 
       .value {
-         line-height: 3.5rem;
          font-size: 3.5rem;
       }
       @media screen {
