@@ -26,7 +26,7 @@ const Header = () => {
    const { width } = useWindowSize();
    const [translateActive, setTranslateActive] = useState(false);
    const [isSearchOpen, setIsSearchOpen] = useState(false);
-   const [menuVisible, setMenuVisible] = useState(width > 768);
+   const [menuVisible, setMenuVisible] = useState(false);
    const { cartCount, fetchCart } = useCartContext();
    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const Header = () => {
 
    return (
       <HeaderStyle>
-         <SideBar isOpen={isSidebarOpen} />
+         {width <= 768 && <SideBar isOpen={isSidebarOpen} />}
          {isSidebarOpen && (
             <div
                className='background'

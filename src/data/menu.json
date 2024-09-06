@@ -1,4 +1,38 @@
 {
+   "sidebarNavigation": [
+      {
+         "title": {
+            "en-US": "Store",
+            "pt-BR": "Loja",
+            "es-ES": "almacenar"
+         },
+         "url": "/"
+      },
+      {
+         "title": {
+            "en-US": "Library",
+            "pt-BR": "Biblioteca",
+            "es-ES": "Biblioteca"
+         },
+         "url": "/library"
+      },
+      {
+         "title": {
+            "en-US": "News",
+            "pt-BR": "Notícias",
+            "es-ES": "Noticias"
+         },
+         "url": "/news"
+      },
+      {
+         "title": {
+            "en-US": "Settings",
+            "pt-BR": "Configurações",
+            "es-ES": "Ajustes"
+         },
+         "url": "/settings"
+      }
+   ],
    "dropdownOptions": [
       {
          "title": {
