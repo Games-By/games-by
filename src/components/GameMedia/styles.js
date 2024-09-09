@@ -6,6 +6,12 @@ export const MasonryContainer = styled(Masonry)`
    width: auto;
    gap: 1rem;
    margin-top: 2rem;
+
+   @media screen {
+      @media (max-width: 500px) {
+         margin: 1rem auto 0;
+      }
+   }
 `;
 
 export const MasonryItem = styled.div`
