@@ -14,11 +14,11 @@ export const DiscoverStyles = styled.section`
       display: flex;
       justify-content: center;
       @media screen {
-         @media (max-width: 1440px) {
+         @media (max-width: 1785px) {
             justify-content: space-between;
             width: 90%;
          }
-         @media (max-width: 1024px) {
+         @media (max-width: 1180px) {
             flex-direction: column;
             width: 100%;
             margin: 4rem auto 0;
@@ -28,7 +28,7 @@ export const DiscoverStyles = styled.section`
    }
 
    @media screen {
-      @media (max-width: 1024px) {
+      @media (max-width: 1180px) {
          padding-bottom: 0;
       }
    }
@@ -64,8 +64,11 @@ export const Call = styled.div`
       }
 
       @media screen {
-         @media (max-width: 1230px) {
-            font-size: 1.9rem;
+         @media (max-width: 1785px) {
+            font-size: 2rem;
+         }
+         @media (max-width: 1280px) {
+            font-size: 1.8rem;
             .emphasys {
                font-size: 2rem;
             }
@@ -90,10 +93,16 @@ export const Call = styled.div`
       color: rgba(var(--primary));
 
       @media screen {
-         @media (max-width: 1230px) {
-            font-size: 1.8rem;
+         @media (max-width: 1785px) {
+            font-size: 2rem;
          }
-         @media (max-width: 1024px) {
+         @media (max-width: 1785px) {
+            font-size: 1.75rem;
+         }
+         @media (max-width: 1280px) {
+            font-size: 1.5rem;
+         }
+         @media (max-width: 1180px) {
             margin: 3rem auto 1rem;
          }
          @media (max-width: 540px) {
@@ -107,10 +116,13 @@ export const Call = styled.div`
    }
 
    @media screen {
+      @media (max-width: 1785px) {
+         width: 45%;
+      }
       @media (max-width: 1440px) {
          width: 48%;
       }
-      @media (max-width: 1024px) {
+      @media (max-width: 1180px) {
          width: 85%;
          text-align: center;
          margin: 0 auto;
@@ -157,7 +169,7 @@ export const Portrait = styled.div`
    }
 
    @media screen {
-      @media (max-width: 1024px) {
+      @media (max-width: 1180px) {
          width: 135%;
          transform: translateX(-15%);
          height: 20rem;

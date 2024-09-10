@@ -2,25 +2,22 @@ import styled from 'styled-components';
 
 export const GameContainer = styled.div`
    margin: 8rem 0 2rem;
-   display: flex;
+   display: grid;
+   grid-template-areas:
+      'game info'
+      'comments info';
    justify-content: center;
    align-items: flex-start;
    gap: 3rem;
    padding: 0 3rem;
-   .technical-information {
-      height: 100vh;
-      min-width: 30rem;
-      background-color: rgba(var(--light-gray), 0.3);
-      border-radius: 2rem;
-
-      @media screen {
-         @media (max-width: 1600px) {
-            min-width: 25rem;
-         }
-         @media (max-width: 1400px) {
-            width: 100%;
-         }
-      }
+   .game {
+      grid-area: game;
+   }
+   .game-info {
+      grid-area: info;
+   }
+   .comments {
+      grid-area: comments;
    }
 
    @media screen {
@@ -29,6 +26,10 @@ export const GameContainer = styled.div`
       }
       @media (max-width: 1400px) {
          flex-direction: column;
+         grid-template-areas:
+            'game'
+            'info'
+            'comments';
       }
       @media (max-width: 1024px) {
          padding: 0 1rem;
@@ -188,10 +189,11 @@ export const GameBox = styled.div`
       @media (max-width: 1600px) {
          padding: 3rem;
       }
-      @media (max-width: 1150px) {
-         padding: 2rem;
+      @media (max-width: 1400px) {
+         width: calc(100% - 6rem);
       }
       @media (max-width: 1150px) {
+         width: calc(100% - 2rem);
          padding: 2rem 1rem;
       }
    }

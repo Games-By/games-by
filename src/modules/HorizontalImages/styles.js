@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Images = styled.div`
    background-color: rgba(var(--light-gray), 0.5);
-   width: calc(100vw - 28rem);
+   width: calc(100vw - 30rem);
 
    .paralaxes {
       margin: 0 auto;
@@ -25,6 +25,9 @@ export const Images = styled.div`
    }
 
    @media screen {
+      @media (max-width: 1440px) {
+         width: calc(100vw - 25rem);
+      }
       @media (max-width: 1024px) {
          display: none;
       }

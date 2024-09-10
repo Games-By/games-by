@@ -2,7 +2,7 @@ import { MetaScore } from './styles';
 
 const MetacriticScore = ({ metacriticScore }) => {
    return (
-      <MetaScore>
+      <MetaScore className='metascore'>
          <span className='title'>Metascore</span>
          <div
             className='score'
