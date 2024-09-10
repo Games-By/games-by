@@ -20,6 +20,7 @@ import GamePrice from '../GamePrice';
 import { getStarIcons } from '@/utils/formatRating';
 import useWindowSize from '@/hooks/useWindowSize';
 import GameInformation from '../GameInformation';
+import Reviews from '../Reviews';
 
 const Game = ({ game, isLoading }) => {
    const t = useTranslations();
@@ -97,7 +98,7 @@ const Game = ({ game, isLoading }) => {
                      wallpapers={game.images.wallpapers}
                   />
                </GameBox>
-               <div className='comments'>comments</div>
+               <Reviews data={game.userReviews} />
                <GameInformation game={game} />
             </GameContainer>
          ) : (

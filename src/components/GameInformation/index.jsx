@@ -57,7 +57,7 @@ const GameInformation = ({ game }) => {
                <div className='gallery'>
                   {game.images.gallery ||
                      [...Array(9)].map((_, i) => (
-                        <div className='box'>
+                        <div className='box' key={i}>
                            <HiMiniPhoto />
                         </div>
                      ))}
