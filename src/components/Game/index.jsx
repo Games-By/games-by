@@ -18,8 +18,9 @@ import GamePlatforms from '../GamePlatforms';
 import GameMedia from '../GameMedia';
 import GamePrice from '../GamePrice';
 import { getStarIcons } from '@/utils/formatRating';
-import MetacriticScore from '../MetaScore';
 import useWindowSize from '@/hooks/useWindowSize';
+import GameInformation from '../GameInformation';
+import Reviews from '../Reviews';
 
 const Game = ({ game, isLoading }) => {
    const t = useTranslations();
@@ -30,7 +31,7 @@ const Game = ({ game, isLoading }) => {
       <>
          {!isLoading ? (
             <GameContainer>
-               <GameBox image={game.images?.wallpapers[2].url}>
+               <GameBox image={game.images?.wallpapers[2].url} className='game'>
                   <div className='top'>
                      <Rating className='rating'>
                         <div className='star-icons'>
@@ -97,9 +98,8 @@ const Game = ({ game, isLoading }) => {
                      wallpapers={game.images.wallpapers}
                   />
                </GameBox>
-               <div className='technical-information'>
-                  informações tecnicas do game
-               </div>
+               <Reviews data={game.userReviews} />
+               <GameInformation game={game} />
             </GameContainer>
          ) : (
             <p>loading...</p>
