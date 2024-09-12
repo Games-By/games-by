@@ -1,10 +1,12 @@
 import MetacriticScore from '../MetaScore';
-import { GameInformationStyles } from './styles';
+import { GameInformationStyles, LanguageList } from './styles';
 import { GrGallery, GrCircleInformation } from 'react-icons/gr';
 import { GiComputerFan } from 'react-icons/gi';
 import { HiMiniPhoto } from 'react-icons/hi2';
+import { LuLanguages } from 'react-icons/lu';
 import GameRequirements from '../GameRequirements';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const GameInformation = ({ game }) => {
    return (
@@ -55,12 +57,31 @@ const GameInformation = ({ game }) => {
                   <span>galeria</span>
                </div>
                <div className='gallery'>
-                  {game.images.gallery ||
-                     [...Array(9)].map((_, i) => (
-                        <div className='box' key={i}>
-                           <HiMiniPhoto />
-                        </div>
+                  {game.images.gallery &&
+                     game.images.gallery.map((image, i) => (
+                        <Image
+                           key={i}
+                           src={image}
+                           width={100}
+                           height={60}
+                           className='image'
+                        />
                      ))}
+
+                  {!game.images.gallery || game.images.gallery.length < 9
+                     ? [
+                          ...Array(
+                             9 -
+                                (game.images.gallery
+                                   ? game.images.gallery.length
+                                   : 0)
+                          ),
+                       ].map((_, i) => (
+                          <div className='box' key={`placeholder-${i}`}>
+                             <HiMiniPhoto />
+                          </div>
+                       ))
+                     : 'res'}
                </div>
             </div>
 
@@ -73,6 +94,22 @@ const GameInformation = ({ game }) => {
                   minimum={game.systemRequirements.minimum}
                   recommended={game.systemRequirements.recommended}
                />
+            </div>
+
+            <div className='info-box'>
+               <div className='info-title'>
+                  <LuLanguages />
+                  <span>Idioma</span>
+               </div>
+               {game.supportedLanguages.length > 0 ? (
+                  <LanguageList>
+                     {game.supportedLanguages.map((lang, index) => (
+                        <li key={index}>{lang}</li>
+                     ))}
+                  </LanguageList>
+               ) : (
+                  <p>Sem traduções disponíveis</p>
+               )}
             </div>
          </GameInformationStyles>
       </>
