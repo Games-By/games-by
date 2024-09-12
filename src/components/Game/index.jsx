@@ -21,6 +21,7 @@ import { getStarIcons } from '@/utils/formatRating';
 import useWindowSize from '@/hooks/useWindowSize';
 import GameInformation from '../GameInformation';
 import Reviews from '../Reviews';
+import GameAdditionalInfo from '../GameAdditionalInfo';
 
 const Game = ({ game, isLoading }) => {
    const t = useTranslations();
@@ -96,6 +97,13 @@ const Game = ({ game, isLoading }) => {
                   <GameMedia
                      trailer={game.trailer}
                      wallpapers={game.images.wallpapers}
+                  />
+                  <GameAdditionalInfo
+                     dlcs={game.dlcs}
+                     updates={game.updates}
+                     playTime={game.playTime}
+                     awards={game.awards}
+                     supportedLanguages={game.supportedLanguages}
                   />
                </GameBox>
                <Reviews data={game.userReviews} />
