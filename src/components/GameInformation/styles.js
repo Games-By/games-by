@@ -58,16 +58,25 @@ export const GameInformationStyles = styled.div`
          border: 1px solid rgba(var(--light));
          border-radius: 1rem;
          width: calc(100% - 4rem);
+         max-width: 25rem;
          margin: 0 auto;
          padding: 1rem;
          display: flex;
          flex-wrap: wrap;
          gap: 1rem;
-         justify-content: center;
+         justify-content: space-around;
          align-items: center;
 
+         .image {
+            width: 7rem;
+            height: 6rem;
+            border-radius: 1rem;
+            background-color: rgba(var(--light-gray));
+            object-fit: cover;
+         }
+
          .box {
-            width: 30%;
+            width: 7rem;
             height: 6rem;
             border-radius: 1rem;
             background-color: rgba(var(--light-gray));
@@ -87,9 +96,21 @@ export const GameInformationStyles = styled.div`
             max-width: 60rem;
             .gallery {
                padding: 2rem 1rem;
+               max-width: none;
 
+               .image,
                .box {
                   height: 8rem;
+                  width: 30%;
+               }
+            }
+         }
+         @media (max-width: 500px) {
+            .gallery {
+               .image,
+               .box {
+                  height: 6rem;
+                  width: 30%;
                }
             }
          }
@@ -129,5 +150,22 @@ export const GameInformationStyles = styled.div`
             max-width: 60rem;
          }
       }
+   }
+`;
+
+export const LanguageList = styled.ul`
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+   padding: 0;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+
+   li {
+      background-color: rgba(var(--primary), 0.5);
+      padding: 5px 1rem;
+      border-radius: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
    }
 `;

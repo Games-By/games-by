@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { Main } from '@/Styles/styles';
 import SideBar from '@/components/SideBar';
 import useWindowSize from '@/hooks/useWindowSize';
+import Footer from '@/modules/Footer';
 
 const GamePage = () => {
    const [game, setGame] = useState({});
@@ -54,6 +55,7 @@ const GamePage = () => {
                <Game isLoading={isLoading} game={game} />
             </div>
          </Main>
+         <Footer />
          <ToastContainer />
       </>
    );
