@@ -21,7 +21,12 @@ const GameAdditionalInfo = ({ dlcs, updates, playTime, awards }) => {
                   dlcs.map((dlc, index) => (
                      <DlcItem key={index}>
                         <Image
-                           src={dlc.cover}
+                           src={
+                              dlc.cover
+                                 ? dlc.cover
+                                 : 'https://www.svgrepo.com/show/340721/no-image.svg'
+                           }
+                           alt='cover'
                            width={160}
                            height={160}
                            className='cover'

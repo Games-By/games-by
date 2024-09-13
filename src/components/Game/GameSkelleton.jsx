@@ -346,8 +346,9 @@ const GameSkelleton = () => {
             </div>
             <div className='platforms'></div>
             <div className='medias'>
-               {[...Array(5)].map((item) => (
+               {[...Array(5)].map((_, i) => (
                   <SkeletonEffect
+                     key={i}
                      height={'33rem'}
                      width={'25rem'}
                      className={`media`}
