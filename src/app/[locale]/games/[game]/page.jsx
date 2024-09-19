@@ -3,32 +3,31 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Game from '@/components/Game';
 import { debounce } from '@/utils/debounce';
-import { getGameById } from '@/Services/games-service/getGames';
-import { GameContainer } from './styles';
+import { getGamesByName } from '@/Services/games-service/getGames';
 import { ToastContainer } from 'react-toastify';
 import { Main } from '@/Styles/styles';
 import SideBar from '@/components/SideBar';
 import useWindowSize from '@/hooks/useWindowSize';
 import Footer from '@/modules/Footer';
+import { usePathname } from '../../../../../navigation';
 
 const GamePage = () => {
    const [game, setGame] = useState({});
    const [isLoading, setIsLoading] = useState(true);
    const { width } = useWindowSize();
+   const path = usePathname();
 
    const getGame = async () => {
-      const id = localStorage.getItem('GameId');
-      if (id) {
-         try {
-            setIsLoading(true);
-            const gameData = await getGameById(id);
-            setGame(gameData);
-            setIsLoading(false);
-         } catch (error) {
-            console.error('Error fetching game:', error);
-         } finally {
-            setIsLoading(false);
-         }
+      const gameName = decodeURIComponent(path.split('/games/')[1]);
+      try {
+         setIsLoading(true);
+         const gameData = await getGamesByName(gameName);
+         setGame(gameData[0]);
+         setIsLoading(false);
+      } catch (error) {
+         console.error('Error fetching game:', error);
+      } finally {
+         setIsLoading(false);
       }
    };
 
