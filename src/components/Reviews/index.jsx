@@ -42,14 +42,22 @@ const Reviews = ({ data }) => {
       console.log('login necessário');
       return;
    };
-
    return (
       <>
          <ReviewsContainer>
             {data.map((review) => (
                <Comment key={review._id}>
                   <ProfileImage
-                     src={review.profileImage}
+                     src={
+                        review.profileImage
+                           ? review.profileImage
+                           : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcQg-lr5__zRqY3mRg6erzAD9n4BGp3G8VfA&s'
+                     }
+                     onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcQg-lr5__zRqY3mRg6erzAD9n4BGp3G8VfA&s';
+                     }}
                      alt={`${review.username}'s profile`}
                   />
                   <UserInfo>

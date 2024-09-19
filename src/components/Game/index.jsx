@@ -22,6 +22,7 @@ import useWindowSize from '@/hooks/useWindowSize';
 import GameInformation from '../GameInformation';
 import Reviews from '../Reviews';
 import GameAdditionalInfo from '../GameAdditionalInfo';
+import GameSkelleton from './GameSkelleton';
 
 const Game = ({ game, isLoading }) => {
    const t = useTranslations();
@@ -110,7 +111,7 @@ const Game = ({ game, isLoading }) => {
                <GameInformation game={game} />
             </GameContainer>
          ) : (
-            <p>loading...</p>
+            <GameSkelleton/>
          )}
       </>
    );
