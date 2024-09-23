@@ -7,6 +7,15 @@
       "coming": "Próximamente",
       "avaiable": "Ahora disponible"
    },
+   "Viewmore": "Ver más",
+   "Releases": {
+      "title": "Lanzamientos"
+   },
+   "Card": {
+      "buy": "Comprar",
+      "play": "Jugar",
+      "free": "Gratis"
+   },
    "Discover": {
       "discover": "Descubrir",
       "presentation": "¡Explora nuevos mundos y aventuras emocionantes! Descubre juegos <Emphasys>innovadores</Emphasys>, <Emphasys>indie</Emphasys> y <Emphasys>aclamados por la crítica</Emphasys> en nuestra sesión exclusiva.",
@@ -98,5 +107,39 @@
             "requiredGender": "El campo 'Género' es obligatorio"
          }
       }
+   },
+   "GamePage": {
+      "buy": "Comprar",
+      "community": "Comunidad",
+      "free": "Gratis",
+      "tags": "Etiquetas populares definidas por los usuarios de este producto:",
+      "awards": "Premios",
+      "updates": {
+         "title": "Actualizaciones",
+         "version": "Versión",
+         "launch": "Lanzamiento",
+         "notes": "Notas"
+      },
+      "giveComment": "Deja un Comentario",
+      "writeComment": "Escribe un Comentario",
+      "additionalInfos": {
+         "title": "Información",
+         "reviews": "Reseñas de los Usuarios",
+         "launch": "Fecha de Lanzamiento",
+         "developer": "Desarrollador",
+         "publisher": "Editor"
+      },
+      "gallery": "Galería",
+      "requirements": {
+         "title": "Requisitos",
+         "minimum": "Mínimos",
+         "recommended": "Recomendados",
+         "processor": "Procesador",
+         "memory": "Memoria",
+         "graphics": "Gráficos",
+         "storage": "Almacenamiento"
+      },
+      "languages": "Idiomas Disponibles",
+      "send": "Enviar"
    }
 }

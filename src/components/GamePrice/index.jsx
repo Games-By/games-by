@@ -1,8 +1,11 @@
+import { useTranslations } from 'next-intl';
 import DiscountPrice from '../DiscountPrice';
 import DiscountPricePercentage from '../DiscountPricePercentage';
 import { GamePriceContainer } from './styles';
 
 const GamePrice = ({ currencyCode, amount, discount, className }) => {
+   const t = useTranslations('GamePage');
+
    return (
       <GamePriceContainer className={className}>
          {discount ? (
@@ -29,7 +32,7 @@ const GamePrice = ({ currencyCode, amount, discount, className }) => {
                   : discount
                   ? ((amount / 100) * (100 - discount)).toFixed(2)
                   : null}
-               {amount === 0 && 'FREE'}
+               {amount === 0 && t('free')}
             </span>
          </div>
       </GamePriceContainer>

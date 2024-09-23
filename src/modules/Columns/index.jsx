@@ -50,7 +50,7 @@ const Columns = () => {
                <GamesColumn
                   sectionTitle={'Free-to-Play'}
                   games={freeGames}
-                  url={'/catalog?searched=free'}
+                  url={'/library?searched=free'}
                />
                <Separator />
                <GamesColumn sectionTitle={'Top Sellers'} games={topSellers} />
