@@ -25,7 +25,7 @@ import GameAdditionalInfo from '../GameAdditionalInfo';
 import GameSkelleton from './GameSkelleton';
 
 const Game = ({ game, isLoading }) => {
-   const t = useTranslations();
+   const t = useTranslations('GamePage');
    const locale = useLocale();
    const { width } = useWindowSize();
 
@@ -41,7 +41,7 @@ const Game = ({ game, isLoading }) => {
                         </div>
                      </Rating>
                      <ButtonLink
-                        title={'Community Hub'}
+                        title={t('community')}
                         url={game.community?.website}
                         Aboutblank={true}
                         className={`community-button`}
@@ -66,8 +66,7 @@ const Game = ({ game, isLoading }) => {
                      </GameDescription>
                      <Genres className='genres'>
                         <p className='title'>
-                           Tags populares definidas pelo usuários para este
-                           produto:
+                           {t('tags')}
                         </p>
                         {game.genres[locale].map((genre) => (
                            <span className='genre' key={genre}>
@@ -76,7 +75,7 @@ const Game = ({ game, isLoading }) => {
                         ))}
                      </Genres>
                      <Buttons>
-                        <ButtonLink title={'Buy'} url={''} className={`buy`} />
+                        <ButtonLink title={t('buy')} url={''} className={`buy`} />
                         <CartButton game={game} className={'cart'} />
                         <WishlistButton
                            gameTitle={game.name}

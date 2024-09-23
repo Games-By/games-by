@@ -1,17 +1,15 @@
 import Image from 'next/image';
-import ButtonLink from '../ButtonLink/ButtonLink';
 import WishlistButton from '../WishlistButton';
 import { HorizontalCardStyles } from './styles';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import DiscountPrice from '../DiscountPrice';
 import DiscountPricePercentage from '../DiscountPricePercentage';
-import useWindowSize from '@/hooks/useWindowSize';
 import { useRouter } from '../../../navigation';
 import Button from '../Button/Button';
 
 const HorizontalCard = ({ game }) => {
    const locale = useLocale();
-   const { width } = useWindowSize();
+   const t = useTranslations('Card')
    const router = useRouter();
 
    return (
@@ -72,7 +70,7 @@ const HorizontalCard = ({ game }) => {
                            <span>{game.prices[locale].amount}</span>
                         )
                      ) : (
-                        <span className='free'>FREE</span>
+                        <span className='free'>{t('free')}</span>
                      )}
                   </div>
                </div>
@@ -88,7 +86,7 @@ const HorizontalCard = ({ game }) => {
                      />
                   </div>
                   <Button
-                     title={game.prices['en-US'].amount > 0 ? 'Buy' : 'Play'}
+                     title={game.prices['en-US'].amount > 0 ? t('buy') : t('play')}
                      url={`/`}
                      className={'play-button'}
                      textTransform={'uppercase'}

@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import VerticalCard from '../VerticalCard';
 import { getGames } from '@/Services/games-service/getGames';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ReleaseStyles } from './ReleasesStyles';
 import { debounce } from '@/utils/debounce';
 import Title from '../Title';
@@ -11,6 +11,7 @@ import { SlGraph } from 'react-icons/sl';
 const Releases = () => {
    const locale = useLocale();
    const [releases, setReleases] = useState([]);
+   const t = useTranslations('Releases')
 
    const getReleases = async () => {
       const games = await getGames();
@@ -29,7 +30,7 @@ const Releases = () => {
    return (
       <>
          <ReleaseStyles>
-            <Title icon={<SlGraph />} text='Top New releases' />
+            <Title icon={<SlGraph />} text={t('title')} />
             <div className='releases'>
                {releases.length > 0
                   ? releases

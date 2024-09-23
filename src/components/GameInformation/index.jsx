@@ -7,13 +7,16 @@ import { LuLanguages } from 'react-icons/lu';
 import GameRequirements from '../GameRequirements';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale, useTranslations } from 'next-intl';
 
 const GameInformation = ({ game }) => {
+   const locale = useLocale();
+   const t = useTranslations('GamePage');
+
    const formattedDate = (date) => {
-      const fullDate = new Date(date).toLocaleDateString('pt-BR', {
-         timeZone: 'UTC',
-      });
-      return `${fullDate}`;
+      const options = { timeZone: 'UTC' };
+
+      return new Date(date).toLocaleDateString(locale, options);
    };
 
    return (
@@ -24,7 +27,7 @@ const GameInformation = ({ game }) => {
             <div className='info-box'>
                <div className='info-title'>
                   <GrCircleInformation />
-                  <span>informações</span>
+                  <span>{t('additionalInfos.title')}</span>
                </div>
                <div className='informations'>
                   <div className='game-data'>
@@ -32,17 +35,17 @@ const GameInformation = ({ game }) => {
                      <span className='data'>({game.userReviews.length})</span>
                   </div>
                   <div className='game-data'>
-                     <span className='key'>lançamento</span>
+                     <span className='key'>{t('additionalInfos.launch')}</span>
                      <span className='data'>
                         {formattedDate(game.releaseDate)}
                      </span>
                   </div>
                   <div className='game-data'>
-                     <span className='key'>desenvolvedor</span>
+                     <span className='key'>{t('additionalInfos.developer')}</span>
                      <span className='data'>{game.developer}</span>
                   </div>
                   <div className='game-data'>
-                     <span className='key'>publisher</span>
+                     <span className='key'>{t('additionalInfos.publisher')}</span>
                      <span className='data'>{game.publisher}</span>
                   </div>
                   <div className='game-data'>
@@ -61,7 +64,7 @@ const GameInformation = ({ game }) => {
             <div className='info-box gallery-box'>
                <div className='info-title'>
                   <GrGallery />
-                  <span>galeria</span>
+                  <span>{t('gallery')}</span>
                </div>
                <div className='gallery'>
                   {game.images.gallery &&
@@ -95,7 +98,7 @@ const GameInformation = ({ game }) => {
             <div className='info-box'>
                <div className='info-title'>
                   <GiComputerFan />
-                  <span>requisitos</span>
+                  <span>{t('requirements.title')}</span>
                </div>
                <GameRequirements
                   minimum={game.systemRequirements.minimum}
@@ -106,7 +109,7 @@ const GameInformation = ({ game }) => {
             <div className='info-box'>
                <div className='info-title'>
                   <LuLanguages />
-                  <span>Idioma</span>
+                  <span>{t('languages')}</span>
                </div>
                {game.supportedLanguages.length > 0 ? (
                   <LanguageList>
