@@ -7,6 +7,15 @@
       "coming": "Coming Soon",
       "avaiable": "Now available"
    },
+   "Viewmore": "View More",
+   "Releases": {
+      "title": "New releases"
+   },
+   "Card": {
+      "buy": "Buy",
+      "play": "play",
+      "free": "Free"
+   },
    "Discover": {
       "discover": "Discover",
       "presentation": "Explore new worlds and thrilling adventures! Discover <Emphasys>innovative</Emphasys>, <Emphasys>indie</Emphasys>, and <Emphasys>critically acclaimed</Emphasys> games in our exclusive session.",
@@ -98,5 +107,39 @@
             "requiredGender": "The field 'Gender' is required"
          }
       }
+   },
+   "GamePage": {
+      "buy": "Buy",
+      "community": "Community Hub",
+      "free": "Free",
+      "tags": "Popular user-defined tags for this product:",
+      "awards": "Awards",
+      "updates": {
+         "title": "Updates",
+         "version": "Version",
+         "launch": "Launch",
+         "notes": "Notes"
+      },
+      "giveComment": "Leave a review",
+      "writeComment": "Write a Comment",
+      "additionalInfos": {
+         "title": "Informations",
+         "reviews": "User Reviews",
+         "launch": "Release Date",
+         "developer": "Developer",
+         "publisher": "Publisher"
+      },
+      "gallery": "Gallery",
+      "requirements": {
+         "title": "System Requirements",
+         "minimum": "Minimum",
+         "recommended": "Recommended",
+         "processor": "Processor",
+         "memory": "Memory",
+         "graphics": "Graphics",
+         "storage": "Storage"
+      },
+      "languages": "Supported Languages",
+      "send": "send"
    }
 }

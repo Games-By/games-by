@@ -7,8 +7,17 @@
       "coming": "Em Breve",
       "avaiable": "Já Disponível"
    },
+   "Viewmore": "Ver mais",
+   "Releases": {
+      "title": "Lançamentos"
+   },
+   "Card": {
+      "buy": "Comprar",
+      "play": "jogar",
+      "free": "Grátis"
+   },
    "Discover": {
-      "discover": "Descobrir",
+      "discover": "Descubra",
       "presentation": "Explore novos mundos e aventuras emocionantes! Descubra jogos <Emphasys>inovadores</Emphasys>, <Emphasys>indie</Emphasys> e <Emphasys>aclamados pela crítica</Emphasys> em nossa sessão exclusiva.",
       "call": "Encontre seu próximo vício digital hoje!"
    },
@@ -98,5 +107,39 @@
             "requiredGender": "O campo 'Gênero' é obrigatório"
          }
       }
+   },
+   "GamePage": {
+      "buy": "Comprar",
+      "community": "Comunidade",
+      "free": "Grátis",
+      "tags": "Tags populares definidas pelos usuários deste produto:",
+      "awards": "Prêmios",
+      "updates": {
+         "title": "Atualizações",
+         "version": "Versão",
+         "launch": "Lançamento",
+         "notes": "Notas"
+      },
+      "giveComment": "Deixe um Comentário",
+      "writeComment": "Escreva um Comentário",
+      "additionalInfos": {
+         "title": "Informações",
+         "reviews": "Avaliações dos Usuários",
+         "launch": "Data de Lançamento",
+         "developer": "Desenvolvedor",
+         "publisher": "Publisher"
+      },
+      "gallery": "Galeria",
+      "requirements": {
+         "title": "Requisitos",
+         "minimum": "Mínimos",
+         "recommended": "Recomendados",
+         "processor": "Processador",
+         "memory": "Memória",
+         "graphics": "Gráficos",
+         "storage": "Armazenamento"
+      },
+      "languages": "Idiomas Suportados",
+      "send": "Enviar"
    }
 }

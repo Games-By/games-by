@@ -3,8 +3,10 @@ import { ColumnsStyle } from './styles';
 import ButtonLink from '../ButtonLink/ButtonLink';
 import HorizontalCard from '../HorizontalCard';
 import HorizontalCardSkeleton from '../HorizontalCard/HorizontalCardSkeleton';
+import { useTranslations } from 'next-intl';
 
 const GamesColumn = ({ sectionTitle, games = [], url }) => {
+   const t = useTranslations('')
 
    return (
       <>
@@ -13,7 +15,7 @@ const GamesColumn = ({ sectionTitle, games = [], url }) => {
             {url && (
                <ButtonLink
                   className={'view-more-button'}
-                  title={'View more'}
+                  title={t('Viewmore')}
                   url={url}
                />
             )}

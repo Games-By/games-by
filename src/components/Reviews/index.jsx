@@ -16,10 +16,19 @@ import {
 import { getStarIcons } from '@/utils/formatRating';
 import { IoIosStar } from 'react-icons/io';
 import Button from '../Button/Button';
+import { useLocale, useTranslations } from 'next-intl';
 
 const Reviews = ({ data }) => {
    const [newComment, setNewComment] = useState('');
    const [newRating, setNewRating] = useState(0);
+   const t = useTranslations('GamePage');
+   const locale = useLocale();
+
+   const formattedDate = (date) => {
+      const options = { timeZone: 'UTC' };
+
+      return new Date(date).toLocaleDateString(locale, options);
+   };
 
    const handleSubmit = () => {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -33,7 +42,6 @@ const Reviews = ({ data }) => {
                date: new Date().toISOString(),
             };
             console.log(review);
-            // função de adição de comentário
             setNewComment('');
             setNewRating(0);
             return;
@@ -64,16 +72,14 @@ const Reviews = ({ data }) => {
                      <Username>{review.username}</Username>
                      <Rating>{getStarIcons(review.rating * 2)}</Rating>
                      <CommentText>{review.comment}</CommentText>
-                     <DateInfo>
-                        {new Date(review.date).toLocaleDateString()}
-                     </DateInfo>
+                     <DateInfo>{formattedDate(review.date)}</DateInfo>
                   </UserInfo>
                </Comment>
             ))}
          </ReviewsContainer>
 
          <AddReviewContainer>
-            <h3>Deixe seu comentário</h3>
+            <h3>{t('giveComment')}</h3>
             <StarRatingContainer>
                {[1, 2, 3, 4, 5].map((star) => (
                   <Star
@@ -88,11 +94,11 @@ const Reviews = ({ data }) => {
             <TextArea
                value={newComment}
                onChange={(e) => setNewComment(e.target.value)}
-               placeholder='Escreva um comentário...'
+               placeholder={t('writeComment')}
             />
             <Button
                onClick={handleSubmit}
-               title={'Enviar'}
+               title={t('send')}
                className={'submit-button'}
             />
          </AddReviewContainer>
