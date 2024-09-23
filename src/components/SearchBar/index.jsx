@@ -65,7 +65,7 @@ const SearchBar = ({ autoFocus, onclick, className }) => {
 
    const navigateToCatalog = () => {
       if (searched) {
-         router.push(`/catalog?searched=${encodeURIComponent(searched)}`);
+         router.push(`/library?searched=${encodeURIComponent(searched)}`);
       }
    };
 
