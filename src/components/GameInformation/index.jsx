@@ -9,6 +9,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const GameInformation = ({ game }) => {
+   const formattedDate = (date) => {
+      const fullDate = new Date(date).toLocaleDateString('pt-BR', {
+         timeZone: 'UTC',
+      });
+      return `${fullDate}`;
+   };
+
    return (
       <>
          <GameInformationStyles className='game-info'>
@@ -27,7 +34,7 @@ const GameInformation = ({ game }) => {
                   <div className='game-data'>
                      <span className='key'>lançamento</span>
                      <span className='data'>
-                        {new Date(game.releaseDate).toLocaleDateString()}
+                        {formattedDate(game.releaseDate)}
                      </span>
                   </div>
                   <div className='game-data'>
