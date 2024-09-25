@@ -56,7 +56,26 @@ export const Options = styled(motion.div)`
    margin-top: 0.5rem;
    z-index: 1000;
    max-height: 200px;
-   overflow-y: hidden;
+   overflow-y: auto;
+
+   &::-webkit-scrollbar {
+      width: 0rem;
+   }
+   &::-webkit-scrollbar-track {
+      background-color: transparent;
+   }
+   &::-webkit-scrollbar-thumb {
+      background: linear-gradient(rgba(var(--primary-blue), .5), rgba(var(--primary-pink), .5));
+      animation: gradient 5s ease alternate;
+      border-radius: 2px;
+      outline: 1px solid rgba(var(--primary-pink));
+
+         @keyframes gradient {
+         to {
+            background: linear-gradient(rgba(var(--primary-pink), .5), rgba(var(--primary-blue), .5));
+         }
+      }
+   }
 `;
 
 export const Option = styled.div`
