@@ -8,6 +8,7 @@ import useElementSize from '@/hooks/useElementSize';
 import { useRouter } from '../../../navigation';
 import { useState } from 'react';
 import Loading from '../Loading/Loading';
+import { useTranslations } from 'next-intl';
 
 const VerticalCard = ({
    discount,
@@ -21,6 +22,7 @@ const VerticalCard = ({
    const [size, cardRef] = useElementSize();
    const [accessing, setAccessing] = useState(false);
    const router = useRouter();
+   const t = useTranslations();
    return (
       <VarticalCardStyles
          ref={cardRef}
@@ -33,13 +35,13 @@ const VerticalCard = ({
          discount={discount}
       >
          <div className='cover'>
-            {discount && (
+            {discount ? (
                <DiscountPricePercentage
                   discount={discount}
                   className={'percentage'}
                   signal={'-'}
                />
-            )}
+            ) : null}
             {accessing && (
                <div className='loading'>
                   <Loading />
@@ -68,14 +70,16 @@ const VerticalCard = ({
                      price={price}
                      classname={'discount'}
                   />
-               ) : null}
-               <span className='code'>{code ? code : 'R$'}</span>
+               ) : (
+                  <div style={{ height: '17px' }}></div>
+               )}
+               <span className='code'>{code && price > 0 ? code : ''}</span>
                <span className='value'>
                   {!discount && price
                      ? price
                      : discount
                      ? ((price / 100) * (100 - discount)).toFixed(2)
-                     : null}
+                     : t('GamePage.free')}
                </span>
             </div>
             <div
