@@ -13,15 +13,13 @@ const CustomSelect = ({
    className,
 }) => {
    const [isOpen, setIsOpen] = useState(false);
-   const [selectedValue, setSelectedValue] = useState(value || '');
    const selectRef = useRef(null);
 
    const toggleDropdown = () => setIsOpen(!isOpen);
 
    const handleOptionClick = (optionValue) => {
-      setSelectedValue(optionValue);
-      setIsOpen(false);
       onChange({ target: { name, value: optionValue } });
+      setIsOpen(false);
    };
 
    const handleClickOutside = (event) => {
@@ -44,8 +42,9 @@ const CustomSelect = ({
             onClick={toggleDropdown}
             isOpen={isOpen}
          >
-            {selectedValue
-               ? options.find((option) => option.value === selectedValue).label
+            {value
+               ? options.find((option) => option.value === value)?.label ||
+                 placeholder
                : placeholder}
             <Arrow isOpen={isOpen} className={`arrow`}>
                <FaAngleDown

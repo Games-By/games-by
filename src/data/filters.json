@@ -1,0 +1,104 @@
+{
+   "genresData": {
+      "en-US": [
+         "",
+         "Action",
+         "Adventure",
+         "Role-Playing (RPG)",
+         "Strategy",
+         "Simulation",
+         "Sports",
+         "Racing",
+         "Fighting",
+         "Puzzle",
+         "Horror"
+      ],
+      "pt-BR": [
+         "",
+         "Ação",
+         "Aventura",
+         "RPG (Role-Playing Game)",
+         "Estratégia",
+         "Simulação",
+         "Esportes",
+         "Corrida",
+         "Luta",
+         "Quebra-Cabeça",
+         "Terror"
+      ],
+      "es-ES": [
+         "",
+         "Acción",
+         "Aventura",
+         "Rol (RPG)",
+         "Estrategia",
+         "Simulación",
+         "Deportes",
+         "Carreras",
+         "Lucha",
+         "Rompecabezas",
+         "Terror"
+      ]
+   },
+   "platformsData": [
+      "PlayStation 4",
+      "PlayStation 5",
+      "Xbox Series X",
+      "Xbox One",
+      "Nintendo Switch",
+      "PC"
+   ],
+   "pricesData": {
+      "en-US": [
+         "",
+         "Free",
+         "Under R$ 40.00",
+         "Under R$ 80.00",
+         "Under R$ 120.00",
+         "R$ 59,99 and above",
+         "With discount"
+      ],
+      "pt-BR": [
+         "",
+         "Gratuito",
+         "Abaixo de R$ 40,00",
+         "Abaixo de R$ 80,00",
+         "Abaixo de R$ 120,00",
+         " R$ 59,99 e acima",
+         "Com desconto"
+      ],
+      "es-ES": [
+         "",
+         "Gratis",
+         "Menos de R$ 40,00",
+         "Menos de R$ 80,00",
+         "Menos de R$ 120,00",
+         "R$ 59,99 y más",
+         "Con descuento"
+      ]
+   },
+   "publishersData": [
+      "",
+      "Sony Interactive Entertainment",
+      "Microsoft Studios",
+      "Nintendo",
+      "Activision Blizzard",
+      "Electronic Arts",
+      "Ubisoft",
+      "Take-Two Interactive",
+      "Square Enix",
+      "Bandai Namco Entertainment",
+      "Sega",
+      "Capcom",
+      "THQ Nordic",
+      "Bethesda Softworks",
+      "Warner Bros. Interactive Entertainment",
+      "Konami",
+      "CD Projekt",
+      "Tencent Games",
+      "Epic Games",
+      "Riot Games",
+      "Koei Tecmo",
+      "Xbox Game Studios"
+   ]
+}

@@ -3,9 +3,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { FaCheck } from 'react-icons/fa';
 import { CheckboxStyles } from './styles';
 
-const Checkbox = ({ checked, onChange, label }) => {
+const Checkbox = ({ checked, onChange, label, className }) => {
    return (
-      <CheckboxStyles>
+      <CheckboxStyles className={className}>
          <AnimatePresence>
             {checked && (
                <motion.div
