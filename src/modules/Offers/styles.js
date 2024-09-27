@@ -13,17 +13,16 @@ export const OfferStyles = styled.div`
       max-width: 160rem;
       margin-top: 2rem;
       width: 96%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(21rem, 21rem));
-      align-items: center;
+      display: flex;
       justify-content: center;
-      align-items: center;
-      justify-items: flex-start;
       gap: 1rem;
 
       @media screen {
+         @media (max-width: 1400px) {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+         }
          @media (max-width: 768px) {
-            grid-template-columns: repeat(auto-fit, minmax(17rem, 17rem));
             gap: 5px;
             width: 98%;
          }

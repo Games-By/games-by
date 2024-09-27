@@ -3,21 +3,22 @@ import { Link } from '../../../navigation';
 
 export const VarticalCardStyles = styled.div`
    height: auto;
-   width: 20rem;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    cursor: pointer;
    padding: 5px;
-   border-radius: 2rem;
+   border-radius: 1rem;
    transition: 0.5s;
-
+   min-width: 15.5rem;
+   max-width: 20rem;
+   flex: 1 1 calc(20% - 2rem);
    .cover {
       width: 100%;
-      height: 30rem;
+      height: 25rem;
       background-color: rgba(var(--light), 0.1);
-      border-radius: 2rem;
+      border-radius: 1rem;
       position: relative;
 
       img {
@@ -84,9 +85,12 @@ export const VarticalCardStyles = styled.div`
 
       .name {
          width: 100%;
-         font-size: 1.5rem;
+         font-size: 1.3rem;
          font-weight: 500;
          letter-spacing: 1px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
          @media screen {
             @media (max-width: 768px) {
                font-size: 1.25rem;
@@ -178,7 +182,7 @@ export const VarticalCardStyles = styled.div`
 
       .buy-button {
          width: 70%;
-         font-size: 1.1rem;
+         font-size: 1rem;
          font-weight: 500;
          margin: 5px 0 0;
          padding: 0.6rem 0;
@@ -208,6 +212,9 @@ export const VarticalCardStyles = styled.div`
       @media (max-width: 768px) {
          width: 16rem;
          margin-bottom: 1rem;
+      }
+      @media (max-width: 600px) {
+         min-width: 13rem;
       }
    }
 `;

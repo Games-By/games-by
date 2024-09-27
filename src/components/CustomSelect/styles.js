@@ -28,6 +28,9 @@ export const Selector = styled.div`
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
   `}
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
 
    &.error {
       border-width: 1px;
@@ -42,6 +45,8 @@ export const Arrow = styled.span`
    display: flex;
    justify-content: center;
    align-items: center;
+   position: absolute;
+   right: 1rem;
    svg {
       fill: rgba(var(--secondary), 0.6);
    }
@@ -56,7 +61,32 @@ export const Options = styled(motion.div)`
    margin-top: 0.5rem;
    z-index: 1000;
    max-height: 200px;
-   overflow-y: hidden;
+   overflow-y: auto;
+
+   &::-webkit-scrollbar {
+      width: 0rem;
+   }
+   &::-webkit-scrollbar-track {
+      background-color: transparent;
+   }
+   &::-webkit-scrollbar-thumb {
+      background: linear-gradient(
+         rgba(var(--primary-blue), 0.5),
+         rgba(var(--primary-pink), 0.5)
+      );
+      animation: gradient 5s ease alternate;
+      border-radius: 2px;
+      outline: 1px solid rgba(var(--primary-pink));
+
+      @keyframes gradient {
+         to {
+            background: linear-gradient(
+               rgba(var(--primary-pink), 0.5),
+               rgba(var(--primary-blue), 0.5)
+            );
+         }
+      }
+   }
 `;
 
 export const Option = styled.div`
@@ -65,6 +95,9 @@ export const Option = styled.div`
    background-color: rgba(var(--dark), 0.9);
    color: rgba(var(--light), 1);
    cursor: pointer;
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
 
    &:hover {
       background-color: rgba(var(--secondary), 0.7);

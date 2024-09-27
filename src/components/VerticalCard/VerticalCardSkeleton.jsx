@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import SkeletonEffect from '../Skeleton';
 
 const SkeletonContainer = styled.div`
-   width: 20rem;
    height: fit-content;
    position: relative;
    border-radius: 1rem;
+   flex: 1 1 calc(20% - 2rem);
+   min-width: 15.5rem;
+   max-width: 20rem;
+   padding: 5px;
    .image {
       margin: 0 auto;
       border-radius: 2rem;
@@ -20,6 +23,10 @@ const SkeletonContainer = styled.div`
    @media screen {
       @media (max-width: 768px) {
          width: 16rem;
+         margin-bottom: 1rem;
+      }
+      @media (max-width: 600px) {
+         min-width: 13rem;
       }
    }
 `;
@@ -65,7 +72,7 @@ const SkeletonDetails = styled.div`
          @media (max-width: 768px) {
             height: 1.8rem;
             width: 7.3rem;
-            bottom: 3.2rem;
+            bottom: rem;
          }
       }
    }
@@ -107,7 +114,7 @@ const SkeletonDetails = styled.div`
 const VerticalCardSkeleton = ({ discount = false }) => {
    return (
       <SkeletonContainer>
-         <SkeletonEffect width={'100%'} height={'30rem'} className='image' />
+         <SkeletonEffect width={'100%'} height={'25rem'} className='image' />
          <SkeletonDetails discount={discount}>
             <SkeletonEffect width={'80%'} height={'1.9rem'} className='name' />
             {discount && (
@@ -128,8 +135,8 @@ const VerticalCardSkeleton = ({ discount = false }) => {
                className='circle'
             />
             <SkeletonEffect
-               width={'14rem'}
-               height={'2.8rem'}
+               width={'12.6rem'}
+               height={'2.7rem'}
                className={'buy-button'}
             />
          </SkeletonDetails>
