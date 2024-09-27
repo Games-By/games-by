@@ -13,7 +13,6 @@ export const FiltersBox = styled.div`
       font-size: 2.5rem;
       position: fixed;
       right: 1rem;
-      top: 6.5rem;
       border: 1px solid transparent;
       background-color: rgba(var(--light-gray));
       z-index: 10;

@@ -13,6 +13,7 @@ import { useLocale } from 'next-intl';
 import Filters from '@/components/Filters';
 import GameList from '@/components/GameList';
 import { filterGames } from '@/utils/filter';
+import Footer from '@/modules/Footer';
 
 const LibraryPage = () => {
    const { width } = useWindowSize();
@@ -103,6 +104,7 @@ const LibraryPage = () => {
                </div>
             </Container>
          </Main>
+         <Footer />
          <ToastContainer />
       </>
    );

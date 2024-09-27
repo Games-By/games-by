@@ -9,7 +9,7 @@ export const VarticalCardStyles = styled.div`
    justify-content: center;
    cursor: pointer;
    padding: 5px;
-   border-radius: 2rem;
+   border-radius: 1rem;
    transition: 0.5s;
    min-width: 15.5rem;
    max-width: 20rem;
@@ -18,7 +18,7 @@ export const VarticalCardStyles = styled.div`
       width: 100%;
       height: 25rem;
       background-color: rgba(var(--light), 0.1);
-      border-radius: 2rem;
+      border-radius: 1rem;
       position: relative;
 
       img {
