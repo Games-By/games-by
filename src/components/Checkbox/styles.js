@@ -8,6 +8,7 @@ export const CheckboxStyles = styled.div`
    bottom: 0;
    left: 8px;
    margin: 0;
+   gap: 5px;
 
    input[type='checkbox'] {
       appearance: none;

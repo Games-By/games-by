@@ -213,5 +213,8 @@ export const VarticalCardStyles = styled.div`
          width: 16rem;
          margin-bottom: 1rem;
       }
+      @media (max-width: 600px) {
+         min-width: 13rem;
+      }
    }
 `;
