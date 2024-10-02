@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const GameInformationStyles = styled.div`
-   min-width: 30rem;
+   width: 30rem;
    padding: 2rem 0;
    background-color: rgba(var(--light-gray), 0.3);
    border-radius: 2rem;
@@ -54,35 +54,40 @@ export const GameInformationStyles = styled.div`
    }
 
    .gallery-box {
+      width: 100%;
       .gallery {
          border: 1px solid rgba(var(--light));
          border-radius: 1rem;
          width: calc(100% - 4rem);
-         max-width: 25rem;
+         min-height: 20rem;
          margin: 0 auto;
          padding: 1rem;
          display: flex;
          flex-wrap: wrap;
-         gap: 1rem;
-         justify-content: space-around;
+         gap: 1rem 0;
+         justify-content: space-between;
          align-items: center;
 
          .image {
-            width: 7rem;
+            min-width: 6rem;
             height: 6rem;
             border-radius: 1rem;
             background-color: rgba(var(--light-gray));
             object-fit: cover;
+            flex: 1 1 calc(33% - 2rem);
+            max-width: calc(33% - 2rem);
          }
 
          .box {
-            width: 7rem;
+            min-width: 6rem;
             height: 6rem;
             border-radius: 1rem;
             background-color: rgba(var(--light-gray));
             display: flex;
             justify-content: center;
             align-items: center;
+            flex: 1 1 calc(33% - 2rem);
+            max-width: calc(33% - 2rem);
 
             svg {
                font-size: 2rem;
@@ -135,7 +140,7 @@ export const GameInformationStyles = styled.div`
 
    @media screen {
       @media (max-width: 1600px) {
-         min-width: 25rem;
+         width: 25rem;
       }
       @media (max-width: 1400px) {
          width: 100%;
@@ -154,8 +159,8 @@ export const GameInformationStyles = styled.div`
 `;
 
 export const LanguageList = styled.ul`
-    width: calc(100% - 2rem);
-    margin: 0 auto;
+   width: calc(100% - 2rem);
+   margin: 0 auto;
    padding: 0;
    display: flex;
    flex-wrap: wrap;

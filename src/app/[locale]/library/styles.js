@@ -13,7 +13,27 @@ export const Container = styled.div`
       display: flex;
       width: calc(100% - 6rem);
       max-width: 140rem;
+      min-height: 100vh;
       gap: 1rem;
+
+      .not-found {
+         width: calc(100% - 26rem);
+
+         .title {
+            font-size: 3rem;
+            letter-spacing: 1px;
+            font-weight: 400;
+         }
+
+         @media screen {
+            @media (max-width: 1130px) {
+               width: calc(100% - 18rem);
+            }
+            @media (max-width: 1024px) {
+               width: calc(100% - 2rem);
+            }
+         }
+      }
 
       @media (max-width: 1130px) {
          width: calc(100% - 4rem);
@@ -23,7 +43,7 @@ export const Container = styled.div`
          width: 100%;
          flex-direction: column-reverse;
          align-items: flex-end;
-         justify-content: center;
+         justify-content: flex-end;
       }
    }
 

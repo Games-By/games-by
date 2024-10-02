@@ -30,14 +30,17 @@ const LibraryPage = () => {
       publisher: '',
    });
    const [filteredGames, setFilteredGames] = useState([]);
+   const [gamesNotFound, setGamesNotFound] = useState(false)
 
    const getAllGames = async () => {
       try {
          const response = await getGames();
          setGamesList(response);
          setFilteredGames(response);
+         setGamesNotFound(true)
       } catch (error) {
-         console.error('Failed to fetch games:', error);
+         console.log('aqui ')
+         setGamesNotFound(true)
       }
    };
 
@@ -83,7 +86,15 @@ const LibraryPage = () => {
             <Header />
             <Container>
                <div className='games-box'>
-                  <GameList filteredGames={filteredGames} locale={locale} />
+                  {gamesNotFound ?
+                     <div className="not-found">
+                        <h2 className='title'>
+                        Nenhum game encontrado :(
+                        </h2>
+                     </div>
+                     :
+                     <GameList filteredGames={filteredGames} locale={locale} />
+                  }
                   <div className='filter-box'>
                      <Filters
                         activeFilters={activeFilters}
