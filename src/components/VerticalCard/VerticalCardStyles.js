@@ -34,9 +34,9 @@ export const VarticalCardStyles = styled.div`
          position: absolute;
          top: 0;
          background-color: rgba(var(--light), 0.2);
-         border-radius: 2rem;
+         border-radius: 1rem;
          width: 100%;
-         height: 30rem;
+         height: 25rem;
          display: flex;
          flex-direction: column;
          justify-content: center;
