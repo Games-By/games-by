@@ -3,7 +3,7 @@
    "parser": "@typescript-eslint/parser",
    "parserOptions": {
       "ecmaVersion": 2021,
-      "sourceType": "module",
+      "sourceType": "script",
       "ecmaFeatures": {
          "jsx": true
       }
@@ -13,14 +13,10 @@
       "es2021": true,
       "node": true
    },
-   "extends": [
-      "next/core-web-vitals",
-      "plugin:@typescript-eslint/recommended",
-      "prettier"
-   ],
-   "plugins": ["@typescript-eslint", "react-hooks"],
+   "extends": ["next/core-web-vitals", "prettier"],
+   "plugins": ["react-hooks"],
    "rules": {
-      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "indent": ["error", 3],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "no-console": ["error", { "allow": ["warn", "error"] }],
@@ -31,6 +27,7 @@
       ],
       "jsx-quotes": ["error", "prefer-single"],
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": ["error"]
+      "semi": ["error", "always"],
+      "max-len": ["error", { "code": 100 }]
    }
 }
