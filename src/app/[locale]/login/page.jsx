@@ -12,7 +12,8 @@ import { validateEmail, validatePassword } from '@/utils/validateLoginFields';
 import { handleLoginError } from '@/utils/loginErrors';
 import Checkbox from '@/components/Checkbox';
 import { useTranslations } from 'next-intl';
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 import { GrHomeRounded } from 'react-icons/gr';
 
 const LoginPage = () => {

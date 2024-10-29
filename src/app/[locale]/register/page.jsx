@@ -9,7 +9,8 @@ import { userRegister } from '@/Services/client-data/userRegister';
 import { formatUserID } from '@/utils/formatUserId';
 import Button from '@/components/Button/Button';
 import { Link, useRouter } from '../../../../navigation';
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 const Register = () => {
    const router = useRouter();

@@ -12,7 +12,8 @@ import Footer from '@/modules/Footer';
 import SideBar from '@/components/SideBar';
 import { Main } from '@/Styles/styles';
 import useWindowSize from '@/hooks/useWindowSize';
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 const Index = () => {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
