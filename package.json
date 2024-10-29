@@ -2,11 +2,15 @@
    "name": "games-by",
    "version": "0.1.0",
    "private": true,
+   "type": "module",
    "scripts": {
       "dev": "next dev",
       "build": "next build",
       "start": "next start",
-      "lint": "next lint"
+      "lint": "next lint",
+      "lint:fix": "eslint --fix ./src/**/*.{js,jsx,ts,tsx}",
+      "format": "prettier --write ./src/**/*.{js,jsx,ts,tsx}",
+      "test": "jest"
    },
    "dependencies": {
       "@fortawesome/react-fontawesome": "^0.2.0",
@@ -15,7 +19,7 @@
       "eslint-config-next": "13.4.4",
       "framer-motion": "^10.12.16",
       "hamburger-react": "^2.5.1",
-      "next": "14.2.3",
+      "next": "^14.2.16",
       "next-intl": "^3.14.1",
       "node": "^18.20.0",
       "react": "^18",
@@ -29,8 +33,10 @@
       "swiper": "^9.3.2"
    },
    "devDependencies": {
-      "cypress": "^13.13.3",
       "eslint": "^8.41.0",
-      "eslint-config-prettier": "^8.8.0"
+      "prettier": "^3.3.3",
+      "eslint-config-next": "14.2.15",
+      "eslint-config-prettier": "^8.8.0",
+      "eslint-plugin-prettier": "^5.2.1"
    }
 }
