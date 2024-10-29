@@ -1,6 +1,5 @@
 'use client';
 import Header from '@/components/Header';
-import { useEffect, useState } from 'react';
 import Banners from '@/components/Banner';
 import Releases from '@/components/Releases';
 import { ToastContainer } from 'react-toastify';
@@ -12,41 +11,11 @@ import Footer from '@/modules/Footer';
 import SideBar from '@/components/SideBar';
 import { Main } from '@/Styles/styles';
 import useWindowSize from '@/hooks/useWindowSize';
-import dotenv from 'dotenv';
-dotenv.config();
+import { useAuth } from '@/contexts/AuthContext';
 
 const Index = () => {
-   const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const { isLoggedIn } = useAuth();
    const { width } = useWindowSize();
-
-   const checkTokenExpiration = () => {
-      const tokenExpiration = localStorage.getItem('tokenExpiration');
-      if (!tokenExpiration) {
-         return false;
-      }
-      const expirationDate = new Date(tokenExpiration);
-      if (new Date() > expirationDate) {
-         localStorage.removeItem('wishlist');
-         localStorage.removeItem('user');
-         localStorage.removeItem('cart');
-         localStorage.removeItem('userEmail');
-         localStorage.removeItem('authToken');
-         localStorage.removeItem('imageProfile');
-         localStorage.removeItem('tokenExpiration');
-         return false;
-      }
-      return true;
-   };
-
-   const initialize = async () => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken && checkTokenExpiration()) {
-         setIsLoggedIn(true);
-      }
-   };
-   useEffect(() => {
-      initialize();
-   }, []);
 
    return (
       <>
