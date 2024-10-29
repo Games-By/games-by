@@ -35,18 +35,10 @@ const CartButton = ({ game, content = false, className }) => {
          onClick={handleCartClick}
          title={content && (isInCart ? 'Remover' : 'Adicionar')}
          icon={
-            isInCart ? (
-               <BsCartXFill className='icon' />
-            ) : (
-               <BsFillCartPlusFill className='icon' />
-            )
+            isInCart ? <BsCartXFill className='icon' /> : <BsFillCartPlusFill className='icon' />
          }
          url={'/'}
-         className={[
-            'button',
-            className,
-            isInCart ? 'isInCart' : 'isNotInCart',
-         ].join(' ')}
+         className={['button', className, isInCart ? 'isInCart' : 'isNotInCart'].join(' ')}
          Aboutblank={false}
       />
    );

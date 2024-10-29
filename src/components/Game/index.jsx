@@ -65,9 +65,7 @@ const Game = ({ game, isLoading }) => {
                         {game.description[locale]}
                      </GameDescription>
                      <Genres className='genres'>
-                        <p className='title'>
-                           {t('tags')}
-                        </p>
+                        <p className='title'>{t('tags')}</p>
                         {game.genres[locale].map((genre) => (
                            <span className='genre' key={genre}>
                               {genre}
@@ -77,11 +75,7 @@ const Game = ({ game, isLoading }) => {
                      <Buttons>
                         <ButtonLink title={t('buy')} url={''} className={`buy`} />
                         <CartButton game={game} className={'cart'} />
-                        <WishlistButton
-                           gameTitle={game.name}
-                           content={true}
-                           className={`wish`}
-                        />
+                        <WishlistButton gameTitle={game.name} content={true} className={`wish`} />
                      </Buttons>
                      <GamePrice
                         amount={game.prices[locale].amount}
@@ -90,14 +84,8 @@ const Game = ({ game, isLoading }) => {
                         className={'price'}
                      />
                   </div>
-                  <GamePlatforms
-                     platforms={game.platforms}
-                     className={'platforms'}
-                  />
-                  <GameMedia
-                     trailer={game.trailer}
-                     wallpapers={game.images.wallpapers}
-                  />
+                  <GamePlatforms platforms={game.platforms} className={'platforms'} />
+                  <GameMedia trailer={game.trailer} wallpapers={game.images.wallpapers} />
                   <GameAdditionalInfo
                      dlcs={game.dlcs}
                      updates={game.updates}
@@ -110,7 +98,7 @@ const Game = ({ game, isLoading }) => {
                <GameInformation game={game} />
             </GameContainer>
          ) : (
-            <GameSkelleton/>
+            <GameSkelleton />
          )}
       </>
    );

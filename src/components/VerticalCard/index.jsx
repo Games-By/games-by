@@ -10,15 +10,7 @@ import { useState } from 'react';
 import Loading from '../Loading/Loading';
 import { useTranslations } from 'next-intl';
 
-const VerticalCard = ({
-   discount,
-   code,
-   price,
-   name,
-   cover,
-   className,
-   id,
-}) => {
+const VerticalCard = ({ discount, code, price, name, cover, className, id }) => {
    const [size, cardRef] = useElementSize();
    const [accessing, setAccessing] = useState(false);
    const router = useRouter();
@@ -36,11 +28,7 @@ const VerticalCard = ({
       >
          <div className='cover'>
             {discount ? (
-               <DiscountPricePercentage
-                  discount={discount}
-                  className={'percentage'}
-                  signal={'-'}
-               />
+               <DiscountPricePercentage discount={discount} className={'percentage'} signal={'-'} />
             ) : null}
             {accessing && (
                <div className='loading'>
@@ -65,11 +53,7 @@ const VerticalCard = ({
             <span className='name'>{name ? name : null}</span>
             <div className='amount'>
                {discount ? (
-                  <DiscountPrice
-                     currencyCode={code}
-                     price={price}
-                     classname={'discount'}
-                  />
+                  <DiscountPrice currencyCode={code} price={price} classname={'discount'} />
                ) : (
                   <div style={{ height: '17px' }}></div>
                )}
@@ -78,8 +62,8 @@ const VerticalCard = ({
                   {!discount && price
                      ? price
                      : discount
-                     ? ((price / 100) * (100 - discount)).toFixed(2)
-                     : t('GamePage.free')}
+                       ? ((price / 100) * (100 - discount)).toFixed(2)
+                       : t('GamePage.free')}
                </span>
             </div>
             <div

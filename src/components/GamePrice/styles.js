@@ -53,7 +53,7 @@ export const GamePriceContainer = styled.div`
          }
 
          @media (max-width: 768px) {
-         gap: 0;
+            gap: 0;
             .percentage {
                font-size: 1.1rem;
             }

@@ -14,8 +14,7 @@ export const filterGames = (gamesList, activeFilters, setFilteredGames, locale) 
       filtered = filtered.filter((game) =>
          game.platforms.some((platform) =>
             activeFilters.platforms.some(
-               (selectedPlatform) =>
-                  platform.toLowerCase() === selectedPlatform.toLowerCase()
+               (selectedPlatform) => platform.toLowerCase() === selectedPlatform.toLowerCase()
             )
          )
       );
@@ -23,8 +22,8 @@ export const filterGames = (gamesList, activeFilters, setFilteredGames, locale) 
 
    // Filtro por publisher
    if (activeFilters.publisher !== '') {
-      filtered = filtered.filter((game) =>
-         game.publisher.toLowerCase() === activeFilters.publisher.toLowerCase()
+      filtered = filtered.filter(
+         (game) => game.publisher.toLowerCase() === activeFilters.publisher.toLowerCase()
       );
    }
 
@@ -35,41 +34,29 @@ export const filterGames = (gamesList, activeFilters, setFilteredGames, locale) 
          activeFilters.price === 'Gratis' ||
          activeFilters.price === 'Free'
       ) {
-         filtered = filtered.filter((game) =>
-            game.prices['pt-BR'].amount === 0
-         );
+         filtered = filtered.filter((game) => game.prices['pt-BR'].amount === 0);
       }
 
       if (activeFilters.price.includes('40')) {
-         filtered = filtered.filter((game) =>
-            game.prices['pt-BR'].amount <= 40
-         );
+         filtered = filtered.filter((game) => game.prices['pt-BR'].amount <= 40);
       }
       if (activeFilters.price.includes('80')) {
-         filtered = filtered.filter((game) =>
-            game.prices['pt-BR'].amount <= 80
-         );
+         filtered = filtered.filter((game) => game.prices['pt-BR'].amount <= 80);
       }
       if (activeFilters.price.includes('120')) {
-         filtered = filtered.filter((game) =>
-            game.prices['pt-BR'].amount <= 120
-         );
+         filtered = filtered.filter((game) => game.prices['pt-BR'].amount <= 120);
       }
       if (activeFilters.price.includes('59,99')) {
-         filtered = filtered.filter((game) =>
-            game.prices['pt-BR'].amount > 60
-         );
+         filtered = filtered.filter((game) => game.prices['pt-BR'].amount > 60);
       }
       if (
          activeFilters.price.includes('desconto') ||
          activeFilters.price.includes('escuento') ||
          activeFilters.price.includes('discount')
       ) {
-         filtered = filtered.filter((game) =>
-            game.discount > 0
-         );
+         filtered = filtered.filter((game) => game.discount > 0);
       }
    }
 
    setFilteredGames(filtered);
-}
+};

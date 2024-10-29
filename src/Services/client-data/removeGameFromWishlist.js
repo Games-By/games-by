@@ -15,11 +15,8 @@ export const removeGameFromWishlist = async () => {
          itemId: gameId,
       };
 
-      const response = await axios.delete(
-         `${process.env.NEXT_PUBLIC_SERVER_URL}/wishlist/remove`,
-         {
-            data: removedGameData,
-         }
-      );
+      const response = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/wishlist/remove`, {
+         data: removedGameData,
+      });
    }
 };

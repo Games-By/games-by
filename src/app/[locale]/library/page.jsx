@@ -78,11 +78,7 @@ const LibraryPage = () => {
 
    return (
       <>
-         {searched ? (
-            <title>🔎 Searching games</title>
-         ) : (
-            <title>Library | Games By</title>
-         )}
+         {searched ? <title>🔎 Searching games</title> : <title>Library | Games By</title>}
          <Main>
             {width > 1024 && <SideBar isOpen={true} />}
             <Header />

@@ -17,11 +17,7 @@ const SearchMobile = ({ onClick }) => {
                ease: [0.42, 0, 0.58, 1],
             }}
          >
-            <SearchBar
-               onclick={handleSearchBarClick}
-               autoFocus={true}
-               className='search-bar'
-            />
+            <SearchBar onclick={handleSearchBarClick} autoFocus={true} className='search-bar' />
          </SearchMobileContainer>
       </>
    );

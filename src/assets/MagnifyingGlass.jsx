@@ -7,20 +7,8 @@ const MagnifyingGlassIcon = ({ className, size }) => (
       xmlns='http://www.w3.org/2000/svg'
       className={className}
    >
-      <line
-         x1='6.65379'
-         y1='12.6079'
-         x2='0.755298'
-         y2='19.4055'
-         strokeWidth='2'
-      />
-      <circle
-         cx='11.4525'
-         cy='7.5'
-         r='6.5'
-         fill='none'
-         strokeWidth='2'
-      />
+      <line x1='6.65379' y1='12.6079' x2='0.755298' y2='19.4055' strokeWidth='2' />
+      <circle cx='11.4525' cy='7.5' r='6.5' fill='none' strokeWidth='2' />
    </svg>
 );
 

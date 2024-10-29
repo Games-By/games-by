@@ -7,14 +7,10 @@ const Logo = ({ reduced = false, logoWidth, logoHeight, className }) => {
       <>
          <Image
             alt="Games By Logo's"
-            src={
-               reduced && width < 768
-                  ? '/assets/logo reduced.svg'
-                  : '/assets/logo.png'
-            }
+            src={reduced && width < 768 ? '/assets/logo reduced.svg' : '/assets/logo.png'}
             width={logoWidth || 200}
             height={logoHeight || 80}
-            style={{objectFit: 'contain'}}
+            style={{ objectFit: 'contain' }}
             className={className}
          />
       </>

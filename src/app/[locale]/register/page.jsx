@@ -87,14 +87,7 @@ const Register = () => {
       e.preventDefault();
       try {
          setLoading(true);
-         const response = await userRegister(
-            e,
-            formData,
-            imageData,
-            setError,
-            locale,
-            t
-         );
+         const response = await userRegister(e, formData, imageData, setError, locale, t);
          if (response && response.status === 201) router.push('/login');
       } catch (error) {
          console.error(error);
@@ -108,11 +101,7 @@ const Register = () => {
          <title>Register | Games By</title>
          <RegisterForm onSubmit={register}>
             <h4 className='title'>{t('createAccount')}</h4>
-            <RegisterPersonalData
-               data={formData}
-               error={error}
-               onChange={handleChange}
-            />
+            <RegisterPersonalData data={formData} error={error} onChange={handleChange} />
             <RegisterAccountData
                data={formData}
                error={error}

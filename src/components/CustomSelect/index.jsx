@@ -3,15 +3,7 @@ import { FaAngleDown } from 'react-icons/fa';
 import { Arrow, Option, Options, SelectContainer, Selector } from './styles';
 import { AnimatePresence } from 'framer-motion';
 
-const CustomSelect = ({
-   name,
-   value,
-   onChange,
-   options,
-   placeholder,
-   error,
-   className,
-}) => {
+const CustomSelect = ({ name, value, onChange, options, placeholder, error, className }) => {
    const [isOpen, setIsOpen] = useState(false);
    const selectRef = useRef(null);
 
@@ -37,19 +29,12 @@ const CustomSelect = ({
 
    return (
       <SelectContainer ref={selectRef} className={className}>
-         <Selector
-            className={error ? 'error' : ''}
-            onClick={toggleDropdown}
-            isOpen={isOpen}
-         >
+         <Selector className={error ? 'error' : ''} onClick={toggleDropdown} isOpen={isOpen}>
             {value
-               ? options.find((option) => option.value === value)?.label ||
-                 placeholder
+               ? options.find((option) => option.value === value)?.label || placeholder
                : placeholder}
             <Arrow isOpen={isOpen} className={`arrow`}>
-               <FaAngleDown
-                  style={{ fill: error ? 'rgba(var(--red), 0.6)' : '' }}
-               />
+               <FaAngleDown style={{ fill: error ? 'rgba(var(--red), 0.6)' : '' }} />
             </Arrow>
          </Selector>
          <AnimatePresence>
@@ -61,10 +46,7 @@ const CustomSelect = ({
                   transition={{ duration: 0.3 }}
                >
                   {options.map((option) => (
-                     <Option
-                        key={option.value}
-                        onClick={() => handleOptionClick(option.value)}
-                     >
+                     <Option key={option.value} onClick={() => handleOptionClick(option.value)}>
                         {option.label}
                      </Option>
                   ))}

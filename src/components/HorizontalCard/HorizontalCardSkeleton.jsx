@@ -71,25 +71,10 @@ const SkeletonDetails = styled.div`
 const HorizontalCardSkeleton = () => {
    return (
       <SkeletonContainer>
-         <SkeletonEffect
-            width={'15rem'}
-            height={'8rem'}
-            className='image'
-            theme={'dark'}
-         />
+         <SkeletonEffect width={'15rem'} height={'8rem'} className='image' theme={'dark'} />
          <SkeletonDetails>
-            <SkeletonEffect
-               width={'13rem'}
-               height={'1.8rem'}
-               theme={'dark'}
-               className={'name'}
-            />
-            <SkeletonEffect
-               width={'7.8rem'}
-               height={'2.5rem'}
-               theme={'dark'}
-               className={'price'}
-            />
+            <SkeletonEffect width={'13rem'} height={'1.8rem'} theme={'dark'} className={'name'} />
+            <SkeletonEffect width={'7.8rem'} height={'2.5rem'} theme={'dark'} className={'price'} />
             <div className='buttons'>
                <SkeletonEffect
                   width={'2.5rem'}

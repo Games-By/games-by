@@ -24,10 +24,7 @@ const ProfileThumb = ({ windowWidth, onClick, isOpen, tokenValid }) => {
       }
    }, []);
 
-   const debouncedhandleImageUser = useCallback(
-      debounce(handleImageUser, 1000),
-      [handleImageUser]
-   );
+   const debouncedhandleImageUser = useCallback(debounce(handleImageUser, 1000), [handleImageUser]);
 
    useEffect(() => {
       if (!profileImage) {

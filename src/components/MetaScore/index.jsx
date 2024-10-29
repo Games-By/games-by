@@ -11,8 +11,8 @@ const MetacriticScore = ({ metacriticScore }) => {
                   metacriticScore <= 40
                      ? 'rgba(var(--red))'
                      : metacriticScore <= 70
-                     ? 'rgba(var(--yellow))'
-                     : 'rgba(var(--primary))',
+                       ? 'rgba(var(--yellow))'
+                       : 'rgba(var(--primary))',
             }}
          >
             {metacriticScore}

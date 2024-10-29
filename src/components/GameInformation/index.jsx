@@ -36,9 +36,7 @@ const GameInformation = ({ game }) => {
                   </div>
                   <div className='game-data'>
                      <span className='key'>{t('additionalInfos.launch')}</span>
-                     <span className='data'>
-                        {formattedDate(game.releaseDate)}
-                     </span>
+                     <span className='data'>{formattedDate(game.releaseDate)}</span>
                   </div>
                   <div className='game-data'>
                      <span className='key'>{t('additionalInfos.developer')}</span>
@@ -50,11 +48,7 @@ const GameInformation = ({ game }) => {
                   </div>
                   <div className='game-data'>
                      <span className='key'>web-site</span>
-                     <Link
-                        href={game.community.website}
-                        target='_blank'
-                        className='data'
-                     >
+                     <Link href={game.community.website} target='_blank' className='data'>
                         {game.name || 'Não cadastrado'}
                      </Link>
                   </div>
@@ -69,28 +63,17 @@ const GameInformation = ({ game }) => {
                <div className='gallery'>
                   {game.images.gallery &&
                      game.images.gallery.map((image, i) => (
-                        <Image
-                           key={i}
-                           src={image}
-                           width={100}
-                           height={60}
-                           className='image'
-                        />
+                        <Image key={i} src={image} width={100} height={60} className='image' />
                      ))}
 
                   {!game.images.gallery || game.images.gallery.length < 9
-                     ? [
-                          ...Array(
-                             9 -
-                                (game.images.gallery
-                                   ? game.images.gallery.length
-                                   : 0)
-                          ),
-                       ].map((_, i) => (
-                          <div className='box' key={`placeholder-${i}`}>
-                             <HiMiniPhoto />
-                          </div>
-                       ))
+                     ? [...Array(9 - (game.images.gallery ? game.images.gallery.length : 0))].map(
+                          (_, i) => (
+                             <div className='box' key={`placeholder-${i}`}>
+                                <HiMiniPhoto />
+                             </div>
+                          )
+                       )
                      : 'res'}
                </div>
             </div>

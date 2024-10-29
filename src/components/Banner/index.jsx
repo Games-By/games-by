@@ -24,10 +24,7 @@ const Banners = ({ isLoggedIn }) => {
 
    const getBanners = useCallback(async () => {
       const response = await getAllBanners();
-      const mixedBanners = [
-         ...response.discountBanners,
-         ...response.launchBanners,
-      ];
+      const mixedBanners = [...response.discountBanners, ...response.launchBanners];
       setBanners(mixedBanners);
    }, []);
 
@@ -46,9 +43,7 @@ const Banners = ({ isLoggedIn }) => {
       }
    }, []);
 
-   const debouncedGetBanners = useCallback(debounce(getBanners, 500), [
-      getBanners,
-   ]);
+   const debouncedGetBanners = useCallback(debounce(getBanners, 500), [getBanners]);
 
    useEffect(() => {
       if (banners.length < 1) {
@@ -79,26 +74,18 @@ const Banners = ({ isLoggedIn }) => {
                      <SwiperSlide key={banner._id}>
                         <BannerStyle image={banner.imageUrl}>
                            <BannerInfo>
-                              <h2 className='title'>
-                                 {banner.title[locale] || banner.title.en}
-                              </h2>
+                              <h2 className='title'>{banner.title[locale] || banner.title.en}</h2>
                               <p className='description'>
-                                 {banner.description[locale] ||
-                                    banner.description.en}
+                                 {banner.description[locale] || banner.description.en}
                               </p>
                               {futureRelease(banner.releaseDate) ? (
-                                 <p className='avaiable'>
-                                    {t('Banner.coming')}
-                                 </p>
+                                 <p className='avaiable'>{t('Banner.coming')}</p>
                               ) : (
-                                 <p className='avaiable'>
-                                    {t('Banner.avaiable')}
-                                 </p>
+                                 <p className='avaiable'>{t('Banner.avaiable')}</p>
                               )}
                               {banner.type === 'discount' && banner.rating && (
                                  <div className='star-icons'>
-                                    {getStarIcons(banner.rating, 1.6)} |{' '}
-                                    {banner.rating}
+                                    {getStarIcons(banner.rating, 1.6)} | {banner.rating}
                                  </div>
                               )}
                               <div className='buttons'>

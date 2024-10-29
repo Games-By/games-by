@@ -1,5 +1,5 @@
-import { IoCartOutline } from "react-icons/io5";
-import { Cart } from "./styles";
+import { IoCartOutline } from 'react-icons/io5';
+import { Cart } from './styles';
 import { useRouter } from '../../../navigation';
 
 const CartIcon = ({ cartCount }) => {

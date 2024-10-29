@@ -41,10 +41,9 @@ const LoginPage = () => {
 
    const getUser = async (email) => {
       try {
-         const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/user`,
-            { params: { email: email.toLowerCase() } }
-         );
+         const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
+            params: { email: email.toLowerCase() },
+         });
          const imageName = response.data.user.image;
          if (response.status === 200) {
             localStorage.setItem('user', JSON.stringify(response.data.user));
@@ -81,9 +80,7 @@ const LoginPage = () => {
             `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/login`,
             dataToSend
          );
-         const expirationTime = keepLoggedIn
-            ? 30 * 24 * 60 * 60 * 1000
-            : 24 * 60 * 60 * 1000;
+         const expirationTime = keepLoggedIn ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
          const expirationDate = new Date(new Date().getTime() + expirationTime);
          localStorage.setItem('tokenExpiration', expirationDate);
          localStorage.setItem('authToken', response.data.token);

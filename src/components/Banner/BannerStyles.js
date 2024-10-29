@@ -180,11 +180,7 @@ export const BannerInfo = styled.div`
       font-weight: 400;
       text-transform: uppercase;
       color: rgba(var(--primary));
-      background: linear-gradient(
-         120deg,
-         rgba(var(--secondary)),
-         rgba(var(--primary))
-      );
+      background: linear-gradient(120deg, rgba(var(--secondary)), rgba(var(--primary)));
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

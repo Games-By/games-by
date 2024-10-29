@@ -11,7 +11,7 @@ import { SlGraph } from 'react-icons/sl';
 const Releases = () => {
    const locale = useLocale();
    const [releases, setReleases] = useState([]);
-   const t = useTranslations('Releases')
+   const t = useTranslations('Releases');
 
    const getReleases = async () => {
       const games = await getGames();
@@ -41,9 +41,7 @@ const Releases = () => {
                              id={release._id}
                              name={release.name}
                              cover={release.images.coverImage}
-                             portraitCover={
-                                release.images.secondaryCovers[0].url
-                             }
+                             portraitCover={release.images.secondaryCovers[0].url}
                              code={release.prices[locale].currencyCode}
                              price={release.prices[locale].amount}
                              discount={release.discount}
@@ -51,9 +49,7 @@ const Releases = () => {
                              className={'card'}
                           />
                        ))
-                  : [...Array(6)].map((_, i) => (
-                       <VerticalCardSkeleton key={i} />
-                    ))}
+                  : [...Array(6)].map((_, i) => <VerticalCardSkeleton key={i} />)}
             </div>
          </ReleaseStyles>
       </>

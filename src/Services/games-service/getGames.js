@@ -4,9 +4,7 @@ dotenv.config();
 
 export const getGames = async () => {
    try {
-      const response = await axios.get(
-         `${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/games`
-      );
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/games`);
       const games = response.data;
       return games;
    } catch (error) {
@@ -18,7 +16,9 @@ export const getGames = async () => {
 export const getGamesByName = async (name) => {
    if (name) {
       try {
-         const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/game/${name}`);
+         const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/game/${name}`
+         );
          const games = response.data;
          const filteredGames = games.filter((game) =>
             game.name.toLowerCase().includes(name.toLowerCase())
@@ -51,7 +51,9 @@ export const getGamesByName = async (name) => {
 export const getGameById = async (id) => {
    if (id) {
       try {
-         const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/game/id/${id}`);
+         const response = await axios.get(
+            `${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/game/id/${id}`
+         );
          const game = response.data;
          return game;
       } catch (error) {

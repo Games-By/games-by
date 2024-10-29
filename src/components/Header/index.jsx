@@ -1,10 +1,5 @@
 'use client';
-import {
-   HeaderStyle,
-   Language,
-   MainNavigation,
-   ProfileButtons,
-} from './styles';
+import { HeaderStyle, Language, MainNavigation, ProfileButtons } from './styles';
 import LanguageSwitcher from '../Languages/LanguageSwitcher';
 import { useEffect, useState } from 'react';
 import ProfileThumb from '../ProfileThumb';
@@ -40,23 +35,16 @@ const Header = () => {
       <HeaderStyle>
          {width <= 1024 && <SideBar isOpen={isSidebarOpen} />}
          {isSidebarOpen && (
-            <div
-               className='background'
-               onClick={() => setIsSidebarOpen(false)}
-            ></div>
+            <div className='background' onClick={() => setIsSidebarOpen(false)}></div>
          )}
          <MainNavigation>
             {width <= 1024 && (
                <div
                   style={{
                      zIndex: 22,
-                     transform: isSidebarOpen
-                        ? 'translateX(23rem)'
-                        : 'translateX(0)',
+                     transform: isSidebarOpen ? 'translateX(23rem)' : 'translateX(0)',
                      transition: '0.4s',
-                     backgroundColor: isSidebarOpen
-                        ? 'rgba(var(--dark))'
-                        : 'transparent',
+                     backgroundColor: isSidebarOpen ? 'rgba(var(--dark))' : 'transparent',
                   }}
                   className='hamburguer-box'
                >
@@ -64,11 +52,7 @@ const Header = () => {
                      duration={0.4}
                      rounded
                      direction='right'
-                     color={
-                        isSidebarOpen
-                           ? 'rgba(var(--primary))'
-                           : 'rgba(var(--light))'
-                     }
+                     color={isSidebarOpen ? 'rgba(var(--primary))' : 'rgba(var(--light))'}
                      onToggle={(toggled) => {
                         if (toggled) {
                            setIsSidebarOpen(true);
@@ -97,11 +81,7 @@ const Header = () => {
             </AnimatePresence>
          </MainNavigation>
          <ProfileButtons>
-            <CartIcon
-               cartCount={cartCount}
-               tokenValid={isLoggedIn}
-               windowWidth={width}
-            />
+            <CartIcon cartCount={cartCount} tokenValid={isLoggedIn} windowWidth={width} />
             <ProfileThumb
                isLoggedIn={isLoggedIn}
                windowWidth={width}
@@ -109,9 +89,7 @@ const Header = () => {
                tokenValid={isLoggedIn}
                onClick={() => setMenuVisible(!menuVisible)}
             />
-            {(width > 768 ||
-               translateActive ||
-               (width <= 768 && !isLoggedIn)) && (
+            {(width > 768 || translateActive || (width <= 768 && !isLoggedIn)) && (
                <>
                   {translateActive && (
                      <div
@@ -129,9 +107,7 @@ const Header = () => {
                      style={{ right: isLoggedIn && width <= 768 && '4.5rem' }}
                   >
                      <VscGlobe className='globe' />
-                     <AnimatePresence>
-                        {translateActive && <LanguageSwitcher />}
-                     </AnimatePresence>
+                     <AnimatePresence>{translateActive && <LanguageSwitcher />}</AnimatePresence>
                   </Language>
                </>
             )}

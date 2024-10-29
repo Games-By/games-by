@@ -10,11 +10,7 @@ import {
 } from './styles';
 import Checkbox from '../Checkbox';
 
-const PlatformsDropdown = ({
-   platformsData,
-   platforms,
-   handlePlatformChange,
-}) => {
+const PlatformsDropdown = ({ platformsData, platforms, handlePlatformChange }) => {
    const [isOpen, setIsOpen] = useState(false);
    const dropdownRef = useRef(null);
 
@@ -24,10 +20,7 @@ const PlatformsDropdown = ({
 
    useEffect(() => {
       const handleClickOutside = (event) => {
-         if (
-            dropdownRef.current &&
-            !dropdownRef.current.contains(event.target)
-         ) {
+         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
             setIsOpen(false);
          }
       };

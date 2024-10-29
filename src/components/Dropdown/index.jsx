@@ -12,13 +12,7 @@ import { useEffect, useState } from 'react';
 
 const { dropdownOptions } = data;
 
-const Dropdown = ({
-   onMouseEnter,
-   onMouseLeave,
-   onClick,
-   isVisible,
-   windowWidth,
-}) => {
+const Dropdown = ({ onMouseEnter, onMouseLeave, onClick, isVisible, windowWidth }) => {
    const router = useRouter();
    const pathname = usePathname();
    const { width } = useWindowSize();
@@ -75,15 +69,11 @@ const Dropdown = ({
                transition={{ duration: 0.1 }}
                key={index}
                href={
-                  user &&
-                  (item.title['en-US'] === 'Library' ||
-                     item.title['en-US'] === 'WishList')
+                  user && (item.title['en-US'] === 'Library' || item.title['en-US'] === 'WishList')
                      ? `${encodeURIComponent(user.username)}${item.url}`
                      : item.url
                }
-               onClick={
-                  item.title['en-US'] === 'Sign Out' ? handleLogout : null
-               }
+               onClick={item.title['en-US'] === 'Sign Out' ? handleLogout : null}
                className='option'
             >
                {item.title[locale]}

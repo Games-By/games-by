@@ -82,11 +82,7 @@ const Reviews = ({ data }) => {
             <h3>{t('giveComment')}</h3>
             <StarRatingContainer>
                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star
-                     key={star}
-                     onClick={() => setNewRating(star)}
-                     selected={star <= newRating}
-                  >
+                  <Star key={star} onClick={() => setNewRating(star)} selected={star <= newRating}>
                      <IoIosStar />
                   </Star>
                ))}
@@ -96,11 +92,7 @@ const Reviews = ({ data }) => {
                onChange={(e) => setNewComment(e.target.value)}
                placeholder={t('writeComment')}
             />
-            <Button
-               onClick={handleSubmit}
-               title={t('send')}
-               className={'submit-button'}
-            />
+            <Button onClick={handleSubmit} title={t('send')} className={'submit-button'} />
          </AddReviewContainer>
       </>
    );

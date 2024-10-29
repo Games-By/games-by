@@ -43,9 +43,7 @@ const GamePage = () => {
    return (
       <>
          <title>
-            {game
-               ? `Game | ${game.name ? game.name : 'Loading...'}`
-               : 'Game | Games By'}
+            {game ? `Game | ${game.name ? game.name : 'Loading...'}` : 'Game | Games By'}
          </title>
          <Main>
             {width > 1024 && <SideBar isOpen={true} />}

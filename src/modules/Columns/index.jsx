@@ -9,9 +9,7 @@ const Columns = () => {
    const [topSellers, setTopSellers] = useState([]);
 
    const getFreeGames = (games) => {
-      const freeGames = games.filter(
-         (game) => game.prices['en-US'].amount === 0
-      );
+      const freeGames = games.filter((game) => game.prices['en-US'].amount === 0);
       setFreeGames(freeGames);
    };
 

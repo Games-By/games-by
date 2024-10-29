@@ -19,11 +19,7 @@ const SkeletonContainer = styled.div`
 const ProfileThumbSkeleton = () => {
    return (
       <SkeletonContainer>
-         <SkeletonEffect
-            width={'3.5rem'}
-            height={'3.5rem'}
-            className={'photo'}
-         />
+         <SkeletonEffect width={'3.5rem'} height={'3.5rem'} className={'photo'} />
          <SkeletonEffect width={'6rem'} height={'1.5rem'} />
       </SkeletonContainer>
    );

@@ -25,8 +25,7 @@ const SearchBar = ({ autoFocus, onclick, className }) => {
       try {
          const games = await getGamesByName(searchValue);
          const filteredGames = games.filter(
-            (game) =>
-               !findGames.find((existingGame) => existingGame._id === game._id)
+            (game) => !findGames.find((existingGame) => existingGame._id === game._id)
          );
 
          setFindGames([...filteredGames]);
@@ -48,10 +47,7 @@ const SearchBar = ({ autoFocus, onclick, className }) => {
    };
 
    const handleClickOutside = (event) => {
-      if (
-         searchInputRef.current &&
-         !searchInputRef.current.contains(event.target)
-      ) {
+      if (searchInputRef.current && !searchInputRef.current.contains(event.target)) {
          setIsSearched(false);
       }
    };
@@ -119,9 +115,7 @@ const SearchBar = ({ autoFocus, onclick, className }) => {
                                  name={game.name}
                                  image={game.images.coverImage}
                                  release={game.releaseYear}
-                                 url={`/games/${encodeURIComponent(
-                                    game.name.toLowerCase()
-                                 )}`}
+                                 url={`/games/${encodeURIComponent(game.name.toLowerCase())}`}
                               />
                            )
                      )
