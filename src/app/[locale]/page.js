@@ -11,10 +11,8 @@ import Footer from '@/modules/Footer';
 import SideBar from '@/components/SideBar';
 import { Main } from '@/Styles/styles';
 import useWindowSize from '@/hooks/useWindowSize';
-import { useAuth } from '@/contexts/AuthContext';
 
 const Index = () => {
-   const { isLoggedIn } = useAuth();
    const { width } = useWindowSize();
 
    return (
@@ -24,7 +22,7 @@ const Index = () => {
             {width > 1024 && <SideBar isOpen={true} />}
             <div className='main-content'>
                <Header />
-               <Banners isLoggedIn={isLoggedIn} />
+               <Banners />
                <Releases />
                <Discover />
                <HorizontalImages />
