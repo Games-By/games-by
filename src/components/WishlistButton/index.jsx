@@ -6,11 +6,12 @@ import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWis
 import { getWishlist } from '@/Services/client-data/getWishlist';
 import Button from '../Button/Button';
 import { useTranslations } from 'next-intl';
+import Cookies from 'js-cookie';
 
 const WishlistButton = ({ gameTitle, content = false, className }) => {
    const [localWishlist, setLocalWishlist] = useState([]);
    const t = useTranslations('Banner');
-   const authToken = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+   const authToken = typeof window !== 'undefined' ? Cookies.get('authToken') : null;
 
    const handleWishlistClick = useCallback(async () => {
       if (!authToken) {

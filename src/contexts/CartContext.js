@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { getCart } from '@/Services/client-data/getCartData';
 import { addToCart } from '@/Services/client-data/addToCart';
 import { removeFromCart } from '@/Services/client-data/removeFromCart';
+import Cookies from 'js-cookie';
 
 const CartContext = createContext();
 
@@ -75,7 +76,7 @@ export const CartProvider = ({ children }) => {
 
    useEffect(() => {
       if (typeof window !== 'undefined') {
-         const token = localStorage.getItem('authToken');
+         const token = Cookies.get('authToken');
          setAuthToken(token);
 
          const updateCart = async () => {

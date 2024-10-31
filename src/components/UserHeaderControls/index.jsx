@@ -30,10 +30,7 @@ const UserHeaderControls = () => {
       <UserControls>
          <CartIcon />
          <ProfileThumb
-            isLoggedIn={isLoggedIn}
-            windowWidth={width}
             isOpen={menuVisible}
-            tokenValid={isLoggedIn}
             onClick={handleMenuToggle}
          />
          {(width > 768 || translateActive || (width <= 768 && !isLoggedIn)) && (

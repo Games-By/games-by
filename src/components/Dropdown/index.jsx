@@ -9,6 +9,7 @@ import { useLocale } from 'next-intl';
 import { locales } from '@/components/Languages/LanguageSwitcher';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 const { dropdownOptions } = data;
 
@@ -20,13 +21,12 @@ const Dropdown = ({ onMouseEnter, onMouseLeave, onClick, isVisible, windowWidth 
    const [user, setUser] = useState(null);
 
    const handleLogout = () => {
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('tokenExpiration');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
       localStorage.removeItem('wishlist');
       localStorage.removeItem('imageProfile');
+      Cookies.remove('authToken');
 
       if (pathname.includes('/profile')) {
          router.replace('/').then(() => {

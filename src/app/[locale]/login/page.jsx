@@ -15,8 +15,11 @@ import { useTranslations } from 'next-intl';
 import dotenv from 'dotenv';
 dotenv.config();
 import { GrHomeRounded } from 'react-icons/gr';
+import Cookies from 'js-cookie';
+import { useAuth } from '@/contexts/AuthContext';
 
 const LoginPage = () => {
+   const { setIsLoggedIn } = useAuth();
    const router = useRouter();
    const [loginData, setLoginData] = useState({ email: '', password: '' });
    const [emailError, setEmailError] = useState('');
@@ -27,7 +30,7 @@ const LoginPage = () => {
    const [isClient, setIsClient] = useState(false);
 
    useEffect(() => {
-      const authToken = localStorage.getItem('authToken');
+      const authToken = Cookies.get('authToken');
       if (authToken) {
          router.replace('/');
       }
@@ -45,8 +48,17 @@ const LoginPage = () => {
             params: { email: email.toLowerCase() },
          });
          const imageName = response.data.user.image;
+         const localUser = {
+            _id: response.data.user._id,
+            name: response.data.user.name,
+            username: response.data.user.username,
+            admin: response.data.user.admin,
+            image: response.data.user.image,
+            email: response.data.user.email,
+            birth: response.data.user.birth,
+         };
          if (response.status === 200) {
-            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('user', JSON.stringify(localUser));
             const imageProfile = await axios.get(
                `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
                { params: { imageName } }
@@ -82,10 +94,10 @@ const LoginPage = () => {
          );
          const expirationTime = keepLoggedIn ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000;
          const expirationDate = new Date(new Date().getTime() + expirationTime);
-         localStorage.setItem('tokenExpiration', expirationDate);
-         localStorage.setItem('authToken', response.data.token);
-         localStorage.setItem('userEmail', lowercaseEmail);
-         await getUser(loginData.email);
+
+         Cookies.set('authToken', response.data.token, { expires: expirationDate });
+         await getUser(lowercaseEmail);
+         setIsLoggedIn(true);
          router.replace('/');
       } catch (error) {
          handleLoginError(error, loginData, setEmailError, setPasswordError, t);

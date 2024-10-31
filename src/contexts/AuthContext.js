@@ -1,34 +1,32 @@
+import Cookies from 'js-cookie';
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const [updateProfile, setUpdateProfile] = useState(false);
 
-   const checkTokenExpiration = () => {
-      const tokenExpiration = localStorage.getItem('tokenExpiration');
-      if (!tokenExpiration) return false;
-
-      const expirationDate = new Date(tokenExpiration);
-      if (new Date() > expirationDate) {
-         [
-            'wishlist',
-            'user',
-            'cart',
-            'userEmail',
-            'authToken',
-            'imageProfile',
-            'tokenExpiration',
-         ].forEach((item) => localStorage.removeItem(item));
-         return false;
-      }
-      return true;
+   const clearStorage = () => {
+      const storageItems = [
+         'wishlist',
+         'user',
+         'cart',
+         'userEmail',
+         'authToken',
+         'imageProfile',
+         'tokenExpiration',
+      ];
+      storageItems.forEach((item) => localStorage.removeItem(item));
    };
 
    const initializeAuth = () => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken && checkTokenExpiration()) {
+      const authToken = Cookies.get('authToken');
+      if (authToken) {
          setIsLoggedIn(true);
+      }
+      if (!authToken) {
+         clearStorage();
       }
    };
 
@@ -37,7 +35,9 @@ export const AuthProvider = ({ children }) => {
    }, []);
 
    return (
-      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>{children}</AuthContext.Provider>
+      <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn, updateProfile }}>
+         {children}
+      </AuthContext.Provider>
    );
 };
 
