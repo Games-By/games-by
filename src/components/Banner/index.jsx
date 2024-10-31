@@ -15,24 +15,27 @@ import BannerSkeleton from './BannerSkeleton';
 import useWindowSize from '@/hooks/useWindowSize';
 import BannerItem from '../BannerItem';
 import { useAuth } from '@/contexts/AuthContext';
-import { debounce } from '@/utils/debounce';
 
 const Banners = () => {
    const { isLoggedIn } = useAuth();
-   const [banners, setBanners] = useState([]);
+   const [banners, setBanners] = useState(() => JSON.parse(localStorage.getItem('banners')) || []);
    const [localWishlist, setLocalWishlist] = useState([]);
    const { width } = useWindowSize();
 
-   const loadBanners = useCallback(
-      debounce(async () => {
+   const loadBanners = useCallback(async () => {
+      try {
          const fetchedBanners = await fetchBanners();
          setBanners(fetchedBanners);
-      }, 1000),
-      []
-   );
+         localStorage.setItem('banners', JSON.stringify(fetchedBanners));
+      } catch (error) {
+         console.error('Failed to load banners:', error);
+      }
+   }, []);
 
    useEffect(() => {
-      if (banners.length < 1) loadBanners();
+      if (banners.length < 1) {
+         loadBanners();
+      }
       setLocalWishlist(fetchWishlist());
    }, [banners.length, loadBanners]);
 
