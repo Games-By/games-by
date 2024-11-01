@@ -1,26 +1,27 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from '../../../navigation.ts';
+import Cookies from 'js-cookie';
 
 const Profile = () => {
    const router = useRouter();
    const [userData, setUserData] = useState({});
 
    const VerifyLogin = async () => {
-      const authToken = localStorage.getItem('authToken');
+      const authToken = Cookies.get('authToken');
       if (!authToken) {
          router.replace('/');
       }
    };
 
    const handleLogout = () => {
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('tokenExpiration');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
       localStorage.removeItem('wishlist');
       localStorage.removeItem('imageProfile');
+      Cookies.remove('authToken');
+
 
       router.replace('/login');
    };

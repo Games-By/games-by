@@ -10,10 +10,7 @@ const GameMedia = ({ trailer, wallpapers = [] }) => {
    };
 
    return (
-      <MasonryContainer
-         breakpointCols={breakpointColumnsObj}
-         columnClassName='masonry-column'
-      >
+      <MasonryContainer breakpointCols={breakpointColumnsObj} columnClassName='masonry-column'>
          <MasonryVideoItem>
             <VideoPlayer videoUrl={trailer} playerId={trailer} />
          </MasonryVideoItem>

@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
 export const DiscoverStyles = styled.section`
-   background: linear-gradient(
-      10deg,
-      rgba(var(--light-gray), 0.5) 50%,
-      rgba(var(--dark-gray)) 50%
-   );
+   background: linear-gradient(10deg, rgba(var(--light-gray), 0.5) 50%, rgba(var(--dark-gray)) 50%);
    padding-bottom: 2rem;
    .content {
       width: 100%;
@@ -53,11 +49,7 @@ export const Call = styled.div`
          font-style: italic;
          letter-spacing: 2px;
          white-space: nowrap;
-         background: linear-gradient(
-            120deg,
-            rgba(var(--primary)),
-            rgba(var(--secondary))
-         );
+         background: linear-gradient(120deg, rgba(var(--primary)), rgba(var(--secondary)));
          background-clip: text;
          -webkit-background-clip: text;
          -webkit-text-fill-color: transparent;

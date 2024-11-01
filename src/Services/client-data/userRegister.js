@@ -16,11 +16,7 @@ export const userRegister = async (e, formData, imageData, error, locale, t) => 
       }
       return response;
    } catch (error) {
-      if (
-         error.response &&
-         error.response.data &&
-         error.response.data.message
-      ) {
+      if (error.response && error.response.data && error.response.data.message) {
          console.error('Error:', error.response.data.message);
       }
    }

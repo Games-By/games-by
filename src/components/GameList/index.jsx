@@ -3,10 +3,12 @@ import VerticalCard from '../VerticalCard';
 import { GamesList } from './styles';
 import VerticalCardSkeleton from '../VerticalCard/VerticalCardSkeleton';
 
-const GameList = ({ filteredGames, locale }) => {
+const GameList = ({ filteredGames, locale, loading }) => {
    return (
       <GamesList className='games'>
-         {filteredGames?.length > 0 ? (
+         {loading ? (
+            [...Array(18)].map((_, i) => <VerticalCardSkeleton key={i} />)
+         ) : filteredGames.length > 0 ? (
             filteredGames
                .slice(0, 18)
                .map((game) => (
@@ -20,9 +22,9 @@ const GameList = ({ filteredGames, locale }) => {
                   />
                ))
          ) : (
-            [...Array(18)].map((_, i) => (
-               <VerticalCardSkeleton key={i} />
-            ))
+            <div className='not-found'>
+               <h2 className='title'>Nenhum game encontrado :(</h2>
+            </div>
          )}
       </GamesList>
    );

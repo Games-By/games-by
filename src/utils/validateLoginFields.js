@@ -3,7 +3,7 @@ export const validateEmail = (email, t) => {
       return t('errors.emptyEmail');
    }
    if (!/\S+@\S+\.\S+/.test(email)) {
-      return t('errors.invalidEmail')
+      return t('errors.invalidEmail');
    }
    return '';
 };

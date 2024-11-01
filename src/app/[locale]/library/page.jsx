@@ -19,8 +19,11 @@ const LibraryPage = () => {
    const { width } = useWindowSize();
    const searchParams = useSearchParams();
    const searched = searchParams.get('searched') || '';
-   const [gamesList, setGamesList] = useState([]);
    const locale = useLocale();
+
+   const [gamesList, setGamesList] = useState([]);
+   const [filteredGames, setFilteredGames] = useState([]);
+   const [loading, setLoading] = useState(true);
    const [activeFilters, setActiveFilters] = useState({
       keywords: [],
       genre: '',
@@ -29,18 +32,18 @@ const LibraryPage = () => {
       rating: '',
       publisher: '',
    });
-   const [filteredGames, setFilteredGames] = useState([]);
-   const [gamesNotFound, setGamesNotFound] = useState(false)
 
    const getAllGames = async () => {
+      setLoading(true);
+
       try {
          const response = await getGames();
          setGamesList(response);
          setFilteredGames(response);
-         setGamesNotFound(true)
       } catch (error) {
-         console.log('aqui ')
-         setGamesNotFound(true)
+         console.error(error);
+      } finally {
+         setLoading(false);
       }
    };
 
@@ -52,11 +55,10 @@ const LibraryPage = () => {
 
    useEffect(() => {
       if (searched) {
-         setFilteredGames(
-            gamesList.filter((game) =>
-               game.name.toLowerCase().includes(searched.toLowerCase())
-            )
+         const searchedGame = gamesList.filter((game) =>
+            game.name.toLowerCase().includes(searched.toLowerCase())
          );
+         setFilteredGames(searchedGame);
       } else {
          setFilteredGames(gamesList);
       }
@@ -76,36 +78,19 @@ const LibraryPage = () => {
 
    return (
       <>
-         {searched !== '' ? (
-            <title>🔎Searching games</title>
-         ) : (
-            <title>Library | Games By</title>
-         )}
+         {searched ? <title>🔎 Searching games</title> : <title>Library | Games By</title>}
          <Main>
             {width > 1024 && <SideBar isOpen={true} />}
             <Header />
             <Container>
                <div className='games-box'>
-                  {gamesNotFound ?
-                     <div className="not-found">
-                        <h2 className='title'>
-                        Nenhum game encontrado :(
-                        </h2>
-                     </div>
-                     :
-                     <GameList filteredGames={filteredGames} locale={locale} />
-                  }
+                  <GameList filteredGames={filteredGames} locale={locale} loading={loading} />
                   <div className='filter-box'>
                      <Filters
                         activeFilters={activeFilters}
                         setActiveFilters={setActiveFilters}
                         filterGames={() =>
-                           filterGames(
-                              gamesList,
-                              activeFilters,
-                              setFilteredGames,
-                              locale
-                           )
+                           filterGames(gamesList, activeFilters, setFilteredGames, locale)
                         }
                         handleClearFilters={handleClearFilters}
                         locale={locale}

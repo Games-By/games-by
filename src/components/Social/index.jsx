@@ -1,10 +1,4 @@
-import {
-   FaXTwitter,
-   FaInstagram,
-   FaYoutube,
-   FaTiktok,
-   FaDiscord,
-} from 'react-icons/fa6';
+import { FaXTwitter, FaInstagram, FaYoutube, FaTiktok, FaDiscord } from 'react-icons/fa6';
 import { SocialStyles } from './styles';
 
 const Social = ({ classname }) => {

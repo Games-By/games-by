@@ -19,7 +19,6 @@ export const Switcher = styled(motion.div)`
    overflow: hidden;
    padding-left: 1.5rem;
 
-
    .language {
       text-align: center;
       margin-bottom: 1rem;
@@ -69,7 +68,7 @@ export const Switcher = styled(motion.div)`
    @media screen {
       @media (max-width: 768px) {
          top: 6.5rem;
-         right: .5rem;
+         right: 0.5rem;
 
          &::before {
             top: -4rem;

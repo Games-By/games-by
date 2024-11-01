@@ -19,12 +19,7 @@ const Checkbox = ({ checked, onChange, label, className }) => {
                </motion.div>
             )}
          </AnimatePresence>
-         <input
-            type='checkbox'
-            className='checkbox'
-            checked={checked}
-            onChange={onChange}
-         />
+         <input type='checkbox' className='checkbox' checked={checked} onChange={onChange} />
          {label && (
             <span
                className='text'

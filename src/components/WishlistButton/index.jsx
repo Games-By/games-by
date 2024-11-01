@@ -6,29 +6,26 @@ import { removeGameFromWishlist } from '@/Services/client-data/removeGameFromWis
 import { getWishlist } from '@/Services/client-data/getWishlist';
 import Button from '../Button/Button';
 import { useTranslations } from 'next-intl';
+import Cookies from 'js-cookie';
 
 const WishlistButton = ({ gameTitle, content = false, className }) => {
    const [localWishlist, setLocalWishlist] = useState([]);
    const t = useTranslations('Banner');
-   const authToken =
-      typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+   const authToken = typeof window !== 'undefined' ? Cookies.get('authToken') : null;
 
    const handleWishlistClick = useCallback(async () => {
       if (!authToken) {
-         toast(
-            'Você precisa fazer login para adicionar jogos à sua lista de desejos!',
-            {
-               position: 'top-right',
-               autoClose: 3000,
-               hideProgressBar: false,
-               closeOnClick: true,
-               pauseOnHover: false,
-               draggable: true,
-               progress: undefined,
-               theme: 'dark',
-               transition: Slide,
-            }
-         );
+         toast('Você precisa fazer login para adicionar jogos à sua lista de desejos!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark',
+            transition: Slide,
+         });
          return;
       }
 
@@ -48,9 +45,7 @@ const WishlistButton = ({ gameTitle, content = false, className }) => {
                transition: Slide,
             });
          } else {
-            setLocalWishlist((prev) =>
-               prev.filter((title) => title !== gameTitle)
-            );
+            setLocalWishlist((prev) => prev.filter((title) => title !== gameTitle));
             await removeGameFromWishlist(gameTitle);
             toast(`${gameTitle} removido da sua lista de desejos.`, {
                position: 'top-right',
@@ -67,10 +62,7 @@ const WishlistButton = ({ gameTitle, content = false, className }) => {
          const wishList = await getWishlist();
          localStorage.setItem('wishlist', JSON.stringify(wishList));
       } catch (error) {
-         console.error(
-            'Erro ao adicionar ou remover jogo da lista de desejos:',
-            error
-         );
+         console.error('Erro ao adicionar ou remover jogo da lista de desejos:', error);
       }
    }, [authToken, localWishlist, gameTitle]);
 
@@ -90,10 +82,7 @@ const WishlistButton = ({ gameTitle, content = false, className }) => {
    return (
       <Button
          onClick={handleWishlistClick}
-         title={
-            content &&
-            (localWishlist.includes(gameTitle) ? t('remove') : t('add'))
-         }
+         title={content && (localWishlist.includes(gameTitle) ? t('remove') : t('add'))}
          icon={
             localWishlist.includes(gameTitle) ? (
                <MdFavorite className='icon' />

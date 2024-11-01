@@ -9,7 +9,7 @@ import Button from '../Button/Button';
 
 const HorizontalCard = ({ game }) => {
    const locale = useLocale();
-   const t = useTranslations('Card')
+   const t = useTranslations('Card');
    const router = useRouter();
 
    return (
@@ -17,9 +17,7 @@ const HorizontalCard = ({ game }) => {
          <HorizontalCardStyles
             onClick={() => {
                localStorage.setItem('GameId', game._id);
-               router.push(
-                  `/games/${encodeURIComponent(game.name.toLowerCase())}`
-               );
+               router.push(`/games/${encodeURIComponent(game.name.toLowerCase())}`);
             }}
          >
             <Image
@@ -53,17 +51,14 @@ const HorizontalCard = ({ game }) => {
                   ) : null}
                   <div className='game-price'>
                      {game.prices['en-US'].amount > 0 && (
-                        <span className='code'>
-                           {game.prices[locale].currencyCode}
-                        </span>
+                        <span className='code'>{game.prices[locale].currencyCode}</span>
                      )}
                      {game.prices['en-US'].amount > 0 ? (
                         game.discount ? (
                            <span>
                               {(
                                  game.prices[locale].amount -
-                                 (game.prices[locale].amount / 100) *
-                                    game.discount
+                                 (game.prices[locale].amount / 100) * game.discount
                               ).toFixed(2)}
                            </span>
                         ) : (
@@ -80,10 +75,7 @@ const HorizontalCard = ({ game }) => {
                         e.stopPropagation();
                      }}
                   >
-                     <WishlistButton
-                        gameTitle={game.name}
-                        className={'wishlist-button'}
-                     />
+                     <WishlistButton gameTitle={game.name} className={'wishlist-button'} />
                   </div>
                   <Button
                      title={game.prices['en-US'].amount > 0 ? t('buy') : t('play')}

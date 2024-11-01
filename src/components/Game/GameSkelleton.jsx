@@ -292,67 +292,26 @@ const GameSkelleton = () => {
       <SkeletonContainer>
          <div className='game'>
             <div className='top'>
-               <SkeletonEffect
-                  height={'2.8rem'}
-                  width={'16.2rem'}
-                  className={`community-button`}
-               />
+               <SkeletonEffect height={'2.8rem'} width={'16.2rem'} className={`community-button`} />
             </div>
             <div className='infos'>
-               <SkeletonEffect
-                  height={'33rem'}
-                  width={'25rem'}
-                  className={`cover`}
-               />
-               <SkeletonEffect
-                  height={'4rem'}
-                  width={'40rem'}
-                  className={`name`}
-               />
+               <SkeletonEffect height={'33rem'} width={'25rem'} className={`cover`} />
+               <SkeletonEffect height={'4rem'} width={'40rem'} className={`name`} />
                <div className='description'>
-                  <SkeletonEffect
-                     height={'1.7rem'}
-                     width={'100%'}
-                     className={``}
-                  />
-                  <SkeletonEffect
-                     height={'1.7rem'}
-                     width={'95%'}
-                     className={``}
-                  />
+                  <SkeletonEffect height={'1.7rem'} width={'100%'} className={``} />
+                  <SkeletonEffect height={'1.7rem'} width={'95%'} className={``} />
                </div>
                <Buttons>
-                  <SkeletonEffect
-                     height={'2.8rem'}
-                     width={'16.2rem'}
-                     className={`buy`}
-                  />
-                  <SkeletonEffect
-                     height={'2.8rem'}
-                     width={'16.2rem'}
-                     className={`cart`}
-                  />
-                  <SkeletonEffect
-                     height={'2.8rem'}
-                     width={'16.2rem'}
-                     className={`wish`}
-                  />
+                  <SkeletonEffect height={'2.8rem'} width={'16.2rem'} className={`buy`} />
+                  <SkeletonEffect height={'2.8rem'} width={'16.2rem'} className={`cart`} />
+                  <SkeletonEffect height={'2.8rem'} width={'16.2rem'} className={`wish`} />
                </Buttons>
-               <SkeletonEffect
-                  height={'4.5rem'}
-                  width={'16rem'}
-                  className={`price`}
-               />
+               <SkeletonEffect height={'4.5rem'} width={'16rem'} className={`price`} />
             </div>
             <div className='platforms'></div>
             <div className='medias'>
                {[...Array(5)].map((_, i) => (
-                  <SkeletonEffect
-                     key={i}
-                     height={'33rem'}
-                     width={'25rem'}
-                     className={`media`}
-                  />
+                  <SkeletonEffect key={i} height={'33rem'} width={'25rem'} className={`media`} />
                ))}
             </div>
          </div>

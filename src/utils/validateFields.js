@@ -21,9 +21,7 @@ export const validateFields = async (formData, setError, locale, t) => {
    } else {
       const allUsers = await getAllUsers();
 
-      const userExists = allUsers.users.some(
-         (user) => user.username === formData.username
-      );
+      const userExists = allUsers.users.some((user) => user.username === formData.username);
 
       if (userExists) {
          newErrorState.username = t('errors.username.invalidUserName');
@@ -83,17 +81,14 @@ export const validateFields = async (formData, setError, locale, t) => {
    if (!formData.password) {
       newErrorState.password = t('errors.password.requiredPassword');
    } else {
-      const passwordRegex =
-         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
       if (!passwordRegex.test(formData.password)) {
          newErrorState.password = t('errors.password.invalidPassword');
       }
    }
 
    if (!formData.confirmPassword) {
-      newErrorState.confirmPassword = t(
-         'errors.password.requiredConfirmPassword'
-      );
+      newErrorState.confirmPassword = t('errors.password.requiredConfirmPassword');
    }
    if (formData.confirmPassword !== formData.password) {
       newErrorState.confirmPassword = t('errors.password.differentPasswords');

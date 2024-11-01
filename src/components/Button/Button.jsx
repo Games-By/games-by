@@ -1,15 +1,7 @@
 import Loading from '../Loading/Loading';
 import { ButtonStyles } from './ButtonStyles';
 
-const Button = ({
-   title,
-   icon,
-   textTransform,
-   className,
-   loading,
-   onClick,
-   loadingSize
-}) => {
+const Button = ({ title, icon, textTransform, className, loading, onClick, loadingSize }) => {
    return (
       <>
          <ButtonStyles

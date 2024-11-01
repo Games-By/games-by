@@ -6,5 +6,4 @@ export const DiscountPricePercentageStyles = styled.span`
    font-size: 1rem;
    border-radius: 5px;
    font-weight: 600;
-
 `;

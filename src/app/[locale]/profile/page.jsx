@@ -16,19 +16,11 @@ const ProfilePage = () => {
    return (
       <>
          <title>
-            {user
-               ? `Profile | ${user.name ? user.name : 'Loading...'}`
-               : 'Profile | Games By'}
+            {user ? `Profile | ${user.name ? user.name : 'Loading...'}` : 'Profile | Games By'}
          </title>
          <Header />
          <Profile />
-         <div>
-            {user ? (
-               <p>User data: {JSON.stringify(user)}</p>
-            ) : (
-               <p>Loading user data...</p>
-            )}
-         </div>
+         <div>{user ? <p>User data: {JSON.stringify(user)}</p> : <p>Loading user data...</p>}</div>
       </>
    );
 };

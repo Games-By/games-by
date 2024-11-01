@@ -70,10 +70,7 @@ export const Options = styled(motion.div)`
       background-color: transparent;
    }
    &::-webkit-scrollbar-thumb {
-      background: linear-gradient(
-         rgba(var(--primary-blue), 0.5),
-         rgba(var(--primary-pink), 0.5)
-      );
+      background: linear-gradient(rgba(var(--primary-blue), 0.5), rgba(var(--primary-pink), 0.5));
       animation: gradient 5s ease alternate;
       border-radius: 2px;
       outline: 1px solid rgba(var(--primary-pink));

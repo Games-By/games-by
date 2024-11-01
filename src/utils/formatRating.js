@@ -10,19 +10,13 @@ export const getStarIcons = (rating, size) => {
 
    for (let i = 0; i < fullStars; i++) {
       stars.push(
-         <IoIosStar
-            style={{ fontSize: size ? `${size}rem` : '1.8rem' }}
-            key={`star-full-${i}`}
-         />
+         <IoIosStar style={{ fontSize: size ? `${size}rem` : '1.8rem' }} key={`star-full-${i}`} />
       );
    }
 
    if (hasHalfStar) {
       stars.push(
-         <IoIosStarHalf
-            style={{ fontSize: size ? `${size}rem` : '1.8rem' }}
-            key={`star-half`}
-         />
+         <IoIosStarHalf style={{ fontSize: size ? `${size}rem` : '1.8rem' }} key={`star-half`} />
       );
    }
 

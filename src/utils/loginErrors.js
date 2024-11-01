@@ -1,10 +1,4 @@
-export const handleLoginError = (
-   error,
-   loginData,
-   setEmailError,
-   setPasswordError,
-   t
-) => {
+export const handleLoginError = (error, loginData, setEmailError, setPasswordError, t) => {
    if (error.response && error.response.data && error.response.data.message) {
       const { message } = error.response.data;
 
@@ -16,10 +10,7 @@ export const handleLoginError = (
          setEmailError(t('errors.genericEmail'));
       }
 
-      if (
-         loginData.password === '' ||
-         message.toLowerCase().includes('password')
-      ) {
+      if (loginData.password === '' || message.toLowerCase().includes('password')) {
          if (message.includes('not filled')) {
             setPasswordError(t('errors.emptyPassword'));
          } else if (message.includes('is invalid!')) {

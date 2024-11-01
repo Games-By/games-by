@@ -1,10 +1,10 @@
-import axios from "axios";
-import { getGamesByName } from "../games-service/getGames"
+import axios from 'axios';
+import { getGamesByName } from '../games-service/getGames';
 
 export const addGameToWishlist = async (gameTitle) => {
-   const user = localStorage.getItem('user')
-   const formatedUser = JSON.parse(user)
-   const userId = formatedUser._id
+   const user = localStorage.getItem('user');
+   const formatedUser = JSON.parse(user);
+   const userId = formatedUser._id;
    const games = await getGamesByName(gameTitle);
    if (games.length > 0) {
       const game = games[0];
@@ -18,12 +18,14 @@ export const addGameToWishlist = async (gameTitle) => {
             platform: '',
             genre: game.genres,
             releaseYear: game.releaseYear,
-            rating: game.rating
-         }
-      }
+            rating: game.rating,
+         },
+      };
 
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/wishlist/add`, wishListData)
-
+      const response = await axios.post(
+         `${process.env.NEXT_PUBLIC_SERVER_URL}/wishlist/add`,
+         wishListData
+      );
    } else {
       console.error('No game found with the given title');
    }
