@@ -35,7 +35,6 @@ const ProfileThumb = ({ onClick, isOpen }) => {
          }
       }
    }, [profileImage, isLoggedIn, updateProfile]);
-console.log(isLoggedIn)
    return (
       <ProfileContainer>
          {isLoggedIn ? (
