@@ -12,10 +12,8 @@ export const AuthProvider = ({ children }) => {
          'wishlist',
          'user',
          'cart',
-         'userEmail',
-         'authToken',
          'imageProfile',
-         'tokenExpiration',
+         'localCart'
       ];
       storageItems.forEach((item) => localStorage.removeItem(item));
    };
@@ -26,6 +24,7 @@ export const AuthProvider = ({ children }) => {
          setIsLoggedIn(true);
       }
       if (!authToken) {
+         setIsLoggedIn(false);
          clearStorage();
       }
    };
