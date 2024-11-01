@@ -18,7 +18,7 @@ const CartButton = ({ game, content = false, className }) => {
             const item = cartItems.find((item) => item.name === game.name);
             const id = item ? item._id : null;
             if (id) {
-               await removeItemFromCart(id);
+               await removeItemFromCart(id, item.name);
             }
          } else {
             setIsInCart(true);
