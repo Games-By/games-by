@@ -64,3 +64,16 @@ export const getGameById = async (id) => {
       return [];
    }
 };
+
+export const getReleaseGames = async () => {
+   try {
+      const response = await axios.get(
+         `${process.env.NEXT_PUBLIC_SERVER_GAMES_API}/games/releases`
+      );
+      const games = response.data;
+      return games;
+   } catch (error) {
+      console.error('Error fetching the game:', error);
+      return [];
+   }
+};

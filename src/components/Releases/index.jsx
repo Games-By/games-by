@@ -1,55 +1,52 @@
-import { useEffect, useState, useCallback } from 'react';
+'use client';
 import VerticalCard from '../VerticalCard';
-import { getGames } from '@/Services/games-service/getGames';
 import { useLocale, useTranslations } from 'next-intl';
 import { ReleaseStyles } from './ReleasesStyles';
-import { debounce } from '@/utils/debounce';
 import Title from '../Title';
 import VerticalCardSkeleton from '../VerticalCard/VerticalCardSkeleton';
 import { SlGraph } from 'react-icons/sl';
+import { useGames } from '@/contexts/GamesContext';
 
 const Releases = () => {
+   const { releasesGames, loading } = useGames();
    const locale = useLocale();
-   const [releases, setReleases] = useState([]);
    const t = useTranslations('Releases');
 
-   const getReleases = async () => {
-      const games = await getGames();
-      const filteredGames = games.filter((game) => game.releaseYear >= 2022);
-      setReleases(filteredGames);
-   };
-
-   const debouncedGetReleases = useCallback(debounce(getReleases, 1000), []);
-
-   useEffect(() => {
-      if (releases.length < 1) {
-         debouncedGetReleases();
-      }
-   }, [debouncedGetReleases]);
+   if (loading) {
+      return (
+         <ReleaseStyles>
+            <Title icon={<SlGraph />} text={t('title')} />
+            <div className='releases'>
+               {[...Array(6)].map((_, i) => (
+                  <VerticalCardSkeleton key={i} />
+               ))}
+            </div>
+         </ReleaseStyles>
+      );
+   }
 
    return (
       <>
          <ReleaseStyles>
             <Title icon={<SlGraph />} text={t('title')} />
             <div className='releases'>
-               {releases.length > 0
-                  ? releases
-                       .slice(0, 6)
-                       .map((release) => (
-                          <VerticalCard
-                             key={release._id}
-                             id={release._id}
-                             name={release.name}
-                             cover={release.images.coverImage}
-                             portraitCover={release.images.secondaryCovers[0].url}
-                             code={release.prices[locale].currencyCode}
-                             price={release.prices[locale].amount}
-                             discount={release.discount}
-                             genre={release.genres[locale]}
-                             className={'card'}
-                          />
-                       ))
-                  : [...Array(6)].map((_, i) => <VerticalCardSkeleton key={i} />)}
+               {releasesGames.length > 0 &&
+                  releasesGames
+                     .slice(0, 6)
+                     .map((release) => (
+                        <VerticalCard
+                           key={release._id}
+                           id={release._id}
+                           name={release.name}
+                           cover={release.images.coverImage}
+                           portraitCover={release.images.secondaryCovers[0].url}
+                           code={release.prices[locale].currencyCode}
+                           price={release.prices[locale].amount}
+                           discount={release.discount}
+                           genre={release.genres[locale]}
+                           className={'card'}
+                        />
+                     ))}
             </div>
          </ReleaseStyles>
       </>
