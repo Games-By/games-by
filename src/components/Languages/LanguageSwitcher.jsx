@@ -7,9 +7,21 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 export const locales = [
-   { name: 'English', code: 'en-US', flag: 'https://www.svgrepo.com/show/508668/flag-us.svg' },
-   { name: 'Português', code: 'pt-BR', flag: 'https://www.svgrepo.com/show/405433/flag-for-flag-brazil.svg' },
-   { name: 'Español', code: 'es-ES', flag: 'https://www.svgrepo.com/show/248935/spain.svg' },
+   {
+      name: 'English',
+      code: 'en-US',
+      flag: 'https://www.svgrepo.com/show/508668/flag-us.svg',
+   },
+   {
+      name: 'Português',
+      code: 'pt-BR',
+      flag: 'https://www.svgrepo.com/show/405433/flag-for-flag-brazil.svg',
+   },
+   {
+      name: 'Español',
+      code: 'es-ES',
+      flag: 'https://www.svgrepo.com/show/248935/spain.svg',
+   },
 ];
 
 const LanguageSwitcher = () => {
@@ -42,9 +54,7 @@ const LanguageSwitcher = () => {
                key={loc.code}
                href={getNewPathname(loc.code)}
                locale={loc.code}
-               className={`language ${
-                  pathname.includes(getNewPathname(loc.code)) ? 'active' : ''
-               }`}
+               className={`language ${pathname.includes(getNewPathname(loc.code)) ? 'active' : ''}`}
             >
                <Image width={30} height={20} alt='flag' src={loc.flag} />
                {loc.name} ({loc.code})

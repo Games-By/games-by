@@ -10,7 +10,7 @@ const Input = ({
    label,
    error,
    required,
-   className
+   className,
 }) => {
    return (
       <>

@@ -4,11 +4,7 @@ import styled from 'styled-components';
 
 const Loading = ({ loading, size }) => (
    <LoadingStyle>
-      <PacmanLoader
-         color={'rgba(var(--yellow))'}
-         loading={loading}
-         size={size ? size : 11.5}
-      />
+      <PacmanLoader color={'rgba(var(--yellow))'} loading={loading} size={size ? size : 11.5} />
    </LoadingStyle>
 );
 

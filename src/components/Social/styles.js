@@ -17,7 +17,6 @@ export const SocialStyles = styled.div`
          scale: 1.08;
          fill: rgba(var(--primary));
       }
-
    }
    @media screen {
       @media (max-width: 600px) {

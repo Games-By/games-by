@@ -149,12 +149,7 @@ const BannerSkeleton = () => {
                className='content title'
                theme={'dark'}
             />
-            <SkeletonEffect
-               width={'55%'}
-               height={'1.2rem'}
-               className='content'
-               theme={'dark'}
-            />
+            <SkeletonEffect width={'55%'} height={'1.2rem'} className='content' theme={'dark'} />
             <SkeletonEffect
                width={'50%'}
                height={'1.2rem'}

@@ -24,26 +24,24 @@ const GamePlatforms = ({ platforms = [], className }) => {
                );
             }
             if (
-               (platformLowerCase.includes('playstation') &&
-                  platformLowerCase.includes('4')) ||
+               (platformLowerCase.includes('playstation') && platformLowerCase.includes('4')) ||
                platformLowerCase.includes('ps4')
             ) {
                return (
                   <li key={index} className='playstation'>
                      <SiPlaystation className='ps' />
-                     <SiPlaystation4 className='icon'/>
+                     <SiPlaystation4 className='icon' />
                   </li>
                );
             }
             if (
-               (platformLowerCase.includes('playstation') &&
-                  platformLowerCase.includes('5')) ||
+               (platformLowerCase.includes('playstation') && platformLowerCase.includes('5')) ||
                platformLowerCase.includes('ps5')
             ) {
                return (
                   <li key={index} className='playstation'>
                      <SiPlaystation className='ps' />
-                     <SiPlaystation5 className='icon'/>
+                     <SiPlaystation5 className='icon' />
                   </li>
                );
             }
@@ -64,13 +62,13 @@ const GamePlatforms = ({ platforms = [], className }) => {
             if (platformLowerCase.includes('xbox series')) {
                return (
                   <li key={index} style={{ fontWeight: 600 }}>
-                     <SiXbox className='icon'/>
+                     <SiXbox className='icon' />
                   </li>
                );
             }
             if (platformLowerCase.includes('mobile')) {
                return (
-                  <li key={index}  style={{ fontWeight: 600 }}>
+                  <li key={index} style={{ fontWeight: 600 }}>
                      <CiMobile3 className='icon' />
                   </li>
                );

@@ -18,7 +18,7 @@ const CartButton = ({ game, content = false, className }) => {
             const item = cartItems.find((item) => item.name === game.name);
             const id = item ? item._id : null;
             if (id) {
-               await removeItemFromCart(id);
+               await removeItemFromCart(id, item.name);
             }
          } else {
             setIsInCart(true);
@@ -35,18 +35,10 @@ const CartButton = ({ game, content = false, className }) => {
          onClick={handleCartClick}
          title={content && (isInCart ? 'Remover' : 'Adicionar')}
          icon={
-            isInCart ? (
-               <BsCartXFill className='icon' />
-            ) : (
-               <BsFillCartPlusFill className='icon' />
-            )
+            isInCart ? <BsCartXFill className='icon' /> : <BsFillCartPlusFill className='icon' />
          }
          url={'/'}
-         className={[
-            'button',
-            className,
-            isInCart ? 'isInCart' : 'isNotInCart',
-         ].join(' ')}
+         className={['button', className, isInCart ? 'isInCart' : 'isNotInCart'].join(' ')}
          Aboutblank={false}
       />
    );

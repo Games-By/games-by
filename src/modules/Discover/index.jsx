@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import React from 'react';
 import { Call, DiscoverStyles, Portrait } from './styles';
-import { MdOutlineGames } from "react-icons/md";
+import { MdOutlineGames } from 'react-icons/md';
 
 const Discover = () => {
    const t = useTranslations('Discover');
@@ -17,14 +17,15 @@ const Discover = () => {
    return (
       <>
          <DiscoverStyles>
-            <Title text={t('discover')} icon={<MdOutlineGames style={{fontSize: '2rem', transform: 'rotate(-30deg)'}} />} />
+            <Title
+               text={t('discover')}
+               icon={<MdOutlineGames style={{ fontSize: '2rem', transform: 'rotate(-30deg)' }} />}
+            />
             <div className='content'>
                <Call>
                   <p className='presentation'>
                      {t.rich('presentation', {
-                        Emphasys: (chunks) => (
-                           <span className='emphasys'>{chunks}</span>
-                        ),
+                        Emphasys: (chunks) => <span className='emphasys'>{chunks}</span>,
                      })}
                   </p>
                   <p className='call'>{t('call')}</p>
@@ -40,7 +41,6 @@ const Discover = () => {
                            quality={100}
                            style={{ objectFit: 'cover' }}
                            className='image'
-
                         />
                      </div>
                   ))}

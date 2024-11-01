@@ -1,5 +1,5 @@
-import AdCard from "../AdCard/AdCard";
-import { AdvertisingSpaceStyles } from "./AdvertisingSpaceStyles";
+import AdCard from '../AdCard/AdCard';
+import { AdvertisingSpaceStyles } from './AdvertisingSpaceStyles';
 
 const AdvertisingSpace = () => {
    return (

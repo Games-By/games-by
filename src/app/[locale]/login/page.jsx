@@ -1,21 +1,19 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useRouter, Link } from '../../../../navigation';
-import axios from 'axios';
 import { Access, Inputs, LoginBox, LoginPageStyles } from './LoginPageStyles';
 import Input from '@/components/Input/Input';
 import Button from '@/components/Button/Button';
 import AdvertisingSpace from '@/components/AdvertisingSpace/AdvertisingSpace';
-import { getWishlist } from '@/Services/client-data/getWishlist';
 import Logo from '@/components/Logo';
-import { validateEmail, validatePassword } from '@/utils/validateLoginFields';
-import { handleLoginError } from '@/utils/loginErrors';
 import Checkbox from '@/components/Checkbox';
 import { useTranslations } from 'next-intl';
-require('dotenv').config();
 import { GrHomeRounded } from 'react-icons/gr';
+import { useAuth } from '@/contexts/AuthContext';
+import { handleLogin } from '@/Services/client-data/login';
 
 const LoginPage = () => {
+   const { setIsLoggedIn, isLoggedIn } = useAuth();
    const router = useRouter();
    const [loginData, setLoginData] = useState({ email: '', password: '' });
    const [emailError, setEmailError] = useState('');
@@ -26,8 +24,7 @@ const LoginPage = () => {
    const [isClient, setIsClient] = useState(false);
 
    useEffect(() => {
-      const authToken = localStorage.getItem('authToken');
-      if (authToken) {
+      if (isLoggedIn) {
          router.replace('/');
       }
    }, []);
@@ -38,66 +35,21 @@ const LoginPage = () => {
       setLoginData({ ...loginData, [e.target.name]: e.target.value });
    };
 
-   const getUser = async (email) => {
-      try {
-         const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/user`,
-            { params: { email: email.toLowerCase() } }
-         );
-         const imageName = response.data.user.image;
-         if (response.status === 200) {
-            localStorage.setItem('user', JSON.stringify(response.data.user));
-            const imageProfile = await axios.get(
-               `${process.env.NEXT_PUBLIC_SERVER_URL}/download/image`,
-               { params: { imageName } }
-            );
-            const wishlist = await getWishlist();
-            localStorage.setItem('imageProfile', JSON.stringify(imageProfile));
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-         }
-      } catch (error) {
-         console.error('Error getting profile:', error);
-      }
-   };
-
-   const handleLogin = async () => {
-      const lowercaseEmail = loginData.email.toLowerCase();
-      const password = loginData.password;
-
-      const emailValidationError = validateEmail(lowercaseEmail, t);
-      const passwordValidationError = validatePassword(password, t);
-
-      if (emailValidationError || passwordValidationError) {
-         setEmailError(emailValidationError);
-         setPasswordError(passwordValidationError);
-         return;
-      }
-
-      const dataToSend = { email: lowercaseEmail, password: password };
-      try {
-         setLoading(true);
-         const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_SERVER_URL}/auth/login`,
-            dataToSend
-         );
-         const expirationTime = keepLoggedIn
-            ? 30 * 24 * 60 * 60 * 1000
-            : 24 * 60 * 60 * 1000;
-         const expirationDate = new Date(new Date().getTime() + expirationTime);
-         localStorage.setItem('tokenExpiration', expirationDate);
-         localStorage.setItem('authToken', response.data.token);
-         localStorage.setItem('userEmail', lowercaseEmail);
-         await getUser(loginData.email);
-         router.replace('/');
-      } catch (error) {
-         handleLoginError(error, loginData, setEmailError, setPasswordError, t);
-      } finally {
-         setLoading(false);
-      }
-   };
-
    const handleCheckboxChange = () => {
       setKeepLoggedIn((prev) => !prev);
+   };
+
+   const handleLoginSubmit = () => {
+      handleLogin(
+         loginData,
+         setLoading,
+         setIsLoggedIn,
+         router,
+         t,
+         setEmailError,
+         setPasswordError,
+         keepLoggedIn
+      );
    };
 
    useEffect(() => {
@@ -143,9 +95,7 @@ const LoginPage = () => {
                      />
                      <Checkbox
                         checked={keepLoggedIn}
-                        onChange={() => {
-                           handleCheckboxChange();
-                        }}
+                        onChange={handleCheckboxChange}
                         label={t('remenber')}
                      />
                   </Inputs>
@@ -154,7 +104,7 @@ const LoginPage = () => {
                      <Button
                         title={'Login'}
                         textTransform={`capitalize`}
-                        onClick={handleLogin}
+                        onClick={handleLoginSubmit}
                         loading={loading}
                         className={'button'}
                         loadingSize={9.5}

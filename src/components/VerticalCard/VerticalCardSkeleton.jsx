@@ -117,28 +117,10 @@ const VerticalCardSkeleton = ({ discount = false }) => {
          <SkeletonEffect width={'100%'} height={'25rem'} className='image' />
          <SkeletonDetails discount={discount}>
             <SkeletonEffect width={'80%'} height={'1.9rem'} className='name' />
-            {discount && (
-               <SkeletonEffect
-                  width={'8rem'}
-                  height={'1.7rem'}
-                  className={'discount'}
-               />
-            )}
-            <SkeletonEffect
-               width={'9.4rem'}
-               height={'2.3rem'}
-               className='price'
-            />
-            <SkeletonEffect
-               width={'2.8rem'}
-               height={'2.8rem'}
-               className='circle'
-            />
-            <SkeletonEffect
-               width={'12.6rem'}
-               height={'2.7rem'}
-               className={'buy-button'}
-            />
+            {discount && <SkeletonEffect width={'8rem'} height={'1.7rem'} className={'discount'} />}
+            <SkeletonEffect width={'9.4rem'} height={'2.3rem'} className='price' />
+            <SkeletonEffect width={'2.8rem'} height={'2.8rem'} className='circle' />
+            <SkeletonEffect width={'12.6rem'} height={'2.7rem'} className={'buy-button'} />
          </SkeletonDetails>
       </SkeletonContainer>
    );

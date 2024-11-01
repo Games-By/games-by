@@ -23,13 +23,9 @@ const Navigation = () => {
                <li key={i} className={isActive(item.url) ? 'active' : ''}>
                   <Link href={item.url} className={'item'}>
                      {(item.title['en-US'] === 'Store' && <FaStoreAlt />) ||
-                        (item.title['en-US'] === 'Library' && (
-                           <IoLibrarySharp />
-                        )) ||
+                        (item.title['en-US'] === 'Library' && <IoLibrarySharp />) ||
                         (item.title['en-US'] === 'News' && <IoNewspaper />) ||
-                        (item.title['en-US'] === 'Settings' && (
-                           <IoMdSettings />
-                        ))}
+                        (item.title['en-US'] === 'Settings' && <IoMdSettings />)}
                      <span>{item.title[locale]}</span>
                   </Link>
                </li>

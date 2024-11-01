@@ -55,15 +55,11 @@ const RegisterPersonalData = ({ data, onChange, error }) => {
                   name='gender'
                   value={data.gender}
                   onChange={onChange}
-                  placeholder={t(
-                     'personalData.inputGenderOptions.selectGender'
-                  )}
+                  placeholder={t('personalData.inputGenderOptions.selectGender')}
                   options={[
                      {
                         value: '',
-                        label: t(
-                           'personalData.inputGenderOptions.selectGender'
-                        ),
+                        label: t('personalData.inputGenderOptions.selectGender'),
                      },
                      {
                         value: 'male',
@@ -80,9 +76,7 @@ const RegisterPersonalData = ({ data, onChange, error }) => {
                   ]}
                   error={error.gender}
                />
-               {error.gender && (
-                  <Error style={{ marginTop: '1.5rem' }}>{error.gender}</Error>
-               )}
+               {error.gender && <Error style={{ marginTop: '1.5rem' }}>{error.gender}</Error>}
             </Gender>
          </PersonalData>
       </>

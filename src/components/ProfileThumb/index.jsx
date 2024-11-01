@@ -7,8 +7,10 @@ import { debounce } from '@/utils/debounce';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { TbChevronDown, TbChevronUp } from 'react-icons/tb';
 import ProfileThumbSkeleton from './ProfileThumbSkeleton';
+import { useAuth } from '@/contexts/AuthContext';
 
-const ProfileThumb = ({ windowWidth, onClick, isOpen, tokenValid }) => {
+const ProfileThumb = ({ onClick, isOpen }) => {
+   const { isLoggedIn, updateProfile } = useAuth();
    const [profileImage, setProfileImage] = useState(null);
    const [username, setUsername] = useState(null);
    const handleImageUser = useCallback(async () => {
@@ -24,23 +26,18 @@ const ProfileThumb = ({ windowWidth, onClick, isOpen, tokenValid }) => {
       }
    }, []);
 
-   const debouncedhandleImageUser = useCallback(
-      debounce(handleImageUser, 1000),
-      [handleImageUser]
-   );
 
    useEffect(() => {
       if (!profileImage) {
          const user = JSON.parse(localStorage.getItem('user'));
          if (user?.image) {
-            debouncedhandleImageUser(user.image);
+            handleImageUser(user.image);
          }
       }
-   }, [profileImage, debouncedhandleImageUser]);
-
+   }, [profileImage, isLoggedIn, updateProfile]);
    return (
       <ProfileContainer>
-         {tokenValid ? (
+         {isLoggedIn ? (
             profileImage ? (
                <ProfileThumbLink onClick={onClick}>
                   <Image

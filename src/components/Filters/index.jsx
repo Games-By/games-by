@@ -91,8 +91,7 @@ const Filters = ({
       value: price,
    }));
 
-   const hasFiltersApplied =
-      platforms.length > 0 || genre || publisher || price;
+   const hasFiltersApplied = platforms.length > 0 || genre || publisher || price;
 
    return (
       <>
@@ -188,20 +187,14 @@ const Filters = ({
                      exit={{ opacity: 0, height: 0 }}
                      transition={{ duration: 0.3, delay: 0.2 }}
                   >
-                     <h2 className='applyed-filters-title'>
-                        Filtros aplicados
-                     </h2>
+                     <h2 className='applyed-filters-title'>Filtros aplicados</h2>
 
                      <AppliedFiltersBox>
                         {platforms.length > 0 &&
                            platforms.map((platform) => (
                               <FilterTag key={platform}>
                                  {platform}
-                                 <span
-                                    onClick={() =>
-                                       handleRemoveFilter('platform', platform)
-                                    }
-                                 >
+                                 <span onClick={() => handleRemoveFilter('platform', platform)}>
                                     ×
                                  </span>
                               </FilterTag>
@@ -210,29 +203,21 @@ const Filters = ({
                         {genre && (
                            <FilterTag>
                               {genre}
-                              <span onClick={() => handleRemoveFilter('genre')}>
-                                 ×
-                              </span>
+                              <span onClick={() => handleRemoveFilter('genre')}>×</span>
                            </FilterTag>
                         )}
 
                         {publisher && (
                            <FilterTag>
                               {publisher}
-                              <span
-                                 onClick={() => handleRemoveFilter('publisher')}
-                              >
-                                 ×
-                              </span>
+                              <span onClick={() => handleRemoveFilter('publisher')}>×</span>
                            </FilterTag>
                         )}
 
                         {price && (
                            <FilterTag>
                               {price}
-                              <span onClick={() => handleRemoveFilter('price')}>
-                                 ×
-                              </span>
+                              <span onClick={() => handleRemoveFilter('price')}>×</span>
                            </FilterTag>
                         )}
                      </AppliedFiltersBox>

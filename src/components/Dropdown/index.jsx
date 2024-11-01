@@ -9,16 +9,11 @@ import { useLocale } from 'next-intl';
 import { locales } from '@/components/Languages/LanguageSwitcher';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 
 const { dropdownOptions } = data;
 
-const Dropdown = ({
-   onMouseEnter,
-   onMouseLeave,
-   onClick,
-   isVisible,
-   windowWidth,
-}) => {
+const Dropdown = ({ onMouseEnter, onMouseLeave, onClick, isVisible, windowWidth }) => {
    const router = useRouter();
    const pathname = usePathname();
    const { width } = useWindowSize();
@@ -26,13 +21,12 @@ const Dropdown = ({
    const [user, setUser] = useState(null);
 
    const handleLogout = () => {
-      localStorage.removeItem('authToken');
-      localStorage.removeItem('tokenExpiration');
       localStorage.removeItem('userEmail');
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
       localStorage.removeItem('wishlist');
       localStorage.removeItem('imageProfile');
+      Cookies.remove('authToken');
 
       if (pathname.includes('/profile')) {
          router.replace('/').then(() => {
@@ -75,15 +69,11 @@ const Dropdown = ({
                transition={{ duration: 0.1 }}
                key={index}
                href={
-                  user &&
-                  (item.title['en-US'] === 'Library' ||
-                     item.title['en-US'] === 'WishList')
+                  user && (item.title['en-US'] === 'Library' || item.title['en-US'] === 'WishList')
                      ? `${encodeURIComponent(user.username)}${item.url}`
                      : item.url
                }
-               onClick={
-                  item.title['en-US'] === 'Sign Out' ? handleLogout : null
-               }
+               onClick={item.title['en-US'] === 'Sign Out' ? handleLogout : null}
                className='option'
             >
                {item.title[locale]}

@@ -1,14 +1,9 @@
 'use client';
-import React, {
-   createContext,
-   useContext,
-   useState,
-   useEffect,
-   useCallback,
-} from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { getCart } from '@/Services/client-data/getCartData';
 import { addToCart } from '@/Services/client-data/addToCart';
 import { removeFromCart } from '@/Services/client-data/removeFromCart';
+import Cookies from 'js-cookie';
 
 const CartContext = createContext();
 
@@ -63,9 +58,7 @@ export const CartProvider = ({ children }) => {
                await removeFromCart(itemId);
                updatedItems = cartItems.filter((item) => item._id !== itemId);
             } else {
-               updatedItems = cartItems.filter(
-                  (item) => item.name !== itemName
-               );
+               updatedItems = cartItems.filter((item) => item.name !== itemName);
             }
 
             setCartItems(updatedItems);
@@ -83,14 +76,13 @@ export const CartProvider = ({ children }) => {
 
    useEffect(() => {
       if (typeof window !== 'undefined') {
-         const token = localStorage.getItem('authToken');
+         const token = Cookies.get('authToken');
          setAuthToken(token);
 
          const updateCart = async () => {
             const savedCart = localStorage.getItem('cart');
             const cartList = JSON.parse(savedCart) || [];
-            const localCart =
-               JSON.parse(localStorage.getItem('localCart')) || [];
+            const localCart = JSON.parse(localStorage.getItem('localCart')) || [];
 
             if (savedCart && token) {
                if (localCart.length > 0) {
@@ -98,16 +90,14 @@ export const CartProvider = ({ children }) => {
                      (item) =>
                         !cartList.some(
                            (cartItem) =>
-                              cartItem.name === item.name &&
-                              cartItem.platform === item.platform
+                              cartItem.name === item.name && cartItem.platform === item.platform
                         )
                   );
 
                   for (const item of itemsToAdd) {
                      const itemNoExistsInCart = cartList.some(
                         (cartItem) =>
-                           cartItem.name === item.name &&
-                           cartItem.platform === item.platform
+                           cartItem.name === item.name && cartItem.platform === item.platform
                      );
                      if (itemNoExistsInCart) {
                         await addToCart(item);

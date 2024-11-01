@@ -179,8 +179,7 @@ export const StarRatingContainer = styled.div`
 export const Star = styled.span`
    font-size: 24px;
    svg {
-      fill: ${(props) =>
-         props.selected ? 'rgba(var(--yellow))' : 'rgba(var(--light))'};
+      fill: ${(props) => (props.selected ? 'rgba(var(--yellow))' : 'rgba(var(--light))')};
       cursor: pointer;
    }
 
