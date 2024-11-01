@@ -15,10 +15,7 @@ const HorizontalCard = ({ game }) => {
    return (
       <>
          <HorizontalCardStyles
-            onClick={() => {
-               localStorage.setItem('GameId', game._id);
-               router.push(`/games/${encodeURIComponent(game.name.toLowerCase())}`);
-            }}
+            href={`/games/${game.name}`}
          >
             <Image
                alt={`cover of ${game.name}`}

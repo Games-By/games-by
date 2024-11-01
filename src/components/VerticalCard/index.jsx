@@ -4,38 +4,30 @@ import DiscountPrice from '../DiscountPrice';
 import Button from '../Button/Button';
 import WishlistButton from '../WishlistButton';
 import DiscountPricePercentage from '../DiscountPricePercentage';
-import useElementSize from '@/hooks/useElementSize';
-import { useRouter } from '../../../navigation';
 import { useState } from 'react';
 import Loading from '../Loading/Loading';
 import { useTranslations } from 'next-intl';
 
 const VerticalCard = ({ discount, code, price, name, cover, className, id }) => {
-   const [size, cardRef] = useElementSize();
    const [accessing, setAccessing] = useState(false);
-   const router = useRouter();
    const t = useTranslations();
    return (
       <VarticalCardStyles
-         ref={cardRef}
+         href={`/games/${name}`}
          className={className}
-         onClick={() => {
-            localStorage.setItem('GameId', id);
-            setAccessing(true);
-            router.push(`/games/${encodeURIComponent(name.toLowerCase())}`);
-         }}
          discount={discount}
+         onClickCapture={() => setAccessing(true)}
       >
          <div className='cover'>
-            {discount ? (
-               <DiscountPricePercentage discount={discount} className={'percentage'} signal={'-'} />
-            ) : null}
             {accessing && (
                <div className='loading'>
                   <Loading />
                   <span>acessando</span>
                </div>
             )}
+            {discount ? (
+               <DiscountPricePercentage discount={discount} className={'percentage'} signal={'-'} />
+            ) : null}
             <Image
                height={800}
                width={500}

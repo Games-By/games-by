@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from '../../../navigation';
 
-export const HorizontalCardStyles = styled.div`
+export const HorizontalCardStyles = styled(Link)`
    padding: 5px;
    margin: 1.5rem 0 0;
    border-radius: 1rem;

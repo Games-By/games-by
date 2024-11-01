@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from '../../../navigation';
 
-export const VarticalCardStyles = styled.div`
+export const VarticalCardStyles = styled(Link)`
    height: auto;
    display: flex;
    flex-direction: column;
