@@ -2,10 +2,8 @@ import React from 'react';
 import { useLocale } from 'next-intl';
 import { Link, usePathname } from '../../../navigation';
 import data from '@/data/menu.json';
-import { FaStoreAlt } from 'react-icons/fa';
-import { IoLibrarySharp, IoNewspaper } from 'react-icons/io5';
-import { IoMdSettings } from 'react-icons/io';
 import { Nav } from './styles';
+import { Icon } from '../Icon';
 
 const { sidebarNavigation } = data;
 
@@ -20,15 +18,14 @@ const Navigation = () => {
       <Nav>
          <ul>
             {sidebarNavigation.map((item, i) => (
-               <li key={i} className={isActive(item.url) ? 'active' : ''}>
-                  <Link href={item.url} className={'item'}>
-                     {(item.title['en-US'] === 'Store' && <FaStoreAlt />) ||
-                        (item.title['en-US'] === 'Library' && <IoLibrarySharp />) ||
-                        (item.title['en-US'] === 'News' && <IoNewspaper />) ||
-                        (item.title['en-US'] === 'Settings' && <IoMdSettings />)}
+               <Link key={i} href={item.url} className={'item'}>
+                  <li className={isActive(item.url) ? 'active' : ''}>
+                     {item.icon ? (
+                        <Icon nameIcon={item.icon} propsIcon={{ size: 20, className: '' }} />
+                     ): null}
                      <span>{item.title[locale]}</span>
-                  </Link>
-               </li>
+                  </li>
+               </Link>
             ))}
          </ul>
       </Nav>

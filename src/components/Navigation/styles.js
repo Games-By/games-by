@@ -15,17 +15,15 @@ export const Nav = styled.nav`
          padding: 1rem;
          border-radius: 1rem;
          transition: 0.4s;
-         .item {
-            font-size: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-transform: uppercase;
+         font-size: 2rem;
+         display: flex;
+         gap: 1rem;
+         align-items: center;
+         text-transform: uppercase;
 
-            @media screen {
-               @media (max-width: 1440px) {
-                  font-size: 1.6rem;
-               }
+         @media screen {
+            @media (max-width: 1440px) {
+               font-size: 1.6rem;
             }
          }
 
@@ -34,6 +32,7 @@ export const Nav = styled.nav`
          }
       }
       .active {
+         font-size: 2rem;
          background-color: rgba(var(--primary), 0.1);
          color: rgba(var(--primary));
          padding: 1rem;

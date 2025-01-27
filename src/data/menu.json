@@ -6,6 +6,7 @@
             "pt-BR": "Loja",
             "es-ES": "almacenar"
          },
+         "icon": "FaStoreAlt",
          "url": "/"
       },
       {
@@ -14,6 +15,7 @@
             "pt-BR": "Biblioteca",
             "es-ES": "Biblioteca"
          },
+         "icon": "BiLibrary",
          "url": "/library"
       },
       {
@@ -22,6 +24,7 @@
             "pt-BR": "Notícias",
             "es-ES": "Noticias"
          },
+         "icon": "FaFantasyFlightGames",
          "url": "/news"
       },
       {
@@ -30,6 +33,7 @@
             "pt-BR": "Configurações",
             "es-ES": "Ajustes"
          },
+         "icon": "IoMdSettings",
          "url": "/settings"
       }
    ],
