@@ -37,6 +37,7 @@ const VerticalCard = ({ discount, code, price, name, cover, className, id }) => 
                src={
                   cover
                      ? cover
+                     // eslint-disable-next-line max-len
                      : 'https://www.huber-online.com/daisy_website_files/_processed_/8/0/csm_no-image_d5c4ab1322.jpg'
                }
             />
@@ -54,8 +55,8 @@ const VerticalCard = ({ discount, code, price, name, cover, className, id }) => 
                   {!discount && price
                      ? price
                      : discount
-                       ? ((price / 100) * (100 - discount)).toFixed(2)
-                       : t('GamePage.free')}
+                        ? ((price / 100) * (100 - discount)).toFixed(2)
+                        : t('GamePage.free')}
                </span>
             </div>
             <div
@@ -66,7 +67,7 @@ const VerticalCard = ({ discount, code, price, name, cover, className, id }) => 
                <WishlistButton gameTitle={name} className={'wishlist-button'} />
             </div>
             <Button
-               title='Comprar agora'
+               title={t('Card.buy')}
                onClick={(e) => {
                   e.stopPropagation();
                   router.push('/teste');

@@ -11,39 +11,35 @@ import {
    UpdateItem,
 } from './styles';
 import { useLocale, useTranslations } from 'next-intl';
+import { formatdDate } from '@/utils/formatDate';
 
 const GameAdditionalInfo = ({ dlcs, updates, playTime, awards }) => {
    const t = useTranslations('GamePage');
    const locale = useLocale();
 
-   const formattedDate = (date) => {
-      const options = { timeZone: 'UTC' };
-
-      return new Date(date).toLocaleDateString(locale, options);
-   };
    return (
       <AdditionalInfoContainer>
          <Section className='full-width'>
-            <SectionTitle>DLC's</SectionTitle>
+            <SectionTitle>DLC´s</SectionTitle>
             <div className='items'>
                {dlcs.length > 0
                   ? dlcs.map((dlc, index) => (
-                       <DlcItem key={index}>
-                          <Image
-                             src={
-                                dlc.cover
-                                   ? dlc.cover
-                                   : 'https://www.svgrepo.com/show/340721/no-image.svg'
-                             }
-                             alt='cover'
-                             width={160}
-                             height={160}
-                             className='cover'
-                          />
-                          <span>{dlc.name}</span>
-                          <span>{formattedDate(dlc.releaseDate)}</span>
-                       </DlcItem>
-                    ))
+                     <DlcItem key={index}>
+                        <Image
+                           src={
+                              dlc.cover
+                                 ? dlc.cover
+                                 : 'https://www.svgrepo.com/show/340721/no-image.svg'
+                           }
+                           alt='cover'
+                           width={160}
+                           height={160}
+                           className='cover'
+                        />
+                        <span>{dlc.name}</span>
+                        <span>{formatdDate(dlc.releaseDate, locale)}</span>
+                     </DlcItem>
+                  ))
                   : null}
             </div>
          </Section>
@@ -53,12 +49,12 @@ const GameAdditionalInfo = ({ dlcs, updates, playTime, awards }) => {
             <div className='items'>
                {awards.length > 0
                   ? awards.map((award, index) => (
-                       <AwardItem key={index}>
-                          <FaTrophy />
-                          <p className='award'>{award.name}</p>
-                          <p className='category'>{award.category}</p>
-                       </AwardItem>
-                    ))
+                     <AwardItem key={index}>
+                        <FaTrophy />
+                        <p className='award'>{award.name}</p>
+                        <p className='category'>{award.category}</p>
+                     </AwardItem>
+                  ))
                   : null}
             </div>
          </Section>
@@ -68,24 +64,24 @@ const GameAdditionalInfo = ({ dlcs, updates, playTime, awards }) => {
             <div className='updates'>
                {updates.length > 0
                   ? updates.map(
-                       (update, index) =>
-                          index < 3 && (
-                             <UpdateItem key={index}>
-                                <p>
-                                   <span>{t('updates.version')}:</span>
-                                   {update.version}
-                                </p>
-                                <p>
-                                   <span>{t('updates.launch')}:</span>
-                                   {formattedDate(update.releaseDate)}
-                                </p>
-                                <p>
-                                   <span>{t('updates.notes')}:</span>
-                                   {update.notes}
-                                </p>
-                             </UpdateItem>
-                          )
-                    )
+                     (update, index) =>
+                        index < 3 && (
+                           <UpdateItem key={index}>
+                              <p>
+                                 <span>{t('updates.version')}:</span>
+                                 {update.version}
+                              </p>
+                              <p>
+                                 <span>{t('updates.launch')}:</span>
+                                 {formatdDate(update.releaseDate, locale)}
+                              </p>
+                              <p>
+                                 <span>{t('updates.notes')}:</span>
+                                 {update.notes}
+                              </p>
+                           </UpdateItem>
+                        )
+                  )
                   : null}
             </div>
          </Section>

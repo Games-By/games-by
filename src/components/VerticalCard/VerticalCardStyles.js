@@ -181,11 +181,12 @@ export const VarticalCardStyles = styled(Link)`
       }
 
       .buy-button {
-         width: 70%;
+         width: fit-content;
+         min-width: 7rem;
          font-size: 1rem;
          font-weight: 500;
          margin: 5px 0 0;
-         padding: 0.6rem 0;
+         padding: 0.6rem 1rem;
          white-space: nowrap;
          color: rgba(var(--primary));
          border: 1px solid rgba(var(--primary));

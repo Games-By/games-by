@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState } from 'react';
 import {
    Comment,
@@ -17,18 +18,13 @@ import { getStarIcons } from '@/utils/formatRating';
 import { IoIosStar } from 'react-icons/io';
 import Button from '../Button/Button';
 import { useLocale, useTranslations } from 'next-intl';
+import { formatdDate } from '@/utils/formatDate';
 
 const Reviews = ({ data }) => {
    const [newComment, setNewComment] = useState('');
    const [newRating, setNewRating] = useState(0);
    const t = useTranslations('GamePage');
    const locale = useLocale();
-
-   const formattedDate = (date) => {
-      const options = { timeZone: 'UTC' };
-
-      return new Date(date).toLocaleDateString(locale, options);
-   };
 
    const handleSubmit = () => {
       const user = JSON.parse(localStorage.getItem('user'));
@@ -41,13 +37,11 @@ const Reviews = ({ data }) => {
                comment: newComment,
                date: new Date().toISOString(),
             };
-            console.log(review);
             setNewComment('');
             setNewRating(0);
             return;
          }
       }
-      console.log('login necessário');
       return;
    };
    return (
@@ -72,7 +66,7 @@ const Reviews = ({ data }) => {
                      <Username>{review.username}</Username>
                      <Rating>{getStarIcons(review.rating * 2)}</Rating>
                      <CommentText>{review.comment}</CommentText>
-                     <DateInfo>{formattedDate(review.date)}</DateInfo>
+                     <DateInfo>{formatdDate(review.date, locale)}</DateInfo>
                   </UserInfo>
                </Comment>
             ))}

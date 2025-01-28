@@ -8,16 +8,11 @@ import GameRequirements from '../GameRequirements';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
+import { formatdDate } from '@/utils/formatDate';
 
 const GameInformation = ({ game }) => {
    const locale = useLocale();
    const t = useTranslations('GamePage');
-
-   const formattedDate = (date) => {
-      const options = { timeZone: 'UTC' };
-
-      return new Date(date).toLocaleDateString(locale, options);
-   };
 
    return (
       <>
@@ -36,7 +31,7 @@ const GameInformation = ({ game }) => {
                   </div>
                   <div className='game-data'>
                      <span className='key'>{t('additionalInfos.launch')}</span>
-                     <span className='data'>{formattedDate(game.releaseDate)}</span>
+                     <span className='data'>{formatdDate(game.releaseDate, locale)}</span>
                   </div>
                   <div className='game-data'>
                      <span className='key'>{t('additionalInfos.developer')}</span>
@@ -63,17 +58,24 @@ const GameInformation = ({ game }) => {
                <div className='gallery'>
                   {game.images.gallery &&
                      game.images.gallery.map((image, i) => (
-                        <Image key={i} src={image} width={100} height={60} className='image' />
+                        <Image
+                           key={i}
+                           src={image}
+                           width={100}
+                           height={60}
+                           className='image'
+                           alt='game image'
+                        />
                      ))}
 
                   {!game.images.gallery || game.images.gallery.length < 9
                      ? [...Array(9 - (game.images.gallery ? game.images.gallery.length : 0))].map(
-                          (_, i) => (
-                             <div className='box' key={`placeholder-${i}`}>
-                                <HiMiniPhoto />
-                             </div>
-                          )
-                       )
+                        (_, i) => (
+                           <div className='box' key={`placeholder-${i}`}>
+                              <HiMiniPhoto />
+                           </div>
+                        )
+                     )
                      : 'res'}
                </div>
             </div>

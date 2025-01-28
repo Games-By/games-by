@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoPlayer from '../VideoPlayer';
 import { MasonryContainer, MasonryItem, MasonryVideoItem } from './styles';
+import Image from 'next/image';
 
 const GameMedia = ({ trailer, wallpapers = [] }) => {
    const breakpointColumnsObj = {
@@ -16,16 +17,17 @@ const GameMedia = ({ trailer, wallpapers = [] }) => {
          </MasonryVideoItem>
          {wallpapers.map((wallpaper, index) => (
             <MasonryItem key={index}>
-               <img
+               <Image
                   src={wallpaper.url}
                   alt={`Wallpaper ${index + 1}`}
+                  width={500}
+                  height={500}
                   style={{ width: '100%', borderRadius: '8px', height: 'auto' }}
+                  quality={100}
+                  loading='lazy'
                />
             </MasonryItem>
          ))}
-         <MasonryVideoItem>
-            <VideoPlayer videoUrl={trailer} playerId='trailer1' />
-         </MasonryVideoItem>
       </MasonryContainer>
    );
 };
